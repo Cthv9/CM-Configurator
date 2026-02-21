@@ -1,408 +1,277 @@
-let catalog=null, ruleset=null, templates=null;
-let skuMap=new Map();
-let lastBOM=null;
 
-const OVERRIDE_KEY="cm_overrides_v1";
+let catalog=null, engine=null;
+let skuMap=new Map();
+
+const state={
+  base:null,
+  cable:null,
+  male:null,
+  female:null,
+  hawse:null,
+  container:null,
+  trace:[]
+};
 
 function $(id){return document.getElementById(id);}
 
 function setStatus(msg, kind="info"){
-  const el=$("status"); if(!el) return;
+  const el=$("status");
   el.textContent=msg||"";
-  el.style.color = (kind==="ok") ? "var(--ok)"
-               : (kind==="warn") ? "var(--warn)"
-               : (kind==="bad") ? "var(--bad)"
-               : "var(--muted)";
+  el.style.color = (kind==="ok") ? "var(--ok)" : (kind==="warn") ? "var(--warn)" : (kind==="bad") ? "var(--bad)" : "var(--muted)";
 }
 
 async function loadData(){
-  const [cat, rules, tpls] = await Promise.all([
+  const [cat, eng] = await Promise.all([
     fetch("./data/catalog.json").then(r=>r.json()),
-    fetch("./data/rules.json").then(r=>r.json()),
-    fetch("./data/templates.json").then(r=>r.json())
+    fetch("./data/engine.json").then(r=>r.json())
   ]);
-  catalog=cat; ruleset=rules; templates=tpls;
-  skuMap = new Map((catalog.items||[]).map(it=>[it.sku, it]));
+  catalog=cat; engine=eng;
+  skuMap=new Map((catalog.items||[]).map(it=>[it.sku, it]));
 }
 
-function getInput(){
-  return {
-    region: $("region").value,
-    amps: Number($("amps").value||0),
-    hz: Number($("hz").value),
-    phase: $("phase").value,
-    pins: Number($("pins").value),
-    motor_voltage_vdc: Number($("motor_voltage_vdc").value),
-    cable_length_m: Number($("cable_length_m").value),
-    need_hawse_pipe: $("need_hawse_pipe").checked,
-    need_remote_control: $("need_remote_control").checked,
-    space_class: $("space_class").value,
-    routing_layout: $("routing_layout").value,
-    pvc_length_m: Number($("pvc_length_m").value||0),
-    bend_count: Number($("bend_count").value||0),
-    max_bend_deg: Number($("max_bend_deg").value||45),
-    low_profile: $("low_profile").value
-  };
+function goStep(n){
+  document.querySelectorAll(".step").forEach(b=>b.classList.toggle("active", b.dataset.step===String(n)));
+  document.querySelectorAll(".pane").forEach(p=>p.classList.toggle("active", p.dataset.pane===String(n)));
 }
 
-function conditionMatch(when, input){
-  for(const [k,v] of Object.entries(when||{})){
-    if(k==="amps_gte"){ if(!(input.amps>=v)) return false; continue; }
-    if(k==="amps_lte"){ if(!(input.amps<=v)) return false; continue; }
-    if(k.endsWith("_in")){
-      const field=k.slice(0,-3);
-      if(!Array.isArray(v) || !v.includes(input[field])) return false;
-      continue;
+function card(item, selectedSku, onClick, extraMeta=""){
+  const div=document.createElement("div");
+  div.className="cardpick" + (selectedSku===item.sku ? " selected":"");
+  div.addEventListener("click", ()=>onClick(item));
+  const title=document.createElement("div");
+  title.className="title";
+  title.textContent=item.sku;
+  const badge=document.createElement("span");
+  badge.className="badge primary";
+  badge.textContent="PRIMARY";
+  title.appendChild(badge);
+  const meta=document.createElement("div");
+  meta.className="meta";
+  meta.textContent=(item.name||item.description||"") + (extraMeta?(" • "+extraMeta):"");
+  div.appendChild(title);
+  div.appendChild(meta);
+  return div;
+}
+
+function filterBase(){
+  // show unique families as choice (CRM, CM4, CM7, CM8, CM9)
+  const families=["CRM","CM4","CM7","CM8","CM9"];
+  const out=[];
+  for(const f of families){
+    // pick one representative base item sku from catalog or create virtual
+    let rep=(catalog.items||[]).find(it=>it.category==="base" && it.family===f);
+    if(!rep){
+      rep={sku:f, name:`Famiglia ${f}`, family:f, category:"base", virtual:true};
     }
-    if(input[k]!==v) return false;
-  }
-  return true;
-}
-
-function getDesc(sku, fallbackDesc=""){
-  const it = skuMap.get(sku);
-  return it?.name || it?.description_search || fallbackDesc || "(SKU non trovato in catalogo)";
-}
-
-function signature(input){
-  // Used for learning overrides for similar applications
-  return [
-    input.region, input.amps, input.hz, input.phase, input.pins, input.motor_voltage_vdc
-  ].join("|");
-}
-
-function readOverrides(){
-  try{
-    return JSON.parse(localStorage.getItem(OVERRIDE_KEY) || "{}");
-  }catch(e){ return {}; }
-}
-function writeOverrides(obj){
-  localStorage.setItem(OVERRIDE_KEY, JSON.stringify(obj));
-}
-
-function addLine(lines, {sku, qty=1, source="Primary", note="", placeholderKey=null, descFallback=""}){
-  lines.push({
-    sku,
-    description: getDesc(sku, descFallback),
-    qty,
-    source,
-    note,
-    placeholderKey
-  });
-}
-
-function mergeLines(lines){
-  const m=new Map();
-  for(const ln of lines){
-    const key = `${ln.sku}|||${ln.source}|||${ln.note}`;
-    if(!m.has(key)) m.set(key, {...ln});
-    else m.get(key).qty += ln.qty;
-  }
-  return Array.from(m.values());
-}
-
-function applyRouting(lines, input, notes){
-  const layout = input.routing_layout;
-  const amps = input.amps;
-
-  const isPVC = (layout==="pvc_straight" || layout==="pvc_bends");
-  if(isPVC){
-    // Base: pipe end roller
-    addLine(lines, {sku:"16-04040", qty:1, source:"Primary", note:"PVC: pipe end roller (anti-abrasione)"});
-
-    // Couplings/rollers along PVC: rule of thumb every ~0.6m (≈ 24")
-    const L = Math.max(0, input.pvc_length_m || 0);
-    const pitch = 0.3; // default: 30cm
-    const qty = (L>0) ? Math.max(1, Math.ceil(L / pitch)) : 1;
-    addLine(lines, {sku:"16-04061", qty, source:"Primary", note:`PVC: rulli lungo tratta (~1 ogni ${pitch}m)`});
-    notes.push("Routing: su PVC prevedere supporto frequente per ridurre attrito (regola indicativa).");
-  }
-
-  if(layout==="pvc_bends" && input.bend_count>0){
-    const bends = input.bend_count;
-    const deg = input.max_bend_deg;
-
-    // For 50A+ use angling assemblies for significant bends
-    if(amps>=50 && deg>=90){
-      const angSku = (deg>=180) ? "16-04065" : "16-04066"; // 180 or 90
-      addLine(lines, {sku: angSku, qty: bends, source:"Primary", note:`Curve: angling assembly ${deg}°`});
-      // Plates: 2 per angling assembly in brochure
-      addLine(lines, {sku:"16-50004", qty: bends*2, source:"Primary", note:"Piastre per angling assembly (2 per curva)"});
-      notes.push("Routing: per applicazioni ≥50A e curve importanti usare angling assemblies (non gomiti).");
-    }else{
-      // Allow elbows for <=45 or small currents (still caution)
-      if(deg<=45){
-        addLine(lines, {sku:"16-04060", qty: bends, source:"Primary", note:"Curve: elbow con rulli 45° (uso limitato)"});
-      }else{
-        notes.push("Nota: per curve >45° valutare angling assemblies, specie su correnti elevate.");
-      }
-    }
-  }
-
-  if(layout==="remote_overhead"){
-    addLine(lines, {sku:"16-50006", qty:1, source:"Primary", note:"Remoto overhead: staffa di montaggio"});
-    addLine(lines, {sku:"16-04043", qty:1, source:"Primary", note:"Remoto: kit estensione orizzontale"});
-  }
-
-  if(layout==="remote_horizontal"){
-    addLine(lines, {sku:"16-04043", qty:1, source:"Primary", note:"Remoto: kit estensione orizzontale"});
-  }
-
-  // low profile
-  const lp = input.low_profile;
-  const wantsLP = (lp==="yes") || (lp==="auto" && input.space_class==="tight");
-  if(wantsLP){
-    addLine(lines, {sku:"16-04070-1", qty:1, source:"Primary", note:"Low profile mount kit"});
-  }
-}
-
-function applyLearnedOverrides(lines, input){
-  const sig = signature(input);
-  const overrides = readOverrides();
-  const bucket = overrides[sig];
-  if(!bucket) return lines;
-
-  // replace placeholder rows if matching keys
-  const out = [];
-  for(const ln of lines){
-    if(ln.source==="Da definire" && ln.placeholderKey && bucket[ln.placeholderKey]){
-      const o = bucket[ln.placeholderKey];
-      out.push({
-        sku: o.sku,
-        description: getDesc(o.sku, o.descFallback || ""),
-        qty: ln.qty,
-        source: "Secondary",
-        note: "Sostituzione memorizzata (casi simili)",
-        placeholderKey: null
-      });
-    }else{
-      out.push(ln);
-    }
+    out.push(rep);
   }
   return out;
 }
 
-function buildBOMFromRules(input){
-  const lines=[];
-  const notes=[];
-
-  for(const rule of (ruleset.rules||[])){
-    if(!conditionMatch(rule.when, input)) continue;
-    const then = rule.then || {};
-    for(const it of (then.add_items||[])){
-      addLine(lines, {sku: it.sku, qty: it.qty??1, source:"Primary", note: it.note||""});
-    }
-    for(const cb of (then.add_cable||[])){
-      const len = cb.length_m?.from_input ? input[cb.length_m.from_input] : null;
-      const note = (cb.note||"") + (len?` | Lunghezza: ${len} m`:"");
-      addLine(lines, {sku: cb.sku, qty: cb.qty??1, source:"Primary", note});
-    }
-    for(const ph of (then.add_placeholders||[])){
-      addLine(lines, {sku: ph.key.toUpperCase(), qty:1, source:"Da definire", note: ph.label||"Da definire", placeholderKey: ph.key, descFallback: ph.label||""});
-    }
-  }
-
-  // hawse pipe optional — if present in catalog
-  if(input.need_hawse_pipe){
-    // pick common CM8 hawse pipe sku if exists
-    if(skuMap.has("16-04093")) addLine(lines, {sku:"16-04093", qty:1, source:"Primary", note:"Hawse pipe kit"});
-    else notes.push("Hawse pipe richiesto: verifica SKU (non presente nel catalogo caricato).");
-  }
-
-  // remote control optional
-  if(input.need_remote_control){
-    // in examples: 16-04154-1B used as remote
-    const remoteSku = skuMap.has("16-04154-1B") ? "16-04154-1B" : (skuMap.has("16-04155")?"16-04155":null);
-    if(remoteSku) addLine(lines, {sku: remoteSku, qty:1, source:"Primary", note:"Radiocomando"});
-    else notes.push("Radiocomando richiesto: SKU non presente nel catalogo caricato.");
-  }
-
-  // routing computed
-  applyRouting(lines, input, notes);
-
-  let out = mergeLines(lines);
-  out = applyLearnedOverrides(out, input);
-
-  // sort: primary then secondary then todo
-  out.sort((a,b)=>{
-    const rank = (x)=> x.source==="Primary"?0:(x.source==="Secondary"?1:2);
-    const ra=rank(a), rb=rank(b);
-    if(ra!==rb) return ra-rb;
-    return a.sku.localeCompare(b.sku);
-  });
-
-  // add sanity notes
-  if(out.some(x=>x.source==="Da definire")){
-    notes.push("Ci sono righe 'Da definire': usa 'Sostituisci' in BOM per inserire un equivalente (Secondary) e, se vuoi, memorizzarlo.");
-  }
-  return {lines: out, notes};
+function allowedCableForFamily(fam, cable){
+  const cfg=engine.families[fam];
+  if(!cfg) return true;
+  if(cable.amps && cfg.amps_max && cable.amps>cfg.amps_max) return false;
+  // If family CM4, avoid >32A; etc already.
+  return cable.category==="cable";
 }
 
-function renderBOM(bom, input){
-  const tbody = $("bomTable").querySelector("tbody");
+function filterCables(){
+  const fam=state.base?.family || state.base?.sku;
+  const q=($("cableSearch").value||"").toLowerCase();
+  const len=Number($("cableLen").value||0);
+  let list=(catalog.items||[]).filter(it=>it.category==="cable");
+  list=list.filter(c=>allowedCableForFamily(fam,c));
+  if(len) list=list.filter(c=>Number(c.length_m||0)===len);
+  if(q) list=list.filter(c=>(c.name||"").toLowerCase().includes(q) || (c.sku||"").toLowerCase().includes(q));
+  // Sort by amps then length
+  list.sort((a,b)=> (a.amps||0)-(b.amps||0) || (a.length_m||0)-(b.length_m||0) || a.sku.localeCompare(b.sku));
+  return list.slice(0,120);
+}
+
+function cableKey(c){
+  // derive desired connector poles from conductors if present
+  const cond=c.conductors;
+  if(cond===3) return {poles:"2P+T"};
+  if(cond===4) return {poles:"3P+T"};
+  if(cond===5) return {poles:"3P+T+N"};
+  return {poles:null};
+}
+
+function filterConnectors(gender){
+  const c=state.cable;
+  const q=((gender==="male"?$("maleSearch").value:$("femaleSearch").value)||"").toLowerCase();
+  let list=(catalog.items||[]).filter(it=>it.category==="connector" && it.connector_gender===gender);
+  if(c?.amps) list=list.filter(x=>(x.amps||0)===c.amps || (x.amps||0)>=c.amps); // allow same or higher
+  const k=c?cableKey(c):{poles:null};
+  if(k.poles) list=list.filter(x=>!x.poles || x.poles===k.poles);
+  if(q) list=list.filter(x=>(x.name||"").toLowerCase().includes(q) || x.sku.toLowerCase().includes(q));
+  list.sort((a,b)=>(a.amps||0)-(b.amps||0) || a.sku.localeCompare(b.sku));
+  return list.slice(0,120);
+}
+
+function filterHawse(){
+  const fam=state.base?.family || state.base?.sku;
+  const amps=state.cable?.amps;
+  let list=(catalog.items||[]).filter(it=>it.category==="hawse_pipe");
+  if(fam && fam!=="CRM") list=list.filter(h=>!h.family || h.family===fam || h.family==="CM"+fam.replace("CM",""));
+  if(fam==="CRM") list=list.filter(h=>!h.family || h.family==="CRM");
+  if(amps) list=list.filter(h=>!h.amps_max || h.amps_max>=amps);
+  // add defaults if missing
+  list.sort((a,b)=>(a.amps_max||999)-(b.amps_max||999) || a.sku.localeCompare(b.sku));
+  return list.slice(0,80);
+}
+
+function filterContainers(){
+  const fam=state.base?.family || state.base?.sku;
+  const L=state.cable?.length_m || 0;
+  let list=(catalog.items||[]).filter(it=>it.category==="container");
+  if(fam && fam.startsWith("CM")) list=list.filter(x=>!x.family || x.family===fam);
+  // simple heuristic: for longer cables, allow larger containers too
+  if(L>=30){
+    // keep all compatible and also CM9 container
+    list=list.filter(x=>true);
+  }
+  list.sort((a,b)=>a.sku.localeCompare(b.sku));
+  return list.slice(0,80);
+}
+
+function renderPicklist(elId, items, selectedSku, onPick, metaFn){
+  const el=$(elId);
+  el.innerHTML="";
+  if(!items.length){
+    el.innerHTML = `<div class="muted">Nessuna opzione trovata.</div>`;
+    return;
+  }
+  for(const it of items){
+    const extra = metaFn ? metaFn(it) : "";
+    el.appendChild(card(it, selectedSku, onPick, extra));
+  }
+}
+
+function addTrace(msg){ state.trace.push(msg); }
+
+function renderTrace(){
+  const ul=$("trace"); ul.innerHTML="";
+  state.trace.forEach(t=>{ const li=document.createElement("li"); li.textContent=t; ul.appendChild(li); });
+}
+
+function buildBOM(){
+  const lines=[];
+  state.trace=[];
+  // base item: if virtual, try pick a default sku matching family and 24V maybe?
+  if(state.base){
+    if(!state.base.virtual){
+      lines.push({sku:state.base.sku, desc:state.base.name, qty:1, source:"PRIMARY"});
+      addTrace(`Base: selezionato ${state.base.family||state.base.sku} (${state.base.sku}).`);
+    }else{
+      addTrace(`Base: selezionata famiglia ${state.base.sku} (nessun SKU specifico in anagrafica).`);
+    }
+  }
+  if(state.cable){
+    let note = state.cable.length_m ? `${state.cable.length_m}m` : "";
+    lines.push({sku:state.cable.sku, desc:state.cable.name, qty:1, source:"PRIMARY", note});
+    addTrace(`Cavo: ${state.cable.amps||"?"}A, conduttori ${state.cable.conductors||"?"}, lunghezza ${state.cable.length_m||"?"}m.`);
+  }
+  if(state.male){
+    lines.push({sku:state.male.sku, desc:state.male.name, qty:1, source:"PRIMARY"});
+    addTrace(`Spina (maschio): filtrata su cavo → scelta ${state.male.sku}.`);
+  }else{
+    addTrace("Spina (maschio): non selezionata (se necessaria, scegliere un'opzione).");
+  }
+  if(state.female){
+    lines.push({sku:state.female.sku, desc:state.female.name, qty:1, source:"PRIMARY"});
+    addTrace(`Presa (femmina): scelta ${state.female.sku}.`);
+  }
+  if(state.hawse){
+    lines.push({sku:state.hawse.sku, desc:state.hawse.name, qty:1, source:"PRIMARY"});
+    addTrace(`Hawse pipe: proposto/filtrato su base+cavo → scelto ${state.hawse.sku}.`);
+  }
+  if(state.container){
+    lines.push({sku:state.container.sku, desc:state.container.name, qty:1, source:"PRIMARY"});
+    addTrace(`Container: filtrato su famiglia ${state.base?.family||state.base?.sku} e lunghezza cavo → scelto ${state.container.sku}.`);
+  }
+
+  return lines;
+}
+
+function renderBOM(lines){
+  const tbody=$("bomTable").querySelector("tbody");
   tbody.innerHTML="";
-  if(!bom.lines.length){
-    tbody.innerHTML = `<tr><td colspan="5" class="muted">Nessuna riga BOM generata.</td></tr>`;
+  if(!lines.length){
+    tbody.innerHTML=`<tr><td colspan="5" class="muted">Nessuna riga.</td></tr>`;
     $("btnExportCsv").disabled=true;
     return;
   }
-
-  for(const ln of bom.lines){
+  for(const ln of lines){
     const tr=document.createElement("tr");
-
-    const tdSku=document.createElement("td");
-    tdSku.textContent=ln.sku;
-
-    const tdDesc=document.createElement("td");
-    tdDesc.textContent=ln.description;
-
-    const tdQty=document.createElement("td");
-    tdQty.textContent=String(ln.qty);
-
-    const tdSrc=document.createElement("td");
-    const chip=document.createElement("span");
-    chip.className = "chip " + (ln.source==="Primary"?"primary":(ln.source==="Secondary"?"secondary":"todo"));
-    chip.textContent = ln.source==="Primary" ? "PRIMARY" : (ln.source==="Secondary" ? "SECONDARY" : "DA DEFINIRE");
-    tdSrc.appendChild(chip);
-
-    const tdAct=document.createElement("td");
-    const wrap=document.createElement("div");
-    wrap.className="rowActions";
-
-    const btnEditQty=document.createElement("button");
-    btnEditQty.type="button";
-    btnEditQty.className="rowBtn";
-    btnEditQty.textContent="Q.tà";
-    btnEditQty.addEventListener("click", ()=>{
-      const v = prompt("Nuova quantità:", ln.qty);
-      if(v===null) return;
-      const n = Number(v);
-      if(!isFinite(n) || n<=0){ alert("Quantità non valida."); return; }
-      ln.qty = n;
-      lastBOM.lines = lastBOM.lines.map(x => x===ln ? ln : x);
-      renderBOM(lastBOM, input);
-      setStatus("Quantità aggiornata.", "ok");
-    });
-
-    const btnReplace=document.createElement("button");
-    btnReplace.type="button";
-    btnReplace.className="rowBtn";
-    btnReplace.textContent="Sostituisci";
-    btnReplace.addEventListener("click", ()=>{
-      const newSku = prompt("Inserisci SKU sostitutivo (Secondary):", "");
-      if(!newSku) return;
-      ln.sku = newSku.trim();
-      ln.description = getDesc(ln.sku, ln.description);
-      ln.source = "Secondary";
-      ln.note = "Sostituzione manuale";
-      ln.placeholderKey = null;
-      renderBOM(lastBOM, input);
-
-      // option to save mapping for similar applications
-      if(confirm("Vuoi memorizzare questa sostituzione come proposta per casi simili?")){
-        const key = ln.placeholderKey || inferPlaceholderKeyFromText(ln.description);
-        const sig = signature(input);
-        const o = readOverrides();
-        if(!o[sig]) o[sig]={};
-        // if it was a TODO line originally we can save by placeholderKey; for now ask which bucket
-        const bucketKey = prompt("Chiave regola (es: connector_male / connector_female / connector_cover). Lascia vuoto per non salvare.", "connector_male");
-        if(bucketKey){
-          o[sig][bucketKey] = {sku: ln.sku, descFallback: ln.description};
-          writeOverrides(o);
-          setStatus("Sostituzione memorizzata.", "ok");
-        }
-      }else{
-        setStatus("Riga sostituita (Secondary).", "ok");
-      }
-    });
-
-    const btnDel=document.createElement("button");
-    btnDel.type="button";
-    btnDel.className="rowBtn";
-    btnDel.textContent="Elimina";
-    btnDel.addEventListener("click", ()=>{
-      lastBOM.lines = lastBOM.lines.filter(x => x!==ln);
-      renderBOM(lastBOM, input);
-      setStatus("Riga rimossa.", "ok");
-    });
-
-    wrap.append(btnEditQty, btnReplace, btnDel);
-    tdAct.appendChild(wrap);
-
-    tr.append(tdSku, tdDesc, tdQty, tdSrc, tdAct);
+    tr.innerHTML = `<td>${ln.sku}</td><td>${ln.desc||""}</td><td>1</td><td>${ln.source||"PRIMARY"}</td><td></td>`;
     tbody.appendChild(tr);
   }
-
   $("btnExportCsv").disabled=false;
-  $("bomMeta").textContent = `Input: ${input.amps}A • ${input.hz}Hz • ${input.phase} • ${input.pins} pin • ${input.motor_voltage_vdc}VDC • Cavo ${input.cable_length_m}m`;
-
-  const notesList=$("notesList"); notesList.innerHTML="";
-  (bom.notes||[]).forEach(n=>{ const li=document.createElement("li"); li.textContent=n; notesList.appendChild(li);});
+  renderTrace();
 }
 
-function inferPlaceholderKeyFromText(text){
-  const t=(text||"").toLowerCase();
-  if(t.includes("spina")||t.includes("male")) return "connector_male";
-  if(t.includes("presa")||t.includes("female")) return "connector_female";
-  if(t.includes("cover")||t.includes("ghiera")) return "connector_cover";
-  return null;
-}
-
-function bomToCSV(bom){
-  const esc = (s)=>`"${String(s??"").replaceAll('"','""')}"`;
+function csvFrom(lines){
+  const esc=s=>`"${String(s||"").replaceAll('"','""')}"`;
   const header=["SKU","Descrizione","Quantità","Fonte"].map(esc).join(",");
-  const rows=bom.lines.map(l=>[l.sku,l.description,l.qty,l.source].map(esc).join(","));
-  return [header,...rows].join("\n");
+  const rows=lines.map(l=>[l.sku,l.desc,1,l.source].map(esc).join(","));
+  return [header,...rows].join("\\n");
 }
 
 function resetAll(){
-  $("presetSelect").value="";
-  $("region").value="EU";
-  $("amps").value=125;
-  $("hz").value=50;
-  $("phase").value="3PH";
-  $("pins").value=5;
-  $("motor_voltage_vdc").value=24;
-  $("cable_length_m").value=20;
-  $("need_hawse_pipe").checked=true;
-  $("need_remote_control").checked=false;
-  $("space_class").value="unknown";
-  $("routing_layout").value="direct";
-  $("pvc_length_m").value=0;
-  $("bend_count").value=1;
-  $("max_bend_deg").value=90;
-  $("low_profile").value="auto";
-  updateRoutingVisibility();
-
-  lastBOM=null;
-  $("bomMeta").textContent="";
-  $("notesList").innerHTML="";
-  const tbody=$("bomTable").querySelector("tbody");
-  tbody.innerHTML = `<tr><td colspan="5" class="muted">Seleziona un preset o genera una BOM.</td></tr>`;
-  $("btnExportCsv").disabled=true;
+  state.base=state.cable=state.male=state.female=state.hawse=state.container=null;
+  state.trace=[];
+  $("to2").disabled=true; $("to3").disabled=true; $("to4").disabled=true; $("to5").disabled=true; $("to6").disabled=true;
+  $("cableSearch").value=""; $("cableLen").value="";
+  $("maleSearch").value=""; $("femaleSearch").value="";
   setStatus("Reset eseguito.", "ok");
+  renderPicklist("baseList", filterBase(), null, pickBase, it=>it.family||it.sku);
+  $("cableList").innerHTML=""; $("maleList").innerHTML=""; $("femaleList").innerHTML=""; $("hpList").innerHTML=""; $("containerList").innerHTML="";
+  $("bomTable").querySelector("tbody").innerHTML = `<tr><td colspan="5" class="muted">Completa i passi per generare la BOM.</td></tr>`;
+  $("trace").innerHTML="";
   goStep(1);
 }
 
-function populatePresets(){ /* presets UI removed in v3 */ }
-
-function updateRoutingVisibility(){
-  const layout=$("routing_layout").value;
-  const showPVC = (layout==="pvc_straight" || layout==="pvc_bends");
-  document.querySelectorAll(".routingOnly").forEach(el=> el.style.display = showPVC ? "block" : "none");
-  const showBends = (layout==="pvc_bends");
-  document.querySelectorAll(".bendsOnly").forEach(el=> el.style.display = showBends ? "block" : "none");
-  if(!showPVC){ $("pvc_length_m").value = 0; }
-  if(!showBends){ $("bend_count").value = 0; }
+function pickBase(it){
+  state.base = it.virtual ? {sku:it.sku, family:it.sku, virtual:true} : it;
+  $("to2").disabled=false;
+  renderPicklist("baseList", filterBase(), state.base.sku, pickBase, x=>x.family||x.sku);
+  setStatus(`Base selezionata: ${state.base.family||state.base.sku}.`, "ok");
 }
 
-function goStep(n){
-  document.querySelectorAll(".step").forEach(b=>{
-    b.classList.toggle("active", b.dataset.step===String(n));
-  });
-  document.querySelectorAll(".stepPane").forEach(p=>{
-    p.classList.toggle("active", p.dataset.pane===String(n));
-  });
+function pickCable(it){
+  state.cable=it;
+  $("to3").disabled=false;
+  renderPicklist("cableList", filterCables(), state.cable.sku, pickCable, x=>`${x.amps||"?"}A • ${x.conductors||"?"}c • ${x.length_m||""}m`);
+  setStatus(`Cavo selezionato: ${it.sku}.`, "ok");
+}
+
+function pickMale(it){
+  state.male=it;
+  // allow moving even without female
+  $("to4").disabled = !state.male;
+  renderPicklist("maleList", filterConnectors("male"), state.male?.sku, pickMale, x=>`${x.amps||""}A • ${x.poles||""}`);
+  setStatus(`Spina selezionata: ${it.sku}.`, "ok");
+}
+function pickFemale(it){
+  state.female=it;
+  renderPicklist("femaleList", filterConnectors("female"), state.female?.sku, pickFemale, x=>`${x.amps||""}A • ${x.poles||""}`);
+  setStatus(`Presa selezionata: ${it.sku}.`, "ok");
+}
+
+function pickHP(it){
+  state.hawse=it;
+  $("to5").disabled=false;
+  renderPicklist("hpList", filterHawse(), state.hawse?.sku, pickHP, x=>x.family||"");
+  setStatus(`Hawse pipe selezionato: ${it.sku}.`, "ok");
+}
+
+function pickContainer(it){
+  state.container=it;
+  $("to6").disabled=false;
+  renderPicklist("containerList", filterContainers(), state.container?.sku, pickContainer, x=>x.family||"");
+  setStatus(`Container selezionato: ${it.sku}.`, "ok");
 }
 
 async function initPWA(){
@@ -410,9 +279,7 @@ async function initPWA(){
     try{ await navigator.serviceWorker.register("./sw.js"); }catch(e){}
   }
   let deferredPrompt=null;
-  window.addEventListener("beforeinstallprompt",(e)=>{
-    e.preventDefault(); deferredPrompt=e; $("btnInstall").hidden=false;
-  });
+  window.addEventListener("beforeinstallprompt",(e)=>{e.preventDefault();deferredPrompt=e;$("btnInstall").hidden=false;});
   $("btnInstall").addEventListener("click", async ()=>{
     if(!deferredPrompt) return;
     deferredPrompt.prompt();
@@ -421,90 +288,53 @@ async function initPWA(){
   });
 }
 
-
-function isDebug(){
-  return (location.hash || "").toLowerCase().includes("debug");
-}
-
-function clearOverrides(){
-  localStorage.removeItem(OVERRIDE_KEY);
-}
-
-function renderTests(rows){
-  const tbody = $("testTable").querySelector("tbody");
-  tbody.innerHTML = "";
-  for(const r of rows){
-    const tr = document.createElement("tr");
-    const td1=document.createElement("td"); td1.textContent = r.name;
-    const td2=document.createElement("td"); td2.textContent = r.ok ? "PASS" : "FAIL";
-    td2.style.color = r.ok ? "var(--ok)" : "var(--bad)";
-    const td3=document.createElement("td"); td3.textContent = r.detail || "";
-    tr.append(td1,td2,td3);
-    tbody.appendChild(tr);
-  }
-}
-
-function runTests(){
-  const rows = [];
-  const tpls = (templates && templates.templates) ? templates.templates : [];
-  for(const t of tpls){
-    const input = getInput();
-    const bom = buildBOMFromRules(input);
-    const have = new Set(bom.lines.map(x=>x.sku));
-    const expected = new Set((t.bom||[]).map(x=>x.sku));
-    let missing = [];
-    expected.forEach(sku=>{ if(!have.has(sku)) missing.push(sku); });
-    rows.push({
-      name: t.label || t.id,
-      ok: missing.length === 0,
-      detail: missing.length ? ("Mancano: " + missing.slice(0,12).join(", ") + (missing.length>12?" …":"")) : "OK"
-    });
-  }
-  if(!rows.length){
-    rows.push({name:"Nessun test disponibile", ok:true, detail:"Aggiungi templates.json come casi test (non UI)."});
-  }
-  renderTests(rows);
-}
-
-
 async function main(){
-  setStatus("Caricamento dati…");
+  setStatus("Caricamento catalogo…");
   await loadData();
-  populatePresets();
-  // debug mode
-  if(isDebug()){
-    $('debugCard').hidden = false;
-    $('btnRunTests').addEventListener('click', runTests);
-    $('btnClearOverrides').addEventListener('click', ()=>{clearOverrides(); setStatus('Overrides svuotati.', 'ok');});
-  }
-  updateRoutingVisibility();
-  $("routing_layout").addEventListener("change", updateRoutingVisibility);
 
-  // stepper clicks
-  document.querySelectorAll(".step").forEach(btn=>{
-    btn.addEventListener("click", ()=>goStep(Number(btn.dataset.step)));
-  });
-  document.querySelectorAll("[data-next]").forEach(b=>{
-    b.addEventListener("click", ()=>goStep(Number(b.dataset.next)));
-  });
-  document.querySelectorAll("[data-prev]").forEach(b=>{
-    b.addEventListener("click", ()=>goStep(Number(b.dataset.prev)));
-  });
-
+  // Stepper click
+  document.querySelectorAll(".step").forEach(b=>b.addEventListener("click",()=>goStep(Number(b.dataset.step))));
+  document.querySelectorAll("[data-prev]").forEach(b=>b.addEventListener("click",()=>goStep(Number(b.dataset.prev))));
   $("btnReset").addEventListener("click", resetAll);
 
-  $("configForm").addEventListener("submit",(e)=>{
-    e.preventDefault();
-    const input=getInput();
-    const bom=buildBOMFromRules(input);
-    lastBOM=bom;
-    renderBOM(bom, input);
-    setStatus("BOM aggiornata.", bom.lines.some(l=>l.source==="Da definire")?"warn":"ok");
+  // Base
+  renderPicklist("baseList", filterBase(), null, pickBase, it=>it.family||it.sku);
+
+  // Step 2 filters
+  $("cableSearch").addEventListener("input", ()=>{ if(state.base) renderPicklist("cableList", filterCables(), state.cable?.sku, pickCable, x=>`${x.amps||"?"}A • ${x.conductors||"?"}c • ${x.length_m||""}m`); });
+  $("cableLen").addEventListener("change", ()=>{ if(state.base) renderPicklist("cableList", filterCables(), state.cable?.sku, pickCable, x=>`${x.amps||"?"}A • ${x.conductors||"?"}c • ${x.length_m||""}m`); });
+
+  // Navigation buttons
+  $("to2").addEventListener("click", ()=>{
+    goStep(2);
+    renderPicklist("cableList", filterCables(), state.cable?.sku, pickCable, x=>`${x.amps||"?"}A • ${x.conductors||"?"}c • ${x.length_m||""}m`);
+  });
+  $("to3").addEventListener("click", ()=>{
+    goStep(3);
+    renderPicklist("maleList", filterConnectors("male"), state.male?.sku, pickMale, x=>`${x.amps||""}A • ${x.poles||""}`);
+    renderPicklist("femaleList", filterConnectors("female"), state.female?.sku, pickFemale, x=>`${x.amps||""}A • ${x.poles||""}`);
+  });
+
+  $("maleSearch").addEventListener("input", ()=>renderPicklist("maleList", filterConnectors("male"), state.male?.sku, pickMale, x=>`${x.amps||""}A • ${x.poles||""}`));
+  $("femaleSearch").addEventListener("input", ()=>renderPicklist("femaleList", filterConnectors("female"), state.female?.sku, pickFemale, x=>`${x.amps||""}A • ${x.poles||""}`));
+
+  $("to4").addEventListener("click", ()=>{
+    goStep(4);
+    renderPicklist("hpList", filterHawse(), state.hawse?.sku, pickHP, x=>x.family||"");
+  });
+  $("to5").addEventListener("click", ()=>{
+    goStep(5);
+    renderPicklist("containerList", filterContainers(), state.container?.sku, pickContainer, x=>x.family||"");
+  });
+  $("to6").addEventListener("click", ()=>{
+    goStep(6);
+    const bom=buildBOM();
+    renderBOM(bom);
   });
 
   $("btnExportCsv").addEventListener("click", ()=>{
-    if(!lastBOM) return;
-    const csv=bomToCSV(lastBOM);
+    const bom=buildBOM();
+    const csv=csvFrom(bom);
     const blob=new Blob([csv],{type:"text/csv;charset=utf-8"});
     const url=URL.createObjectURL(blob);
     const a=document.createElement("a");
@@ -516,10 +346,7 @@ async function main(){
   });
 
   await initPWA();
-  setStatus("Pronto. Seleziona un preset o completa i passi e genera la BOM.", "ok");
+  setStatus("Pronto. Seleziona Base per iniziare.", "ok");
 }
 
-main().catch(err=>{
-  console.error(err);
-  setStatus("Errore: controlla console.", "bad");
-});
+main().catch(err=>{console.error(err); setStatus("Errore: controlla console.", "bad");});

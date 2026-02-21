@@ -1,22 +1,10 @@
-# Cablemaster Configuratore (v2)
+# Cablemaster Configuratore (v4)
 
-## Cosa cambia rispetto all’MVP
-- Niente campo “fornitore”: Glendinning è sempre primario.
-- Preset importati dagli esempi `Righe*.xlsx` (prezzi ignorati).
-- Wizard a step (Elettrico → Meccanico → Routing → BOM).
-- Routing migliorato: lunghezza PVC, numero curve, angolo massimo → accessori/quantità indicative.
-- BOM editabile: cambia quantità, sostituisci con equivalenti (Secondary), elimina righe.
-- “Impara” sostituzioni: puoi memorizzare un override per casi simili (localStorage).
+Implementa la logica richiesta:
+1) Base (CRM / CM4 / CM7 / CM8 / CM9)
+2) Cavo (filtrato dalla base)
+3) Spina/Presa (filtrata dal cavo)
+4) Hawse Pipe (filtrato da base + ampere)
+5) Container (filtrato da base + lunghezza)
 
-## Deploy su GitHub Pages
-Copia questa cartella nella root del repo e abilita Pages su branch `main`.
-
-## Dati
-- `data/catalog.json` (da Articoli.xlsx)
-- `data/rules.json` (regole base)
-- `data/templates.json` (preset)
-
-
-## v3 changes
-- Rimossi preset UI basati su esempi. Gli esempi restano come casi di test (attiva con `#debug`).
-- Routing: pitch rulli su PVC impostato a 0.30m (30cm).
+Dataset derivato da Articoli.xlsx (434 righe) con parsing automatico descrizioni.
