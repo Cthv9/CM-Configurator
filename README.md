@@ -45,3 +45,7 @@ Per aggiornare prezzi, part number o aggiungere nuovi prodotti, modificare solo 
 Rev 2 — Febbraio 2025  
 Unità di misura: **metri** (conversione ft automatica)  
 Cavi EU UFLEX inclusi con part number propri  
+
+##
+https://cthv9.github.io/CM-Configurator/
+
