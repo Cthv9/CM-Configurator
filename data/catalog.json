@@ -1,0 +1,1799 @@
+{
+  "meta": {
+    "source": "Articoli.xlsx (deduped)",
+    "primary": "Glendinning",
+    "version": "0.2.0"
+  },
+  "items": [
+    {
+      "sku": "16-04020",
+      "name": "CABLEMASTER CM7 12V",
+      "description_search": "CABLEMASTER CM7 12V"
+    },
+    {
+      "sku": "16-04022",
+      "name": "AVVOLGICAVO CABLEMAST CM7 24V",
+      "description_search": "AVVOLGICAVO CABLEMAST CM7 24V"
+    },
+    {
+      "sku": "16-04027",
+      "name": "AVVOLG. CM7 24V POWER UNIT ONL",
+      "description_search": "AVVOLG. CM7 24V POWER UNIT ONL"
+    },
+    {
+      "sku": "16-04030",
+      "name": "RELE' BOX 12V",
+      "description_search": "RELE' BOX 12V"
+    },
+    {
+      "sku": "16-04034",
+      "name": "RELE' BOX 12-24V NON FUNZIONAN",
+      "description_search": "RELE' BOX 12-24V NON FUNZIONAN"
+    },
+    {
+      "sku": "16-04035",
+      "name": "MOTORINO CM7 12V",
+      "description_search": "MOTORINO CM7 12V"
+    },
+    {
+      "sku": "16-04036",
+      "name": "MOTORINO CM7 24V",
+      "description_search": "MOTORINO CM7 24V"
+    },
+    {
+      "sku": "16-04040",
+      "name": "PIPE END ROLLER ASSEMBLY",
+      "description_search": "PIPE END ROLLER ASSEMBLY"
+    },
+    {
+      "sku": "16-04041",
+      "name": "KIT CONVERS.CAVO 4P A 5P",
+      "description_search": "KIT CONVERS.CAVO 4P A 5P"
+    },
+    {
+      "sku": "16-04042",
+      "name": "CM8 PIPE CLAMP ASSY D",
+      "description_search": "CM8 PIPE CLAMP ASSY D"
+    },
+    {
+      "sku": "16-04043",
+      "name": "KIT PROLUNGA ORIZZ. X CM7",
+      "description_search": "KIT PROLUNGA ORIZZ. X CM7"
+    },
+    {
+      "sku": "16-04044",
+      "name": "KIT PROLUNGA VERTICALE SMONT",
+      "description_search": "KIT PROLUNGA VERTICALE SMONT"
+    },
+    {
+      "sku": "16-04045",
+      "name": "PIPE TO PIPE ANGLE ASSEMB",
+      "description_search": "PIPE TO PIPE ANGLE ASSEMB"
+    },
+    {
+      "sku": "16-04046",
+      "name": "GUIDE ROLLER ASSEMBLY",
+      "description_search": "GUIDE ROLLER ASSEMBLY"
+    },
+    {
+      "sku": "16-04047",
+      "name": "GUIDE ROLLER IN-LIMIT SWI",
+      "description_search": "GUIDE ROLLER IN-LIMIT SWI"
+    },
+    {
+      "sku": "16-04049",
+      "name": "HAWSE PIPE INOX CRM32-4049-CRM",
+      "description_search": "HAWSE PIPE INOX CRM32-4049-CRM"
+    },
+    {
+      "sku": "16-04050",
+      "name": "BOCCHETTONE X CM7",
+      "description_search": "BOCCHETTONE X CM7"
+    },
+    {
+      "sku": "16-04051",
+      "name": "CM-4/7 HP CAP HINGE ASSY",
+      "description_search": "CM-4/7 HP CAP HINGE ASSY"
+    },
+    {
+      "sku": "16-04052",
+      "name": "PIPE ASSY CLAMP",
+      "description_search": "PIPE ASSY CLAMP"
+    },
+    {
+      "sku": "16-04053",
+      "name": "HAWSE PIPE CLAMP sostituito",
+      "description_search": "HAWSE PIPE CLAMP SOSTITUITO"
+    },
+    {
+      "sku": "16-04054",
+      "name": "GUIDE ROLLER ASSEMBLY",
+      "description_search": "GUIDE ROLLER ASSEMBLY"
+    },
+    {
+      "sku": "16-04055",
+      "name": "HAWSE PIPE W GUIDE ROLL IN LIM",
+      "description_search": "HAWSE PIPE W GUIDE ROLL IN LIM"
+    },
+    {
+      "sku": "16-04059",
+      "name": "PVC ROLLER ASSY 22 1/2 DEGREE",
+      "description_search": "PVC ROLLER ASSY 22 1/2 DEGREE"
+    },
+    {
+      "sku": "16-04060",
+      "name": "PVC ROLLER ASSY 45 DEEREE",
+      "description_search": "PVC ROLLER ASSY 45 DEEREE"
+    },
+    {
+      "sku": "16-04061",
+      "name": "PVC ROLLER ASSY STRAIGHT",
+      "description_search": "PVC ROLLER ASSY STRAIGHT"
+    },
+    {
+      "sku": "16-04062",
+      "name": "30 DEGREE ANGLING ASSEMB.",
+      "description_search": "30 DEGREE ANGLING ASSEMB."
+    },
+    {
+      "sku": "16-04063",
+      "name": "120 DEGREE ANGLE ASSEMBLY",
+      "description_search": "120 DEGREE ANGLE ASSEMBLY"
+    },
+    {
+      "sku": "16-04064",
+      "name": "60 DEEGREE ANGLE ASSEMBLY",
+      "description_search": "60 DEEGREE ANGLE ASSEMBLY"
+    },
+    {
+      "sku": "16-04065",
+      "name": "180 DEGREE ANGLE ASSEMBLY",
+      "description_search": "180 DEGREE ANGLE ASSEMBLY"
+    },
+    {
+      "sku": "16-04066",
+      "name": "90 DEGREE ANGLE ASSEMBLY",
+      "description_search": "90 DEGREE ANGLE ASSEMBLY"
+    },
+    {
+      "sku": "16-04067",
+      "name": "ANGLING ASSEMBLY 150°",
+      "description_search": "ANGLING ASSEMBLY 150°"
+    },
+    {
+      "sku": "16-04068",
+      "name": "CABLE DIVERTER ASSEMBLY",
+      "description_search": "CABLE DIVERTER ASSEMBLY"
+    },
+    {
+      "sku": "16-04069",
+      "name": "UNDER COACH ROLLER ASSY",
+      "description_search": "UNDER COACH ROLLER ASSY"
+    },
+    {
+      "sku": "16-04070",
+      "name": "LOW PROFILE BRACKET ASSEMBLY",
+      "description_search": "LOW PROFILE BRACKET ASSEMBLY"
+    },
+    {
+      "sku": "16-04080",
+      "name": "KIT TAPPO BOCCHETTONE CM8",
+      "description_search": "KIT TAPPO BOCCHETTONE CM8"
+    },
+    {
+      "sku": "16-04082",
+      "name": "KIT PROLUNGA ORIZZONTALE",
+      "description_search": "KIT PROLUNGA ORIZZONTALE"
+    },
+    {
+      "sku": "16-04091",
+      "name": "AVVOLGICAVO CABLEMAST CM8-24V",
+      "description_search": "AVVOLGICAVO CABLEMAST CM8-24V"
+    },
+    {
+      "sku": "16-04093",
+      "name": "KIT HAWSE PIPE CM8/CM9 ALLUM.",
+      "description_search": "KIT HAWSE PIPE CM8/CM9 ALLUM."
+    },
+    {
+      "sku": "16-04094",
+      "name": "AVVOLGICAVO CM8 SENZA BOCCHETT",
+      "description_search": "AVVOLGICAVO CM8 SENZA BOCCHETT"
+    },
+    {
+      "sku": "16-04097",
+      "name": "AVVOLGICAVO CABLEMAST CM9 24V",
+      "description_search": "AVVOLGICAVO CABLEMAST CM9 24V"
+    },
+    {
+      "sku": "16-04099",
+      "name": "MOTORINO CM8 24V",
+      "description_search": "MOTORINO CM8 24V"
+    },
+    {
+      "sku": "16-04153",
+      "name": "FILTRO INTERFERENZE",
+      "description_search": "FILTRO INTERFERENZE"
+    },
+    {
+      "sku": "16-04154",
+      "name": "REMOTE CONTROL CRM",
+      "description_search": "REMOTE CONTROL CRM"
+    },
+    {
+      "sku": "16-04155",
+      "name": "REMOTE CONTROL 2 TRASMITT",
+      "description_search": "REMOTE CONTROL 2 TRASMITT"
+    },
+    {
+      "sku": "16-04210",
+      "name": "CR EXTENSION BRACKET - attach to a CRMA30",
+      "description_search": "CR EXTENSION BRACKET - ATTACH TO A CRMA30"
+    },
+    {
+      "sku": "16-04800",
+      "name": "POWER SWITCH ASSY 6 FILI",
+      "description_search": "POWER SWITCH ASSY 6 FILI"
+    },
+    {
+      "sku": "16-04812",
+      "name": "LIMIT SWITCH",
+      "description_search": "LIMIT SWITCH"
+    },
+    {
+      "sku": "16-04824",
+      "name": "SWITCH ASSY 3'OUT LIMIT W",
+      "description_search": "SWITCH ASSY 3'OUT LIMIT W"
+    },
+    {
+      "sku": "16-04830",
+      "name": "OUT LIMIT SWITCH",
+      "description_search": "OUT LIMIT SWITCH"
+    },
+    {
+      "sku": "16-04840",
+      "name": "POWER SWITCH ASS. 3' W/COVER",
+      "description_search": "POWER SWITCH ASS. 3' W/COVER"
+    },
+    {
+      "sku": "16-04897",
+      "name": "CM9 Limit Switch",
+      "description_search": "CM9 LIMIT SWITCH"
+    },
+    {
+      "sku": "16-04898",
+      "name": "SWITCH ASSY",
+      "description_search": "SWITCH ASSY"
+    },
+    {
+      "sku": "16-04899",
+      "name": "CM8 IN LIMIT SWITCH",
+      "description_search": "CM8 IN LIMIT SWITCH"
+    },
+    {
+      "sku": "16-05010",
+      "name": "CABLEMASTER CM4-12V 10/3",
+      "description_search": "CABLEMASTER CM4-12V 10/3"
+    },
+    {
+      "sku": "16-05013",
+      "name": "CABLEMASTER CM4-24V 10/3",
+      "description_search": "CABLEMASTER CM4-24V 10/3"
+    },
+    {
+      "sku": "16-05030",
+      "name": "MOTORINO PER CM4 12V",
+      "description_search": "MOTORINO PER CM4 12V"
+    },
+    {
+      "sku": "16-05031",
+      "name": "MOTORINO PER CM4  24V",
+      "description_search": "MOTORINO PER CM4  24V"
+    },
+    {
+      "sku": "16-05032",
+      "name": "MOTORINO PER CM4 12V",
+      "description_search": "MOTORINO PER CM4 12V"
+    },
+    {
+      "sku": "16-510R",
+      "name": "GHIERA+ O-RING",
+      "description_search": "GHIERA+ O-RING"
+    },
+    {
+      "sku": "16-05521",
+      "name": "HOSE MASTER 75F.5/8\"24VDC",
+      "description_search": "HOSE MASTER 75F.5/8\"24VDC"
+    },
+    {
+      "sku": "16-06022",
+      "name": "DRIVE ADAPTER 120 X 5/8",
+      "description_search": "DRIVE ADAPTER 120 X 5/8"
+    },
+    {
+      "sku": "16-11404",
+      "name": "CONTROL HEAD (ELECTRIC)",
+      "description_search": "CONTROL HEAD (ELECTRIC)"
+    },
+    {
+      "sku": "16-11700",
+      "name": "POWER SWITCH RELAY",
+      "description_search": "POWER SWITCH RELAY"
+    },
+    {
+      "sku": "16-21204",
+      "name": "SOLENOIDE 24V SINCRONIZZ.",
+      "description_search": "SOLENOIDE 24V SINCRONIZZ."
+    },
+    {
+      "sku": "16-34048",
+      "name": "CAVO DRIVE SYNCHRONIZER FT4",
+      "description_search": "CAVO DRIVE SYNCHRONIZER FT4"
+    },
+    {
+      "sku": "16-34060",
+      "name": "ROTARY DRIVE CABLE, 5 FT",
+      "description_search": "ROTARY DRIVE CABLE, 5 FT"
+    },
+    {
+      "sku": "16-35901",
+      "name": "CM8 DRIVING PULLEY-37110-",
+      "description_search": "CM8 DRIVING PULLEY-37110-"
+    },
+    {
+      "sku": "16-42007",
+      "name": "TUBO 3\" FT-90 CM",
+      "description_search": "TUBO 3\" FT-90 CM"
+    },
+    {
+      "sku": "16-50004",
+      "name": "PIPE EXTENSION PLATES",
+      "description_search": "PIPE EXTENSION PLATES"
+    },
+    {
+      "sku": "16-50005",
+      "name": "LINK REG. CONNECTOR",
+      "description_search": "LINK REG. CONNECTOR"
+    },
+    {
+      "sku": "16-50006",
+      "name": "STAFFA MONTAGGIO SUPERIORE",
+      "description_search": "STAFFA MONTAGGIO SUPERIORE"
+    },
+    {
+      "sku": "16-50407",
+      "name": "P/U CONTAINER MNTG BRAC 12\"",
+      "description_search": "P/U CONTAINER MNTG BRAC 12\""
+    },
+    {
+      "sku": "16-50408",
+      "name": "POWER UNIT TO CONT. BRACK. 17\"",
+      "description_search": "POWER UNIT TO CONT. BRACK. 17\""
+    },
+    {
+      "sku": "16-50410",
+      "name": "PLATE ",
+      "description_search": "PLATE"
+    },
+    {
+      "sku": "16-50413",
+      "name": "PANNELLO A MURATA  CM7",
+      "description_search": "PANNELLO A MURATA  CM7"
+    },
+    {
+      "sku": "16-50414",
+      "name": "CASSA INGRANAGGI",
+      "description_search": "CASSA INGRANAGGI"
+    },
+    {
+      "sku": "16-50417",
+      "name": "PULLEY OUTSIDE HALF",
+      "description_search": "PULLEY OUTSIDE HALF"
+    },
+    {
+      "sku": "16-50419",
+      "name": "PLATE CM7 GUIDE ROL.ASY",
+      "description_search": "PLATE CM7 GUIDE ROL.ASY"
+    },
+    {
+      "sku": "16-50421",
+      "name": "HAWSE PIPE HINGE FOR CM7",
+      "description_search": "HAWSE PIPE HINGE FOR CM7"
+    },
+    {
+      "sku": "16-50423",
+      "name": "BRACKED COIL SPRING",
+      "description_search": "BRACKED COIL SPRING"
+    },
+    {
+      "sku": "16-50426",
+      "name": "IN LIMIT SWITCH PLATE",
+      "description_search": "IN LIMIT SWITCH PLATE"
+    },
+    {
+      "sku": "16-50430",
+      "name": "GASKET",
+      "description_search": "GASKET"
+    },
+    {
+      "sku": "16-50431",
+      "name": "STAFFA",
+      "description_search": "STAFFA"
+    },
+    {
+      "sku": "16-50433",
+      "name": "HINGE",
+      "description_search": "HINGE"
+    },
+    {
+      "sku": "16-50434",
+      "name": "HINGE HOLDER",
+      "description_search": "HINGE HOLDER"
+    },
+    {
+      "sku": "16-50439",
+      "name": "TAPPO A VITE",
+      "description_search": "TAPPO A VITE"
+    },
+    {
+      "sku": "16-50459",
+      "name": "BRACKET",
+      "description_search": "BRACKET"
+    },
+    {
+      "sku": "16-50505",
+      "name": "ANGLE BRACKET ",
+      "description_search": "ANGLE BRACKET"
+    },
+    {
+      "sku": "16-51420",
+      "name": "SHOULDER BOLT",
+      "description_search": "SHOULDER BOLT"
+    },
+    {
+      "sku": "16-51442",
+      "name": "BUSHING",
+      "description_search": "BUSHING"
+    },
+    {
+      "sku": "16-51458",
+      "name": "TERMINALE ALL PRESA",
+      "description_search": "TERMINALE ALL PRESA"
+    },
+    {
+      "sku": "16-60001",
+      "name": "ANELLO HAWSE PIPE",
+      "description_search": "ANELLO HAWSE PIPE"
+    },
+    {
+      "sku": "16-60511",
+      "name": "EDGE BREAKER HOSE MASTER",
+      "description_search": "EDGE BREAKER HOSE MASTER"
+    },
+    {
+      "sku": "16-65001",
+      "name": "DISTANZIALE SPACER ",
+      "description_search": "DISTANZIALE SPACER"
+    },
+    {
+      "sku": "16-65004",
+      "name": "RONDELLA",
+      "description_search": "RONDELLA"
+    },
+    {
+      "sku": "16-69001",
+      "name": "cuscinetto",
+      "description_search": "CUSCINETTO"
+    },
+    {
+      "sku": "16-70425",
+      "name": "SCREW",
+      "description_search": "SCREW"
+    },
+    {
+      "sku": "16-70428",
+      "name": "SCREW",
+      "description_search": "SCREW"
+    },
+    {
+      "sku": "16-70435",
+      "name": "SCREW",
+      "description_search": "SCREW"
+    },
+    {
+      "sku": "16-70449",
+      "name": "BOLT",
+      "description_search": "BOLT"
+    },
+    {
+      "sku": "16-70453",
+      "name": "VITE 5/16-18 X 3/4 HEX HD SS",
+      "description_search": "VITE 5/16-18 X 3/4 HEX HD SS"
+    },
+    {
+      "sku": "16-70454",
+      "name": "BOLT",
+      "description_search": "BOLT"
+    },
+    {
+      "sku": "16-72406",
+      "name": "SPACER",
+      "description_search": "SPACER"
+    },
+    {
+      "sku": "16-72412",
+      "name": "WASHER",
+      "description_search": "WASHER"
+    },
+    {
+      "sku": "16-73001",
+      "name": "LOCKWASHER",
+      "description_search": "LOCKWASHER"
+    },
+    {
+      "sku": "16-74002",
+      "name": "NUT",
+      "description_search": "NUT"
+    },
+    {
+      "sku": "16-81407",
+      "name": "TARGHETTA IN-OUT GLEND.",
+      "description_search": "TARGHETTA IN-OUT GLEND."
+    },
+    {
+      "sku": "16-85412",
+      "name": "CON.TENS.ROLLER",
+      "description_search": "CON.TENS.ROLLER"
+    },
+    {
+      "sku": "16-85414",
+      "name": "LIP ROLLER",
+      "description_search": "LIP ROLLER"
+    },
+    {
+      "sku": "16-85420",
+      "name": "CONTENITORE CM7 D.51xH.46cm",
+      "description_search": "CONTENITORE CM7 D.51XH.46CM"
+    },
+    {
+      "sku": "16-85421",
+      "name": "CONTENITORE - DIAM. 56 x 38 cm",
+      "description_search": "CONTENITORE"
+    },
+    {
+      "sku": "16-85425",
+      "name": "CONTENITORE CM8 D.56xH.56cm",
+      "description_search": "CONTENITORE CM8 D.56XH.56CM"
+    },
+    {
+      "sku": "16-85426",
+      "name": "PULEGGIA",
+      "description_search": "PULEGGIA"
+    },
+    {
+      "sku": "16-85434",
+      "name": "COLLAR - OUT-LIMIT",
+      "description_search": "COLLAR - OUT-LIMIT"
+    },
+    {
+      "sku": "16-85435",
+      "name": "RULLO ADATTATORE PER CM7 63A",
+      "description_search": "RULLO ADATTATORE PER CM7 63A"
+    },
+    {
+      "sku": "16-85442",
+      "name": "PULEGGIA",
+      "description_search": "PULEGGIA"
+    },
+    {
+      "sku": "16-85480",
+      "name": "CONTENITORE CM8/CM9 D.64xH88cm",
+      "description_search": "CONTENITORE CM8/CM9 D.64XH88CM"
+    },
+    {
+      "sku": "16-86401",
+      "name": "GUARNIZIONE HAWSE PIPE",
+      "description_search": "GUARNIZIONE HAWSE PIPE"
+    },
+    {
+      "sku": "16-86403",
+      "name": "GASKET FOR CM 7",
+      "description_search": "GASKET FOR CM 7"
+    },
+    {
+      "sku": "16-86405",
+      "name": "GUARNIZIONE  CM8",
+      "description_search": "GUARNIZIONE  CM8"
+    },
+    {
+      "sku": "16-86407",
+      "name": "GASKET CAP",
+      "description_search": "GASKET CAP"
+    },
+    {
+      "sku": "16-87404",
+      "name": "GEARBOX GASKET",
+      "description_search": "GEARBOX GASKET"
+    },
+    {
+      "sku": "16-90001",
+      "name": "INTER. FINE CORSA IN LIMIT SWI",
+      "description_search": "INTER. FINE CORSA IN LIMIT SWI"
+    },
+    {
+      "sku": "16-90002",
+      "name": "COPERCHIO INTER.FINECORSA",
+      "description_search": "COPERCHIO INTER.FINECORSA"
+    },
+    {
+      "sku": "16-90004",
+      "name": "COPERCHIO POWER SWITCH",
+      "description_search": "COPERCHIO POWER SWITCH"
+    },
+    {
+      "sku": "16-90156",
+      "name": "ROCKER",
+      "description_search": "ROCKER"
+    },
+    {
+      "sku": "16-90413",
+      "name": "SWITCH",
+      "description_search": "SWITCH"
+    },
+    {
+      "sku": "16-90510",
+      "name": "POWER SWITCH CM7",
+      "description_search": "POWER SWITCH CM7"
+    },
+    {
+      "sku": "16-92840",
+      "name": "CONNECTOR HOUSING",
+      "description_search": "CONNECTOR HOUSING"
+    },
+    {
+      "sku": "16-94006",
+      "name": "CAVO GIALLO 10/3  1 MT",
+      "description_search": "CAVO GIALLO 10/3  1 MT"
+    },
+    {
+      "sku": "16-94017",
+      "name": "CAVO GLEND.100A 5P GIALLO",
+      "description_search": "CAVO GLEND.100A 5P GIALLO"
+    },
+    {
+      "sku": "16-99408",
+      "name": "SPINA 50A 4P MASCH 6/4",
+      "description_search": "SPINA 50A 4P MASCH 6/4"
+    },
+    {
+      "sku": "16-99410",
+      "name": "CAPPUCCIO X SPINA 50A MAR GIALLO",
+      "description_search": "CAPPUCCIO X SPINA 50A MAR GIALLO"
+    },
+    {
+      "sku": "16-99411",
+      "name": "SPINA 30AMP 10/3",
+      "description_search": "SPINA 30AMP 10/3"
+    },
+    {
+      "sku": "16-99412",
+      "name": "CAPPUCCIO PER SPINA 30A",
+      "description_search": "CAPPUCCIO PER SPINA 30A"
+    },
+    {
+      "sku": "16-99413",
+      "name": "SPINA 50A 4P FEMMINA",
+      "description_search": "SPINA 50A 4P FEMMINA"
+    },
+    {
+      "sku": "16-99415",
+      "name": "CAPPUCCIO BIANCO 50 AMP",
+      "description_search": "CAPPUCCIO BIANCO 50 AMP"
+    },
+    {
+      "sku": "16-99415H",
+      "name": "CAPPUCCIO BIANCO x SPINA 50A HUBBEL (99480H) ",
+      "description_search": "CAPPUCCIO X SPINA 50A HUBBEL (99480H)"
+    },
+    {
+      "sku": "16-99423",
+      "name": "SPINA 100 AMP 4P MASCHIO POWER",
+      "description_search": "SPINA 100 AMP 4P MASCHIO POWER"
+    },
+    {
+      "sku": "16-99432",
+      "name": "PRESA 100A 5POLI",
+      "description_search": "PRESA 100A 5POLI"
+    },
+    {
+      "sku": "16-99437",
+      "name": "SPINA MOBILE 32A (EU) 2P+T MASC.",
+      "description_search": "SPINA MOBILE 32A (EU) 2P+T MASC."
+    },
+    {
+      "sku": "16-W0P10",
+      "name": "PIVOT",
+      "description_search": "PIVOT"
+    },
+    {
+      "sku": "16-WP006",
+      "name": "ASSY PULLEY CM7",
+      "description_search": "ASSY PULLEY CM7"
+    },
+    {
+      "sku": "16-WP008",
+      "name": "BOCCOLA X FERMO CAVO CM7",
+      "description_search": "BOCCOLA X FERMO CAVO CM7"
+    },
+    {
+      "sku": "16-WP010",
+      "name": "PIVOT GEAR",
+      "description_search": "PIVOT GEAR"
+    },
+    {
+      "sku": "16-WP046",
+      "name": "PULLEY ASSEMBLY CM8",
+      "description_search": "PULLEY ASSEMBLY CM8"
+    },
+    {
+      "sku": "16-WP052",
+      "name": "PIVOT GEAR",
+      "description_search": "PIVOT GEAR"
+    },
+    {
+      "sku": "16-WP053",
+      "name": "PIVOT GEAR",
+      "description_search": "PIVOT GEAR"
+    },
+    {
+      "sku": "16-WP054",
+      "name": "CM-8 OUTPUT GEAR ASSEMBLY",
+      "description_search": "CM-8 OUTPUT GEAR ASSEMBLY"
+    },
+    {
+      "sku": "16-WP055",
+      "name": "CM-8 CLUSTER GEAR ASSEMBLY",
+      "description_search": "CM-8 CLUSTER GEAR ASSEMBLY"
+    },
+    {
+      "sku": "16-WP066",
+      "name": "GEAR REPLACEMENT KIT WP066",
+      "description_search": "GEAR REPLACEMENT KIT WP066"
+    },
+    {
+      "sku": "16-WP123",
+      "name": "Guide Roll.Assy-No Brkt/plt/cl",
+      "description_search": "GUIDE ROLL.ASSY-NO BRKT/PLT/CL"
+    },
+    {
+      "sku": "16-WP125",
+      "name": "CM-7 MAIN SHAFT W/GEAR BER SH",
+      "description_search": "CM-7 MAIN SHAFT W/GEAR BER SH"
+    },
+    {
+      "sku": "16-04097-5",
+      "name": "***NON USARE*** CM9 HAWSE PIPE",
+      "description_search": "***NON USARE*** CM9 HAWSE PIPE"
+    },
+    {
+      "sku": "16-04097-6",
+      "name": "HAWSE PIPE CM9 ALLUMINIO",
+      "description_search": "HAWSE PIPE CM9 ALLUMINIO"
+    },
+    {
+      "sku": "16-42007B",
+      "name": "TUBO PROLUNGA L. 90CM",
+      "description_search": "TUBO PROLUNGA L. 90CM"
+    },
+    {
+      "sku": "16-85424",
+      "name": "CONTENITORE 18\"X18\"",
+      "description_search": "CONTENITORE 18\"X18\""
+    },
+    {
+      "sku": "16-90412",
+      "name": "W.PROOF POWERSWITCH MOMENT",
+      "description_search": "W.PROOF POWERSWITCH MOMENT"
+    },
+    {
+      "sku": "16-94023-W",
+      "name": "SHORE CABLE 6/3 5 FEET LONG",
+      "description_search": "SHORE CABLE 6/3 5 FEET LONG"
+    },
+    {
+      "sku": "16-99408H",
+      "name": " 50 AMP 125/250V SPINA HUBBEL",
+      "description_search": "HUBBELL 50 AMP 125/250V SPINA"
+    },
+    {
+      "sku": "16-99424C",
+      "name": "SPINA 100A 5P FEMMINA",
+      "description_search": "SPINA 100A 5P FEMMINA"
+    },
+    {
+      "sku": "16-99424P",
+      "name": "SPINA 100A 5P MASCHIO",
+      "description_search": "SPINA 100A 5P MASCHIO"
+    },
+    {
+      "sku": "16-A42007",
+      "name": "TUBO PVC 3\" - 50 CM.",
+      "description_search": "TUBO PVC 3\" - 50 CM."
+    },
+    {
+      "sku": "16-WP090",
+      "name": "LOW PROFILE ROLLER ASSEMBLY",
+      "description_search": "LOW PROFILE ROLLER ASSEMBLY"
+    },
+    {
+      "sku": "16-WP140",
+      "name": "GUIDA A RULLI CON SWITCH",
+      "description_search": "GUIDA A RULLI CON SWITCH"
+    },
+    {
+      "sku": "16-11101-T",
+      "name": "STATION PROCESSOR",
+      "description_search": "STATION PROCESSOR"
+    },
+    {
+      "sku": "16-19851-2",
+      "name": "CONTROL SWITCH",
+      "description_search": "CONTROL SWITCH"
+    },
+    {
+      "sku": "16-04154-1B",
+      "name": "REMOTE CONTROL ex 4154/4155",
+      "description_search": "REMOTE CONTROL EX 4154/4155"
+    },
+    {
+      "sku": "16-85478-4",
+      "name": "LIMIT COLLAR HOUSING CM9",
+      "description_search": "LIMIT COLLAR HOUSING CM9"
+    },
+    {
+      "sku": "16-85478-6",
+      "name": "LIMIT COLLAR INSERT CM9",
+      "description_search": "LIMIT COLLAR INSERT CM9"
+    },
+    {
+      "sku": "16-85498-6",
+      "name": "COPERCHIO CRM50",
+      "description_search": "COPERCHIO CRM50"
+    },
+    {
+      "sku": "16-99423-C",
+      "name": "SPINA VOL. 100A 4P FEMM.",
+      "description_search": "SPINA VOL. 100A 4P FEMM."
+    },
+    {
+      "sku": "16-99439-P",
+      "name": "PRESA 63 A 3P",
+      "description_search": "PRESA 63 A 3P"
+    },
+    {
+      "sku": "16-KSAI002",
+      "name": "KIT PROLUNGA VERTIC.X CM4",
+      "description_search": "KIT PROLUNGA VERTIC.X CM4"
+    },
+    {
+      "sku": "16-KSAI003",
+      "name": "KIT PROLUNGA ORIZZ. X CM4",
+      "description_search": "KIT PROLUNGA ORIZZ. X CM4"
+    },
+    {
+      "sku": "16-SC94005",
+      "name": "CAVO 50A 4P - SCATOLA 20 MT",
+      "description_search": "CAVO 50A 4P - SCATOLA 20 MT"
+    },
+    {
+      "sku": "16-WP008-8",
+      "name": "OUT LIMIT COLLAR CM8",
+      "description_search": "OUT LIMIT COLLAR CM8"
+    },
+    {
+      "sku": "16-11301-20",
+      "name": "ACTUATOR GEAR/THROT.24V",
+      "description_search": "ACTUATOR GEAR/THROT.24V"
+    },
+    {
+      "sku": "16-11303-10",
+      "name": "TROLL ACTUATOR",
+      "description_search": "TROLL ACTUATOR"
+    },
+    {
+      "sku": "16-11303-20",
+      "name": "TROLL ACTUATOR",
+      "description_search": "TROLL ACTUATOR"
+    },
+    {
+      "sku": "16-11500-50",
+      "name": "SP/EP CABLE",
+      "description_search": "SP/EP CABLE"
+    },
+    {
+      "sku": "16-19559-24",
+      "name": "MOTOR ASSEMBLY",
+      "description_search": "MOTOR ASSEMBLY"
+    },
+    {
+      "sku": "16-4022NOHP",
+      "name": "CM7 24V NO HAWSE PIPE",
+      "description_search": "CM7 24V NO HAWSE PIPE"
+    },
+    {
+      "sku": "16-04049-CRM",
+      "name": "HOSE PIPE 30 AMP CRM",
+      "description_search": "HOSE PIPE 30 AMP CRM"
+    },
+    {
+      "sku": "16-04075-18H",
+      "name": "COIL SPRING GUIDE 18\"ORIZ",
+      "description_search": "COIL SPRING GUIDE 18\"ORIZ"
+    },
+    {
+      "sku": "16-04075-36V",
+      "name": "COIL SPRING GUIDE 36\"VERT",
+      "description_search": "COIL SPRING GUIDE 36\"VERT"
+    },
+    {
+      "sku": "16-04079-CRM",
+      "name": "HOSE PIPE ASSY 50 - 63  CRM",
+      "description_search": "HOSE PIPE ASSY 50 - 63  CRM"
+    },
+    {
+      "sku": "16-04082-CM8",
+      "name": "KIT PROLUNGA ORIZZ.3' CM8",
+      "description_search": "KIT PROLUNGA ORIZZ.3' CM8"
+    },
+    {
+      "sku": "16-4091NOHP",
+      "name": "CM-8 24V NO HAWSE PIPE",
+      "description_search": "CM-8 24V NO HAWSE PIPE"
+    },
+    {
+      "sku": "16-04147-W01",
+      "name": "TELECOMANDO DEL REMOTE CONTROL",
+      "description_search": "TELECOMANDO DEL REMOTE CONTROL"
+    },
+    {
+      "sku": "16-42007-100",
+      "name": "TUBO 3\" - LUNGHEZZA MT 1,00",
+      "description_search": "TUBO 3\" - LUNGHEZZA MT 1,00"
+    },
+    {
+      "sku": "16-50468-13",
+      "name": "ANGLE BRACKET ",
+      "description_search": "ANGLE BRACKET"
+    },
+    {
+      "sku": "16-60512-PR",
+      "name": "SIDE BREAKER HOSE MASTER",
+      "description_search": "SIDE BREAKER HOSE MASTER"
+    },
+    {
+      "sku": "16-94005-15",
+      "name": "CAVO 50A 4POLI - LUNGH 15 MT",
+      "description_search": "CAVO 50A 4POLI - LUNGH 15 MT"
+    },
+    {
+      "sku": "16-99423-P-W",
+      "name": "SPINA 100A 3 POLI",
+      "description_search": "4 WIRE PLUG WHITE"
+    },
+    {
+      "sku": "16-99582-DK",
+      "name": "SPRUZZATORE+ALLOGGIAM.CROMATO",
+      "description_search": "SPRUZZATORE+ALLOGGIAM.CROMATO"
+    },
+    {
+      "sku": "16-99582-SN",
+      "name": "SPRUZZATORE+ALLOGGIAM. BIANCO",
+      "description_search": "SPRUZZATORE+ALLOGGIAM. BIANCO"
+    },
+    {
+      "sku": "16-99593-DW",
+      "name": "SPRUZZATORE PER AVVOLGITUBO",
+      "description_search": "SPRUZZATORE PER AVVOLGITUBO"
+    },
+    {
+      "sku": "16-A5773/20",
+      "name": "CONTROL CABLE,43C",
+      "description_search": "CONTROL CABLE,43C"
+    },
+    {
+      "sku": "16-CM8CLAMP",
+      "name": "KIT CLAMP CM8",
+      "description_search": "KIT CLAMP CM8"
+    },
+    {
+      "sku": "16-CRM16-12",
+      "name": "CABLEMASTER CRM16 12V 16A",
+      "description_search": "CABLEMASTER CRM16 12V 16A"
+    },
+    {
+      "sku": "16-CRM32-12",
+      "name": "AVVOLGICAVO CRM 32 12V",
+      "description_search": "AVVOLGICAVO CRM 32 12V"
+    },
+    {
+      "sku": "16-KITCM8AZ",
+      "name": "KIT AVVOGLICAVO CM8 4P 100A",
+      "description_search": "KIT AVVOGLICAVO CM8 4P 100A"
+    },
+    {
+      "sku": "16-11200-2T",
+      "name": "ENGINE PROCESSOR",
+      "description_search": "ENGINE PROCESSOR"
+    },
+    {
+      "sku": "16-04022-4093",
+      "name": "AVVOLGICAVAO CM7 CON BOCCH.CM8",
+      "description_search": "AVVOLGICAVAO CM7 CON BOCCH.CM8"
+    },
+    {
+      "sku": "16-42007-120",
+      "name": "TUBO PVC 3\" - LUNG 1,2 MT",
+      "description_search": "TUBO PVC 3\" - LUNG 1,2 MT"
+    },
+    {
+      "sku": "16-42007-180",
+      "name": "Condotto Guida 180cm Sessa Mar",
+      "description_search": "CONDOTTO GUIDA 180CM SESSA MAR"
+    },
+    {
+      "sku": "16-04420-W-50",
+      "name": "CABLE AND PLUG",
+      "description_search": "CABLE AND PLUG"
+    },
+    {
+      "sku": "16-04421-W-75",
+      "name": "Shore Power Cable Cordset Plug End - 6 AWG /3P",
+      "description_search": "SHORE POWER CABLE CORDSET PLUG END - 6 AWG /3P"
+    },
+    {
+      "sku": "16-05551-16-U",
+      "name": "HOSEMASTER D - U MOUNT.BRACKET",
+      "description_search": "HOSEMASTER D - U MOUNT.BRACKET"
+    },
+    {
+      "sku": "16-90155-2-B",
+      "name": "ACTUATOR",
+      "description_search": "ACTUATOR"
+    },
+    {
+      "sku": "16-94031Y-20",
+      "name": "CAVO 63A 3P 3G16 GIALLO 20MT",
+      "description_search": "CAVO 63A 3P 3G16 GIALLO 20MT"
+    },
+    {
+      "sku": "16-94031Y-40",
+      "name": "CAVO 63A 3P GIALLO - 40 MT",
+      "description_search": "CAVO 63A 3P GIALLO - 40 MT"
+    },
+    {
+      "sku": "16-94031Y-60",
+      "name": "CAVO 63 AMP 3P GIALLO - 60 MT",
+      "description_search": "CAVO 63 AMP 3P GIALLO - 60 MT"
+    },
+    {
+      "sku": "16-94031Y-80",
+      "name": "CAVO 63 AMP 3P GIALLO - 80 MT",
+      "description_search": "CAVO 63 AMP 3P GIALLO - 80 MT"
+    },
+    {
+      "sku": "16-99423-INL",
+      "name": "PRESA FISSA 100A 4P MASCHIO",
+      "description_search": "PRESA FISSA 100A 4P MASCHIO"
+    },
+    {
+      "sku": "16-99424-B9R",
+      "name": "PRESA FISSA 5P 100A MASCH",
+      "description_search": "PRESA FISSA 5P 100A MASCH"
+    },
+    {
+      "sku": "16-99424-C9R",
+      "name": "SPINA VOLANTE 100A 5P FEM",
+      "description_search": "SPINA VOLANTE 100A 5P FEM"
+    },
+    {
+      "sku": "16-99582-REC",
+      "name": "SPRUZZ. CROMATO/INCASSO PLAST",
+      "description_search": "SPRUZZ. CROMATO/INCASSO PLAST"
+    },
+    {
+      "sku": "16-CRM-16-24",
+      "name": "AVVOLGICAVO COMPATTO 24V",
+      "description_search": "AVVOLGICAVO COMPATTO 24V"
+    },
+    {
+      "sku": "16-CRM-32-24",
+      "name": "CABLEMASTER  CRM32 24V",
+      "description_search": "CABLEMASTER  CRM32 24V"
+    },
+    {
+      "sku": "16-CRM50DEMO",
+      "name": "DIMOSTRATORE CRM50",
+      "description_search": "DIMOSTRATORE CRM50"
+    },
+    {
+      "sku": "16-CRMA32-12",
+      "name": "AVVOLGICAVO CRMA32 12V",
+      "description_search": "AVVOLGICAVO CRMA32 12V"
+    },
+    {
+      "sku": "16-CRMA-32-24",
+      "name": "CABLEMASTER  CRM32 24V",
+      "description_search": "CABLEMASTER  CRM32 24V"
+    },
+    {
+      "sku": "16-CRMA32-24",
+      "name": "AVVOLGICAVO CRMA 32 24V",
+      "description_search": "AVVOLGICAVO CRMA 32 24V"
+    },
+    {
+      "sku": "16-KCM7212803",
+      "name": "KIT AVV.CM8 DOPPIO AZIMUT ",
+      "description_search": "KIT AVV.CM8"
+    },
+    {
+      "sku": "16-KITAZ153015",
+      "name": "KIT FISS. ACCESSORI AVVOLGICAV",
+      "description_search": "KIT FISS. ACCESSORI AVVOLGICAV"
+    },
+    {
+      "sku": "16-KITAZ201476",
+      "name": "AVVOLGICAVO  MD305 AZIMUT KIT  ",
+      "description_search": "AVVOLGICAVO  MD305 AZIMUT KIT"
+    },
+    {
+      "sku": "16-KITRIGIDAZS7",
+      "name": "KIT FISSAGGIO RIGIDO AZ S7",
+      "description_search": "KIT FISSAGGIO RIGIDO AZ S7"
+    },
+    {
+      "sku": "16-SC94017_20",
+      "name": "CAVO GLEND.100A 5P GIALLO",
+      "description_search": "CAVO GLEND.100A 5P GIALLO"
+    },
+    {
+      "sku": "16-SC94017-24",
+      "name": "CAVO GLEND.100A 5P G",
+      "description_search": "CAVO GLEND.100A 5P G"
+    },
+    {
+      "sku": "16-WP123-CM9",
+      "name": "GUIDE ROLLER ASSEMBLY ",
+      "description_search": "GUIDE ROLLER ASSEMBLY"
+    },
+    {
+      "sku": "16-19845-1-RK",
+      "name": "50AMP 24V MOTOR REPLACEMENT",
+      "description_search": "50AMP 24V MOTOR REPLACEMENT"
+    },
+    {
+      "sku": "16-04075-30-18",
+      "name": "GUIDA A RULLI 30AMP 18''",
+      "description_search": "GUIDA A RULLI 30AMP 18''"
+    },
+    {
+      "sku": "16-04075-30-36",
+      "name": "GUIDA A RULLI 30A 36'",
+      "description_search": "GUIDA A RULLI 30A 36'"
+    },
+    {
+      "sku": "16-04075-30-66",
+      "name": "GUIDA A RULLI 30A LUNGH.66'",
+      "description_search": "GUIDA A RULLI 30A LUNGH.66'"
+    },
+    {
+      "sku": "16-04075-50-18",
+      "name": "GUIDA A RULLI 50AMP LUNGH 18'",
+      "description_search": "GUIDA A RULLI 50AMP LUNGH 18'"
+    },
+    {
+      "sku": "16-04075-50-24",
+      "name": "GUIDA RULLI 24\" 50 AMP",
+      "description_search": "GUIDA RULLI 24\" 50 AMP"
+    },
+    {
+      "sku": "16-04075-50-36",
+      "name": "GUIDA A RULLI 50AMP 36'",
+      "description_search": "GUIDA A RULLI 50AMP 36'"
+    },
+    {
+      "sku": "16-04075-50-60",
+      "name": "GUIDA A RULLI 50A 60\"",
+      "description_search": "GUIDA A RULLI 50A 60\""
+    },
+    {
+      "sku": "16-04075-50-66",
+      "name": "GUIDA RULLI 66' (165cm)",
+      "description_search": "GUIDA RULLI 66' (165CM)"
+    },
+    {
+      "sku": "16-04097-21-24",
+      "name": "AVV.CAVO CM9 SENZA BOCCHETTONE",
+      "description_search": "AVV.CAVO CM9 SENZA BOCCHETTONE"
+    },
+    {
+      "sku": "16-04097-25-24",
+      "name": "AVVOLGICAVO CM9 CON BOCC.ALLUM",
+      "description_search": "AVVOLGICAVO CM9 CON BOCC.ALLUM"
+    },
+    {
+      "sku": "16-04147-W-315",
+      "name": "TELECOMANDO",
+      "description_search": "TELECOMANDO"
+    },
+    {
+      "sku": "16-04147-W-433",
+      "name": "TELECOMANDO DEL REMOTE CONTROL",
+      "description_search": "TELECOMANDO DEL REMOTE CONTROL"
+    },
+    {
+      "sku": "16-05510-12-35",
+      "name": "HOSEMASTER M DEMO UNIT",
+      "description_search": "HOSEMASTER M DEMO UNIT"
+    },
+    {
+      "sku": "16-05510-24-35",
+      "name": "HOSEMASTER-M 24V 35' TUBO",
+      "description_search": "HOSEMASTER-M 24V 35' TUBO"
+    },
+    {
+      "sku": "16-05510-24-50",
+      "name": "HOSEMASTER 1/2\" 24V 50'",
+      "description_search": "HOSEMASTER 1/2\" 24V 50'"
+    },
+    {
+      "sku": "16-05520-24-75",
+      "name": "HOSEMASTER 5/8\" 24V 75' LW",
+      "description_search": "HOSEMASTER 5/8\" 24V 75' LW"
+    },
+    {
+      "sku": "16-05550-8-SE",
+      "name": "HOSEMASTER-S tubo 2,4m x9mm ID",
+      "description_search": "HOSEMASTER-S TUBO 2,4M X9MM ID"
+    },
+    {
+      "sku": "16-05550-16-SE",
+      "name": "HOSEMASTER-S tubo 4.8m x9mm ID",
+      "description_search": "HOSEMASTER-S TUBO 4.8M X9MM ID"
+    },
+    {
+      "sku": "16-05550-20-SE",
+      "name": "HOSEMASTER-S TUBO 6M X 9MM ID",
+      "description_search": "HOSEMASTER-S TUBO 6M X 9MM ID"
+    },
+    {
+      "sku": "16-05551-16-SE",
+      "name": "HOSEMASTER-D CON TUBO DA 4,90M",
+      "description_search": "HOSEMASTER-D CON TUBO DA 4,90M"
+    },
+    {
+      "sku": "16-05551-20-SE",
+      "name": "HOSEMASTER CON TUBO DA 6 MT",
+      "description_search": "HOSEMASTER CON TUBO DA 6 MT"
+    },
+    {
+      "sku": "16-85518/5040",
+      "name": "CONTENITORE CM4 + STAFFA",
+      "description_search": "CONTENITORE CM4 + STAFFA"
+    },
+    {
+      "sku": "16-94013-20MT",
+      "name": "CAVO 63A 3P GIALLO 33,5MM2",
+      "description_search": "CAVO 63A 3P GIALLO 33,5MM2"
+    },
+    {
+      "sku": "16-94014-W-20",
+      "name": "CAVO 100A 4P 2/4 BIANCO L.20MT",
+      "description_search": "CAVO 100A 4P 2/4 BIANCO L.20MT"
+    },
+    {
+      "sku": "16-94014-W-25",
+      "name": "CAVO 100A 4P 2/4 BIANCO L.25MT",
+      "description_search": "CAVO 100A 4P 2/4 BIANCO L.25MT"
+    },
+    {
+      "sku": "16-94014-W-30",
+      "name": "CAVO 100A 4P 2/4 BIANCO L.30MT",
+      "description_search": "CAVO 100A 4P 2/4 BIANCO L.30MT"
+    },
+    {
+      "sku": "16-94014-W-35",
+      "name": "CAVO 100A 3 POLI + NEUTRO",
+      "description_search": "CAVO 100A 3 POLI + NEUTRO"
+    },
+    {
+      "sku": "16-94014-W-45",
+      "name": "CAVO 100A 4P 2/4 BIA",
+      "description_search": "45 METRI"
+    },
+    {
+      "sku": "16-94017-Y-40",
+      "name": "CAVO 100A 5P GIALLO SC. 40 MT",
+      "description_search": "CAVO 100A 5P GIALLO SC. 40 MT"
+    },
+    {
+      "sku": "16-AZINTRG12326",
+      "name": "INTEGRAZIONE MATERIALE KIT MD305",
+      "description_search": "INTEGRAZIONE MATERIALE KIT MD305"
+    },
+    {
+      "sku": "16-CM7KITCOILG",
+      "name": "KIT COIL GUIDE + CM7 (AZ68S)",
+      "description_search": "KIT COIL GUIDE + CM7 (AZ68S)"
+    },
+    {
+      "sku": "16-KCM7SIMPLE",
+      "name": "KIT AVVOLGICAVO CM7 -NO COIL G",
+      "description_search": "KIT AVVOLGICAVO CM7 -NO COIL G"
+    },
+    {
+      "sku": "16-KIT4022MCY",
+      "name": "KIT AVVOLGICAVO 63A EUROPA",
+      "description_search": "KIT AVVOLGICAVO 63A EUROPA"
+    },
+    {
+      "sku": "16-KITAZ169138",
+      "name": "KIT ESTENSIONE VERT. PER AVV.",
+      "description_search": "KIT ESTENSIONE VERT. PER AVV."
+    },
+    {
+      "sku": "16-KITAZ189259",
+      "name": "KIT AVVOLG. CM7 _ AZ_ 189259",
+      "description_search": "KIT AVVOLG. CM7 _ AZ_ 189259"
+    },
+    {
+      "sku": "16-KITAZ217072",
+      "name": "KIT AVVOL.  CM7 AZ 4P 50A",
+      "description_search": "KIT AVVOL.  CM7 AZ 4P 50A - 217072"
+    },
+    {
+      "sku": "16-KITAZ217074",
+      "name": "KIT AVV.CM7 BIANCO/COIL LUNGO MD299",
+      "description_search": "KIT AVV.CM7 BIANCO/COIL LUNGO MD299"
+    },
+    {
+      "sku": "16-KITAZ217075",
+      "name": "KIT AVV- CM7 DM305",
+      "description_search": "KIT AVV- CM7 DM305"
+    },
+    {
+      "sku": "16-KITAZ217586",
+      "name": "KIT AZ CM7 SENZA COIL MD315",
+      "description_search": "KIT AZ CM7 SENZA COIL MD315"
+    },
+    {
+      "sku": "16-KITAZCM87089",
+      "name": "KIT  AZIMUT  PER CM8 63A EU",
+      "description_search": "KIT  AZIMUT  PER CM8 63A EU"
+    },
+    {
+      "sku": "16-KITAZCM877088",
+      "name": "KIT AZIMUT AVV. CM8 4P 100A US",
+      "description_search": "KIT AZIMUT AVV. CM8 4P 100A US"
+    },
+    {
+      "sku": "16-KITAZNEWMAGE",
+      "name": "KIT NEW AVV.CAVO25MT -171841",
+      "description_search": "KIT NEW AVV.CAVO25MT -171841"
+    },
+    {
+      "sku": "16-KITCM7-63A",
+      "name": "KIT AVVOLGICAVO CM7 63 APM",
+      "description_search": "KIT AVVOLGICAVO CM7 63 APM"
+    },
+    {
+      "sku": "16-KITFISAZS7",
+      "name": "KIT NEW FISSAGGIO AVVOLG. BANC",
+      "description_search": "KIT NEW FISSAGGIO AVVOLG. BANC"
+    },
+    {
+      "sku": "16-KITFISSCM7",
+      "name": "KIT FISSAGGIO CM7 AZIMUT",
+      "description_search": "KIT FISSAGGIO CM7 AZIMUT"
+    },
+    {
+      "sku": "16-SC94004_30",
+      "name": "CAVO 50A 3P GIALLO LUNGH. 30 MT",
+      "description_search": "CAVO 50A 3P GIALLO LUNGH. 30 MT"
+    },
+    {
+      "sku": "16-SC94004-120",
+      "name": "CAVO 50A 3P GIALLO LUNGH 120MT ",
+      "description_search": "CAVO 50A 3P GIALLO LUNGH 120MT"
+    },
+    {
+      "sku": "16-SC94004-15",
+      "name": "CAVO 50A 3P GIALLO SCAT 15MT",
+      "description_search": "CAVO 50A 3P GIALLO SCAT 15MT"
+    },
+    {
+      "sku": "16-SC94004-20",
+      "name": "CAVO 50A 3P SCATOLA 20 MT",
+      "description_search": "CAVO 50A 3P SCATOLA 20 MT"
+    },
+    {
+      "sku": "16-SC94004-25",
+      "name": "CAVO 50A 3P GIALLO SCAT.25MT",
+      "description_search": "CAVO 50A 3P GIALLO SCAT.25MT"
+    },
+    {
+      "sku": "16-SC94004-60",
+      "name": "CAVO 50A 3P GIALLO LUNGH. 60MT",
+      "description_search": "CAVO 50A 3P GIALLO LUNGH. 60MT"
+    },
+    {
+      "sku": "16-SC94005-30",
+      "name": "CAVO 50A 4P GIALLO DA 30MT",
+      "description_search": "CAVO 50A 4P GIALLO DA 30MT"
+    },
+    {
+      "sku": "16-SC94005-60",
+      "name": "CAVO 50A 4P GIALLO DA 60MT",
+      "description_search": "CAVO 50A 4P GIALLO DA 60MT"
+    },
+    {
+      "sku": "16-SC94007-20",
+      "name": "CAVO 50A 4 POLI SC. 20 MT B",
+      "description_search": "CAVO 50A 4 POLI SC. 20 MT B"
+    },
+    {
+      "sku": "16-SC94008-25",
+      "name": "CAVO 30 50A BIANCO CM7",
+      "description_search": "CAVO 30 50A BIANCO CM7"
+    },
+    {
+      "sku": "16-11200-2TCP",
+      "name": "KIT COMANDO ELET.24V+CAVI",
+      "description_search": "KIT COMANDO ELET.24V+CAVI"
+    },
+    {
+      "sku": "16-19851-24-10",
+      "name": "RELE' X CRM",
+      "description_search": "RELE' X CRM"
+    },
+    {
+      "sku": "16-04075-30-18V",
+      "name": "GUIDA A RULLI 30AMP 18' VERT.",
+      "description_search": "GUIDA A RULLI 30AMP 18' VERT."
+    },
+    {
+      "sku": "16-04075-30-66V",
+      "name": "GUIDA A RULLI 30AMP 66' VERT.",
+      "description_search": "GUIDA A RULLI 30AMP 66' VERT."
+    },
+    {
+      "sku": "16-04075-50-18H",
+      "name": "GUIDA A RULLI 50AMP 18' ORIZZ.",
+      "description_search": "GUIDA A RULLI 50AMP 18' ORIZZ."
+    },
+    {
+      "sku": "16-04075-50-36H",
+      "name": "GUIDA A RULLI 50AMP 36' ORIZZ.",
+      "description_search": "GUIDA A RULLI 50AMP 36' ORIZZ."
+    },
+    {
+      "sku": "16-04075-50-36V",
+      "name": "GUIDA A RULLI 50AMP 36'' VERT.",
+      "description_search": "GUIDA A RULLI 50AMP 36'' VERT."
+    },
+    {
+      "sku": "16-04097-GRA-CM9",
+      "name": "GUIDE ROLLER ASSY CM9",
+      "description_search": "GUIDE ROLLER ASSY CM9"
+    },
+    {
+      "sku": "16-05513-12-355A",
+      "name": "HOSEMASER M PLUS 12V ",
+      "description_search": "HOSEMASER M PLUS 12V"
+    },
+    {
+      "sku": "16-05520-24-100",
+      "name": "HOSEMASTER-LW 24V 30m tubo 1/2",
+      "description_search": "HOSEMASTER-LW 24V 30M TUBO 1/2"
+    },
+    {
+      "sku": "16-99582-RECSS",
+      "name": "Spruzz. cromato/incasso crom",
+      "description_search": "SPRUZZ. CROMATO/INCASSO CROM"
+    },
+    {
+      "sku": "16-AKITMAGEL25",
+      "name": "KIT AVVOLGICAVO CM8 4P 100A",
+      "description_search": "KIT AVVOLGICAVO CM8 4P 100A"
+    },
+    {
+      "sku": "16-AZ000213269",
+      "name": "INTEGRAZIONE KIT CM8",
+      "description_search": "MD285 STAFFE E RULLI"
+    },
+    {
+      "sku": "16-AZ00212369",
+      "name": "KIT UNTEGRAZIONE GLEND.STEFFE CM8",
+      "description_search": "KIT UNTEGRAZIONE GLEND.STEFFE CM8"
+    },
+    {
+      "sku": "16-AZCM8158464",
+      "name": "KIT CM8 AZIMUT 158464",
+      "description_search": "KIT CM8 AZIMUT 158464"
+    },
+    {
+      "sku": "16-AZKIT154884",
+      "name": "KIT FISSAGGIO BANCHINA GL",
+      "description_search": "KIT FISSAGGIO BANCHINA GL"
+    },
+    {
+      "sku": "16-AZKIT183169",
+      "name": "KIT GLEND. CM8 AZ 63A EU NEW",
+      "description_search": "KIT GLEND. CM8 AZ 63A EU NEW"
+    },
+    {
+      "sku": "16-CM7COILBIANCO",
+      "name": "KIT AVVOLGICAVO COILG BIANCO",
+      "description_search": "KIT AVVOLGICAVO COILG BIANCO"
+    },
+    {
+      "sku": "16-CM7-KITBIANCO",
+      "name": "AVVOLGICAVO CM7 - CAVO BIANCO",
+      "description_search": "AVVOLGICAVO CM7 - CAVO BIANCO"
+    },
+    {
+      "sku": "16-CM7-KITPROL",
+      "name": "KIT PROLUNGA+CM7 STANDARD",
+      "description_search": "KIT PROLUNGA+CM7 STANDARD"
+    },
+    {
+      "sku": "16-CM7KITPROL2",
+      "name": "KIT PROLUNGA+CM7 XAZ68S",
+      "description_search": "KIT PROLUNGA+CM7 XAZ68S"
+    },
+    {
+      "sku": "16-CM7MAGELLANO",
+      "name": "KIT CM7 CAVO GIALLO 3G16  63A",
+      "description_search": "KIT CM7 CAVO GIALLO 3G16  63A"
+    },
+    {
+      "sku": "16-CM8AZ210749",
+      "name": "KIT AVVOLGICAVO CM8 RIF 210749",
+      "description_search": "KIT AVVOLGICAVO CM8 RIF 210749"
+    },
+    {
+      "sku": "16-CONTROLHEAD",
+      "name": "CONTROL HEAD ( ELECTRIC )",
+      "description_search": "CONTROL HEAD ( ELECTRIC )"
+    },
+    {
+      "sku": "16-CRM32-24-15",
+      "name": "AVVOLGICAVO CRM 32 24V 15MT",
+      "description_search": "AVVOLGICAVO CRM 32 24V 15MT"
+    },
+    {
+      "sku": "16-CRM50-1264W",
+      "name": "AVVOLGICAVO CRM50 12V",
+      "description_search": "AVVOLGICAVO CRM50 12V"
+    },
+    {
+      "sku": "16-CRM50-24-63",
+      "name": "CRM50 24VDC 50A 125/250 6/3W",
+      "description_search": "CRM50 24VDC 50A 125/250 6/3W"
+    },
+    {
+      "sku": "16-CRM50-24-63IW",
+      "name": "CRM 50 24VDC 50A 125/250 6/3 W",
+      "description_search": "CRM 50 24VDC 50A 125/250 6/3 W"
+    },
+    {
+      "sku": "16-CRM50-24-64",
+      "name": "AVVOLGICAVO CRM50  24 VOLT",
+      "description_search": "AVVOLGICAVO CRM50  24 VOLT"
+    },
+    {
+      "sku": "16-CRM50-24-64W",
+      "name": "AVVOLGICAVO CRM 50 24V 50A 4P",
+      "description_search": "AVVOLGICAVO CRM 50 24V 50A 4P"
+    },
+    {
+      "sku": "16-CRM-63-24-43Y",
+      "name": "CRM 63A 24V",
+      "description_search": "CRM 63A 24V"
+    },
+    {
+      "sku": "16-CRMA5012-63W",
+      "name": "AVVOLGICAVO CRMA 50A 12V",
+      "description_search": "AVVOLGICAVO CRMA 50A 12V"
+    },
+    {
+      "sku": "16-CRMA50-24-63W",
+      "name": "AVVOLGICAVO CRM 50A 24V 3 POLI",
+      "description_search": "AVVOLGICAVO CRM 50A 24V 3 POLI"
+    },
+    {
+      "sku": "16-CRMA50-24-64B",
+      "name": "AVVOLGICAVO CRMA50-24-64 CAVO NERO",
+      "description_search": "AVVOLGICAVO CRMA50-24-64 CAVO NERO"
+    },
+    {
+      "sku": "16-CRMA50-24-64W",
+      "name": "CODICE ERRATO MANCA SUFFISSO",
+      "description_search": "CODICE ERRATO MANCA SUFFISSO"
+    },
+    {
+      "sku": "16-CRMA50-24-64Y",
+      "name": "AVVOLGICAVO CRMA50 24V",
+      "description_search": "AVVOLGICAVO CRMA50 24V"
+    },
+    {
+      "sku": "16-CRMA63-12-43Y",
+      "name": "AVVOLGICAVO CRMA 63A EU",
+      "description_search": "AVVOLGICAVO CRMA 63A EU"
+    },
+    {
+      "sku": "16-CRMA63-24-43Y",
+      "name": "AVVOLGICAVO CRM63 24V 43Y",
+      "description_search": "AVVOLGICAVO CRM63 24V 43Y"
+    },
+    {
+      "sku": "16-KCM8AZ183170",
+      "name": "KIT AVVOLGICAVO CM8 RIF 183170",
+      "description_search": "KIT AVVOLGICAVO CM8 RIF 183170"
+    },
+    {
+      "sku": "16-KIT63CM8177089",
+      "name": "KIT AVV.CM8  AZ. 63A EU ",
+      "description_search": "KIT AVV.CM8  AZ. 63A EU"
+    },
+    {
+      "sku": "16-KITAZ02118150",
+      "name": "KIT CM7 AZIMUT / MD305",
+      "description_search": "KIT CM7 AZIMUT / MD305"
+    },
+    {
+      "sku": "16-KITAZ180901",
+      "name": "KIT GLENDINNING AZ SX36M",
+      "description_search": "KIT GLENDINNING AZ SX36M"
+    },
+    {
+      "sku": "16-KITAZ212805",
+      "name": "KIT CM8 DOPPIO 100A MONO 60 HZ ",
+      "description_search": "KIT CM8 DOPPIO 100A MONO 60 HZ"
+    },
+    {
+      "sku": "16-KITAZ212806",
+      "name": "KIT CM8 DOPPIO 100 TRIFASE 60 HZ ",
+      "description_search": "KIT CM8 DOPPIO 100 TRIFASE 60 HZ"
+    },
+    {
+      "sku": "16-KITAZ215466",
+      "name": "KIT AVV.CM8 LOW PROFILE ",
+      "description_search": "KIT AVV.CM8 LOW PROFILE"
+    },
+    {
+      "sku": "16-KITAZ217071",
+      "name": "KIT AVVOLGICAVO CM7 AZ",
+      "description_search": "KIT AVVOLGICAVO CM7 AZ"
+    },
+    {
+      "sku": "16-KITAZCM848654",
+      "name": "KIT AVVOLGICAVO CM8 =25MT",
+      "description_search": "KIT AVVOLGICAVO CM8 =25MT"
+    },
+    {
+      "sku": "16-KITAZCM948653",
+      "name": "KIT AVV. CM9 COMPL.CAVO 177 30MT ",
+      "description_search": "KIT AVV. CM9 COMPL.CAVO 177 30MT"
+    },
+    {
+      "sku": "16-KITAZGL192521",
+      "name": "KIT AVVOLGICAVO AZ MD305 ",
+      "description_search": "KIT AVVOLGICAVO AZ MD305"
+    },
+    {
+      "sku": "16-KITCM4SESSA97A",
+      "name": "KIT CM4 SESSA INT",
+      "description_search": "KIT CM4 SESSA INT"
+    },
+    {
+      "sku": "16-KITCM7147551",
+      "name": "AVVOLG. CM7 KIT 147551",
+      "description_search": "AVVOLG. CM7 KIT 147551"
+    },
+    {
+      "sku": "16-KITCM7155928",
+      "name": "KIT ACCESSORI CM7. REF 155928",
+      "description_search": "KIT ACCESSORI CM7. REF 155928"
+    },
+    {
+      "sku": "16-KITCM7156066",
+      "name": "KIT BANCH. AVV. B.SENZA COIL",
+      "description_search": "KIT BANCH. AVV. B.SENZA COIL"
+    },
+    {
+      "sku": "16-KITCM7156067",
+      "name": "KIT AVVOLG. CM7 REF 156067",
+      "description_search": "KIT AVVOLG. CM7 REF 156067"
+    },
+    {
+      "sku": "16-KITCM7191066",
+      "name": "KIT AVVOLGICAVO AZ CAVO B. 4P50A",
+      "description_search": "KIT AVVOLGICAVO AZ CAVO B. 4P50A"
+    },
+    {
+      "sku": "16-KITCM7AZ95279",
+      "name": "KIT AZ CM7 63A EU NEW 20 MT ",
+      "description_search": "KIT AZ CM7 63A EU NEW 20 MT"
+    },
+    {
+      "sku": "16-KITCM7CRAN806",
+      "name": "KIT AVV.CM7 CRANCHI",
+      "description_search": "KIT AVV.CM7 CRANCHI"
+    },
+    {
+      "sku": "16-KITCM8212985",
+      "name": "KIT CM8 38M  50 HZ",
+      "description_search": "CAVO 25MT"
+    },
+    {
+      "sku": "16-KITCM8218466",
+      "name": "KIT CM8 38M  50 HZ",
+      "description_search": "KIT CM8 38M  50 HZ"
+    },
+    {
+      "sku": "16-KITCM842703",
+      "name": "KIT CM8 AZIMUT A00042703",
+      "description_search": "KIT CM8 AZIMUT A00042703"
+    },
+    {
+      "sku": "16-KITCURVAGLE",
+      "name": "KIT CURVA SUPPLEMENTARE GLEN.",
+      "description_search": "KIT CURVA SUPPLEMENTARE GLEN."
+    },
+    {
+      "sku": "16-KITFISSAZS7",
+      "name": "KIT FISSAGGIO RIGIDO AZ S7",
+      "description_search": "KIT FISSAGGIO RIGIDO AZ S7"
+    },
+    {
+      "sku": "16-KITM8154713",
+      "name": "CM8 AVVOLG. 100A USA 4 P",
+      "description_search": "CM8 AVVOLG. 100A USA 4 P"
+    },
+    {
+      "sku": "16-KITMAGEL63A",
+      "name": "KIT AVV.CM7 63 A CAVO GIA3G 16",
+      "description_search": "KIT AVV.CM7 63 A CAVO GIA3G 16"
+    },
+    {
+      "sku": "16-KITSESSA297C",
+      "name": "KIT AVVOLGICAVO CM7 ",
+      "description_search": "KIT AVVOLGICAVO CM7"
+    },
+    {
+      "sku": "16-KITSTR55CM7",
+      "name": "KIT AVVOLGICAVO CM7 - SACS",
+      "description_search": "KIT AVVOLGICAVO CM7 - SACS"
+    },
+    {
+      "sku": "16-KSAI001-CPL",
+      "name": "KIT CARABINIERI SMONTATO",
+      "description_search": "KIT CARABINIERI SMONTATO"
+    },
+    {
+      "sku": "16-SC4420-Y-75",
+      "name": "Power Cable Plug End - 6 AWG /4 125/250v 75\"",
+      "description_search": "POWER CABLE PLUG END - 6 AWG /4 125/250V 75\""
+    },
+    {
+      "sku": "16-SC94024-W-20",
+      "name": "CAVO 100A TRIFASE B",
+      "description_search": "CAVO 100A TRIFASE B"
+    },
+    {
+      "sku": "17-B16ASSYPW",
+      "name": "16 AMP FEMALE CONNECTOR",
+      "description_search": "16 AMP FEMALE CONNECTOR"
+    }
+  ]
+}

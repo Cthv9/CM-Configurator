@@ -1,0 +1,232 @@
+{
+  "meta": {
+    "source": "Righe*.xlsx (examples)",
+    "version": "0.2.0",
+    "notes": [
+      "Prezzi ignorati."
+    ]
+  },
+  "templates": [
+    {
+      "id": "righe_1",
+      "label": "Righe (1)",
+      "bom": [
+        {
+          "sku": "17-3374",
+          "qty": 1.0,
+          "description": "Spina Mobile EU 125A 4P 400V"
+        },
+        {
+          "sku": "17-SC81664-25",
+          "qty": 1.0,
+          "description": "CAVO 152A(125) 4P SCATOLA 25MT"
+        },
+        {
+          "sku": "16-04091",
+          "qty": 1.0,
+          "description": "AVVOLGICAVO CABLEMAST CM8-24V"
+        },
+        {
+          "sku": "16-04154-1B",
+          "qty": 1.0,
+          "description": "REMOTE CONTROL ex 4154/4155"
+        },
+        {
+          "sku": "16-85425",
+          "qty": 1.0,
+          "description": "CONTENITORE CM8 D.56xH.56cm"
+        }
+      ]
+    },
+    {
+      "id": "righe_2",
+      "label": "Righe (2)",
+      "bom": [
+        {
+          "sku": "16-94014-W-25",
+          "qty": 1.0,
+          "description": "CAVO 100A 4P 2/4 BIANCO L.25MT"
+        },
+        {
+          "sku": "16-99423",
+          "qty": 1.0,
+          "description": "SPINA 100A 4P MASCHIO POWER"
+        },
+        {
+          "sku": "16-04091",
+          "qty": 1.0,
+          "description": "AVVOLGICAVO CABLEMAST CM8-24V"
+        },
+        {
+          "sku": "16-85425",
+          "qty": 1.0,
+          "description": "CONTENITORE CM8 D.56xH.56cm"
+        }
+      ]
+    },
+    {
+      "id": "righe_3",
+      "label": "Righe (3)",
+      "bom": [
+        {
+          "sku": "16-04091",
+          "qty": 1.0,
+          "description": "AVVOLGICAVO CABLEMAST CM8-24V"
+        },
+        {
+          "sku": "16-85425",
+          "qty": 1.0,
+          "description": "CONTENITORE CM8 D.56xH.56cm"
+        },
+        {
+          "sku": "16-94014-W-20",
+          "qty": 1.0,
+          "description": "CAVO 100A 4P 2/4 BIANCO L.20MT"
+        },
+        {
+          "sku": "16-04154-1B",
+          "qty": 1.0,
+          "description": "REMOTE CONTROL ex 4154/4155"
+        },
+        {
+          "sku": "16-04064",
+          "qty": 1.0,
+          "description": "60 DEEGREE ANGLE ASSEMBLY"
+        },
+        {
+          "sku": "16-50005",
+          "qty": 1.0,
+          "description": "CONNECTOR LINK"
+        },
+        {
+          "sku": "16-04052",
+          "qty": 8.0,
+          "description": "PIPE ASSY CLAMP"
+        },
+        {
+          "sku": "16-04054",
+          "qty": 6.0,
+          "description": "GUIDE ROLLER ASSEMBLY"
+        },
+        {
+          "sku": "16-04040",
+          "qty": 6.0,
+          "description": "PIPE END ROLLER ASSEMBLY"
+        },
+        {
+          "sku": "16-04060",
+          "qty": 4.0,
+          "description": "PVC ROLLER ASSY 45 DEEREE"
+        }
+      ]
+    },
+    {
+      "id": "righe_4",
+      "label": "Righe (4)",
+      "bom": [
+        {
+          "sku": "16-04154-1B",
+          "qty": 1.0,
+          "description": "REMOTE CONTROL ex 4154/4155"
+        },
+        {
+          "sku": "16-04091",
+          "qty": 1.0,
+          "description": "AVVOLGICAVO CABLEMAST CM8-24V"
+        },
+        {
+          "sku": "16-85425",
+          "qty": 1.0,
+          "description": "CONTENITORE CM8 D.56xH.56cm"
+        },
+        {
+          "sku": "16-94014-W-20",
+          "qty": 1.0,
+          "description": "CAVO 100A 4P 2/4 BIANCO L.20MT"
+        },
+        {
+          "sku": "16-50004",
+          "qty": 1.0,
+          "description": "PIPE EXTENSION PLATES"
+        }
+      ]
+    },
+    {
+      "id": "righe_5",
+      "label": "Righe (5)",
+      "bom": [
+        {
+          "sku": "16-04091",
+          "qty": 1.0,
+          "description": "AVVOLGICAVO CABLEMAST CM8-24V"
+        },
+        {
+          "sku": "16-85425",
+          "qty": 1.0,
+          "description": "CONTENITORE CM8 D.56xH.56cm"
+        },
+        {
+          "sku": "16-94014-W-20",
+          "qty": 1.0,
+          "description": "CAVO 100A 4P 2/4 BIANCO L.20MT"
+        },
+        {
+          "sku": "16-99423",
+          "qty": 1.0,
+          "description": "SPINA 100A 4P MASCHIO POWER"
+        },
+        {
+          "sku": "16-04054",
+          "qty": 5.0,
+          "description": "GUIDE ROLLER ASSEMBLY"
+        }
+      ]
+    },
+    {
+      "id": "righe_6",
+      "label": "Righe (6)",
+      "bom": [
+        {
+          "sku": "3400000APS-70",
+          "qty": 2.0,
+          "description": "AUTOMATIC POWER SELECTOR "
+        },
+        {
+          "sku": "16-04075-50-36",
+          "qty": 1.0,
+          "description": "GUIDA A RULLI 50AMP 36'"
+        },
+        {
+          "sku": "16-04052",
+          "qty": 1.0,
+          "description": "PIPE ASSY CLAMP"
+        },
+        {
+          "sku": "16-04091",
+          "qty": 1.0,
+          "description": "AVVOLGICAVO CABLEMAST CM8-24V"
+        },
+        {
+          "sku": "16-85425",
+          "qty": 1.0,
+          "description": "CONTENITORE CM8 D.56xH.56cm"
+        },
+        {
+          "sku": "16-94014-W-20",
+          "qty": 1.0,
+          "description": "CAVO 100A 4P 2/4 BIANCO L.20MT"
+        },
+        {
+          "sku": "16-50004",
+          "qty": 1.0,
+          "description": "PIPE EXTENSION PLATES"
+        },
+        {
+          "sku": "16-04154-1B",
+          "qty": 1.0,
+          "description": "REMOTE CONTROL ex 4154/4155"
+        }
+      ]
+    }
+  ]
+}

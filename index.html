@@ -3,189 +3,260 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Cablemaster Configuratore (MVP)</title>
+  <title>Cablemaster Configuratore</title>
   <meta name="theme-color" content="#0b1220" />
   <link rel="manifest" href="manifest.webmanifest" />
   <link rel="icon" href="assets/icon-192.png" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header class="topbar">
-    <div class="topbar__title">
-      <h1>Cablemaster Configuratore</h1>
-      <p class="sub">Glendinning-first • BOM esportabile • Offline (PWA)</p>
+<header class="topbar">
+  <div>
+    <h1>Cablemaster Configuratore</h1>
+    <p class="sub">Regola fissa: Glendinning primario • Secondary solo se manca o su sostituzione</p>
+  </div>
+  <div class="topbar__actions">
+    <button id="btnInstall" class="btn btn-secondary" hidden>Installa</button>
+    <button id="btnReset" class="btn btn-secondary">Reset</button>
+  </div>
+</header>
+
+<main class="container">
+  <section class="card">
+    <div class="card__head">
+      <h2>Configurazione</h2>
+      <div class="right">
+        <label class="small">
+          Preset (esempi)
+          <select id="presetSelect">
+            <option value="">— Nessuno —</option>
+          </select>
+        </label>
+      </div>
     </div>
-    <div class="topbar__actions">
-      <button id="btnInstall" class="btn btn-secondary" hidden>Installa</button>
-      <button id="btnReset" class="btn btn-secondary">Reset</button>
+
+    <div class="stepper">
+      <button class="step active" data-step="1">1. Elettrico</button>
+      <button class="step" data-step="2">2. Meccanico</button>
+      <button class="step" data-step="3">3. Routing</button>
+      <button class="step" data-step="4">4. BOM</button>
     </div>
-  </header>
 
-  <main class="container">
-    <section class="card">
-      <h2>Dati base</h2>
+    <form id="configForm">
+      <!-- STEP 1 -->
+      <section class="stepPane active" data-pane="1">
+        <div class="grid">
+          <label>
+            Regione
+            <select id="region">
+              <option value="EU" selected>EU</option>
+              <option value="USA">USA</option>
+            </select>
+          </label>
 
-      <form id="baseForm" class="grid">
-        <label>
-          Fornitore principale
-          <select id="brand" disabled>
-            <option>Glendinning</option>
-          </select>
-        </label>
+          <label>
+            Corrente (A)
+            <input id="amps" type="number" min="1" step="1" value="125" required />
+          </label>
 
-        <label>
-          Regione
-          <select id="region">
-            <option value="EU" selected>EU</option>
-            <option value="USA">USA</option>
-          </select>
-        </label>
+          <label>
+            Frequenza (Hz)
+            <select id="hz">
+              <option value="50" selected>50</option>
+              <option value="60">60</option>
+            </select>
+          </label>
 
-        <label>
-          Corrente (A)
-          <input id="amps" type="number" min="1" step="1" value="125" required />
-        </label>
+          <label>
+            Fasi
+            <select id="phase">
+              <option value="1PH">Monofase (1PH)</option>
+              <option value="3PH" selected>Trifase (3PH)</option>
+            </select>
+          </label>
 
-        <label>
-          Frequenza (Hz)
-          <select id="hz">
-            <option value="50" selected>50</option>
-            <option value="60">60</option>
-          </select>
-        </label>
+          <label>
+            Pin / poli
+            <select id="pins">
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5" selected>5</option>
+            </select>
+          </label>
 
-        <label>
-          Fasi
-          <select id="phase">
-            <option value="1PH">Monofase (1PH)</option>
-            <option value="3PH" selected>Trifase (3PH)</option>
-          </select>
-        </label>
+          <label>
+            Motore (V DC)
+            <select id="motor_voltage_vdc">
+              <option value="12">12</option>
+              <option value="24" selected>24</option>
+            </select>
+          </label>
 
-        <label>
-          Tipologia spina (pin)
-          <select id="pins">
-            <option value="3">3 pin</option>
-            <option value="4">4 pin</option>
-            <option value="5" selected>5 pin</option>
-          </select>
-        </label>
+          <label>
+            Lunghezza cavo (m)
+            <select id="cable_length_m">
+              <option value="20" selected>20</option>
+              <option value="25">25</option>
+              <option value="30">30</option>
+            </select>
+          </label>
 
-        <label>
-          Alimentazione motore (V DC)
-          <select id="motor_voltage_vdc">
-            <option value="12">12</option>
-            <option value="24" selected>24</option>
-          </select>
-        </label>
+          <div class="span-12">
+            <p class="hint">Se non troviamo un codice Glendinning (primario), verrà inserita una riga “Da definire”. Potrai sostituirla in BOM con un equivalente (secondary) e salvarlo come proposta per casi simili.</p>
+          </div>
 
-        <div class="row-span-2">
-          <fieldset class="fieldset">
-            <legend>Opzioni</legend>
-            <label class="checkbox">
-              <input id="need_hawse_pipe" type="checkbox" checked />
-              <span>Serve hawse pipe/passascafo (barriera stagna e alloggio spina)</span>
-            </label>
-            <label class="checkbox">
-              <input id="allow_fallback" type="checkbox" />
-              <span>Accetta equivalenti non-Glendinning se manca un codice (fallback)</span>
-            </label>
-          </fieldset>
+          <div class="span-12 actions">
+            <button type="button" class="btn" data-next="2">Avanti</button>
+          </div>
         </div>
+      </section>
 
-        <div class="row-span-2">
-          <fieldset class="fieldset">
-            <legend>Routing (installazione)</legend>
-            <label>
-              Modalità
-              <select id="routing_mode">
-                <option value="direct" selected>Diretto (nessun PVC)</option>
-                <option value="pvc_straight">PVC dritto</option>
-                <option value="pvc_with_bends">PVC con curve</option>
-                <option value="remote_mount_overhead">Montaggio remoto (overhead)</option>
-              </select>
-            </label>
+      <!-- STEP 2 -->
+      <section class="stepPane" data-pane="2">
+        <div class="grid">
+          <div class="span-6">
+            <fieldset class="fieldset">
+              <legend>Opzioni meccaniche</legend>
+              <label class="checkbox">
+                <input id="need_hawse_pipe" type="checkbox" checked />
+                <span>Serve hawse pipe/passascafo (barriera stagna e alloggio spina)</span>
+              </label>
+              <label class="checkbox">
+                <input id="need_remote_control" type="checkbox" />
+                <span>Radiocomando (se disponibile nel catalogo)</span>
+              </label>
+            </fieldset>
+          </div>
 
-            <label class="checkbox">
-              <input id="has_bend_over_45" type="checkbox" />
-              <span>Curve &gt; 45° (solo se PVC con curve)</span>
-            </label>
+          <div class="span-6">
+            <fieldset class="fieldset">
+              <legend>Alloggio cavo</legend>
+              <label>
+                Spazio (indicativo)
+                <select id="space_class">
+                  <option value="unknown" selected>Non so / da verificare</option>
+                  <option value="tight">Stretto (preferire low-profile/soluzioni dedicate)</option>
+                  <option value="ok">OK</option>
+                  <option value="ample">Ampio</option>
+                </select>
+              </label>
+              <p class="hint">Nella versione successiva possiamo calcolare il container in base a diametro/altezza reali.</p>
+            </fieldset>
+          </div>
 
-            <label>
-              Lunghezza cavo (m)
-              <select id="cable_length_m">
-                <option value="20" selected>20</option>
-                <option value="30">30</option>
-              </select>
-            </label>
-          </fieldset>
+          <div class="span-12 actions">
+            <button type="button" class="btn btn-secondary" data-prev="1">Indietro</button>
+            <button type="button" class="btn" data-next="3">Avanti</button>
+          </div>
         </div>
+      </section>
 
-        <div class="row-span-2">
-          <fieldset class="fieldset">
-            <legend>Connettori (se disponibili)</legend>
-            <p class="hint">Se il configuratore non trova codici Glendinning per la spina/presa richieste, verranno inserite righe “da definire”. Se abiliti fallback, potrai inserire manualmente un equivalente.</p>
-            <label>
-              Spina maschio (SKU)
-              <input id="connector_male" placeholder="(auto) oppure inserisci manualmente" />
-            </label>
-            <label>
-              Presa femmina (SKU)
-              <input id="connector_female" placeholder="(auto) oppure inserisci manualmente" />
-            </label>
-            <label>
-              Cover/ghiera (SKU) (opzionale)
-              <input id="cover" placeholder="(auto) oppure inserisci manualmente" />
-            </label>
-          </fieldset>
+      <!-- STEP 3 -->
+      <section class="stepPane" data-pane="3">
+        <div class="grid">
+          <div class="span-12">
+            <fieldset class="fieldset">
+              <legend>Routing (installazione)</legend>
+
+              <div class="grid">
+                <label class="span-4">
+                  Layout
+                  <select id="routing_layout">
+                    <option value="direct" selected>Diretto (unità sopra container)</option>
+                    <option value="pvc_straight">PVC dritto</option>
+                    <option value="pvc_bends">PVC con curve</option>
+                    <option value="remote_horizontal">Remoto orizzontale</option>
+                    <option value="remote_overhead">Remoto overhead</option>
+                  </select>
+                </label>
+
+                <label class="span-4 routingOnly">
+                  Lunghezza tratta in PVC (m)
+                  <input id="pvc_length_m" type="number" min="0" step="0.1" value="0" />
+                </label>
+
+                <label class="span-4 bendsOnly">
+                  Numero curve
+                  <input id="bend_count" type="number" min="0" step="1" value="1" />
+                </label>
+
+                <label class="span-4 bendsOnly">
+                  Angolo massimo
+                  <select id="max_bend_deg">
+                    <option value="45">≤45°</option>
+                    <option value="90" selected>90°</option>
+                    <option value="180">180°</option>
+                  </select>
+                </label>
+
+                <label class="span-4">
+                  Low profile
+                  <select id="low_profile">
+                    <option value="auto" selected>Auto (se spazio stretto)</option>
+                    <option value="yes">Sì</option>
+                    <option value="no">No</option>
+                  </select>
+                </label>
+
+                <div class="span-12">
+                  <p class="hint">Il configuratore calcola quantità indicative per rulli/roller su PVC (regola base: supporto frequente per ridurre attrito). Puoi sempre modificare in BOM.</p>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="span-12 actions">
+            <button type="button" class="btn btn-secondary" data-prev="2">Indietro</button>
+            <button type="button" class="btn" data-next="4">Vai a BOM</button>
+          </div>
         </div>
+      </section>
 
-        <div class="actions row-span-1">
-          <button id="btnGenerate" class="btn" type="submit">Genera BOM</button>
+      <!-- STEP 4 -->
+      <section class="stepPane" data-pane="4">
+        <div class="actions">
+          <button id="btnGenerate" class="btn" type="submit">Genera / Aggiorna BOM</button>
           <button id="btnExportCsv" class="btn btn-secondary" type="button" disabled>Esporta CSV</button>
-          <button id="btnCopy" class="btn btn-secondary" type="button" disabled>Copia BOM</button>
         </div>
-      </form>
+        <div id="status" class="status" role="status" aria-live="polite"></div>
+      </section>
+    </form>
+  </section>
 
-      <div id="status" class="status" role="status" aria-live="polite"></div>
-    </section>
+  <section class="card">
+    <div class="card__head">
+      <h2>BOM</h2>
+      <div class="muted" id="bomMeta"></div>
+    </div>
 
-    <section class="card">
-      <div class="card__head">
-        <h2>BOM</h2>
-        <div class="muted" id="bomMeta"></div>
-      </div>
+    <div class="table-wrap">
+      <table id="bomTable">
+        <thead>
+          <tr>
+            <th>SKU</th>
+            <th>Descrizione</th>
+            <th>Q.tà</th>
+            <th>Fonte</th>
+            <th>Azioni</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td colspan="5" class="muted">Seleziona un preset o genera una BOM.</td></tr>
+        </tbody>
+      </table>
+    </div>
 
-      <div class="table-wrap">
-        <table id="bomTable">
-          <thead>
-            <tr>
-              <th>SKU</th>
-              <th>Descrizione</th>
-              <th>Q.tà</th>
-              <th>Note</th>
-              <th>Fonte</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td colspan="5" class="muted">Compila i dati e premi “Genera BOM”.</td></tr>
-          </tbody>
-        </table>
-      </div>
+    <details class="notes">
+      <summary>Note e controlli</summary>
+      <ul id="notesList"></ul>
+    </details>
+  </section>
 
-      <details class="notes">
-        <summary>Note e controlli</summary>
-        <ul id="notesList"></ul>
-      </details>
-    </section>
+  <footer class="footer">
+    <p class="muted">Dati: <code>data/catalog.json</code> • Regole: <code>data/rules.json</code> • Preset: <code>data/templates.json</code></p>
+  </footer>
+</main>
 
-    <footer class="footer">
-      <p class="muted">
-        MVP per GitHub Pages. Dati: <code>data/catalog.glendinning.core.json</code> e <code>data/rules.glendinning.v0.json</code>.
-      </p>
-    </footer>
-  </main>
-
-  <script src="app.js"></script>
+<script src="app.js"></script>
 </body>
 </html>

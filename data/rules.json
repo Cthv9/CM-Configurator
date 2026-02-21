@@ -1,0 +1,56 @@
+{
+  "meta": {
+    "source": "Glendinning-first rules",
+    "version": "0.2.0"
+  },
+  "rules": [
+    {
+      "id": "core_125A_3ph_5pin_24V",
+      "when": {
+        "region": "EU",
+        "amps_gte": 125,
+        "phase": "3PH",
+        "pins": 5,
+        "motor_voltage_vdc": 24
+      },
+      "then": {
+        "add_items": [
+          {
+            "sku": "16-04091",
+            "qty": 1,
+            "note": "CM8-24V (EU 125A family)"
+          },
+          {
+            "sku": "16-85425",
+            "qty": 1,
+            "note": "Container CM8 D.56xH.56cm (default)"
+          }
+        ],
+        "add_cable": [
+          {
+            "sku": "16-94017",
+            "qty": 1,
+            "length_m": {
+              "from_input": "cable_length_m"
+            },
+            "note": "Cavo 5 poli (verificare sezione per 125A se richiesto)"
+          }
+        ],
+        "add_placeholders": [
+          {
+            "key": "connector_male",
+            "label": "Spina maschio 125A 5P (primary non presente)"
+          },
+          {
+            "key": "connector_female",
+            "label": "Presa femmina 125A 5P (primary non presente)"
+          },
+          {
+            "key": "connector_cover",
+            "label": "Cover/ghiera (opzionale)"
+          }
+        ]
+      }
+    }
+  ]
+}

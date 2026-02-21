@@ -1,19 +1,17 @@
-# Cablemaster Configuratore (MVP)
+# Cablemaster Configuratore (v2)
+
+## Cosa cambia rispetto all’MVP
+- Niente campo “fornitore”: Glendinning è sempre primario.
+- Preset importati dagli esempi `Righe*.xlsx` (prezzi ignorati).
+- Wizard a step (Elettrico → Meccanico → Routing → BOM).
+- Routing migliorato: lunghezza PVC, numero curve, angolo massimo → accessori/quantità indicative.
+- BOM editabile: cambia quantità, sostituisci con equivalenti (Secondary), elimina righe.
+- “Impara” sostituzioni: puoi memorizzare un override per casi simili (localStorage).
 
 ## Deploy su GitHub Pages
-1. Crea un repo (es. `cablemaster-configurator`)
-2. Copia il contenuto di questa cartella nella root del repo:
-   - `index.html`, `styles.css`, `app.js`, `sw.js`, `manifest.webmanifest`
-   - cartella `data/` con i JSON
-   - cartella `assets/` con le icone
-3. GitHub: Settings → Pages → Deploy from branch → `main` / root
-4. Apri l'URL Pages.
+Copia questa cartella nella root del repo e abilita Pages su branch `main`.
 
 ## Dati
-- `data/catalog.glendinning.core.json` (articoli)
-- `data/rules.glendinning.v0.json` (regole + domande)
-
-## Estendere
-- Aggiungi items al catalogo
-- Aggiungi regole in `rules.glendinning.v0.json`
-- Il motore supporta: uguaglianze, `amps_gte`, `amps_lte`, e `<campo>_in`
+- `data/catalog.json` (da Articoli.xlsx)
+- `data/rules.json` (regole base)
+- `data/templates.json` (preset)
