@@ -13,7 +13,7 @@
 <header class="topbar">
   <div>
     <h1>Cablemaster Configuratore</h1>
-    <p class="sub">Wizard filtrato: Base → Cavo → Spina/Presa → Hawse Pipe → Container → BOM</p>
+    <p class="sub">Wizard filtrato (Glendinning primario) • Dati da <code>cablemaster_master.json</code></p>
   </div>
   <div class="topbar__actions">
     <button id="btnInstall" class="btn btn-secondary" hidden>Installa</button>
@@ -26,8 +26,8 @@
     <div class="stepper">
       <button class="step active" data-step="1">1. Base</button>
       <button class="step" data-step="2">2. Cavo</button>
-      <button class="step" data-step="3">3. Connettori</button>
-      <button class="step" data-step="4">4. Hawse Pipe</button>
+      <button class="step" data-step="3">3. Spina/Presa</button>
+      <button class="step" data-step="4">4. Hawse pipe</button>
       <button class="step" data-step="5">5. Container</button>
       <button class="step" data-step="6">6. BOM</button>
     </div>
@@ -36,8 +36,7 @@
 
     <section class="pane active" data-pane="1">
       <h2>Base (motore)</h2>
-      <p class="hint">Seleziona una famiglia (CRMA o CM4/CM7/CM8/CM9). Il codice SKU verrà scelto automaticamente in base alla tensione motore e mostrato in piccolo.</p>
-
+      <p class="hint">Seleziona la famiglia (CRMA / CM4 / CM7 / CM8 / CM9) e la tensione motore. Lo SKU viene scelto automaticamente e mostrato sotto.</p>
       <div class="filters">
         <label>Motore (V DC)
           <select id="motorV">
@@ -46,7 +45,6 @@
           </select>
         </label>
       </div>
-
       <div id="baseList" class="picklist"></div>
       <div class="actions">
         <button class="btn" id="to2" disabled>Avanti</button>
@@ -55,13 +53,17 @@
 
     <section class="pane" data-pane="2">
       <h2>Cavo</h2>
-      <p class="hint">Filtrato dalla base selezionata. Cerca e scegli il cavo (es. 63A 20m). SKU mostrati come opzioni.</p>
+      <p class="hint">Mostriamo solo i cavi compatibili con la base scelta (limiti di ampere). Filtri: ricerca, ampere, lunghezza.</p>
       <div class="filters">
         <label>Ricerca <input id="cableSearch" placeholder="es. 63A 4x16 20m" /></label>
+        <label>Ampere
+          <select id="cableAmps">
+            <option value="">Qualsiasi</option>
+          </select>
+        </label>
         <label>Lunghezza (m)
           <select id="cableLen">
             <option value="">Qualsiasi</option>
-            <option>15</option><option>20</option><option>25</option><option>30</option><option>60</option>
           </select>
         </label>
       </div>
@@ -74,7 +76,7 @@
 
     <section class="pane" data-pane="3">
       <h2>Spina e Presa</h2>
-      <p class="hint">Filtrate dal cavo scelto (A e poli quando disponibili). Se non selezioni la presa, la BOM include solo la spina.</p>
+      <p class="hint">Filtrate sul cavo scelto: amperaggio deve combaciare; poli coerenti quando deducibili dal numero conduttori. La presa è opzionale.</p>
       <div class="split">
         <div>
           <h3>Spina (maschio)</h3>
@@ -94,8 +96,8 @@
     </section>
 
     <section class="pane" data-pane="4">
-      <h2>Hawse Pipe / Alloggiamento</h2>
-      <p class="hint">Filtrato su famiglia e ampere. In futuro aggiungeremo filtro dimensionale (ingombro spina) usando i disegni.</p>
+      <h2>Hawse pipe</h2>
+      <p class="hint">Scelte prese solo dalla whitelist per famiglia (niente guarnizioni/ricambi). Se non troviamo nulla, lo segnaliamo.</p>
       <div id="hpList" class="picklist"></div>
       <div class="actions">
         <button class="btn btn-secondary" data-prev="3">Indietro</button>
@@ -105,7 +107,7 @@
 
     <section class="pane" data-pane="5">
       <h2>Container</h2>
-      <p class="hint">Filtrato su famiglia e guidato da lunghezza cavo.</p>
+      <p class="hint">Scelte prese solo dalla whitelist per famiglia. Se non troviamo nulla, lo segnaliamo.</p>
       <div id="containerList" class="picklist"></div>
       <div class="actions">
         <button class="btn btn-secondary" data-prev="4">Indietro</button>
@@ -120,12 +122,12 @@
       </div>
       <div class="table-wrap">
         <table id="bomTable">
-          <thead><tr><th>Articolo</th><th>SKU</th><th>Descrizione</th><th>Q.tà</th><th>Fonte</th></tr></thead>
+          <thead><tr><th>Ruolo</th><th>SKU</th><th>Descrizione</th><th>Q.tà</th><th>Fonte</th></tr></thead>
           <tbody><tr><td colspan="5" class="muted">Completa i passi.</td></tr></tbody>
         </table>
       </div>
       <details class="notes">
-        <summary>Decisioni e note</summary>
+        <summary>Decisioni</summary>
         <ul id="trace"></ul>
       </details>
       <div class="actions">
@@ -134,7 +136,9 @@
     </section>
   </section>
 
-  <footer class="footer"><p class="muted">Glendinning primario. Nel catalogo sono inclusi SOLO codici con suffisso _001 (nuovo).</p></footer>
+  <footer class="footer">
+    <p class="muted">Nota: catalogo filtrato solo codici <code>_001</code> (nuovo). Tutto ciò che non è in categorie “wizard” resta fuori (misc).</p>
+  </footer>
 </main>
 
 <script src="app.js"></script>

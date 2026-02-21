@@ -1,10 +1,8 @@
-# Cablemaster Configuratore (v5)
+# Cablemaster Configuratore (master-json)
 
-Fix principali:
-- La "Base" è sempre una famiglia standard: CRMA, CM4, CM7, CM8, CM9 (titoli).
-- Il codice SKU della base viene scelto automaticamente in base al motore 12/24V e mostrato come sottotitolo.
-- Remote control / radiocomandi NON sono più classificati come base (sono accessori).
-- Catalogo ricostruito leggendo Articoli.xlsx e normalizzando gli SKU (es. 16-04154-1B).
+Questa versione usa esclusivamente `data/cablemaster_master.json`:
+- categorie wizard: base, cable, connector, hawse_pipe, container
+- whitelists per Hawse pipe e Container (evita componenti non pertinenti)
+- connettori filtrati su amperaggio esatto e poli coerenti (quando deducibili)
 
-
-- v6: filtra Articoli.xlsx includendo solo codici _001. Connettori: proposta solo a pari amperaggio e poli coerenti col cavo.
+Deploy: copia su GitHub Pages.
