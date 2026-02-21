@@ -2,196 +2,177 @@
 let catalog=null, engine=null;
 let skuMap=new Map();
 
-const state={
-  base:null,
-  cable:null,
-  male:null,
-  female:null,
-  hawse:null,
-  container:null,
-  trace:[]
-};
+const state={ baseFamily:null, motorV:"24", baseSku:null, baseItem:null,
+  cable:null, male:null, female:null, hawse:null, container:null, trace:[] };
 
 function $(id){return document.getElementById(id);}
-
 function setStatus(msg, kind="info"){
-  const el=$("status");
-  el.textContent=msg||"";
+  const el=$("status"); el.textContent=msg||"";
   el.style.color = (kind==="ok") ? "var(--ok)" : (kind==="warn") ? "var(--warn)" : (kind==="bad") ? "var(--bad)" : "var(--muted)";
 }
-
 async function loadData(){
-  const [cat, eng] = await Promise.all([
-    fetch("./data/catalog.json").then(r=>r.json()),
-    fetch("./data/engine.json").then(r=>r.json())
-  ]);
-  catalog=cat; engine=eng;
-  skuMap=new Map((catalog.items||[]).map(it=>[it.sku, it]));
+  const [cat, eng]=await Promise.all([fetch("./data/catalog.json").then(r=>r.json()), fetch("./data/engine.json").then(r=>r.json())]);
+  catalog=cat; engine=eng; skuMap=new Map((catalog.items||[]).map(it=>[it.sku,it]));
 }
-
 function goStep(n){
   document.querySelectorAll(".step").forEach(b=>b.classList.toggle("active", b.dataset.step===String(n)));
   document.querySelectorAll(".pane").forEach(p=>p.classList.toggle("active", p.dataset.pane===String(n)));
 }
-
-function card(item, selectedSku, onClick, extraMeta=""){
+function card(title, subtitle, selected, onClick, skuSmall=""){
   const div=document.createElement("div");
-  div.className="cardpick" + (selectedSku===item.sku ? " selected":"");
-  div.addEventListener("click", ()=>onClick(item));
-  const title=document.createElement("div");
-  title.className="title";
-  title.textContent=item.sku;
-  const badge=document.createElement("span");
-  badge.className="badge primary";
-  badge.textContent="PRIMARY";
-  title.appendChild(badge);
-  const meta=document.createElement("div");
-  meta.className="meta";
-  meta.textContent=(item.name||item.description||"") + (extraMeta?(" • "+extraMeta):"");
-  div.appendChild(title);
-  div.appendChild(meta);
+  div.className="cardpick"+(selected?" selected":"");
+  div.addEventListener("click", onClick);
+  const t=document.createElement("div"); t.className="title"; t.textContent=title;
+  const badge=document.createElement("span"); badge.className="badge primary"; badge.textContent="PRIMARY"; t.appendChild(badge);
+  div.appendChild(t);
+  const m=document.createElement("div"); m.className="meta";
+  m.textContent = subtitle + (skuSmall?` • SKU: ${skuSmall}`:"");
+  div.appendChild(m);
   return div;
 }
 
-function filterBase(){
-  // show unique families as choice (CRM, CM4, CM7, CM8, CM9)
-  const families=["CRM","CM4","CM7","CM8","CM9"];
-  const out=[];
-  for(const f of families){
-    // pick one representative base item sku from catalog or create virtual
-    let rep=(catalog.items||[]).find(it=>it.category==="base" && it.family===f);
-    if(!rep){
-      rep={sku:f, name:`Famiglia ${f}`, family:f, category:"base", virtual:true};
-    }
-    out.push(rep);
-  }
-  return out;
+function baseSkuFor(family, motorV){
+  const idx = engine.base_index || {};
+  const famMap = idx[family] || {};
+  return famMap[String(motorV)] || famMap["24"] || famMap["12"] || null;
+}
+
+function renderBase(){
+  const families=["CRMA","CM4","CM7","CM8","CM9"];
+  const el=$("baseList"); el.innerHTML="";
+  families.forEach(f=>{
+    const sku=baseSkuFor(f, state.motorV);
+    const selected = state.baseFamily===f;
+    const subtitle = engine.families[f]?.label || f;
+    el.appendChild(card(f, subtitle, selected, ()=>{
+      state.baseFamily=f;
+      state.baseSku=sku;
+      state.baseItem = sku ? skuMap.get(sku) : null;
+      $("to2").disabled=false;
+      renderBase();
+      setStatus(`Base selezionata: ${f} (${state.motorV}V).`, "ok");
+    }, sku||"—"));
+  });
 }
 
 function allowedCableForFamily(fam, cable){
-  const cfg=engine.families[fam];
-  if(!cfg) return true;
-  if(cable.amps && cfg.amps_max && cable.amps>cfg.amps_max) return false;
-  // If family CM4, avoid >32A; etc already.
-  return cable.category==="cable";
+  // Use amps max per family (simple). CRM/CRMA hide high amps.
+  const caps={"CRMA":63,"CM4":32,"CM7":63,"CM8":125,"CM9":250};
+  const max=caps[fam]||999;
+  if(cable.amps && cable.amps>max) return false;
+  return true;
 }
 
 function filterCables(){
-  const fam=state.base?.family || state.base?.sku;
+  const fam=state.baseFamily;
   const q=($("cableSearch").value||"").toLowerCase();
   const len=Number($("cableLen").value||0);
   let list=(catalog.items||[]).filter(it=>it.category==="cable");
   list=list.filter(c=>allowedCableForFamily(fam,c));
   if(len) list=list.filter(c=>Number(c.length_m||0)===len);
   if(q) list=list.filter(c=>(c.name||"").toLowerCase().includes(q) || (c.sku||"").toLowerCase().includes(q));
-  // Sort by amps then length
-  list.sort((a,b)=> (a.amps||0)-(b.amps||0) || (a.length_m||0)-(b.length_m||0) || a.sku.localeCompare(b.sku));
-  return list.slice(0,120);
+  list.sort((a,b)=>(a.amps||0)-(b.amps||0) || (a.length_m||0)-(b.length_m||0) || a.sku.localeCompare(b.sku));
+  return list.slice(0,160);
 }
-
 function cableKey(c){
-  // derive desired connector poles from conductors if present
   const cond=c.conductors;
   if(cond===3) return {poles:"2P+T"};
   if(cond===4) return {poles:"3P+T"};
   if(cond===5) return {poles:"3P+T+N"};
   return {poles:null};
 }
-
 function filterConnectors(gender){
   const c=state.cable;
   const q=((gender==="male"?$("maleSearch").value:$("femaleSearch").value)||"").toLowerCase();
   let list=(catalog.items||[]).filter(it=>it.category==="connector" && it.connector_gender===gender);
-  if(c?.amps) list=list.filter(x=>(x.amps||0)===c.amps || (x.amps||0)>=c.amps); // allow same or higher
+
+  // amps must match exactly when cable amps is known
+  if(c?.amps){
+    list=list.filter(x=>(x.amps||0)===c.amps);
+  }
+
+  // poles must match when cable conductors imply poles
   const k=c?cableKey(c):{poles:null};
-  if(k.poles) list=list.filter(x=>!x.poles || x.poles===k.poles);
+  if(k.poles){
+    list=list.filter(x=>x.poles===k.poles);
+  }
+
   if(q) list=list.filter(x=>(x.name||"").toLowerCase().includes(q) || x.sku.toLowerCase().includes(q));
   list.sort((a,b)=>(a.amps||0)-(b.amps||0) || a.sku.localeCompare(b.sku));
-  return list.slice(0,120);
+  return list.slice(0,160);
 }
-
 function filterHawse(){
-  const fam=state.base?.family || state.base?.sku;
+  const fam=state.baseFamily;
   const amps=state.cable?.amps;
   let list=(catalog.items||[]).filter(it=>it.category==="hawse_pipe");
-  if(fam && fam!=="CRM") list=list.filter(h=>!h.family || h.family===fam || h.family==="CM"+fam.replace("CM",""));
-  if(fam==="CRM") list=list.filter(h=>!h.family || h.family==="CRM");
+  if(fam) list=list.filter(h=>!h.family || h.family===fam || h.family===fam.replace("CRMA","CRM"));
   if(amps) list=list.filter(h=>!h.amps_max || h.amps_max>=amps);
-  // add defaults if missing
   list.sort((a,b)=>(a.amps_max||999)-(b.amps_max||999) || a.sku.localeCompare(b.sku));
   return list.slice(0,80);
 }
-
 function filterContainers(){
-  const fam=state.base?.family || state.base?.sku;
-  const L=state.cable?.length_m || 0;
+  const fam=state.baseFamily;
   let list=(catalog.items||[]).filter(it=>it.category==="container");
-  if(fam && fam.startsWith("CM")) list=list.filter(x=>!x.family || x.family===fam);
-  // simple heuristic: for longer cables, allow larger containers too
-  if(L>=30){
-    // keep all compatible and also CM9 container
-    list=list.filter(x=>true);
-  }
+  if(fam) list=list.filter(x=>!x.family || x.family===fam || x.family===fam.replace("CRMA","CRM"));
   list.sort((a,b)=>a.sku.localeCompare(b.sku));
   return list.slice(0,80);
 }
 
 function renderPicklist(elId, items, selectedSku, onPick, metaFn){
-  const el=$(elId);
-  el.innerHTML="";
-  if(!items.length){
-    el.innerHTML = `<div class="muted">Nessuna opzione trovata.</div>`;
-    return;
-  }
-  for(const it of items){
-    const extra = metaFn ? metaFn(it) : "";
-    el.appendChild(card(it, selectedSku, onPick, extra));
-  }
+  const el=$(elId); el.innerHTML="";
+  if(!items.length){ el.innerHTML=`<div class="muted">Nessuna opzione trovata.</div>`; return; }
+  items.forEach(it=>{
+    const selected = selectedSku===it.sku;
+    const div=document.createElement("div");
+    div.className="cardpick"+(selected?" selected":"");
+    div.addEventListener("click", ()=>onPick(it));
+    const t=document.createElement("div"); t.className="title"; t.textContent=it.sku;
+    const badge=document.createElement("span"); badge.className="badge primary"; badge.textContent="PRIMARY"; t.appendChild(badge);
+    const m=document.createElement("div"); m.className="meta";
+    m.textContent=(it.name||"") + (metaFn?(" • "+metaFn(it)):"");
+    div.appendChild(t); div.appendChild(m);
+    el.appendChild(div);
+  });
 }
 
 function addTrace(msg){ state.trace.push(msg); }
-
 function renderTrace(){
   const ul=$("trace"); ul.innerHTML="";
   state.trace.forEach(t=>{ const li=document.createElement("li"); li.textContent=t; ul.appendChild(li); });
 }
 
 function buildBOM(){
-  const lines=[];
   state.trace=[];
-  // base item: if virtual, try pick a default sku matching family and 24V maybe?
-  if(state.base){
-    if(!state.base.virtual){
-      lines.push({sku:state.base.sku, desc:state.base.name, qty:1, source:"PRIMARY"});
-      addTrace(`Base: selezionato ${state.base.family||state.base.sku} (${state.base.sku}).`);
+  const lines=[];
+  // Base
+  if(state.baseFamily){
+    addTrace(`Base: ${state.baseFamily} • motore ${state.motorV}V → SKU ${state.baseSku||"non trovato"}.`);
+    if(state.baseSku){
+      const it=skuMap.get(state.baseSku);
+      lines.push({role:"Base", sku:state.baseSku, desc:it?.name||"", qty:1, source:"PRIMARY"});
     }else{
-      addTrace(`Base: selezionata famiglia ${state.base.sku} (nessun SKU specifico in anagrafica).`);
+      lines.push({role:"Base", sku:"—", desc:`Famiglia ${state.baseFamily} (SKU non trovato)`, qty:1, source:"PRIMARY"});
     }
   }
   if(state.cable){
-    let note = state.cable.length_m ? `${state.cable.length_m}m` : "";
-    lines.push({sku:state.cable.sku, desc:state.cable.name, qty:1, source:"PRIMARY", note});
-    addTrace(`Cavo: ${state.cable.amps||"?"}A, conduttori ${state.cable.conductors||"?"}, lunghezza ${state.cable.length_m||"?"}m.`);
+    lines.push({role:"Cavo", sku:state.cable.sku, desc:state.cable.name, qty:1, source:"PRIMARY"});
+    addTrace(`Cavo: ${state.cable.amps||"?"}A • ${state.cable.conductors||"?"} cond. • ${state.cable.length_m||"?"}m.`);
   }
   if(state.male){
-    lines.push({sku:state.male.sku, desc:state.male.name, qty:1, source:"PRIMARY"});
-    addTrace(`Spina (maschio): filtrata su cavo → scelta ${state.male.sku}.`);
+    lines.push({role:"Spina", sku:state.male.sku, desc:state.male.name, qty:1, source:"PRIMARY"});
+    addTrace(`Spina filtrata dal cavo → ${state.male.sku}.`);
   }else{
-    addTrace("Spina (maschio): non selezionata (se necessaria, scegliere un'opzione).");
+    addTrace("Spina: non selezionata (di solito necessaria).");
   }
   if(state.female){
-    lines.push({sku:state.female.sku, desc:state.female.name, qty:1, source:"PRIMARY"});
-    addTrace(`Presa (femmina): scelta ${state.female.sku}.`);
+    lines.push({role:"Presa", sku:state.female.sku, desc:state.female.name, qty:1, source:"PRIMARY"});
   }
   if(state.hawse){
-    lines.push({sku:state.hawse.sku, desc:state.hawse.name, qty:1, source:"PRIMARY"});
-    addTrace(`Hawse pipe: proposto/filtrato su base+cavo → scelto ${state.hawse.sku}.`);
+    lines.push({role:"Hawse Pipe", sku:state.hawse.sku, desc:state.hawse.name, qty:1, source:"PRIMARY"});
   }
   if(state.container){
-    lines.push({sku:state.container.sku, desc:state.container.name, qty:1, source:"PRIMARY"});
-    addTrace(`Container: filtrato su famiglia ${state.base?.family||state.base?.sku} e lunghezza cavo → scelto ${state.container.sku}.`);
+    lines.push({role:"Container", sku:state.container.sku, desc:state.container.name, qty:1, source:"PRIMARY"});
   }
-
   return lines;
 }
 
@@ -203,75 +184,34 @@ function renderBOM(lines){
     $("btnExportCsv").disabled=true;
     return;
   }
-  for(const ln of lines){
+  lines.forEach(ln=>{
     const tr=document.createElement("tr");
-    tr.innerHTML = `<td>${ln.sku}</td><td>${ln.desc||""}</td><td>1</td><td>${ln.source||"PRIMARY"}</td><td></td>`;
+    tr.innerHTML = `<td>${ln.role}</td><td>${ln.sku}</td><td>${ln.desc||""}</td><td>${ln.qty}</td><td>${ln.source}</td>`;
     tbody.appendChild(tr);
-  }
+  });
   $("btnExportCsv").disabled=false;
   renderTrace();
 }
 
 function csvFrom(lines){
   const esc=s=>`"${String(s||"").replaceAll('"','""')}"`;
-  const header=["SKU","Descrizione","Quantità","Fonte"].map(esc).join(",");
-  const rows=lines.map(l=>[l.sku,l.desc,1,l.source].map(esc).join(","));
+  const header=["Ruolo","SKU","Descrizione","Quantità","Fonte"].map(esc).join(",");
+  const rows=lines.map(l=>[l.role,l.sku,l.desc,l.qty,l.source].map(esc).join(","));
   return [header,...rows].join("\\n");
 }
 
 function resetAll(){
-  state.base=state.cable=state.male=state.female=state.hawse=state.container=null;
+  state.baseFamily=null; state.baseSku=null; state.baseItem=null;
+  state.cable=state.male=state.female=state.hawse=state.container=null;
   state.trace=[];
   $("to2").disabled=true; $("to3").disabled=true; $("to4").disabled=true; $("to5").disabled=true; $("to6").disabled=true;
-  $("cableSearch").value=""; $("cableLen").value="";
-  $("maleSearch").value=""; $("femaleSearch").value="";
-  setStatus("Reset eseguito.", "ok");
-  renderPicklist("baseList", filterBase(), null, pickBase, it=>it.family||it.sku);
+  $("cableSearch").value=""; $("cableLen").value=""; $("maleSearch").value=""; $("femaleSearch").value="";
   $("cableList").innerHTML=""; $("maleList").innerHTML=""; $("femaleList").innerHTML=""; $("hpList").innerHTML=""; $("containerList").innerHTML="";
-  $("bomTable").querySelector("tbody").innerHTML = `<tr><td colspan="5" class="muted">Completa i passi per generare la BOM.</td></tr>`;
+  $("bomTable").querySelector("tbody").innerHTML=`<tr><td colspan="5" class="muted">Completa i passi.</td></tr>`;
   $("trace").innerHTML="";
+  renderBase();
   goStep(1);
-}
-
-function pickBase(it){
-  state.base = it.virtual ? {sku:it.sku, family:it.sku, virtual:true} : it;
-  $("to2").disabled=false;
-  renderPicklist("baseList", filterBase(), state.base.sku, pickBase, x=>x.family||x.sku);
-  setStatus(`Base selezionata: ${state.base.family||state.base.sku}.`, "ok");
-}
-
-function pickCable(it){
-  state.cable=it;
-  $("to3").disabled=false;
-  renderPicklist("cableList", filterCables(), state.cable.sku, pickCable, x=>`${x.amps||"?"}A • ${x.conductors||"?"}c • ${x.length_m||""}m`);
-  setStatus(`Cavo selezionato: ${it.sku}.`, "ok");
-}
-
-function pickMale(it){
-  state.male=it;
-  // allow moving even without female
-  $("to4").disabled = !state.male;
-  renderPicklist("maleList", filterConnectors("male"), state.male?.sku, pickMale, x=>`${x.amps||""}A • ${x.poles||""}`);
-  setStatus(`Spina selezionata: ${it.sku}.`, "ok");
-}
-function pickFemale(it){
-  state.female=it;
-  renderPicklist("femaleList", filterConnectors("female"), state.female?.sku, pickFemale, x=>`${x.amps||""}A • ${x.poles||""}`);
-  setStatus(`Presa selezionata: ${it.sku}.`, "ok");
-}
-
-function pickHP(it){
-  state.hawse=it;
-  $("to5").disabled=false;
-  renderPicklist("hpList", filterHawse(), state.hawse?.sku, pickHP, x=>x.family||"");
-  setStatus(`Hawse pipe selezionato: ${it.sku}.`, "ok");
-}
-
-function pickContainer(it){
-  state.container=it;
-  $("to6").disabled=false;
-  renderPicklist("containerList", filterContainers(), state.container?.sku, pickContainer, x=>x.family||"");
-  setStatus(`Container selezionato: ${it.sku}.`, "ok");
+  setStatus("Reset eseguito.", "ok");
 }
 
 async function initPWA(){
@@ -280,52 +220,71 @@ async function initPWA(){
   }
   let deferredPrompt=null;
   window.addEventListener("beforeinstallprompt",(e)=>{e.preventDefault();deferredPrompt=e;$("btnInstall").hidden=false;});
-  $("btnInstall").addEventListener("click", async ()=>{
-    if(!deferredPrompt) return;
-    deferredPrompt.prompt();
-    await deferredPrompt.userChoice;
-    deferredPrompt=null; $("btnInstall").hidden=true;
-  });
+  $("btnInstall").addEventListener("click", async ()=>{ if(!deferredPrompt) return; deferredPrompt.prompt(); await deferredPrompt.userChoice; deferredPrompt=null; $("btnInstall").hidden=true; });
 }
 
 async function main(){
-  setStatus("Caricamento catalogo…");
+  setStatus("Caricamento…");
   await loadData();
 
-  // Stepper click
+  $("motorV").addEventListener("change", ()=>{
+    state.motorV = $("motorV").value;
+    // recompute sku for selected family
+    if(state.baseFamily){
+      state.baseSku = baseSkuFor(state.baseFamily, state.motorV);
+    }
+    renderBase();
+  });
+
   document.querySelectorAll(".step").forEach(b=>b.addEventListener("click",()=>goStep(Number(b.dataset.step))));
   document.querySelectorAll("[data-prev]").forEach(b=>b.addEventListener("click",()=>goStep(Number(b.dataset.prev))));
   $("btnReset").addEventListener("click", resetAll);
 
-  // Base
-  renderPicklist("baseList", filterBase(), null, pickBase, it=>it.family||it.sku);
+  renderBase();
 
-  // Step 2 filters
-  $("cableSearch").addEventListener("input", ()=>{ if(state.base) renderPicklist("cableList", filterCables(), state.cable?.sku, pickCable, x=>`${x.amps||"?"}A • ${x.conductors||"?"}c • ${x.length_m||""}m`); });
-  $("cableLen").addEventListener("change", ()=>{ if(state.base) renderPicklist("cableList", filterCables(), state.cable?.sku, pickCable, x=>`${x.amps||"?"}A • ${x.conductors||"?"}c • ${x.length_m||""}m`); });
-
-  // Navigation buttons
+  // step navigation
   $("to2").addEventListener("click", ()=>{
     goStep(2);
-    renderPicklist("cableList", filterCables(), state.cable?.sku, pickCable, x=>`${x.amps||"?"}A • ${x.conductors||"?"}c • ${x.length_m||""}m`);
+    renderPicklist("cableList", filterCables(), state.cable?.sku, (it)=>{
+      state.cable=it;
+      $("to3").disabled=false;
+      renderPicklist("cableList", filterCables(), state.cable.sku, arguments.callee, x=>`${x.amps||"?"}A • ${x.conductors||"?"}c • ${x.length_m||""}m`);
+      setStatus(`Cavo selezionato: ${it.sku}.`, "ok");
+    }, x=>`${x.amps||"?"}A • ${x.conductors||"?"}c • ${x.length_m||""}m`);
   });
+
+  $("cableSearch").addEventListener("input", ()=>{ if(state.baseFamily) renderPicklist("cableList", filterCables(), state.cable?.sku, pickCable, x=>`${x.amps||"?"}A • ${x.conductors||"?"}c • ${x.length_m||""}m`); });
+  $("cableLen").addEventListener("change", ()=>{ if(state.baseFamily) renderPicklist("cableList", filterCables(), state.cable?.sku, pickCable, x=>`${x.amps||"?"}A • ${x.conductors||"?"}c • ${x.length_m||""}m`); });
+
+  function pickCable(it){
+    state.cable=it;
+    $("to3").disabled=false;
+    renderPicklist("cableList", filterCables(), state.cable?.sku, pickCable, x=>`${x.amps||"?"}A • ${x.conductors||"?"}c • ${x.length_m||""}m`);
+    setStatus(`Cavo selezionato: ${it.sku}.`, "ok");
+  }
+
   $("to3").addEventListener("click", ()=>{
     goStep(3);
     renderPicklist("maleList", filterConnectors("male"), state.male?.sku, pickMale, x=>`${x.amps||""}A • ${x.poles||""}`);
     renderPicklist("femaleList", filterConnectors("female"), state.female?.sku, pickFemale, x=>`${x.amps||""}A • ${x.poles||""}`);
   });
 
+  function pickMale(it){ state.male=it; $("to4").disabled=false; renderPicklist("maleList", filterConnectors("male"), state.male?.sku, pickMale, x=>`${x.amps||""}A • ${x.poles||""}`); setStatus(`Spina: ${it.sku}.`, "ok"); }
+  function pickFemale(it){ state.female=it; renderPicklist("femaleList", filterConnectors("female"), state.female?.sku, pickFemale, x=>`${x.amps||""}A • ${x.poles||""}`); setStatus(`Presa: ${it.sku}.`, "ok"); }
+
   $("maleSearch").addEventListener("input", ()=>renderPicklist("maleList", filterConnectors("male"), state.male?.sku, pickMale, x=>`${x.amps||""}A • ${x.poles||""}`));
   $("femaleSearch").addEventListener("input", ()=>renderPicklist("femaleList", filterConnectors("female"), state.female?.sku, pickFemale, x=>`${x.amps||""}A • ${x.poles||""}`));
 
   $("to4").addEventListener("click", ()=>{
     goStep(4);
-    renderPicklist("hpList", filterHawse(), state.hawse?.sku, pickHP, x=>x.family||"");
+    renderPicklist("hpList", filterHawse(), state.hawse?.sku, (it)=>{ state.hawse=it; $("to5").disabled=false; renderPicklist("hpList", filterHawse(), state.hawse?.sku, arguments.callee, x=>x.family||""); setStatus(`Hawse pipe: ${it.sku}.`, "ok"); }, x=>x.family||"");
   });
+
   $("to5").addEventListener("click", ()=>{
     goStep(5);
-    renderPicklist("containerList", filterContainers(), state.container?.sku, pickContainer, x=>x.family||"");
+    renderPicklist("containerList", filterContainers(), state.container?.sku, (it)=>{ state.container=it; $("to6").disabled=false; renderPicklist("containerList", filterContainers(), state.container?.sku, arguments.callee, x=>x.family||""); setStatus(`Container: ${it.sku}.`, "ok"); }, x=>x.family||"");
   });
+
   $("to6").addEventListener("click", ()=>{
     goStep(6);
     const bom=buildBOM();

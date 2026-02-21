@@ -13,7 +13,7 @@
 <header class="topbar">
   <div>
     <h1>Cablemaster Configuratore</h1>
-    <p class="sub">Wizard: Base → Cavo → Spina/Presa → Hawse Pipe → Container → BOM</p>
+    <p class="sub">Wizard filtrato: Base → Cavo → Spina/Presa → Hawse Pipe → Container → BOM</p>
   </div>
   <div class="topbar__actions">
     <button id="btnInstall" class="btn btn-secondary" hidden>Installa</button>
@@ -35,8 +35,18 @@
     <div id="status" class="status" role="status" aria-live="polite"></div>
 
     <section class="pane active" data-pane="1">
-      <h2>Seleziona Base (motore)</h2>
-      <p class="hint">Scegli CRM o CM4/7/8/9. Questa scelta filtra tutte le opzioni successive.</p>
+      <h2>Base (motore)</h2>
+      <p class="hint">Seleziona una famiglia (CRMA o CM4/CM7/CM8/CM9). Il codice SKU verrà scelto automaticamente in base alla tensione motore e mostrato in piccolo.</p>
+
+      <div class="filters">
+        <label>Motore (V DC)
+          <select id="motorV">
+            <option value="12">12</option>
+            <option value="24" selected>24</option>
+          </select>
+        </label>
+      </div>
+
       <div id="baseList" class="picklist"></div>
       <div class="actions">
         <button class="btn" id="to2" disabled>Avanti</button>
@@ -44,7 +54,8 @@
     </section>
 
     <section class="pane" data-pane="2">
-      <h2>Seleziona Cavo</h2>
+      <h2>Cavo</h2>
+      <p class="hint">Filtrato dalla base selezionata. Cerca e scegli il cavo (es. 63A 20m). SKU mostrati come opzioni.</p>
       <div class="filters">
         <label>Ricerca <input id="cableSearch" placeholder="es. 63A 4x16 20m" /></label>
         <label>Lunghezza (m)
@@ -62,8 +73,8 @@
     </section>
 
     <section class="pane" data-pane="3">
-      <h2>Seleziona Spina e Presa (opzionale)</h2>
-      <p class="hint">Le opzioni sono filtrate sul cavo scelto (A e poli/conduttori quando disponibili). Se non esiste un codice primario, puoi selezionare un secondario (marcato).</p>
+      <h2>Spina e Presa</h2>
+      <p class="hint">Filtrate dal cavo scelto (A e poli quando disponibili). Se non selezioni la presa, la BOM include solo la spina.</p>
       <div class="split">
         <div>
           <h3>Spina (maschio)</h3>
@@ -71,7 +82,7 @@
           <div id="maleList" class="picklist"></div>
         </div>
         <div>
-          <h3>Presa (femmina)</h3>
+          <h3>Presa (femmina) (opzionale)</h3>
           <input id="femaleSearch" placeholder="cerca presa" />
           <div id="femaleList" class="picklist"></div>
         </div>
@@ -83,8 +94,8 @@
     </section>
 
     <section class="pane" data-pane="4">
-      <h2>Seleziona Hawse Pipe / Alloggiamento</h2>
-      <p class="hint">Filtrato su base + ampere e (quando disponibile) ingombro connettore. In assenza dimensioni, propone il default della famiglia.</p>
+      <h2>Hawse Pipe / Alloggiamento</h2>
+      <p class="hint">Filtrato su famiglia e ampere. In futuro aggiungeremo filtro dimensionale (ingombro spina) usando i disegni.</p>
       <div id="hpList" class="picklist"></div>
       <div class="actions">
         <button class="btn btn-secondary" data-prev="3">Indietro</button>
@@ -93,8 +104,8 @@
     </section>
 
     <section class="pane" data-pane="5">
-      <h2>Seleziona Container</h2>
-      <p class="hint">Filtrato su base e lunghezza cavo. Puoi scegliere container più grande come variante.</p>
+      <h2>Container</h2>
+      <p class="hint">Filtrato su famiglia e guidato da lunghezza cavo.</p>
       <div id="containerList" class="picklist"></div>
       <div class="actions">
         <button class="btn btn-secondary" data-prev="4">Indietro</button>
@@ -109,8 +120,8 @@
       </div>
       <div class="table-wrap">
         <table id="bomTable">
-          <thead><tr><th>SKU</th><th>Descrizione</th><th>Q.tà</th><th>Fonte</th><th>Azioni</th></tr></thead>
-          <tbody><tr><td colspan="5" class="muted">Completa i passi per generare la BOM.</td></tr></tbody>
+          <thead><tr><th>Articolo</th><th>SKU</th><th>Descrizione</th><th>Q.tà</th><th>Fonte</th></tr></thead>
+          <tbody><tr><td colspan="5" class="muted">Completa i passi.</td></tr></tbody>
         </table>
       </div>
       <details class="notes">
@@ -121,12 +132,9 @@
         <button class="btn btn-secondary" data-prev="5">Indietro</button>
       </div>
     </section>
-
   </section>
 
-  <footer class="footer">
-    <p class="muted">Glendinning primario. Secondary sempre ammesso e marcato.</p>
-  </footer>
+  <footer class="footer"><p class="muted">Glendinning primario. Nel catalogo sono inclusi SOLO codici con suffisso _001 (nuovo).</p></footer>
 </main>
 
 <script src="app.js"></script>

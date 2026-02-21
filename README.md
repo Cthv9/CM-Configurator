@@ -1,10 +1,10 @@
-# Cablemaster Configuratore (v4)
+# Cablemaster Configuratore (v5)
 
-Implementa la logica richiesta:
-1) Base (CRM / CM4 / CM7 / CM8 / CM9)
-2) Cavo (filtrato dalla base)
-3) Spina/Presa (filtrata dal cavo)
-4) Hawse Pipe (filtrato da base + ampere)
-5) Container (filtrato da base + lunghezza)
+Fix principali:
+- La "Base" è sempre una famiglia standard: CRMA, CM4, CM7, CM8, CM9 (titoli).
+- Il codice SKU della base viene scelto automaticamente in base al motore 12/24V e mostrato come sottotitolo.
+- Remote control / radiocomandi NON sono più classificati come base (sono accessori).
+- Catalogo ricostruito leggendo Articoli.xlsx e normalizzando gli SKU (es. 16-04154-1B).
 
-Dataset derivato da Articoli.xlsx (434 righe) con parsing automatico descrizioni.
+
+- v6: filtra Articoli.xlsx includendo solo codici _001. Connettori: proposta solo a pari amperaggio e poli coerenti col cavo.
