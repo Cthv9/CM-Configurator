@@ -112,7 +112,7 @@ function applyRouting(lines, input, notes){
 
     // Couplings/rollers along PVC: rule of thumb every ~0.6m (≈ 24")
     const L = Math.max(0, input.pvc_length_m || 0);
-    const pitch = 0.6;
+    const pitch = 0.3; // default: 30cm
     const qty = (L>0) ? Math.max(1, Math.ceil(L / pitch)) : 1;
     addLine(lines, {sku:"16-04061", qty, source:"Primary", note:`PVC: rulli lungo tratta (~1 ogni ${pitch}m)`});
     notes.push("Routing: su PVC prevedere supporto frequente per ridurre attrito (regola indicativa).");
@@ -384,37 +384,7 @@ function resetAll(){
   goStep(1);
 }
 
-function populatePresets(){
-  const sel=$("presetSelect");
-  (templates.templates||[]).forEach(t=>{
-    const opt=document.createElement("option");
-    opt.value=t.id;
-    opt.textContent=t.label;
-    sel.appendChild(opt);
-  });
-
-  sel.addEventListener("change", ()=>{
-    const id=sel.value;
-    if(!id){ return; }
-    const t=(templates.templates||[]).find(x=>x.id===id);
-    if(!t) return;
-
-    // build BOM from template, mark as Primary by default (user can replace to Secondary)
-    const input=getInput();
-    const lines=t.bom.map(r=>({
-      sku:r.sku,
-      description:getDesc(r.sku, r.description||""),
-      qty:r.qty,
-      source:"Primary",
-      note:"Preset",
-      placeholderKey:null
-    }));
-    lastBOM={lines: lines, notes:[`Preset applicato: ${t.label}.`]};
-    renderBOM(lastBOM, input);
-    setStatus("Preset caricato. Puoi modificare la BOM e poi 'Genera/Aggiorna' per applicare le regole.", "ok");
-    goStep(4);
-  });
-}
+function populatePresets(){ /* presets UI removed in v3 */ }
 
 function updateRoutingVisibility(){
   const layout=$("routing_layout").value;
@@ -451,10 +421,62 @@ async function initPWA(){
   });
 }
 
+
+function isDebug(){
+  return (location.hash || "").toLowerCase().includes("debug");
+}
+
+function clearOverrides(){
+  localStorage.removeItem(OVERRIDE_KEY);
+}
+
+function renderTests(rows){
+  const tbody = $("testTable").querySelector("tbody");
+  tbody.innerHTML = "";
+  for(const r of rows){
+    const tr = document.createElement("tr");
+    const td1=document.createElement("td"); td1.textContent = r.name;
+    const td2=document.createElement("td"); td2.textContent = r.ok ? "PASS" : "FAIL";
+    td2.style.color = r.ok ? "var(--ok)" : "var(--bad)";
+    const td3=document.createElement("td"); td3.textContent = r.detail || "";
+    tr.append(td1,td2,td3);
+    tbody.appendChild(tr);
+  }
+}
+
+function runTests(){
+  const rows = [];
+  const tpls = (templates && templates.templates) ? templates.templates : [];
+  for(const t of tpls){
+    const input = getInput();
+    const bom = buildBOMFromRules(input);
+    const have = new Set(bom.lines.map(x=>x.sku));
+    const expected = new Set((t.bom||[]).map(x=>x.sku));
+    let missing = [];
+    expected.forEach(sku=>{ if(!have.has(sku)) missing.push(sku); });
+    rows.push({
+      name: t.label || t.id,
+      ok: missing.length === 0,
+      detail: missing.length ? ("Mancano: " + missing.slice(0,12).join(", ") + (missing.length>12?" …":"")) : "OK"
+    });
+  }
+  if(!rows.length){
+    rows.push({name:"Nessun test disponibile", ok:true, detail:"Aggiungi templates.json come casi test (non UI)."});
+  }
+  renderTests(rows);
+}
+
+
 async function main(){
   setStatus("Caricamento dati…");
   await loadData();
   populatePresets();
+  // debug mode
+  if(isDebug()){
+    $('debugCard').hidden = false;
+    $('btnRunTests').addEventListener('click', runTests);
+    $('btnClearOverrides').addEventListener('click', ()=>{clearOverrides(); setStatus('Overrides svuotati.', 'ok');});
+  }
   updateRoutingVisibility();
   $("routing_layout").addEventListener("change", updateRoutingVisibility);
 

@@ -15,3 +15,8 @@ Copia questa cartella nella root del repo e abilita Pages su branch `main`.
 - `data/catalog.json` (da Articoli.xlsx)
 - `data/rules.json` (regole base)
 - `data/templates.json` (preset)
+
+
+## v3 changes
+- Rimossi preset UI basati su esempi. Gli esempi restano come casi di test (attiva con `#debug`).
+- Routing: pitch rulli su PVC impostato a 0.30m (30cm).

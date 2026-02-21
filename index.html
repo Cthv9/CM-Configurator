@@ -25,15 +25,7 @@
   <section class="card">
     <div class="card__head">
       <h2>Configurazione</h2>
-      <div class="right">
-        <label class="small">
-          Preset (esempi)
-          <select id="presetSelect">
-            <option value="">— Nessuno —</option>
-          </select>
-        </label>
       </div>
-    </div>
 
     <div class="stepper">
       <button class="step active" data-step="1">1. Elettrico</button>
@@ -250,6 +242,26 @@
       <summary>Note e controlli</summary>
       <ul id="notesList"></ul>
     </details>
+  </section>
+
+  
+  <section class="card" id="debugCard" hidden>
+    <div class="card__head">
+      <h2>Debug • Casi di test</h2>
+      <div class="muted">Usa gli esempi come test automatici (non come preset utente)</div>
+    </div>
+    <div class="actions">
+      <button id="btnRunTests" class="btn btn-secondary" type="button">Esegui casi di test</button>
+      <button id="btnClearOverrides" class="btn btn-secondary" type="button">Svuota overrides (local)</button>
+    </div>
+    <div class="table-wrap">
+      <table id="testTable">
+        <thead>
+          <tr><th>Test</th><th>Esito</th><th>Dettaglio</th></tr>
+        </thead>
+        <tbody><tr><td colspan="3" class="muted">Attiva con <code>#debug</code> nell'URL.</td></tr></tbody>
+      </table>
+    </div>
   </section>
 
   <footer class="footer">
