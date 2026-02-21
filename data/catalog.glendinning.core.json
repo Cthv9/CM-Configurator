@@ -1,0 +1,4023 @@
+{
+  "meta": {
+    "source_file": "Articoli.xlsx",
+    "generated": "2026-02-21",
+    "item_count": 358
+  },
+  "items": [
+    {
+      "sku": "16-04020",
+      "brand": "Glendinning",
+      "name": "CABLEMASTER CM7 12V",
+      "description_search": "CABLEMASTER CM7 12V",
+      "raw_codes": [
+        "1600000004020_001",
+        "1600000004020_006"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "power_unit"
+    },
+    {
+      "sku": "16-04022",
+      "brand": "Glendinning",
+      "name": "AVVOLGICAVO CABLEMAST CM7 24V",
+      "description_search": "AVVOLGICAVO CABLEMAST CM7 24V",
+      "raw_codes": [
+        "1600000004022_001",
+        "1600000004022_003",
+        "1600000004022_004",
+        "1600000004022_005",
+        "1600000004022_006"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "power_unit"
+    },
+    {
+      "sku": "16-04027",
+      "brand": "Glendinning",
+      "name": "AVVOLG. CM7 24V POWER UNIT ONL",
+      "description_search": "AVVOLG. CM7 24V POWER UNIT ONL",
+      "raw_codes": [
+        "1600000004027_001",
+        "1600000004027_004",
+        "1600000004027_006"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16-04030",
+      "brand": "Glendinning",
+      "name": "RELE' BOX 12V",
+      "description_search": "RELE' BOX 12V",
+      "raw_codes": [
+        "1600000004030_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16-04034",
+      "brand": "Glendinning",
+      "name": "RELE' BOX 12-24V",
+      "description_search": "RELE' BOX 12-24V",
+      "raw_codes": [
+        "1600000004034_001",
+        "1600000004034_002",
+        "1600000004034_004",
+        "1600000004034_005",
+        "1600000004034_006"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16-04035",
+      "brand": "Glendinning",
+      "name": "MOTORINO CM7 12V",
+      "description_search": "MOTORINO CM7 12V",
+      "raw_codes": [
+        "1600000004035_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16-04036",
+      "brand": "Glendinning",
+      "name": "MOTORINO CM7 24V",
+      "description_search": "MOTORINO CM7 24V",
+      "raw_codes": [
+        "1600000004036_001",
+        "1600000004036_002"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16-04040",
+      "brand": "Glendinning",
+      "name": "PIPE END ROLLER ASSEMBLY",
+      "description_search": "PIPE END ROLLER ASSEMBLY",
+      "raw_codes": [
+        "1600000004040_001",
+        "1600000004040_002",
+        "1600000004040_006"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "16-04041",
+      "brand": "Glendinning",
+      "name": "KIT CONVERS.CAVO 4P A 5P",
+      "description_search": "KIT CONVERS.CAVO 4P A 5P",
+      "raw_codes": [
+        "1600000004041_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "cable"
+    },
+    {
+      "sku": "16-04042",
+      "brand": "Glendinning",
+      "name": "CM8 PIPE CLAMP ASSY D",
+      "description_search": "CM8 PIPE CLAMP ASSY D",
+      "raw_codes": [
+        "1600000004042_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "16-04043",
+      "brand": "Glendinning",
+      "name": "KIT PROLUNGA ORIZZ. X CM7",
+      "description_search": "KIT PROLUNGA ORIZZ. X CM7",
+      "raw_codes": [
+        "1600000004043_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "16-04044",
+      "brand": "Glendinning",
+      "name": "KIT PROLUNGA VERT.CM7/CM8",
+      "description_search": "KIT PROLUNGA VERT.CM7/CM8",
+      "raw_codes": [
+        "1600000004044_001",
+        "1600000004044_004",
+        "1600000004044_006"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "16-04045",
+      "brand": "Glendinning",
+      "name": "PIPE TO PIPE ANGLE ASSEMB",
+      "description_search": "PIPE TO PIPE ANGLE ASSEMB",
+      "raw_codes": [
+        "1600000004045_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16-04046",
+      "brand": "Glendinning",
+      "name": "GUIDE ROLLER ASSEMBLY",
+      "description_search": "GUIDE ROLLER ASSEMBLY",
+      "raw_codes": [
+        "1600000004046_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "16-04047",
+      "brand": "Glendinning",
+      "name": "GUIDE ROLLER IN-LIMIT SWI",
+      "description_search": "GUIDE ROLLER IN-LIMIT SWI",
+      "raw_codes": [
+        "1600000004047_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "16-04049",
+      "brand": "Glendinning",
+      "name": "HAWSE PIPE INOX CRM32-4049-CRM",
+      "description_search": "HAWSE PIPE INOX CRM32-4049-CRM",
+      "raw_codes": [
+        "1600000004049_001",
+        "1600000004049_006"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "hawse_pipe"
+    },
+    {
+      "sku": "16-04050",
+      "brand": "Glendinning",
+      "name": "BOCCHETTONE X CM7",
+      "description_search": "BOCCHETTONE X CM7",
+      "raw_codes": [
+        "1600000004050_001",
+        "1600000004050_006"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "hawse_pipe"
+    },
+    {
+      "sku": "16-04051",
+      "brand": "Glendinning",
+      "name": "CM-4/7 HP CAP HINGE ASSY",
+      "description_search": "CM-4/7 HP CAP HINGE ASSY",
+      "raw_codes": [
+        "1600000004051_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16-04052",
+      "brand": "Glendinning",
+      "name": "PIPE CLAM ASSY",
+      "description_search": "PIPE CLAM ASSY",
+      "raw_codes": [
+        "1600000004052_001",
+        "1600000004052_006"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16-04053",
+      "brand": "Glendinning",
+      "name": "HAWSE PIPE CLAMP sostituito",
+      "description_search": "HAWSE PIPE CLAMP SOSTITUITO",
+      "raw_codes": [
+        "1600000004053_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "hawse_pipe"
+    },
+    {
+      "sku": "16-04054",
+      "brand": "Glendinning",
+      "name": "GUIDE ROLLER ASSEMBLY",
+      "description_search": "GUIDE ROLLER ASSEMBLY",
+      "raw_codes": [
+        "1600000004054_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "16-04055",
+      "brand": "Glendinning",
+      "name": "HAWSE PIPE W GUIDE ROLL IN LIM",
+      "description_search": "HAWSE PIPE W GUIDE ROLL IN LIM",
+      "raw_codes": [
+        "1600000004055_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "hawse_pipe"
+    },
+    {
+      "sku": "16-04059",
+      "brand": "Glendinning",
+      "name": "PVC ROLLER ASSY 22 1/2 DEGREE",
+      "description_search": "PVC ROLLER ASSY 22 1/2 DEGREE",
+      "raw_codes": [
+        "1600000004059_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "16-04060",
+      "brand": "Glendinning",
+      "name": "PVC ROLLER ASSY 45 DEEREE",
+      "description_search": "PVC ROLLER ASSY 45 DEEREE",
+      "raw_codes": [
+        "1600000004060_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "16-04061",
+      "brand": "Glendinning",
+      "name": "PVC ROLLER ASSY STRAIGHT",
+      "description_search": "PVC ROLLER ASSY STRAIGHT",
+      "raw_codes": [
+        "1600000004061_001",
+        "1600000004061_002"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "16-04062",
+      "brand": "Glendinning",
+      "name": "30 DEGREE ANGLING ASSEMB.",
+      "description_search": "30 DEGREE ANGLING ASSEMB.",
+      "raw_codes": [
+        "1600000004062_001",
+        "1600000004062_006"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16-04063",
+      "brand": "Glendinning",
+      "name": "120 DEGREE ANGLE ASSEMBLY",
+      "description_search": "120 DEGREE ANGLE ASSEMBLY",
+      "raw_codes": [
+        "1600000004063_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "16-04064",
+      "brand": "Glendinning",
+      "name": "60 DEEGREE ANGLE ASSEMBLY",
+      "description_search": "60 DEEGREE ANGLE ASSEMBLY",
+      "raw_codes": [
+        "1600000004064_001",
+        "1600000004064_006"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "16-04065",
+      "brand": "Glendinning",
+      "name": "180 DEGREE ANGLE ASSEMBLY",
+      "description_search": "180 DEGREE ANGLE ASSEMBLY",
+      "raw_codes": [
+        "1600000004065_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "16-04066",
+      "brand": "Glendinning",
+      "name": "90 DEGREE ANGLE ASSEMBLY",
+      "description_search": "90 DEGREE ANGLE ASSEMBLY",
+      "raw_codes": [
+        "1600000004066_001",
+        "1600000004066_006"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "16-04067",
+      "brand": "Glendinning",
+      "name": "ANGLING ASSEMBLY 150°",
+      "description_search": "ANGLING ASSEMBLY 150°",
+      "raw_codes": [
+        "1600000004067_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "16-04068",
+      "brand": "Glendinning",
+      "name": "CABLE DIVERTER ASSEMBLY",
+      "description_search": "CABLE DIVERTER ASSEMBLY",
+      "raw_codes": [
+        "1600000004068_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "cable"
+    },
+    {
+      "sku": "16-04069",
+      "brand": "Glendinning",
+      "name": "UNDER COACH ROLLER ASSY",
+      "description_search": "UNDER COACH ROLLER ASSY",
+      "raw_codes": [
+        "1600000004069_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "16-04070",
+      "brand": "Glendinning",
+      "name": "LOW PROFILE BRACKET ASSEMBLY",
+      "description_search": "LOW PROFILE BRACKET ASSEMBLY",
+      "raw_codes": [
+        "1600000004070_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "16-04080",
+      "brand": "Glendinning",
+      "name": "KIT TAPPO BOCCHETTONE CM8",
+      "description_search": "KIT TAPPO BOCCHETTONE CM8",
+      "raw_codes": [
+        "1600000004080_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "hawse_pipe"
+    },
+    {
+      "sku": "16-04082",
+      "brand": "Glendinning",
+      "name": "KIT PROLUNGA ORIZZONTALE",
+      "description_search": "KIT PROLUNGA ORIZZONTALE",
+      "raw_codes": [
+        "1600000004082_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "16-04091",
+      "brand": "Glendinning",
+      "name": "AVVOLGICAVO CABLEMAST CM8-24V",
+      "description_search": "AVVOLGICAVO CABLEMAST CM8-24V",
+      "raw_codes": [
+        "1600000004091_001",
+        "1600000004091_002",
+        "1600000004091_003",
+        "1600000004091_004",
+        "1600000004091_005",
+        "1600000004091_006"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "power_unit"
+    },
+    {
+      "sku": "16-04093",
+      "brand": "Glendinning",
+      "name": "KIT HAWSE PIPE CM8/CM9 ALLUM.",
+      "description_search": "KIT HAWSE PIPE CM8/CM9 ALLUM.",
+      "raw_codes": [
+        "1600000004093_001",
+        "1600000004093_006"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "hawse_pipe"
+    },
+    {
+      "sku": "16-04094",
+      "brand": "Glendinning",
+      "name": "AVVOLGICAVO CM8 SENZA BOCCHETT",
+      "description_search": "AVVOLGICAVO CM8 SENZA BOCCHETT",
+      "raw_codes": [
+        "1600000004094_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "power_unit"
+    },
+    {
+      "sku": "16-04097",
+      "brand": "Glendinning",
+      "name": "AVVOLGICAVO CABLEMAST CM9 24V",
+      "description_search": "AVVOLGICAVO CABLEMAST CM9 24V",
+      "raw_codes": [
+        "1600000004097_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "power_unit"
+    },
+    {
+      "sku": "16-04099",
+      "brand": "Glendinning",
+      "name": "MOTORINO CM8 24V",
+      "description_search": "MOTORINO CM8 24V",
+      "raw_codes": [
+        "1600000004099_001",
+        "1600000004099_002",
+        "1600000004099_006"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16-04153",
+      "brand": "Glendinning",
+      "name": "FILTRO INTERFERENZE",
+      "description_search": "FILTRO INTERFERENZE",
+      "raw_codes": [
+        "1600000004153_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16-04154",
+      "brand": "Glendinning",
+      "name": "REMOTE CONTROL CRM",
+      "description_search": "REMOTE CONTROL CRM",
+      "raw_codes": [
+        "1600000004154_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16-04155",
+      "brand": "Glendinning",
+      "name": "REMOTE CONTROL 2 TRASMITT",
+      "description_search": "REMOTE CONTROL 2 TRASMITT",
+      "raw_codes": [
+        "1600000004155_001",
+        "1600000004155_002",
+        "1600000004155_005",
+        "1600000004155_006"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16-04210",
+      "brand": "Glendinning",
+      "name": "CR EXTENSION BRACKET - attach to a CRMA30",
+      "description_search": "CR EXTENSION BRACKET - ATTACH TO A CRMA30",
+      "raw_codes": [
+        "1600000004210_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "16-04800",
+      "brand": "Glendinning",
+      "name": "POWER SWITCH ASSY 6 FILI",
+      "description_search": "POWER SWITCH ASSY 6 FILI",
+      "raw_codes": [
+        "1600000004800_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16-04812",
+      "brand": "Glendinning",
+      "name": "LIMIT SWITCH",
+      "description_search": "LIMIT SWITCH",
+      "raw_codes": [
+        "1600000004812_001",
+        "1600000004812_005"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16-04824",
+      "brand": "Glendinning",
+      "name": "SWITCH ASSY 3'OUT LIMIT W",
+      "description_search": "SWITCH ASSY 3'OUT LIMIT W",
+      "raw_codes": [
+        "1600000004824_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16-04830",
+      "brand": "Glendinning",
+      "name": "OUT LIMIT SWITCH",
+      "description_search": "OUT LIMIT SWITCH",
+      "raw_codes": [
+        "1600000004830_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16-04840",
+      "brand": "Glendinning",
+      "name": "POWER SWITCH ASS. 3' W/COVER",
+      "description_search": "POWER SWITCH ASS. 3' W/COVER",
+      "raw_codes": [
+        "1600000004840_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16-04897",
+      "brand": "Glendinning",
+      "name": "CM9 Limit Switch",
+      "description_search": "CM9 LIMIT SWITCH",
+      "raw_codes": [
+        "1600000004897_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16-04898",
+      "brand": "Glendinning",
+      "name": "SWITCH ASSY",
+      "description_search": "SWITCH ASSY",
+      "raw_codes": [
+        "1600000004898_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16-04899",
+      "brand": "Glendinning",
+      "name": "CM8 IN LIMIT SWITCH",
+      "description_search": "CM8 IN LIMIT SWITCH",
+      "raw_codes": [
+        "1600000004899_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16-05010",
+      "brand": "Glendinning",
+      "name": "CABLEMASTER CM4-12V 10/3",
+      "description_search": "CABLEMASTER CM4-12V 10/3",
+      "raw_codes": [
+        "1600000005010_001",
+        "1600000005010_002",
+        "1600000005010_004"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "power_unit"
+    },
+    {
+      "sku": "16-05013",
+      "brand": "Glendinning",
+      "name": "CABLEMASTER CM4-24V 10/3",
+      "description_search": "CABLEMASTER CM4-24V 10/3",
+      "raw_codes": [
+        "1600000005013_001",
+        "1600000005013_002",
+        "1600000005013_006"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "power_unit"
+    },
+    {
+      "sku": "16-05030",
+      "brand": "Glendinning",
+      "name": "MOTORINO PER CM4 12V",
+      "description_search": "MOTORINO PER CM4 12V",
+      "raw_codes": [
+        "1600000005030_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16-05031",
+      "brand": "Glendinning",
+      "name": "MOTORINO PER CM4  24V",
+      "description_search": "MOTORINO PER CM4  24V",
+      "raw_codes": [
+        "1600000005031_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16-05032",
+      "brand": "Glendinning",
+      "name": "MOTORINO PER CM4 12V",
+      "description_search": "MOTORINO PER CM4 12V",
+      "raw_codes": [
+        "1600000005032_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16-05521",
+      "brand": "Glendinning",
+      "name": "HOSE MASTER 75F.5/8\"24VDC",
+      "description_search": "HOSE MASTER 75F.5/8\"24VDC",
+      "raw_codes": [
+        "1600000005521_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16-06022",
+      "brand": "Glendinning",
+      "name": "DRIVE ADAPTER 120 X 5/8",
+      "description_search": "DRIVE ADAPTER 120 X 5/8",
+      "raw_codes": [
+        "1600000006022_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16-11404",
+      "brand": "Glendinning",
+      "name": "CONTROL HEAD (ELECTRIC)",
+      "description_search": "CONTROL HEAD (ELECTRIC)",
+      "raw_codes": [
+        "1600000011404_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16-11700",
+      "brand": "Glendinning",
+      "name": "POWER SWITCH RELAY",
+      "description_search": "POWER SWITCH RELAY",
+      "raw_codes": [
+        "1600000011700_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16-21204",
+      "brand": "Glendinning",
+      "name": "SOLENOIDE 24V SINCRONIZZ.",
+      "description_search": "SOLENOIDE 24V SINCRONIZZ.",
+      "raw_codes": [
+        "1600000021204_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16-34048",
+      "brand": "Glendinning",
+      "name": "CAVO DRIVE SYNCHRONIZER FT4",
+      "description_search": "CAVO DRIVE SYNCHRONIZER FT4",
+      "raw_codes": [
+        "1600000034048_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "cable"
+    },
+    {
+      "sku": "16-34060",
+      "brand": "Glendinning",
+      "name": "ROTARY DRIVE CABLE, 5 FT",
+      "description_search": "ROTARY DRIVE CABLE, 5 FT",
+      "raw_codes": [
+        "1600000034060_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "cable"
+    },
+    {
+      "sku": "16-35901",
+      "brand": "Glendinning",
+      "name": "CM8 DRIVING PULLEY-37110-",
+      "description_search": "CM8 DRIVING PULLEY-37110-",
+      "raw_codes": [
+        "1600000035901_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16-42007",
+      "brand": "Glendinning",
+      "name": "TUBO 3\" FT-90 CM",
+      "description_search": "TUBO 3\" FT-90 CM",
+      "raw_codes": [
+        "1600000042007_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16-50004",
+      "brand": "Glendinning",
+      "name": "PIPE EXTENSION PLATES",
+      "description_search": "PIPE EXTENSION PLATES",
+      "raw_codes": [
+        "1600000050004_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "16-50005",
+      "brand": "Glendinning",
+      "name": "CONNECTOR LINK",
+      "description_search": "CONNECTOR LINK",
+      "raw_codes": [
+        "1600000050005_001",
+        "1600000050005_006"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "connector"
+    },
+    {
+      "sku": "16-50006",
+      "brand": "Glendinning",
+      "name": "STAFFA MONTAGGIO SUPERIORE",
+      "description_search": "STAFFA MONTAGGIO SUPERIORE",
+      "raw_codes": [
+        "1600000050006_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16-50407",
+      "brand": "Glendinning",
+      "name": "P/U CONTAINER MNTG BRAC 12\"",
+      "description_search": "P/U CONTAINER MNTG BRAC 12\"",
+      "raw_codes": [
+        "1600000050407_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "container"
+    },
+    {
+      "sku": "16-50408",
+      "brand": "Glendinning",
+      "name": "POWER UNIT TO CONT. BRACK. 17\"",
+      "description_search": "POWER UNIT TO CONT. BRACK. 17\"",
+      "raw_codes": [
+        "1600000050408_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16-50410",
+      "brand": "Glendinning",
+      "name": "PLATE",
+      "description_search": "PLATE",
+      "raw_codes": [
+        "1600000050410_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "16-50413",
+      "brand": "Glendinning",
+      "name": "PANNELLO A MURATA  CM7",
+      "description_search": "PANNELLO A MURATA  CM7",
+      "raw_codes": [
+        "1600000050413_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16-50414",
+      "brand": "Glendinning",
+      "name": "CASSA INGRANAGGI",
+      "description_search": "CASSA INGRANAGGI",
+      "raw_codes": [
+        "1600000050414_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16-50417",
+      "brand": "Glendinning",
+      "name": "PULLEY OUTSIDE HALF",
+      "description_search": "PULLEY OUTSIDE HALF",
+      "raw_codes": [
+        "1600000050417_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16-50419",
+      "brand": "Glendinning",
+      "name": "PLATE CM7 GUIDE ROL.ASY",
+      "description_search": "PLATE CM7 GUIDE ROL.ASY",
+      "raw_codes": [
+        "1600000050419_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "16-50421",
+      "brand": "Glendinning",
+      "name": "HAWSE PIPE HINGE FOR CM7",
+      "description_search": "HAWSE PIPE HINGE FOR CM7",
+      "raw_codes": [
+        "1600000050421_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "hawse_pipe"
+    },
+    {
+      "sku": "16-50423",
+      "brand": "Glendinning",
+      "name": "BRACKED COIL SPRING",
+      "description_search": "BRACKED COIL SPRING",
+      "raw_codes": [
+        "1600000050423_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16-50426",
+      "brand": "Glendinning",
+      "name": "IN LIMIT SWITCH PLATE",
+      "description_search": "IN LIMIT SWITCH PLATE",
+      "raw_codes": [
+        "1600000050426_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "16-50430",
+      "brand": "Glendinning",
+      "name": "GASKET",
+      "description_search": "GASKET",
+      "raw_codes": [
+        "1600000050430_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16-50431",
+      "brand": "Glendinning",
+      "name": "STAFFA",
+      "description_search": "STAFFA",
+      "raw_codes": [
+        "1600000050431_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16-50433",
+      "brand": "Glendinning",
+      "name": "HINGE",
+      "description_search": "HINGE",
+      "raw_codes": [
+        "1600000050433_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16-50434",
+      "brand": "Glendinning",
+      "name": "HINGE HOLDER",
+      "description_search": "HINGE HOLDER",
+      "raw_codes": [
+        "1600000050434_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16-50439",
+      "brand": "Glendinning",
+      "name": "TAPPO A VITE",
+      "description_search": "TAPPO A VITE",
+      "raw_codes": [
+        "1600000050439_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16-50459",
+      "brand": "Glendinning",
+      "name": "BRACKET",
+      "description_search": "BRACKET",
+      "raw_codes": [
+        "1600000050459_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "16-50505",
+      "brand": "Glendinning",
+      "name": "ANGLE BRACKET",
+      "description_search": "ANGLE BRACKET",
+      "raw_codes": [
+        "1600000050505_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "16-51420",
+      "brand": "Glendinning",
+      "name": "SHOULDER BOLT",
+      "description_search": "SHOULDER BOLT",
+      "raw_codes": [
+        "1600000051420_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16-51442",
+      "brand": "Glendinning",
+      "name": "BUSHING",
+      "description_search": "BUSHING",
+      "raw_codes": [
+        "1600000051442_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16-51458",
+      "brand": "Glendinning",
+      "name": "TERMINALE ALL PRESA",
+      "description_search": "TERMINALE ALL PRESA",
+      "raw_codes": [
+        "1600000051458_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16-60001",
+      "brand": "Glendinning",
+      "name": "ANELLO HAWSE PIPE",
+      "description_search": "ANELLO HAWSE PIPE",
+      "raw_codes": [
+        "1600000060001_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "hawse_pipe"
+    },
+    {
+      "sku": "16-60511",
+      "brand": "Glendinning",
+      "name": "EDGE BREAKER HOSE MASTER",
+      "description_search": "EDGE BREAKER HOSE MASTER",
+      "raw_codes": [
+        "1600000060511_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16-65001",
+      "brand": "Glendinning",
+      "name": "DISTANZIALE SPACER",
+      "description_search": "DISTANZIALE SPACER",
+      "raw_codes": [
+        "1600000065001_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16-65004",
+      "brand": "Glendinning",
+      "name": "RONDELLA",
+      "description_search": "RONDELLA",
+      "raw_codes": [
+        "1600000065004_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16-69001",
+      "brand": "Glendinning",
+      "name": "cuscinetto",
+      "description_search": "CUSCINETTO",
+      "raw_codes": [
+        "1600000069001_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16-70425",
+      "brand": "Glendinning",
+      "name": "SCREW",
+      "description_search": "SCREW",
+      "raw_codes": [
+        "1600000070425_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16-70428",
+      "brand": "Glendinning",
+      "name": "SCREW",
+      "description_search": "SCREW",
+      "raw_codes": [
+        "1600000070428_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16-70435",
+      "brand": "Glendinning",
+      "name": "SCREW",
+      "description_search": "SCREW",
+      "raw_codes": [
+        "1600000070435_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16-70449",
+      "brand": "Glendinning",
+      "name": "BOLT",
+      "description_search": "BOLT",
+      "raw_codes": [
+        "1600000070449_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16-70453",
+      "brand": "Glendinning",
+      "name": "VITE 5/16-18 X 3/4 HEX HD SS",
+      "description_search": "VITE 5/16-18 X 3/4 HEX HD SS",
+      "raw_codes": [
+        "1600000070453_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16-70454",
+      "brand": "Glendinning",
+      "name": "BOLT",
+      "description_search": "BOLT",
+      "raw_codes": [
+        "1600000070454_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16-72406",
+      "brand": "Glendinning",
+      "name": "SPACER",
+      "description_search": "SPACER",
+      "raw_codes": [
+        "1600000072406_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16-72412",
+      "brand": "Glendinning",
+      "name": "WASHER",
+      "description_search": "WASHER",
+      "raw_codes": [
+        "1600000072412_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16-73001",
+      "brand": "Glendinning",
+      "name": "LOCKWASHER",
+      "description_search": "LOCKWASHER",
+      "raw_codes": [
+        "1600000073001_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16-74002",
+      "brand": "Glendinning",
+      "name": "NUT",
+      "description_search": "NUT",
+      "raw_codes": [
+        "1600000074002_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16-81407",
+      "brand": "Glendinning",
+      "name": "TARGHETTA IN-OUT GLEND.",
+      "description_search": "TARGHETTA IN-OUT GLEND.",
+      "raw_codes": [
+        "1600000081407_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16-85412",
+      "brand": "Glendinning",
+      "name": "CON.TENS.ROLLER",
+      "description_search": "CON.TENS.ROLLER",
+      "raw_codes": [
+        "1600000085412_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "16-85414",
+      "brand": "Glendinning",
+      "name": "LIP ROLLER",
+      "description_search": "LIP ROLLER",
+      "raw_codes": [
+        "1600000085414_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "16-85420",
+      "brand": "Glendinning",
+      "name": "CONTENITORE CM7 D.51xH.46cm",
+      "description_search": "CONTENITORE CM7 D.51XH.46CM",
+      "raw_codes": [
+        "1600000085420_001",
+        "1600000085420_006"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "container"
+    },
+    {
+      "sku": "16-85421",
+      "brand": "Glendinning",
+      "name": "CONTENITORE - DIAM. 56 x 38 cm",
+      "description_search": "CONTENITORE",
+      "raw_codes": [
+        "1600000085421_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "container"
+    },
+    {
+      "sku": "16-85425",
+      "brand": "Glendinning",
+      "name": "CONTENITORE CM8 D.56xH.56cm",
+      "description_search": "CONTENITORE CM8 D.56XH.56CM",
+      "raw_codes": [
+        "1600000085425_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "container"
+    },
+    {
+      "sku": "16-85426",
+      "brand": "Glendinning",
+      "name": "PULEGGIA",
+      "description_search": "PULEGGIA",
+      "raw_codes": [
+        "1600000085426_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16-85434",
+      "brand": "Glendinning",
+      "name": "COLLAR - OUT-LIMIT",
+      "description_search": "COLLAR - OUT-LIMIT",
+      "raw_codes": [
+        "1600000085434_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16-85435",
+      "brand": "Glendinning",
+      "name": "RULLO ADATTATORE PER CM7 63A",
+      "description_search": "RULLO ADATTATORE PER CM7 63A",
+      "raw_codes": [
+        "1600000085435_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16-85442",
+      "brand": "Glendinning",
+      "name": "PULEGGIA",
+      "description_search": "PULEGGIA",
+      "raw_codes": [
+        "1600000085442_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16-85480",
+      "brand": "Glendinning",
+      "name": "CONTENITORE CM8/CM9 D.64xH88cm",
+      "description_search": "CONTENITORE CM8/CM9 D.64XH88CM",
+      "raw_codes": [
+        "1600000085480_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "container"
+    },
+    {
+      "sku": "16-86401",
+      "brand": "Glendinning",
+      "name": "GUARNIZIONE HAWSE PIPE",
+      "description_search": "GUARNIZIONE HAWSE PIPE",
+      "raw_codes": [
+        "1600000086401_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "hawse_pipe"
+    },
+    {
+      "sku": "16-86403",
+      "brand": "Glendinning",
+      "name": "GASKET FOR CM 7",
+      "description_search": "GASKET FOR CM 7",
+      "raw_codes": [
+        "1600000086403_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16-86405",
+      "brand": "Glendinning",
+      "name": "GUARNIZIONE  CM8",
+      "description_search": "GUARNIZIONE  CM8",
+      "raw_codes": [
+        "1600000086405_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16-86407",
+      "brand": "Glendinning",
+      "name": "GASKET CAP",
+      "description_search": "GASKET CAP",
+      "raw_codes": [
+        "1600000086407_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16-87404",
+      "brand": "Glendinning",
+      "name": "GEARBOX GASKET",
+      "description_search": "GEARBOX GASKET",
+      "raw_codes": [
+        "1600000087404_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16-90001",
+      "brand": "Glendinning",
+      "name": "INTER. FINE CORSA IN LIMIT SWI",
+      "description_search": "INTER. FINE CORSA IN LIMIT SWI",
+      "raw_codes": [
+        "1600000090001_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16-90002",
+      "brand": "Glendinning",
+      "name": "COPERCHIO INTER.FINECORSA",
+      "description_search": "COPERCHIO INTER.FINECORSA",
+      "raw_codes": [
+        "1600000090002_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16-90004",
+      "brand": "Glendinning",
+      "name": "COPERCHIO POWER SWITCH",
+      "description_search": "COPERCHIO POWER SWITCH",
+      "raw_codes": [
+        "1600000090004_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16-90156",
+      "brand": "Glendinning",
+      "name": "ROCKER",
+      "description_search": "ROCKER",
+      "raw_codes": [
+        "1600000090156_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16-90413",
+      "brand": "Glendinning",
+      "name": "SWITCH",
+      "description_search": "SWITCH",
+      "raw_codes": [
+        "1600000090413_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16-90510",
+      "brand": "Glendinning",
+      "name": "POWER SWITCH CM7",
+      "description_search": "POWER SWITCH CM7",
+      "raw_codes": [
+        "1600000090510_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16-92840",
+      "brand": "Glendinning",
+      "name": "CONNECTOR HOUSING",
+      "description_search": "CONNECTOR HOUSING",
+      "raw_codes": [
+        "1600000092840_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "connector"
+    },
+    {
+      "sku": "16-94006",
+      "brand": "Glendinning",
+      "name": "CAVO GIALLO 10/3  1 MT",
+      "description_search": "CAVO GIALLO 10/3  1 MT",
+      "raw_codes": [
+        "1600000094006_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "cable"
+    },
+    {
+      "sku": "16-94017",
+      "brand": "Glendinning",
+      "name": "CAVO GLEND.100A 5P GIALLO",
+      "description_search": "CAVO GLEND.100A 5P GIALLO",
+      "raw_codes": [
+        "1600000094017_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "cable"
+    },
+    {
+      "sku": "16-99408",
+      "brand": "Glendinning",
+      "name": "SPINA 50A 4P MASCH 6/4",
+      "description_search": "SPINA 50A 4P MASCH 6/4",
+      "raw_codes": [
+        "1600000099408_001",
+        "1600000099408_006"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "connector"
+    },
+    {
+      "sku": "16-99410",
+      "brand": "Glendinning",
+      "name": "CAPPUCCIO X SPINA 50A MAR GIALLO",
+      "description_search": "CAPPUCCIO X SPINA 50A MAR GIALLO",
+      "raw_codes": [
+        "1600000099410_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "connector"
+    },
+    {
+      "sku": "16-99411",
+      "brand": "Glendinning",
+      "name": "SPINA 30AMP 10/3",
+      "description_search": "SPINA 30AMP 10/3",
+      "raw_codes": [
+        "1600000099411_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "connector"
+    },
+    {
+      "sku": "16-99412",
+      "brand": "Glendinning",
+      "name": "CAPPUCCIO PER SPINA 30A",
+      "description_search": "CAPPUCCIO PER SPINA 30A",
+      "raw_codes": [
+        "1600000099412_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "connector"
+    },
+    {
+      "sku": "16-99413",
+      "brand": "Glendinning",
+      "name": "SPINA 50A 4P FEMMINA",
+      "description_search": "SPINA 50A 4P FEMMINA",
+      "raw_codes": [
+        "1600000099413_001",
+        "1600000099413_006"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "connector"
+    },
+    {
+      "sku": "16-99415",
+      "brand": "Glendinning",
+      "name": "CAPPUCCIO BIANCO 50 AMP",
+      "description_search": "CAPPUCCIO BIANCO 50 AMP",
+      "raw_codes": [
+        "1600000099415_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16-99423",
+      "brand": "Glendinning",
+      "name": "SPINA 100A 4P MASCHIO POWER",
+      "description_search": "SPINA 100A 4P MASCHIO POWER",
+      "raw_codes": [
+        "1600000099423_001",
+        "1600000099423_002"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "connector"
+    },
+    {
+      "sku": "16-99432",
+      "brand": "Glendinning",
+      "name": "PRESA 100A 5POLI",
+      "description_search": "PRESA 100A 5POLI",
+      "raw_codes": [
+        "1600000099432_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16-99437",
+      "brand": "Glendinning",
+      "name": "SPINA MOBILE 32A (EU) 2P+T MASC.",
+      "description_search": "SPINA MOBILE 32A (EU) 2P+T MASC.",
+      "raw_codes": [
+        "1600000099437_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "connector"
+    },
+    {
+      "sku": "160000000510R",
+      "brand": "Glendinning",
+      "name": "GHIERA+ O-RING",
+      "description_search": "GHIERA+ O-RING",
+      "raw_codes": [
+        "160000000510R_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "1600000099415H",
+      "brand": "Glendinning",
+      "name": "CAPPUCCIO BIANCO x SPINA 50A HUBBEL (99480H)",
+      "description_search": "CAPPUCCIO X SPINA 50A HUBBEL (99480H)",
+      "raw_codes": [
+        "1600000099415H_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "connector"
+    },
+    {
+      "sku": "16000000W0P10",
+      "brand": "Glendinning",
+      "name": "PIVOT",
+      "description_search": "PIVOT",
+      "raw_codes": [
+        "16000000W0P10_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16000000WP006",
+      "brand": "Glendinning",
+      "name": "ASSY PULLEY CM7",
+      "description_search": "ASSY PULLEY CM7",
+      "raw_codes": [
+        "16000000WP006_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16000000WP008",
+      "brand": "Glendinning",
+      "name": "BOCCOLA X FERMO CAVO CM7",
+      "description_search": "BOCCOLA X FERMO CAVO CM7",
+      "raw_codes": [
+        "16000000WP008_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "cable"
+    },
+    {
+      "sku": "16000000WP010",
+      "brand": "Glendinning",
+      "name": "PIVOT GEAR",
+      "description_search": "PIVOT GEAR",
+      "raw_codes": [
+        "16000000WP010_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16000000WP046",
+      "brand": "Glendinning",
+      "name": "PULLEY ASSEMBLY CM8",
+      "description_search": "PULLEY ASSEMBLY CM8",
+      "raw_codes": [
+        "16000000WP046_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "16000000WP052",
+      "brand": "Glendinning",
+      "name": "PIVOT GEAR",
+      "description_search": "PIVOT GEAR",
+      "raw_codes": [
+        "16000000WP052_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16000000WP053",
+      "brand": "Glendinning",
+      "name": "PIVOT GEAR",
+      "description_search": "PIVOT GEAR",
+      "raw_codes": [
+        "16000000WP053_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16000000WP054",
+      "brand": "Glendinning",
+      "name": "CM-8 OUTPUT GEAR ASSEMBLY",
+      "description_search": "CM-8 OUTPUT GEAR ASSEMBLY",
+      "raw_codes": [
+        "16000000WP054_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "16000000WP055",
+      "brand": "Glendinning",
+      "name": "CM-8 CLUSTER GEAR ASSEMBLY",
+      "description_search": "CM-8 CLUSTER GEAR ASSEMBLY",
+      "raw_codes": [
+        "16000000WP055_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "16000000WP066",
+      "brand": "Glendinning",
+      "name": "GEAR REPLACEMENT KIT WP066",
+      "description_search": "GEAR REPLACEMENT KIT WP066",
+      "raw_codes": [
+        "16000000WP066_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "16000000WP123",
+      "brand": "Glendinning",
+      "name": "Guide Roll.Assy-No Brkt/plt/cl",
+      "description_search": "GUIDE ROLL.ASSY-NO BRKT/PLT/CL",
+      "raw_codes": [
+        "16000000WP123_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16000000WP125",
+      "brand": "Glendinning",
+      "name": "CM-7 MAIN SHAFT W/GEAR BER SH",
+      "description_search": "CM-7 MAIN SHAFT W/GEAR BER SH",
+      "raw_codes": [
+        "16000000WP125_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16000004097-5",
+      "brand": "Glendinning",
+      "name": "***NON USARE*** CM9 HAWSE PIPE",
+      "description_search": "***NON USARE*** CM9 HAWSE PIPE",
+      "raw_codes": [
+        "16000004097-5_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "hawse_pipe"
+    },
+    {
+      "sku": "16000004097-6",
+      "brand": "Glendinning",
+      "name": "HAWSE PIPE CM9 ALLUMINIO",
+      "description_search": "HAWSE PIPE CM9 ALLUMINIO",
+      "raw_codes": [
+        "16000004097-6_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "hawse_pipe"
+    },
+    {
+      "sku": "160000042007B",
+      "brand": "Glendinning",
+      "name": "TUBO PROLUNGA L. 90CM",
+      "description_search": "TUBO PROLUNGA L. 90CM",
+      "raw_codes": [
+        "160000042007B_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "160000085424",
+      "brand": "Glendinning",
+      "name": "CONTENITORE 18\"X18\"",
+      "description_search": "CONTENITORE 18\"X18\"",
+      "raw_codes": [
+        "160000085424_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "container"
+    },
+    {
+      "sku": "160000090412",
+      "brand": "Glendinning",
+      "name": "W.PROOF POWERSWITCH MOMENT",
+      "description_search": "W.PROOF POWERSWITCH MOMENT",
+      "raw_codes": [
+        "160000090412_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "160000094023-W",
+      "brand": "Glendinning",
+      "name": "SHORE CABLE 6/3 5 FEET LONG",
+      "description_search": "SHORE CABLE 6/3 5 FEET LONG",
+      "raw_codes": [
+        "160000094023-W_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "cable"
+    },
+    {
+      "sku": "160000099408H",
+      "brand": "Glendinning",
+      "name": "50 AMP 125/250V SPINA HUBBEL",
+      "description_search": "HUBBELL 50 AMP 125/250V SPINA",
+      "raw_codes": [
+        "160000099408H_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "connector"
+    },
+    {
+      "sku": "160000099424C",
+      "brand": "Glendinning",
+      "name": "SPINA 100A 5P FEMMINA",
+      "description_search": "SPINA 100A 5P FEMMINA",
+      "raw_codes": [
+        "160000099424C_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "connector"
+    },
+    {
+      "sku": "160000099424P",
+      "brand": "Glendinning",
+      "name": "SPINA 100A 5P MASCHIO",
+      "description_search": "SPINA 100A 5P MASCHIO",
+      "raw_codes": [
+        "160000099424P_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "connector"
+    },
+    {
+      "sku": "1600000A42007",
+      "brand": "Glendinning",
+      "name": "TUBO PVC 3\" - 50 CM.",
+      "description_search": "TUBO PVC 3\" - 50 CM.",
+      "raw_codes": [
+        "1600000A42007_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "1600000WP090",
+      "brand": "Glendinning",
+      "name": "LOW PROFILE ROLLER ASSEMBLY",
+      "description_search": "LOW PROFILE ROLLER ASSEMBLY",
+      "raw_codes": [
+        "1600000WP090_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "1600000WP140",
+      "brand": "Glendinning",
+      "name": "GUIDA A RULLI CON SWITCH",
+      "description_search": "GUIDA A RULLI CON SWITCH",
+      "raw_codes": [
+        "1600000WP140_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16000011101-T",
+      "brand": "Glendinning",
+      "name": "STATION PROCESSOR",
+      "description_search": "STATION PROCESSOR",
+      "raw_codes": [
+        "16000011101-T_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16000019851-2",
+      "brand": "Glendinning",
+      "name": "CONTROL SWITCH",
+      "description_search": "CONTROL SWITCH",
+      "raw_codes": [
+        "16000019851-2_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "1600004154-1B",
+      "brand": "Glendinning",
+      "name": "REMOTE CONTROL ex 4154/4155",
+      "description_search": "REMOTE CONTROL EX 4154/4155",
+      "raw_codes": [
+        "1600004154-1B_001",
+        "1600004154-1B_005",
+        "1600004154-1B_006"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16000085478-4",
+      "brand": "Glendinning",
+      "name": "LIMIT COLLAR HOUSING CM9",
+      "description_search": "LIMIT COLLAR HOUSING CM9",
+      "raw_codes": [
+        "16000085478-4_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16000085478-6",
+      "brand": "Glendinning",
+      "name": "LIMIT COLLAR INSERT CM9",
+      "description_search": "LIMIT COLLAR INSERT CM9",
+      "raw_codes": [
+        "16000085478-6_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16000085498-6",
+      "brand": "Glendinning",
+      "name": "COPERCHIO CRM50",
+      "description_search": "COPERCHIO CRM50",
+      "raw_codes": [
+        "16000085498-6_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16000099423-C",
+      "brand": "Glendinning",
+      "name": "SPINA VOL. 100A 4P FEMM.",
+      "description_search": "SPINA VOL. 100A 4P FEMM.",
+      "raw_codes": [
+        "16000099423-C_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "connector"
+    },
+    {
+      "sku": "16000099439-P",
+      "brand": "Glendinning",
+      "name": "PRESA 63 A 3P",
+      "description_search": "PRESA 63 A 3P",
+      "raw_codes": [
+        "16000099439-P_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "160000KSAI002",
+      "brand": "Glendinning",
+      "name": "KIT PROLUNGA VERTIC.X CM4",
+      "description_search": "KIT PROLUNGA VERTIC.X CM4",
+      "raw_codes": [
+        "160000KSAI002_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "160000KSAI003",
+      "brand": "Glendinning",
+      "name": "KIT PROLUNGA ORIZZ. X CM4",
+      "description_search": "KIT PROLUNGA ORIZZ. X CM4",
+      "raw_codes": [
+        "160000KSAI003_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "160000SC94005",
+      "brand": "Glendinning",
+      "name": "CAVO 50A 4P - SCATOLA 20 MT",
+      "description_search": "CAVO 50A 4P - SCATOLA 20 MT",
+      "raw_codes": [
+        "160000SC94005_001",
+        "160000SC94005_006"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "cable"
+    },
+    {
+      "sku": "160000WP008-8",
+      "brand": "Glendinning",
+      "name": "OUT LIMIT COLLAR CM8",
+      "description_search": "OUT LIMIT COLLAR CM8",
+      "raw_codes": [
+        "160000WP008-8_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "1600011301-20",
+      "brand": "Glendinning",
+      "name": "ACTUATOR GEAR/THROT.24V",
+      "description_search": "ACTUATOR GEAR/THROT.24V",
+      "raw_codes": [
+        "1600011301-20_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "1600011303-10",
+      "brand": "Glendinning",
+      "name": "TROLL ACTUATOR",
+      "description_search": "TROLL ACTUATOR",
+      "raw_codes": [
+        "1600011303-10_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "1600011303-20",
+      "brand": "Glendinning",
+      "name": "TROLL ACTUATOR",
+      "description_search": "TROLL ACTUATOR",
+      "raw_codes": [
+        "1600011303-20_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "1600011500-50",
+      "brand": "Glendinning",
+      "name": "SP/EP CABLE",
+      "description_search": "SP/EP CABLE",
+      "raw_codes": [
+        "1600011500-50_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "cable"
+    },
+    {
+      "sku": "1600019559-24",
+      "brand": "Glendinning",
+      "name": "MOTOR ASSEMBLY",
+      "description_search": "MOTOR ASSEMBLY",
+      "raw_codes": [
+        "1600019559-24_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "160004022NOHP",
+      "brand": "Glendinning",
+      "name": "CM7 24V NO HAWSE PIPE",
+      "description_search": "CM7 24V NO HAWSE PIPE",
+      "raw_codes": [
+        "160004022NOHP_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "hawse_pipe"
+    },
+    {
+      "sku": "160004049-CRM",
+      "brand": "Glendinning",
+      "name": "HOSE PIPE 30 AMP CRM",
+      "description_search": "HOSE PIPE 30 AMP CRM",
+      "raw_codes": [
+        "160004049-CRM_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "160004075-18H",
+      "brand": "Glendinning",
+      "name": "COIL SPRING GUIDE 18\"ORIZ",
+      "description_search": "COIL SPRING GUIDE 18\"ORIZ",
+      "raw_codes": [
+        "160004075-18H_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "160004075-36V",
+      "brand": "Glendinning",
+      "name": "COIL SPRING GUIDE 36\"VERT",
+      "description_search": "COIL SPRING GUIDE 36\"VERT",
+      "raw_codes": [
+        "160004075-36V_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "160004079-CRM",
+      "brand": "Glendinning",
+      "name": "HOSE PIPE ASSY 50 - 63  CRM",
+      "description_search": "HOSE PIPE ASSY 50 - 63  CRM",
+      "raw_codes": [
+        "160004079-CRM_001",
+        "160004079-CRM_006"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "160004082-CM8",
+      "brand": "Glendinning",
+      "name": "KIT PROLUNGA ORIZZ.3' CM8",
+      "description_search": "KIT PROLUNGA ORIZZ.3' CM8",
+      "raw_codes": [
+        "160004082-CM8_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "160004091NOHP",
+      "brand": "Glendinning",
+      "name": "CM-8 24V NO HAWSE PIPE",
+      "description_search": "CM-8 24V NO HAWSE PIPE",
+      "raw_codes": [
+        "160004091NOHP_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "hawse_pipe"
+    },
+    {
+      "sku": "160004147-W01",
+      "brand": "Glendinning",
+      "name": "TELECOMANDO DEL REMOTE CONTROL",
+      "description_search": "TELECOMANDO DEL REMOTE CONTROL",
+      "raw_codes": [
+        "160004147-W01_001",
+        "160004147-W01_006"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "1600042007-100",
+      "brand": "Glendinning",
+      "name": "TUBO 3\" - LUNGHEZZA MT 1,00",
+      "description_search": "TUBO 3\" - LUNGHEZZA MT 1,00",
+      "raw_codes": [
+        "1600042007-100_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "1600050468-13",
+      "brand": "Glendinning",
+      "name": "ANGLE BRACKET",
+      "description_search": "ANGLE BRACKET",
+      "raw_codes": [
+        "1600050468-13_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "1600060512-PR",
+      "brand": "Glendinning",
+      "name": "SIDE BREAKER HOSE MASTER",
+      "description_search": "SIDE BREAKER HOSE MASTER",
+      "raw_codes": [
+        "1600060512-PR_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "1600094005-15",
+      "brand": "Glendinning",
+      "name": "CAVO 50A 4POLI - LUNGH 15 MT",
+      "description_search": "CAVO 50A 4POLI - LUNGH 15 MT",
+      "raw_codes": [
+        "1600094005-15_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "cable"
+    },
+    {
+      "sku": "1600099423-P-W",
+      "brand": "Glendinning",
+      "name": "SPINA 100A 3 POLI",
+      "description_search": "4 WIRE PLUG WHITE",
+      "raw_codes": [
+        "1600099423-P-W_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "connector"
+    },
+    {
+      "sku": "1600099582-DK",
+      "brand": "Glendinning",
+      "name": "SPRUZZATORE+ALLOGGIAM.CROMATO",
+      "description_search": "SPRUZZATORE+ALLOGGIAM.CROMATO",
+      "raw_codes": [
+        "1600099582-DK_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "1600099582-SN",
+      "brand": "Glendinning",
+      "name": "SPRUZZATORE+ALLOGGIAM. BIANCO",
+      "description_search": "SPRUZZATORE+ALLOGGIAM. BIANCO",
+      "raw_codes": [
+        "1600099582-SN_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "1600099593-DW",
+      "brand": "Glendinning",
+      "name": "SPRUZZATORE PER AVVOLGITUBO",
+      "description_search": "SPRUZZATORE PER AVVOLGITUBO",
+      "raw_codes": [
+        "1600099593-DW_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16000A5773/20",
+      "brand": "Glendinning",
+      "name": "CONTROL CABLE,43C",
+      "description_search": "CONTROL CABLE,43C",
+      "raw_codes": [
+        "16000A5773/20_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "cable"
+    },
+    {
+      "sku": "16000CM8CLAMP",
+      "brand": "Glendinning",
+      "name": "KIT CLAMP CM8",
+      "description_search": "KIT CLAMP CM8",
+      "raw_codes": [
+        "16000CM8CLAMP_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "16000CRM16-12",
+      "brand": "Glendinning",
+      "name": "CABLEMASTER CRM16 12V 16A",
+      "description_search": "CABLEMASTER CRM16 12V 16A",
+      "raw_codes": [
+        "16000CRM16-12_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "power_unit"
+    },
+    {
+      "sku": "16000CRM32-12",
+      "brand": "Glendinning",
+      "name": "AVVOLGICAVO CRM 32 12V",
+      "description_search": "AVVOLGICAVO CRM 32 12V",
+      "raw_codes": [
+        "16000CRM32-12_001",
+        "16000CRM32-12_006"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "power_unit"
+    },
+    {
+      "sku": "16000KITCM8AZ",
+      "brand": "Glendinning",
+      "name": "KIT AVVOGLICAVO CM8 4P 100A",
+      "description_search": "KIT AVVOGLICAVO CM8 4P 100A",
+      "raw_codes": [
+        "16000KITCM8AZ_001",
+        "16000KITCM8AZ_006"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "cable"
+    },
+    {
+      "sku": "160011200-02T",
+      "brand": "Glendinning",
+      "name": "ENGINE PROCESSOR",
+      "description_search": "ENGINE PROCESSOR",
+      "raw_codes": [
+        "160011200-02T_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16004022-4093",
+      "brand": "Glendinning",
+      "name": "AVVOLGICAVAO CM7 CON BOCCH.CM8",
+      "description_search": "AVVOLGICAVAO CM7 CON BOCCH.CM8",
+      "raw_codes": [
+        "16004022-4093_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "160042007-120",
+      "brand": "Glendinning",
+      "name": "TUBO PVC 3\" - LUNG 1,2 MT",
+      "description_search": "TUBO PVC 3\" - LUNG 1,2 MT",
+      "raw_codes": [
+        "160042007-120_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "160042007-180",
+      "brand": "Glendinning",
+      "name": "Condotto Guida 180cm Sessa Mar",
+      "description_search": "CONDOTTO GUIDA 180CM SESSA MAR",
+      "raw_codes": [
+        "160042007-180_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16004420-W-50",
+      "brand": "Glendinning",
+      "name": "CABLE AND PLUG",
+      "description_search": "CABLE AND PLUG",
+      "raw_codes": [
+        "16004420-W-50_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "cable"
+    },
+    {
+      "sku": "16004421-W-75",
+      "brand": "Glendinning",
+      "name": "Shore Power Cable Cordset Plug End - 6 AWG /3P",
+      "description_search": "SHORE POWER CABLE CORDSET PLUG END - 6 AWG /3P",
+      "raw_codes": [
+        "16004421-W-75_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "cable"
+    },
+    {
+      "sku": "16005551-16-U",
+      "brand": "Glendinning",
+      "name": "HOSEMASTER D - U MOUNT.BRACKET",
+      "description_search": "HOSEMASTER D - U MOUNT.BRACKET",
+      "raw_codes": [
+        "16005551-16-U_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "160090155-2-B",
+      "brand": "Glendinning",
+      "name": "ACTUATOR",
+      "description_search": "ACTUATOR",
+      "raw_codes": [
+        "160090155-2-B_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "160094031Y-20",
+      "brand": "Glendinning",
+      "name": "CAVO 63A 3P 3G16 GIALLO 20MT",
+      "description_search": "CAVO 63A 3P 3G16 GIALLO 20MT",
+      "raw_codes": [
+        "160094031Y-20_001",
+        "160094031Y-20_006"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "cable"
+    },
+    {
+      "sku": "160094031Y-40",
+      "brand": "Glendinning",
+      "name": "CAVO 63A 3P GIALLO - 40 MT",
+      "description_search": "CAVO 63A 3P GIALLO - 40 MT",
+      "raw_codes": [
+        "160094031Y-40_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "cable"
+    },
+    {
+      "sku": "160094031Y-60",
+      "brand": "Glendinning",
+      "name": "CAVO 63 AMP 3P GIALLO - 60 MT",
+      "description_search": "CAVO 63 AMP 3P GIALLO - 60 MT",
+      "raw_codes": [
+        "160094031Y-60_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "cable"
+    },
+    {
+      "sku": "160094031Y-80",
+      "brand": "Glendinning",
+      "name": "CAVO 63 AMP 3P GIALLO - 80 MT",
+      "description_search": "CAVO 63 AMP 3P GIALLO - 80 MT",
+      "raw_codes": [
+        "160094031Y-80_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "cable"
+    },
+    {
+      "sku": "160099423-INL",
+      "brand": "Glendinning",
+      "name": "PRESA FISSA 100A 4P MASCHIO",
+      "description_search": "PRESA FISSA 100A 4P MASCHIO",
+      "raw_codes": [
+        "160099423-INL_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "160099424-B9R",
+      "brand": "Glendinning",
+      "name": "PRESA FISSA 5P 100A MASCH",
+      "description_search": "PRESA FISSA 5P 100A MASCH",
+      "raw_codes": [
+        "160099424-B9R_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "160099424-C9R",
+      "brand": "Glendinning",
+      "name": "SPINA VOLANTE 100A 5P FEM",
+      "description_search": "SPINA VOLANTE 100A 5P FEM",
+      "raw_codes": [
+        "160099424-C9R_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "connector"
+    },
+    {
+      "sku": "160099582-REC",
+      "brand": "Glendinning",
+      "name": "SPRUZZ. CROMATO/INCASSO PLAST",
+      "description_search": "SPRUZZ. CROMATO/INCASSO PLAST",
+      "raw_codes": [
+        "160099582-REC_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "1600CRM-16-24",
+      "brand": "Glendinning",
+      "name": "AVVOLGICAVO COMPATTO 24V",
+      "description_search": "AVVOLGICAVO COMPATTO 24V",
+      "raw_codes": [
+        "1600CRM-16-24_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "power_unit"
+    },
+    {
+      "sku": "1600CRM-32-24",
+      "brand": "Glendinning",
+      "name": "CABLEMASTER  CRM32 24V",
+      "description_search": "CABLEMASTER  CRM32 24V",
+      "raw_codes": [
+        "1600CRM-32-24_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "power_unit"
+    },
+    {
+      "sku": "1600CRM50DEMO",
+      "brand": "Glendinning",
+      "name": "DIMOSTRATORE CRM50",
+      "description_search": "DIMOSTRATORE CRM50",
+      "raw_codes": [
+        "1600CRM50DEMO_006"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "1600CRMA-32-24",
+      "brand": "Glendinning",
+      "name": "CABLEMASTER  CRM32 24V",
+      "description_search": "CABLEMASTER  CRM32 24V",
+      "raw_codes": [
+        "1600CRMA-32-24_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "power_unit"
+    },
+    {
+      "sku": "1600CRMA32-12",
+      "brand": "Glendinning",
+      "name": "AVVOLGICAVO CRMA32 12V",
+      "description_search": "AVVOLGICAVO CRMA32 12V",
+      "raw_codes": [
+        "1600CRMA32-12_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "power_unit"
+    },
+    {
+      "sku": "1600CRMA32-24",
+      "brand": "Glendinning",
+      "name": "AVVOLGICAVO CRMA 32 24V",
+      "description_search": "AVVOLGICAVO CRMA 32 24V",
+      "raw_codes": [
+        "1600CRMA32-24_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "power_unit"
+    },
+    {
+      "sku": "1600KCM7212803",
+      "brand": "Glendinning",
+      "name": "KIT AVV.CM8 DOPPIO AZIMUT",
+      "description_search": "KIT AVV.CM8",
+      "raw_codes": [
+        "1600KCM7212803_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "1600KITAZ153015",
+      "brand": "Glendinning",
+      "name": "KIT FISS. ACCESSORI AVVOLGICAV",
+      "description_search": "KIT FISS. ACCESSORI AVVOLGICAV",
+      "raw_codes": [
+        "1600KITAZ153015_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "1600KITAZ201476",
+      "brand": "Glendinning",
+      "name": "AVVOLGICAVO  MD305 AZIMUT KIT",
+      "description_search": "AVVOLGICAVO  MD305 AZIMUT KIT",
+      "raw_codes": [
+        "1600KITAZ201476_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "power_unit"
+    },
+    {
+      "sku": "1600KITRIGIDAZS7",
+      "brand": "Glendinning",
+      "name": "KIT FISSAGGIO RIGIDO AZ S7",
+      "description_search": "KIT FISSAGGIO RIGIDO AZ S7",
+      "raw_codes": [
+        "1600KITRIGIDAZS7_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "1600SC94017-24",
+      "brand": "Glendinning",
+      "name": "CAVO GLEND.100A 5P G",
+      "description_search": "CAVO GLEND.100A 5P G",
+      "raw_codes": [
+        "1600SC94017-24_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "cable"
+    },
+    {
+      "sku": "1600SC94017_20",
+      "brand": "Glendinning",
+      "name": "CAVO GLEND.100A 5P GIALLO",
+      "description_search": "CAVO GLEND.100A 5P GIALLO",
+      "raw_codes": [
+        "1600SC94017_20_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "cable"
+    },
+    {
+      "sku": "1600WP123-CM9",
+      "brand": "Glendinning",
+      "name": "GUIDE ROLLER ASSEMBLY",
+      "description_search": "GUIDE ROLLER ASSEMBLY",
+      "raw_codes": [
+        "1600WP123-CM9_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "16019845-1-RK",
+      "brand": "Glendinning",
+      "name": "50AMP 24V MOTOR REPLACEMENT",
+      "description_search": "50AMP 24V MOTOR REPLACEMENT",
+      "raw_codes": [
+        "16019845-1-RK_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "1604075-30-18",
+      "brand": "Glendinning",
+      "name": "GUIDA A RULLI 30AMP 18''",
+      "description_search": "GUIDA A RULLI 30AMP 18''",
+      "raw_codes": [
+        "1604075-30-18_001",
+        "1604075-30-18_002",
+        "1604075-30-18_006"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "1604075-30-36",
+      "brand": "Glendinning",
+      "name": "GUIDA A RULLI 30A 36'",
+      "description_search": "GUIDA A RULLI 30A 36'",
+      "raw_codes": [
+        "1604075-30-36_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "1604075-30-66",
+      "brand": "Glendinning",
+      "name": "GUIDA A RULLI 30A LUNGH.66'",
+      "description_search": "GUIDA A RULLI 30A LUNGH.66'",
+      "raw_codes": [
+        "1604075-30-66_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "1604075-50-18",
+      "brand": "Glendinning",
+      "name": "GUIDA A RULLI 50AMP LUNGH 18'",
+      "description_search": "GUIDA A RULLI 50AMP LUNGH 18'",
+      "raw_codes": [
+        "1604075-50-18_001",
+        "1604075-50-18_006"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "1604075-50-24",
+      "brand": "Glendinning",
+      "name": "GUIDA RULLI 24\" 50 AMP",
+      "description_search": "GUIDA RULLI 24\" 50 AMP",
+      "raw_codes": [
+        "1604075-50-24_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "1604075-50-36",
+      "brand": "Glendinning",
+      "name": "GUIDA A RULLI 50AMP 36'",
+      "description_search": "GUIDA A RULLI 50AMP 36'",
+      "raw_codes": [
+        "1604075-50-36_001",
+        "1604075-50-36_006"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "1604075-50-60",
+      "brand": "Glendinning",
+      "name": "GUIDA A RULLI 50A 60\"",
+      "description_search": "GUIDA A RULLI 50A 60\"",
+      "raw_codes": [
+        "1604075-50-60_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "1604075-50-66",
+      "brand": "Glendinning",
+      "name": "GUIDA RULLI 66' (165cm)",
+      "description_search": "GUIDA RULLI 66' (165CM)",
+      "raw_codes": [
+        "1604075-50-66_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "1604097-21-24",
+      "brand": "Glendinning",
+      "name": "AVV.CAVO CM9 SENZA BOCCHETTONE",
+      "description_search": "AVV.CAVO CM9 SENZA BOCCHETTONE",
+      "raw_codes": [
+        "1604097-21-24_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "hawse_pipe"
+    },
+    {
+      "sku": "1604097-25-24",
+      "brand": "Glendinning",
+      "name": "AVVOLGICAVO CM9 CON BOCC.ALLUM",
+      "description_search": "AVVOLGICAVO CM9 CON BOCC.ALLUM",
+      "raw_codes": [
+        "1604097-25-24_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "power_unit"
+    },
+    {
+      "sku": "1604147-W-315",
+      "brand": "Glendinning",
+      "name": "TELECOMANDO",
+      "description_search": "TELECOMANDO",
+      "raw_codes": [
+        "1604147-W-315_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "1604147-W-433",
+      "brand": "Glendinning",
+      "name": "TELECOMANDO DEL REMOTE CONTROL",
+      "description_search": "TELECOMANDO DEL REMOTE CONTROL",
+      "raw_codes": [
+        "1604147-W-433_001",
+        "1604147-W-433_005",
+        "1604147-W-433_006"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "1605510-12-35",
+      "brand": "Glendinning",
+      "name": "HOSEMASTER M DEMO UNIT",
+      "description_search": "HOSEMASTER M DEMO UNIT",
+      "raw_codes": [
+        "1605510-12-35_006"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "1605510-24-35",
+      "brand": "Glendinning",
+      "name": "HOSEMASTER-M 24V 35' TUBO",
+      "description_search": "HOSEMASTER-M 24V 35' TUBO",
+      "raw_codes": [
+        "1605510-24-35_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "1605510-24-50",
+      "brand": "Glendinning",
+      "name": "HOSEMASTER 1/2\" 24V 50'",
+      "description_search": "HOSEMASTER 1/2\" 24V 50'",
+      "raw_codes": [
+        "1605510-24-50_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "1605520-24-75",
+      "brand": "Glendinning",
+      "name": "HOSEMASTER 5/8\" 24V 75' LW",
+      "description_search": "HOSEMASTER 5/8\" 24V 75' LW",
+      "raw_codes": [
+        "1605520-24-75_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "1605550-08-SE",
+      "brand": "Glendinning",
+      "name": "HOSEMASTER-S tubo 2,4m x9mm ID",
+      "description_search": "HOSEMASTER-S TUBO 2,4M X9MM ID",
+      "raw_codes": [
+        "1605550-08-SE_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "1605550-16-SE",
+      "brand": "Glendinning",
+      "name": "HOSEMASTER-S tubo 4.8m x9mm ID",
+      "description_search": "HOSEMASTER-S TUBO 4.8M X9MM ID",
+      "raw_codes": [
+        "1605550-16-SE_001",
+        "1605550-16-SE_002",
+        "1605550-16-SE_006"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "1605550-20-SE",
+      "brand": "Glendinning",
+      "name": "HOSEMASTER-S TUBO 6M X 9MM ID",
+      "description_search": "HOSEMASTER-S TUBO 6M X 9MM ID",
+      "raw_codes": [
+        "1605550-20-SE_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "1605551-16-SE",
+      "brand": "Glendinning",
+      "name": "HOSEMASTER-D CON TUBO DA 4,90M",
+      "description_search": "HOSEMASTER-D CON TUBO DA 4,90M",
+      "raw_codes": [
+        "1605551-16-SE_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "1605551-20-SE",
+      "brand": "Glendinning",
+      "name": "HOSEMASTER CON TUBO DA 6 MT",
+      "description_search": "HOSEMASTER CON TUBO DA 6 MT",
+      "raw_codes": [
+        "1605551-20-SE_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16085518/5040",
+      "brand": "Glendinning",
+      "name": "CONTENITORE CM4 + STAFFA",
+      "description_search": "CONTENITORE CM4 + STAFFA",
+      "raw_codes": [
+        "16085518/5040_001",
+        "16085518/5040_002"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "container"
+    },
+    {
+      "sku": "16094013-20MT",
+      "brand": "Glendinning",
+      "name": "CAVO 63A 3P GIALLO 33,5MM2",
+      "description_search": "CAVO 63A 3P GIALLO 33,5MM2",
+      "raw_codes": [
+        "16094013-20MT_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "cable"
+    },
+    {
+      "sku": "16094014-W-20",
+      "brand": "Glendinning",
+      "name": "CAVO 100A 4P 2/4 BIANCO L.20MT",
+      "description_search": "CAVO 100A 4P 2/4 BIANCO L.20MT",
+      "raw_codes": [
+        "16094014-W-20_001",
+        "16094014-W-20_005",
+        "16094014-W-20_006"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "cable"
+    },
+    {
+      "sku": "16094014-W-25",
+      "brand": "Glendinning",
+      "name": "CAVO 100A 4P 2/4 BIANCO L.25MT",
+      "description_search": "CAVO 100A 4P 2/4 BIANCO L.25MT",
+      "raw_codes": [
+        "16094014-W-25_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "cable"
+    },
+    {
+      "sku": "16094014-W-30",
+      "brand": "Glendinning",
+      "name": "CAVO 100A 4P 2/4 BIANCO L.30MT",
+      "description_search": "CAVO 100A 4P 2/4 BIANCO L.30MT",
+      "raw_codes": [
+        "16094014-W-30_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "cable"
+    },
+    {
+      "sku": "16094014-W-35",
+      "brand": "Glendinning",
+      "name": "CAVO 100A 3 POLI + NEUTRO",
+      "description_search": "CAVO 100A 3 POLI + NEUTRO",
+      "raw_codes": [
+        "16094014-W-35_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "cable"
+    },
+    {
+      "sku": "16094014-W-45",
+      "brand": "Glendinning",
+      "name": "CAVO 100A 4P 2/4 BIA",
+      "description_search": "45 METRI",
+      "raw_codes": [
+        "16094014-W-45_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "cable"
+    },
+    {
+      "sku": "16094017-Y-40",
+      "brand": "Glendinning",
+      "name": "CAVO 100A 5P GIALLO SC. 40 MT",
+      "description_search": "CAVO 100A 5P GIALLO SC. 40 MT",
+      "raw_codes": [
+        "16094017-Y-40_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "cable"
+    },
+    {
+      "sku": "160AZINTRG12326",
+      "brand": "Glendinning",
+      "name": "INTEGRAZIONE MATERIALE KIT MD305",
+      "description_search": "INTEGRAZIONE MATERIALE KIT MD305",
+      "raw_codes": [
+        "160AZINTRG12326_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "160CM7KITCOILG",
+      "brand": "Glendinning",
+      "name": "KIT COIL GUIDE + CM7 (AZ68S)",
+      "description_search": "KIT COIL GUIDE + CM7 (AZ68S)",
+      "raw_codes": [
+        "160CM7KITCOILG_001",
+        "160CM7KITCOILG_006"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "160KCM7SIMPLE",
+      "brand": "Glendinning",
+      "name": "KIT AVVOLGICAVO CM7 -NO COIL G",
+      "description_search": "KIT AVVOLGICAVO CM7 -NO COIL G",
+      "raw_codes": [
+        "160KCM7SIMPLE_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "power_unit"
+    },
+    {
+      "sku": "160KIT4022MCY",
+      "brand": "Glendinning",
+      "name": "KIT AVVOLGICAVO 63A EUROPA",
+      "description_search": "KIT AVVOLGICAVO 63A EUROPA",
+      "raw_codes": [
+        "160KIT4022MCY_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "power_unit"
+    },
+    {
+      "sku": "160KITAZ169138",
+      "brand": "Glendinning",
+      "name": "KIT ESTENSIONE VERT. PER AVV.",
+      "description_search": "KIT ESTENSIONE VERT. PER AVV.",
+      "raw_codes": [
+        "160KITAZ169138_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "160KITAZ189259",
+      "brand": "Glendinning",
+      "name": "KIT AVVOLG. CM7 _ AZ_ 189259",
+      "description_search": "KIT AVVOLG. CM7 _ AZ_ 189259",
+      "raw_codes": [
+        "160KITAZ189259_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "160KITAZ217072",
+      "brand": "Glendinning",
+      "name": "KIT AVVOL.  CM7 AZ 4P 50A",
+      "description_search": "KIT AVVOL.  CM7 AZ 4P 50A - 217072",
+      "raw_codes": [
+        "160KITAZ217072_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "160KITAZ217074",
+      "brand": "Glendinning",
+      "name": "KIT AVV.CM7 BIANCO/COIL LUNGO MD299",
+      "description_search": "KIT AVV.CM7 BIANCO/COIL LUNGO MD299",
+      "raw_codes": [
+        "160KITAZ217074_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "160KITAZ217075",
+      "brand": "Glendinning",
+      "name": "KIT AVV- CM7 DM305",
+      "description_search": "KIT AVV- CM7 DM305",
+      "raw_codes": [
+        "160KITAZ217075_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "160KITAZ217586",
+      "brand": "Glendinning",
+      "name": "KIT AZ CM7 SENZA COIL MD315",
+      "description_search": "KIT AZ CM7 SENZA COIL MD315",
+      "raw_codes": [
+        "160KITAZ217586_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "160KITAZCM87089",
+      "brand": "Glendinning",
+      "name": "KIT  AZIMUT  PER CM8 63A EU",
+      "description_search": "KIT  AZIMUT  PER CM8 63A EU",
+      "raw_codes": [
+        "160KITAZCM87089_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "160KITAZCM877088",
+      "brand": "Glendinning",
+      "name": "KIT AZIMUT AVV. CM8 4P 100A US",
+      "description_search": "KIT AZIMUT AVV. CM8 4P 100A US",
+      "raw_codes": [
+        "160KITAZCM877088_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "160KITAZNEWMAGE",
+      "brand": "Glendinning",
+      "name": "KIT NEW AVV.CAVO25MT -171841",
+      "description_search": "KIT NEW AVV.CAVO25MT -171841",
+      "raw_codes": [
+        "160KITAZNEWMAGE_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "cable"
+    },
+    {
+      "sku": "160KITCM7-63A",
+      "brand": "Glendinning",
+      "name": "KIT AVVOLGICAVO CM7 63 APM",
+      "description_search": "KIT AVVOLGICAVO CM7 63 APM",
+      "raw_codes": [
+        "160KITCM7-63A_001",
+        "160KITCM7-63A_006"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "power_unit"
+    },
+    {
+      "sku": "160KITFISAZS7",
+      "brand": "Glendinning",
+      "name": "KIT NEW FISSAGGIO AVVOLG. BANC",
+      "description_search": "KIT NEW FISSAGGIO AVVOLG. BANC",
+      "raw_codes": [
+        "160KITFISAZS7_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "160KITFISSCM7",
+      "brand": "Glendinning",
+      "name": "KIT FISSAGGIO CM7 AZIMUT",
+      "description_search": "KIT FISSAGGIO CM7 AZIMUT",
+      "raw_codes": [
+        "160KITFISSCM7_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "160SC94004-120",
+      "brand": "Glendinning",
+      "name": "CAVO 50A 3P GIALLO LUNGH 120MT",
+      "description_search": "CAVO 50A 3P GIALLO LUNGH 120MT",
+      "raw_codes": [
+        "160SC94004-120_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "cable"
+    },
+    {
+      "sku": "160SC94004-15",
+      "brand": "Glendinning",
+      "name": "CAVO 50A 3P GIALLO SCAT 15MT",
+      "description_search": "CAVO 50A 3P GIALLO SCAT 15MT",
+      "raw_codes": [
+        "160SC94004-15_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "cable"
+    },
+    {
+      "sku": "160SC94004-20",
+      "brand": "Glendinning",
+      "name": "CAVO 50A 3P SCATOLA 20 MT",
+      "description_search": "CAVO 50A 3P SCATOLA 20 MT",
+      "raw_codes": [
+        "160SC94004-20_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "cable"
+    },
+    {
+      "sku": "160SC94004-25",
+      "brand": "Glendinning",
+      "name": "CAVO 50A 3P GIALLO SCAT.25MT",
+      "description_search": "CAVO 50A 3P GIALLO SCAT.25MT",
+      "raw_codes": [
+        "160SC94004-25_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "cable"
+    },
+    {
+      "sku": "160SC94004-60",
+      "brand": "Glendinning",
+      "name": "CAVO 50A 3P GIALLO LUNGH. 60MT",
+      "description_search": "CAVO 50A 3P GIALLO LUNGH. 60MT",
+      "raw_codes": [
+        "160SC94004-60_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "cable"
+    },
+    {
+      "sku": "160SC94004_30",
+      "brand": "Glendinning",
+      "name": "CAVO 50A 3P GIALLO LUNGH. 30 MT",
+      "description_search": "CAVO 50A 3P GIALLO LUNGH. 30 MT",
+      "raw_codes": [
+        "160SC94004_30_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "cable"
+    },
+    {
+      "sku": "160SC94005-30",
+      "brand": "Glendinning",
+      "name": "CAVO 50A 4P GIALLO DA 30MT",
+      "description_search": "CAVO 50A 4P GIALLO DA 30MT",
+      "raw_codes": [
+        "160SC94005-30_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "cable"
+    },
+    {
+      "sku": "160SC94005-60",
+      "brand": "Glendinning",
+      "name": "CAVO 50A 4P GIALLO DA 60MT",
+      "description_search": "CAVO 50A 4P GIALLO DA 60MT",
+      "raw_codes": [
+        "160SC94005-60_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "cable"
+    },
+    {
+      "sku": "160SC94007-20",
+      "brand": "Glendinning",
+      "name": "CAVO 50A 4 POLI SC. 20 MT B",
+      "description_search": "CAVO 50A 4 POLI SC. 20 MT B",
+      "raw_codes": [
+        "160SC94007-20_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "cable"
+    },
+    {
+      "sku": "160SC94008-25",
+      "brand": "Glendinning",
+      "name": "CAVO 30 50A BIANCO CM7",
+      "description_search": "CAVO 30 50A BIANCO CM7",
+      "raw_codes": [
+        "160SC94008-25_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "cable"
+    },
+    {
+      "sku": "1611200-02TCP",
+      "brand": "Glendinning",
+      "name": "KIT COMANDO ELET.24V+CAVI",
+      "description_search": "KIT COMANDO ELET.24V+CAVI",
+      "raw_codes": [
+        "1611200-02TCP_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "1619851-24-10",
+      "brand": "Glendinning",
+      "name": "RELE' X CRM",
+      "description_search": "RELE' X CRM",
+      "raw_codes": [
+        "1619851-24-10_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "164075-30-18V",
+      "brand": "Glendinning",
+      "name": "GUIDA A RULLI 30AMP 18' VERT.",
+      "description_search": "GUIDA A RULLI 30AMP 18' VERT.",
+      "raw_codes": [
+        "164075-30-18V_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "164075-30-66V",
+      "brand": "Glendinning",
+      "name": "GUIDA A RULLI 30AMP 66' VERT.",
+      "description_search": "GUIDA A RULLI 30AMP 66' VERT.",
+      "raw_codes": [
+        "164075-30-66V_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "164075-50-18H",
+      "brand": "Glendinning",
+      "name": "GUIDA A RULLI 50AMP 18' ORIZZ.",
+      "description_search": "GUIDA A RULLI 50AMP 18' ORIZZ.",
+      "raw_codes": [
+        "164075-50-18H_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "164075-50-36H",
+      "brand": "Glendinning",
+      "name": "GUIDA A RULLI 50AMP 36' ORIZZ.",
+      "description_search": "GUIDA A RULLI 50AMP 36' ORIZZ.",
+      "raw_codes": [
+        "164075-50-36H_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "164075-50-36V",
+      "brand": "Glendinning",
+      "name": "GUIDA A RULLI 50AMP 36'' VERT.",
+      "description_search": "GUIDA A RULLI 50AMP 36'' VERT.",
+      "raw_codes": [
+        "164075-50-36V_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "164097-GRA-CM9",
+      "brand": "Glendinning",
+      "name": "GUIDE ROLLER ASSY CM9",
+      "description_search": "GUIDE ROLLER ASSY CM9",
+      "raw_codes": [
+        "164097-GRA-CM9_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "165513-12-355A",
+      "brand": "Glendinning",
+      "name": "HOSEMASER M PLUS 12V",
+      "description_search": "HOSEMASER M PLUS 12V",
+      "raw_codes": [
+        "165513-12-355A_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "165520-24-100",
+      "brand": "Glendinning",
+      "name": "HOSEMASTER-LW 24V 30m tubo 1/2",
+      "description_search": "HOSEMASTER-LW 24V 30M TUBO 1/2",
+      "raw_codes": [
+        "165520-24-100_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "1699582-RECSS",
+      "brand": "Glendinning",
+      "name": "Spruzz. cromato/incasso crom",
+      "description_search": "SPRUZZ. CROMATO/INCASSO CROM",
+      "raw_codes": [
+        "1699582-RECSS_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16AKITMAGEL25",
+      "brand": "Glendinning",
+      "name": "KIT AVVOLGICAVO CM8 4P 100A",
+      "description_search": "KIT AVVOLGICAVO CM8 4P 100A",
+      "raw_codes": [
+        "16AKITMAGEL25_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "power_unit"
+    },
+    {
+      "sku": "16AZ000213269",
+      "brand": "Glendinning",
+      "name": "INTEGRAZIONE KIT CM8",
+      "description_search": "MD285 STAFFE E RULLI",
+      "raw_codes": [
+        "16AZ000213269_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "16AZ00212369",
+      "brand": "Glendinning",
+      "name": "KIT UNTEGRAZIONE GLEND.STEFFE CM8",
+      "description_search": "KIT UNTEGRAZIONE GLEND.STEFFE CM8",
+      "raw_codes": [
+        "16AZ00212369_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "16AZCM8158464",
+      "brand": "Glendinning",
+      "name": "KIT CM8 AZIMUT 158464",
+      "description_search": "KIT CM8 AZIMUT 158464",
+      "raw_codes": [
+        "16AZCM8158464_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "16AZKIT154884",
+      "brand": "Glendinning",
+      "name": "KIT FISSAGGIO BANCHINA GL",
+      "description_search": "KIT FISSAGGIO BANCHINA GL",
+      "raw_codes": [
+        "16AZKIT154884_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "16AZKIT183169",
+      "brand": "Glendinning",
+      "name": "KIT GLEND. CM8 AZ 63A EU NEW",
+      "description_search": "KIT GLEND. CM8 AZ 63A EU NEW",
+      "raw_codes": [
+        "16AZKIT183169_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "16CM7-KITBIANCO",
+      "brand": "Glendinning",
+      "name": "AVVOLGICAVO CM7 - CAVO BIANCO",
+      "description_search": "AVVOLGICAVO CM7 - CAVO BIANCO",
+      "raw_codes": [
+        "16CM7-KITBIANCO_001",
+        "16CM7-KITBIANCO_006"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "power_unit"
+    },
+    {
+      "sku": "16CM7-KITPROL",
+      "brand": "Glendinning",
+      "name": "KIT PROLUNGA+CM7 STANDARD",
+      "description_search": "KIT PROLUNGA+CM7 STANDARD",
+      "raw_codes": [
+        "16CM7-KITPROL_001",
+        "16CM7-KITPROL_003",
+        "16CM7-KITPROL_006"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "16CM7COILBIANCO",
+      "brand": "Glendinning",
+      "name": "KIT AVVOLGICAVO COILG BIANCO",
+      "description_search": "KIT AVVOLGICAVO COILG BIANCO",
+      "raw_codes": [
+        "16CM7COILBIANCO_001",
+        "16CM7COILBIANCO_006"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "power_unit"
+    },
+    {
+      "sku": "16CM7KITPROL2",
+      "brand": "Glendinning",
+      "name": "KIT PROLUNGA+CM7 XAZ68S",
+      "description_search": "KIT PROLUNGA+CM7 XAZ68S",
+      "raw_codes": [
+        "16CM7KITPROL2_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "16CM7MAGELLANO",
+      "brand": "Glendinning",
+      "name": "KIT CM7 CAVO GIALLO 3G16  63A",
+      "description_search": "KIT CM7 CAVO GIALLO 3G16  63A",
+      "raw_codes": [
+        "16CM7MAGELLANO_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "cable"
+    },
+    {
+      "sku": "16CM8AZ210749",
+      "brand": "Glendinning",
+      "name": "KIT AVVOLGICAVO CM8 RIF 210749",
+      "description_search": "KIT AVVOLGICAVO CM8 RIF 210749",
+      "raw_codes": [
+        "16CM8AZ210749_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "power_unit"
+    },
+    {
+      "sku": "16CONTROLHEAD",
+      "brand": "Glendinning",
+      "name": "CONTROL HEAD ( ELECTRIC )",
+      "description_search": "CONTROL HEAD ( ELECTRIC )",
+      "raw_codes": [
+        "16CONTROLHEAD_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16CRM-63-24-43Y",
+      "brand": "Glendinning",
+      "name": "CRM 63A 24V",
+      "description_search": "CRM 63A 24V",
+      "raw_codes": [
+        "16CRM-63-24-43Y_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16CRM32-24-15",
+      "brand": "Glendinning",
+      "name": "AVVOLGICAVO CRM 32 24V 15MT",
+      "description_search": "AVVOLGICAVO CRM 32 24V 15MT",
+      "raw_codes": [
+        "16CRM32-24-15_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "power_unit"
+    },
+    {
+      "sku": "16CRM50-1264W",
+      "brand": "Glendinning",
+      "name": "AVVOLGICAVO CRM50 12V",
+      "description_search": "AVVOLGICAVO CRM50 12V",
+      "raw_codes": [
+        "16CRM50-1264W_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "power_unit"
+    },
+    {
+      "sku": "16CRM50-24-63",
+      "brand": "Glendinning",
+      "name": "CRM50 24VDC 50A 125/250 6/3W",
+      "description_search": "CRM50 24VDC 50A 125/250 6/3W",
+      "raw_codes": [
+        "16CRM50-24-63_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16CRM50-24-63IW",
+      "brand": "Glendinning",
+      "name": "CRM 50 24VDC 50A 125/250 6/3 W",
+      "description_search": "CRM 50 24VDC 50A 125/250 6/3 W",
+      "raw_codes": [
+        "16CRM50-24-63IW_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16CRM50-24-64",
+      "brand": "Glendinning",
+      "name": "AVVOLGICAVO CRM50  24 VOLT",
+      "description_search": "AVVOLGICAVO CRM50  24 VOLT",
+      "raw_codes": [
+        "16CRM50-24-64_006"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "power_unit"
+    },
+    {
+      "sku": "16CRM50-24-64W",
+      "brand": "Glendinning",
+      "name": "AVVOLGICAVO CRM 50 24V 50A 4P",
+      "description_search": "AVVOLGICAVO CRM 50 24V 50A 4P",
+      "raw_codes": [
+        "16CRM50-24-64W_001",
+        "16CRM50-24-64W_006"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "power_unit"
+    },
+    {
+      "sku": "16CRMA50 12-63W",
+      "brand": "Glendinning",
+      "name": "AVVOLGICAVO CRMA 50A 12V",
+      "description_search": "AVVOLGICAVO CRMA 50A 12V",
+      "raw_codes": [
+        "16CRMA50 12-63W_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "power_unit"
+    },
+    {
+      "sku": "16CRMA50-24-63W",
+      "brand": "Glendinning",
+      "name": "AVVOLGICAVO CRM 50A 24V 3 POLI",
+      "description_search": "AVVOLGICAVO CRM 50A 24V 3 POLI",
+      "raw_codes": [
+        "16CRMA50-24-63W_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "power_unit"
+    },
+    {
+      "sku": "16CRMA50-24-64B",
+      "brand": "Glendinning",
+      "name": "AVVOLGICAVO CRMA50-24-64 CAVO NERO",
+      "description_search": "AVVOLGICAVO CRMA50-24-64 CAVO NERO",
+      "raw_codes": [
+        "16CRMA50-24-64B_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "power_unit"
+    },
+    {
+      "sku": "16CRMA50-24-64W",
+      "brand": "Glendinning",
+      "name": "AVVOLGICAVO CRM50 24V 64W",
+      "description_search": "AVVOLGICAVO CRM50 24V 64W",
+      "raw_codes": [
+        "16CRMA50-24-64W",
+        "16CRMA50-24-64W_001",
+        "16CRMA50-24-64W_006"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "power_unit"
+    },
+    {
+      "sku": "16CRMA50-24-64Y",
+      "brand": "Glendinning",
+      "name": "AVVOLGICAVO CRMA50 24V",
+      "description_search": "AVVOLGICAVO CRMA50 24V",
+      "raw_codes": [
+        "16CRMA50-24-64Y_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "power_unit"
+    },
+    {
+      "sku": "16CRMA63-12-43Y",
+      "brand": "Glendinning",
+      "name": "AVVOLGICAVO CRMA 63A EU",
+      "description_search": "AVVOLGICAVO CRMA 63A EU",
+      "raw_codes": [
+        "16CRMA63-12-43Y_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "power_unit"
+    },
+    {
+      "sku": "16CRMA63-24-43Y",
+      "brand": "Glendinning",
+      "name": "AVVOLGICAVO CRM63 24V 43Y",
+      "description_search": "AVVOLGICAVO CRM63 24V 43Y",
+      "raw_codes": [
+        "16CRMA63-24-43Y_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "power_unit"
+    },
+    {
+      "sku": "16KCM8AZ183170",
+      "brand": "Glendinning",
+      "name": "KIT AVVOLGICAVO CM8 RIF 183170",
+      "description_search": "KIT AVVOLGICAVO CM8 RIF 183170",
+      "raw_codes": [
+        "16KCM8AZ183170_001",
+        "16KCM8AZ183170_006"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "power_unit"
+    },
+    {
+      "sku": "16KIT63CM8177089",
+      "brand": "Glendinning",
+      "name": "KIT AVV.CM8  AZ. 63A EU",
+      "description_search": "KIT AVV.CM8  AZ. 63A EU",
+      "raw_codes": [
+        "16KIT63CM8177089_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "16KITAZ02118150",
+      "brand": "Glendinning",
+      "name": "KIT CM7 AZIMUT / MD305",
+      "description_search": "KIT CM7 AZIMUT / MD305",
+      "raw_codes": [
+        "16KITAZ02118150_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "16KITAZ180901",
+      "brand": "Glendinning",
+      "name": "KIT GLENDINNING AZ SX36M",
+      "description_search": "KIT GLENDINNING AZ SX36M",
+      "raw_codes": [
+        "16KITAZ180901_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "16KITAZ212805",
+      "brand": "Glendinning",
+      "name": "KIT CM8 DOPPIO 100A MONO 60 HZ",
+      "description_search": "KIT CM8 DOPPIO 100A MONO 60 HZ",
+      "raw_codes": [
+        "16KITAZ212805_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "16KITAZ212806",
+      "brand": "Glendinning",
+      "name": "KIT CM8 DOPPIO 100 TRIFASE 60 HZ",
+      "description_search": "KIT CM8 DOPPIO 100 TRIFASE 60 HZ",
+      "raw_codes": [
+        "16KITAZ212806_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "16KITAZ215466",
+      "brand": "Glendinning",
+      "name": "KIT AVV.CM8 LOW PROFILE",
+      "description_search": "KIT AVV.CM8 LOW PROFILE",
+      "raw_codes": [
+        "16KITAZ215466_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "16KITAZ217071",
+      "brand": "Glendinning",
+      "name": "KIT AVVOLGICAVO CM7 AZ",
+      "description_search": "KIT AVVOLGICAVO CM7 AZ",
+      "raw_codes": [
+        "16KITAZ217071_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "power_unit"
+    },
+    {
+      "sku": "16KITAZCM848654",
+      "brand": "Glendinning",
+      "name": "KIT AVVOLGICAVO CM8 =25MT",
+      "description_search": "KIT AVVOLGICAVO CM8 =25MT",
+      "raw_codes": [
+        "16KITAZCM848654_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "power_unit"
+    },
+    {
+      "sku": "16KITAZCM948653",
+      "brand": "Glendinning",
+      "name": "KIT AVV. CM9 COMPL.CAVO 177 30MT",
+      "description_search": "KIT AVV. CM9 COMPL.CAVO 177 30MT",
+      "raw_codes": [
+        "16KITAZCM948653_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "cable"
+    },
+    {
+      "sku": "16KITAZGL192521",
+      "brand": "Glendinning",
+      "name": "KIT AVVOLGICAVO AZ MD305",
+      "description_search": "KIT AVVOLGICAVO AZ MD305",
+      "raw_codes": [
+        "16KITAZGL192521_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "power_unit"
+    },
+    {
+      "sku": "16KITCM4SESSA97A",
+      "brand": "Glendinning",
+      "name": "KIT CM4 SESSA INT",
+      "description_search": "KIT CM4 SESSA INT",
+      "raw_codes": [
+        "16KITCM4SESSA97A_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "16KITCM7147551",
+      "brand": "Glendinning",
+      "name": "AVVOLG. CM7 KIT 147551",
+      "description_search": "AVVOLG. CM7 KIT 147551",
+      "raw_codes": [
+        "16KITCM7147551_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "16KITCM7155928",
+      "brand": "Glendinning",
+      "name": "KIT ACCESSORI CM7. REF 155928",
+      "description_search": "KIT ACCESSORI CM7. REF 155928",
+      "raw_codes": [
+        "16KITCM7155928_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "16KITCM7156066",
+      "brand": "Glendinning",
+      "name": "KIT BANCH. AVV. B.SENZA COIL",
+      "description_search": "KIT BANCH. AVV. B.SENZA COIL",
+      "raw_codes": [
+        "16KITCM7156066_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "16KITCM7156067",
+      "brand": "Glendinning",
+      "name": "KIT AVVOLG. CM7 REF 156067",
+      "description_search": "KIT AVVOLG. CM7 REF 156067",
+      "raw_codes": [
+        "16KITCM7156067_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "16KITCM7191066",
+      "brand": "Glendinning",
+      "name": "KIT AVVOLGICAVO AZ CAVO B. 4P50A",
+      "description_search": "KIT AVVOLGICAVO AZ CAVO B. 4P50A",
+      "raw_codes": [
+        "16KITCM7191066_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "power_unit"
+    },
+    {
+      "sku": "16KITCM7AZ95279",
+      "brand": "Glendinning",
+      "name": "KIT AZ CM7 63A EU NEW 20 MT",
+      "description_search": "KIT AZ CM7 63A EU NEW 20 MT",
+      "raw_codes": [
+        "16KITCM7AZ95279_001",
+        "16KITCM7AZ95279_006"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "16KITCM7CRAN806",
+      "brand": "Glendinning",
+      "name": "KIT AVV.CM7 CRANCHI",
+      "description_search": "KIT AVV.CM7 CRANCHI",
+      "raw_codes": [
+        "16KITCM7CRAN806_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "16KITCM8212985",
+      "brand": "Glendinning",
+      "name": "KIT CM8 38M  50 HZ",
+      "description_search": "CAVO 25MT",
+      "raw_codes": [
+        "16KITCM8212985_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "16KITCM8218466",
+      "brand": "Glendinning",
+      "name": "KIT CM8 38M  50 HZ",
+      "description_search": "KIT CM8 38M  50 HZ",
+      "raw_codes": [
+        "16KITCM8218466_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "16KITCM842703",
+      "brand": "Glendinning",
+      "name": "KIT CM8 AZIMUT A00042703",
+      "description_search": "KIT CM8 AZIMUT A00042703",
+      "raw_codes": [
+        "16KITCM842703_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "16KITCURVAGLE",
+      "brand": "Glendinning",
+      "name": "KIT CURVA SUPPLEMENTARE GLEN.",
+      "description_search": "KIT CURVA SUPPLEMENTARE GLEN.",
+      "raw_codes": [
+        "16KITCURVAGLE_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "16KITFISSAZS7",
+      "brand": "Glendinning",
+      "name": "KIT FISSAGGIO RIGIDO AZ S7",
+      "description_search": "KIT FISSAGGIO RIGIDO AZ S7",
+      "raw_codes": [
+        "16KITFISSAZS7_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "16KITM8154713",
+      "brand": "Glendinning",
+      "name": "CM8 AVVOLG. 100A USA 4 P",
+      "description_search": "CM8 AVVOLG. 100A USA 4 P",
+      "raw_codes": [
+        "16KITM8154713_001",
+        "16KITM8154713_006"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "misc"
+    },
+    {
+      "sku": "16KITMAGEL63A",
+      "brand": "Glendinning",
+      "name": "KIT AVV.CM7 63 A CAVO GIA3G 16",
+      "description_search": "KIT AVV.CM7 63 A CAVO GIA3G 16",
+      "raw_codes": [
+        "16KITMAGEL63A_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "cable"
+    },
+    {
+      "sku": "16KITSESSA297C",
+      "brand": "Glendinning",
+      "name": "KIT AVVOLGICAVO CM7",
+      "description_search": "KIT AVVOLGICAVO CM7",
+      "raw_codes": [
+        "16KITSESSA297C_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "power_unit"
+    },
+    {
+      "sku": "16KITSTR55CM7",
+      "brand": "Glendinning",
+      "name": "KIT AVVOLGICAVO CM7 - SACS",
+      "description_search": "KIT AVVOLGICAVO CM7 - SACS",
+      "raw_codes": [
+        "16KITSTR55CM7_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "power_unit"
+    },
+    {
+      "sku": "16KSAI001-CPL",
+      "brand": "Glendinning",
+      "name": "KIT COMANDO ELETTR. CPL",
+      "description_search": "KIT COMANDO ELETTR. CPL",
+      "raw_codes": [
+        "16KSAI001-CPL_001",
+        "16KSAI001-CPL_004"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "accessory"
+    },
+    {
+      "sku": "16SC4420-Y-75",
+      "brand": "Glendinning",
+      "name": "Power Cable Plug End - 6 AWG /4 125/250v 75\"",
+      "description_search": "POWER CABLE PLUG END - 6 AWG /4 125/250V 75\"",
+      "raw_codes": [
+        "16SC4420-Y-75_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "cable"
+    },
+    {
+      "sku": "16SC94024-W-20",
+      "brand": "Glendinning",
+      "name": "CAVO 100A TRIFASE B",
+      "description_search": "CAVO 100A TRIFASE B",
+      "raw_codes": [
+        "16SC94024-W-20_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "cable"
+    },
+    {
+      "sku": "1700B16ASSYPW",
+      "brand": "Secondary/Unknown",
+      "name": "16 AMP FEMALE CONNECTOR",
+      "description_search": "16 AMP FEMALE CONNECTOR",
+      "raw_codes": [
+        "1700B16ASSYPW_001"
+      ],
+      "source": "Articoli.xlsx",
+      "category": "connector"
+    }
+  ]
+}

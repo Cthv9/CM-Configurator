@@ -1,0 +1,172 @@
+{
+  "meta": {
+    "source": "Glendinning",
+    "version": "0.1.0",
+    "generated": "2026-02-21"
+  },
+  "questions": [
+    {
+      "id": "cable_length_m",
+      "type": "enum",
+      "options": [
+        20,
+        30
+      ],
+      "label": "Lunghezza cavo (m)",
+      "default": 20
+    },
+    {
+      "id": "need_hawse_pipe",
+      "type": "boolean",
+      "label": "Serve hawse pipe/passascafo (barriera stagna e alloggio spina)?",
+      "default": true
+    },
+    {
+      "id": "routing_mode",
+      "type": "enum",
+      "options": [
+        "direct",
+        "pvc_straight",
+        "pvc_with_bends",
+        "remote_mount_overhead"
+      ],
+      "label": "Routing cavo tra unità e stivaggio",
+      "default": "direct"
+    },
+    {
+      "id": "has_bend_over_45",
+      "type": "boolean",
+      "label": "Ci sono curve > 45°?",
+      "default": true,
+      "when": {
+        "routing_mode_in": [
+          "pvc_with_bends"
+        ]
+      }
+    }
+  ],
+  "rules": [
+    {
+      "id": "select_cm8_24v_for_125a_eu_3ph_5p",
+      "when": {
+        "amps_gte": 125,
+        "phase": "3PH",
+        "pins": 5,
+        "motor_voltage_vdc": 24,
+        "region": "EU"
+      },
+      "then": {
+        "add_items": [
+          {
+            "sku": "16-04091",
+            "qty": 1,
+            "note": "CM8 24V (variante con HP se prevista dal tuo codice commerciale)."
+          },
+          {
+            "sku": "16-85480",
+            "qty": 1,
+            "note": "Contenitore CM8/CM9 D.64 x H88 cm (default)."
+          }
+        ],
+        "add_cable": [
+          {
+            "sku": "16-94017",
+            "qty": 1,
+            "length_m": {
+              "from_input": "cable_length_m"
+            },
+            "note": "Cavo 5 poli giallo (100A/5P nel tuo anagrafico). Verifica sezione per 125A richiesta dal cliente."
+          }
+        ],
+        "add_placeholders": [
+          {
+            "key": "connector_male",
+            "label": "Spina maschio 125A 5P (da definire)"
+          },
+          {
+            "key": "connector_female",
+            "label": "Presa femmina 125A 5P (da definire)"
+          },
+          {
+            "key": "cover",
+            "label": "Cover/ghiera stagna (opzionale, da definire)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "add_hawse_pipe_kit_cm8",
+      "when": {
+        "need_hawse_pipe": true
+      },
+      "then": {
+        "add_items": [
+          {
+            "sku": "16-04093",
+            "qty": 1,
+            "note": "Kit hawse pipe CM8/CM9 alluminio."
+          }
+        ]
+      }
+    },
+    {
+      "id": "routing_remote_overhead",
+      "when": {
+        "routing_mode": "remote_mount_overhead"
+      },
+      "then": {
+        "add_items": [
+          {
+            "sku": "16-50006",
+            "qty": 1,
+            "note": "Overhead mounting bracket (se presente in anagrafico; verifica variante -1)."
+          }
+        ]
+      }
+    },
+    {
+      "id": "routing_pvc_base",
+      "when": {
+        "routing_mode_in": [
+          "pvc_straight",
+          "pvc_with_bends"
+        ]
+      },
+      "then": {
+        "add_items": [
+          {
+            "sku": "16-04040",
+            "qty": 1,
+            "note": "Roller terminale PVC (consigliato)."
+          }
+        ],
+        "notes": [
+          "Con PVC: installare rollers ogni 18–24\" per ridurre attrito.",
+          "Per applicazioni >=50A e routing complessi: usare Angling Assemblies (non gomiti PVC)."
+        ]
+      }
+    },
+    {
+      "id": "routing_with_bends_angling_90",
+      "when": {
+        "routing_mode": "pvc_with_bends",
+        "has_bend_over_45": true,
+        "amps_gte": 50
+      },
+      "then": {
+        "add_items": [
+          {
+            "sku": "16-04066",
+            "qty": 1,
+            "note": "Angling Assembly 90° (esempio)."
+          },
+          {
+            "sku": "16-50004",
+            "qty": 2,
+            "note": "Pipe Extension Plate (2 per fissare angling)."
+          }
+        ]
+      }
+    }
+  ]
+}
