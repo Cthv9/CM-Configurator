@@ -1,51 +1,26 @@
-# Cablemaster™ Configurator — PWA
+# CM Configurator (Rev. 6)
 
-Configuratore prodotti Glendinning Cablemaster™. Sviluppato come Progressive Web App installabile su dispositivi mobili e desktop.
+Configuratore Cablemaster in versione **single-file**: tutta la logica UI e i dati principali sono in `index.html`.
 
-## Struttura file
+## File presenti
 
+- `index.html` → applicazione completa (UI + logica + dataset)
+- `manifest.json` → manifest PWA allineato alla struttura attuale
+- `sw.js` → service worker per cache offline di base
+- `README.md` → questa documentazione
+
+## Avvio locale
+
+```bash
+python3 -m http.server 8000
 ```
-cablemaster-pwa/
-├── index.html          ← Entry point
-├── manifest.json       ← PWA manifest
-├── sw.js               ← Service Worker (offline support)
-├── css/
-│   └── style.css       ← Tutti gli stili
-├── js/
-│   └── app.js          ← Logica applicazione
-├── data/
-│   └── config.js       ← Dati: modelli, cavi, spine, hawse pipe, contenitori
-└── icons/
-    ├── icon-192.png
-    └── icon-512.png
-```
+Poi apri: `http://localhost:8000/`
 
-## Deploy su GitHub Pages
+## Deploy
 
-1. Crea un repository su GitHub (es. `cablemaster-configurator`)
-2. Carica tutti i file mantenendo la struttura delle cartelle
-3. Vai su **Settings → Pages**
-4. Seleziona **Branch: main** → **Root (/)** → Save
-5. Dopo ~60 secondi la PWA è disponibile su:
-   `https://tuousername.github.io/cablemaster-configurator/`
+Pubblicazione statica (es. GitHub Pages) puntando alla root del repository.
 
-## Installazione come App
+## Note operative
 
-- **iOS**: Safari → Condividi → "Aggiungi alla schermata Home"
-- **Android/Chrome**: banner automatico oppure Menu → "Installa app"
-- **Desktop Chrome/Edge**: icona di installazione nella barra degli indirizzi
-
-## Aggiornamento dati
-
-Tutti i dati (modelli, cavi, part number) sono in **`data/config.js`**.
-Per aggiornare prezzi, part number o aggiungere nuovi prodotti, modificare solo quel file.
-
-## Versione
-
-Rev 2 — Febbraio 2025  
-Unità di misura: **metri** (conversione ft automatica)  
-Cavi EU UFLEX inclusi con part number propri  
-
-##
-https://cthv9.github.io/CM-Configurator/
-
+- Non esistono più cartelle `css/`, `js/`, `data/`, `icons/` in questa versione.
+- Se cambi nome o path dei file, aggiorna anche `manifest.json` e `sw.js`.
