@@ -1,68 +1,1095 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#0A1628">
-  <meta name="description" content="Glendinning Cablemaster™ — Configuratore sistema shore power">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="Cablemaster">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cablemaster Configuratore</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#EFECE7;--srf:#FAFAF8;--brd:#D2CCC4;--txt:#17140E;--mut:#7A746C;
+  --acc:#1B3C90;--acc2:#E8EEFF;--gld:#B38A18;--gld2:#FDF2D2;
+  --grn:#1A6840;--grn2:#E2F4EC;--red:#8C2818;--red2:#FDEAE6;
+  --r:6px;--mono:'IBM Plex Mono',monospace;--sans:'IBM Plex Sans',sans-serif;
+}
+body{font-family:var(--sans);background:var(--bg);color:var(--txt);min-height:100vh;font-size:15px}
+#app{max-width:980px;margin:0 auto;padding:22px 18px 80px}
 
-  <title>Cablemaster™ Configurator — Glendinning</title>
+/* HEADER */
+header{display:flex;align-items:flex-end;justify-content:space-between;border-bottom:2px solid var(--txt);padding-bottom:14px;margin-bottom:0}
+.hb{font-family:var(--mono);font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mut)}
+.hb strong{display:block;font-family:var(--sans);font-size:1.35rem;font-weight:500;letter-spacing:-.025em;color:var(--txt)}
+.hr{font-family:var(--mono);font-size:.56rem;color:var(--mut);text-align:right;line-height:1.7}
 
-  <link rel="manifest" href="manifest.json">
-  <link rel="apple-touch-icon" href="icons/icon-192.png">
+/* HOME NAV */
+#home-nav{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;margin:22px 0 0}
+.hn{background:var(--srf);border:1.5px solid var(--brd);border-radius:var(--r);padding:20px 16px;cursor:pointer;transition:border-color .15s,box-shadow .15s}
+.hn:hover{border-color:var(--acc)}
+.hn.active{border-color:var(--acc);box-shadow:0 0 0 2.5px var(--acc)}
+.hn-icon{font-size:1.4rem;margin-bottom:9px}
+.hn-title{font-size:.95rem;font-weight:600;margin-bottom:3px}
+.hn-sub{font-size:.73rem;color:var(--mut);line-height:1.5}
+.badge{display:inline-block;font-family:var(--mono);font-size:.52rem;letter-spacing:.08em;padding:2px 7px;border-radius:3px;margin-top:7px;text-transform:uppercase}
+.badge.bl{background:var(--acc2);color:var(--acc)}
+.badge.gn{background:var(--grn2);color:var(--grn)}
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;900&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+/* CONTENT */
+#content{margin-top:24px}
 
-  <link rel="stylesheet" href="css/style.css">
+/* STEP NAV */
+#snav{display:flex;border:1px solid var(--brd);border-radius:var(--r);overflow:hidden;margin-bottom:24px;background:var(--srf)}
+.sn{flex:1;padding:8px 3px;text-align:center;font-family:var(--mono);font-size:.5rem;letter-spacing:.06em;text-transform:uppercase;color:var(--mut);border:none;background:none;cursor:default;border-right:1px solid var(--brd);line-height:1.5;transition:background .15s}
+.sn:last-child{border-right:none}
+.sn.past{background:var(--grn2);color:var(--grn);cursor:pointer}
+.sn.past:hover{background:#cfe8d5}
+.sn.cur{background:var(--txt);color:#fff}
+.sn.lock{opacity:.28}
+.sn.opt{background:#FAF7F0;color:var(--gld)}
+.sn.opt.cur{background:var(--txt);color:#fff}
+.sn.opt.past{background:var(--grn2);color:var(--grn)}
+
+/* PAGE TITLES */
+.stitle{font-size:1.35rem;font-weight:400;letter-spacing:-.025em;margin-bottom:4px}
+.shint{font-size:.79rem;color:var(--mut);margin-bottom:18px;line-height:1.6}
+
+/* OPTIONAL BADGE */
+.opt-badge{display:inline-block;font-family:var(--mono);font-size:.55rem;letter-spacing:.08em;text-transform:uppercase;background:var(--gld2);color:var(--gld);padding:2px 8px;border-radius:3px;margin-left:10px;vertical-align:middle}
+
+/* CARDS */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:8px;margin-bottom:20px}
+.cards.w2{grid-template-columns:repeat(auto-fill,minmax(245px,1fr))}
+.card{background:var(--srf);border:1.5px solid var(--brd);border-radius:var(--r);padding:13px;cursor:pointer;transition:border-color .15s,box-shadow .15s;position:relative}
+.card:hover{border-color:var(--acc)}
+.card.sel{border-color:var(--acc);box-shadow:0 0 0 2px rgba(27,60,144,.2)}
+.card.dim{opacity:.28;cursor:not-allowed;pointer-events:none}
+.ck{position:absolute;top:9px;right:9px;width:15px;height:15px;border-radius:50%;border:1.5px solid var(--brd);background:var(--bg);display:flex;align-items:center;justify-content:center;font-size:8px;color:transparent}
+.card.sel .ck{background:var(--acc);border-color:var(--acc);color:#fff}
+.cc{font-family:var(--mono);font-size:.6rem;color:var(--acc);letter-spacing:.04em;margin-bottom:4px}
+.cn{font-size:.86rem;font-weight:500;line-height:1.3;margin-bottom:5px}
+.cd{font-size:.71rem;color:var(--mut);line-height:1.5}
+.tag{display:inline-block;font-family:var(--mono);font-size:.52rem;letter-spacing:.05em;padding:2px 5px;border-radius:3px;margin-top:4px;margin-right:3px}
+.tag.b{background:var(--acc2);color:var(--acc)}
+.tag.g{background:var(--gld2);color:var(--gld)}
+.tag.gr{background:var(--grn2);color:var(--grn)}
+.tag.r{background:var(--red2);color:var(--red)}
+.tag.n{background:#EDECE9;color:var(--mut)}
+/* Clear selection card */
+.card-skip{background:none;border:1.5px dashed var(--brd);border-radius:var(--r);padding:13px;cursor:pointer;transition:border-color .15s;display:flex;align-items:center;gap:8px;font-size:.78rem;color:var(--mut)}
+.card-skip:hover{border-color:var(--acc);color:var(--acc)}
+
+/* LENGTH */
+.lbox{background:var(--srf);border:1px solid var(--brd);border-radius:var(--r);padding:15px;margin-bottom:16px}
+.llabel{font-family:var(--mono);font-size:.56rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mut);margin-bottom:9px}
+.lbtns{display:flex;flex-wrap:wrap;gap:6px}
+.lb{padding:7px 13px;font-family:var(--mono);font-size:.72rem;border:1.5px solid var(--brd);border-radius:var(--r);background:var(--bg);cursor:pointer;transition:all .15s;color:var(--txt)}
+.lb:hover{border-color:var(--acc);color:var(--acc)}
+.lb.sel{background:var(--acc);border-color:var(--acc);color:#fff}
+
+/* INFO */
+.info{display:flex;gap:8px;border-radius:var(--r);padding:10px 12px;font-size:.76rem;line-height:1.55;margin-bottom:12px}
+.info.g{background:var(--gld2);border:1px solid #E5C97A;color:#6A4C0E}
+.info.b{background:var(--acc2);border:1px solid #C0CFEE;color:#1A3070}
+.info.gn{background:var(--grn2);border:1px solid #8ACBAA;color:#1A5530}
+
+/* NAV BUTTONS */
+.nav{display:flex;justify-content:space-between;align-items:center;margin-top:8px;gap:10px;flex-wrap:wrap}
+.btn-b{padding:9px 17px;font-family:var(--mono);font-size:.63rem;letter-spacing:.08em;text-transform:uppercase;border:1.5px solid var(--brd);border-radius:var(--r);background:none;color:var(--mut);cursor:pointer;transition:all .15s}
+.btn-b:hover{border-color:var(--txt);color:var(--txt)}
+.btn-n{padding:10px 22px;font-family:var(--mono);font-size:.63rem;letter-spacing:.08em;text-transform:uppercase;border:none;border-radius:var(--r);background:var(--txt);color:#fff;cursor:pointer;transition:background .15s}
+.btn-n:hover{background:var(--acc)}
+.btn-r{padding:9px 15px;font-family:var(--mono);font-size:.61rem;letter-spacing:.08em;text-transform:uppercase;border:1.5px solid var(--brd);border-radius:var(--r);background:none;color:var(--mut);cursor:pointer;transition:all .15s}
+.btn-r:hover{border-color:var(--red);color:var(--red)}
+.btn-acc{padding:10px 20px;font-family:var(--mono);font-size:.63rem;letter-spacing:.08em;text-transform:uppercase;border:none;border-radius:var(--r);background:var(--acc);color:#fff;cursor:pointer;transition:background .15s}
+.btn-acc:hover{background:#142e74}
+.sep{height:1px;background:var(--brd);margin:14px 0}
+
+/* COPY BAR */
+.cbar{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:20px}
+.cbtn{padding:8px 14px;font-family:var(--mono);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;border:1.5px solid var(--brd);border-radius:var(--r);background:var(--srf);color:var(--txt);cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:5px}
+.cbtn:hover{border-color:var(--acc);color:var(--acc)}
+.cbtn.ok{border-color:var(--grn);color:var(--grn)}
+.cbtn.acc{background:var(--acc);color:#fff;border-color:var(--acc)}
+.cbtn.acc:hover{background:#142e74}
+.cbtn.gn{background:var(--grn);color:#fff;border-color:var(--grn)}
+.cbtn.gn:hover{background:#155c35}
+
+/* BOM TABLE - EDITABLE */
+.bom-wrap{position:relative}
+.bom-actions{display:flex;gap:7px;margin-bottom:8px;flex-wrap:wrap;align-items:center}
+.bom-actions-label{font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);margin-right:4px}
+.bom-add-btn{padding:6px 13px;font-family:var(--mono);font-size:.6rem;letter-spacing:.07em;text-transform:uppercase;border:1.5px solid var(--acc);border-radius:var(--r);background:none;color:var(--acc);cursor:pointer;transition:all .15s}
+.bom-add-btn:hover{background:var(--acc);color:#fff}
+
+table{width:100%;border-collapse:collapse;background:var(--srf);border:1px solid var(--brd);border-radius:var(--r);overflow:hidden;margin-bottom:14px;font-size:.81rem}
+thead th{padding:8px 11px;font-family:var(--mono);font-size:.53rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);background:var(--bg);border-bottom:1px solid var(--brd);text-align:left}
+tbody td{padding:9px 11px;border-bottom:1px solid var(--brd);vertical-align:middle}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover td{background:#F4F2EE}
+.pcode{font-family:var(--mono);font-size:.77rem;color:var(--acc);font-weight:500}
+.pcat{font-family:var(--mono);font-size:.53rem;color:var(--mut);letter-spacing:.05em;text-transform:uppercase}
+.opt-head td{background:#F7F5F1!important;font-family:var(--mono);font-size:.53rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mut);padding:5px 11px!important}
+
+/* Inline editable cells */
+.edit-cell{background:none;border:1px solid transparent;border-radius:3px;padding:3px 6px;font-family:var(--mono);font-size:.77rem;color:var(--acc);width:100%;outline:none;transition:border-color .15s;cursor:text;min-width:80px}
+.edit-cell:hover{border-color:var(--brd)}
+.edit-cell:focus{border-color:var(--acc);background:var(--bg)}
+.edit-desc{background:none;border:1px solid transparent;border-radius:3px;padding:3px 6px;font-family:var(--sans);font-size:.81rem;color:var(--txt);width:100%;outline:none;transition:border-color .15s;cursor:text;min-width:150px}
+.edit-desc:hover{border-color:var(--brd)}
+.edit-desc:focus{border-color:var(--acc);background:var(--bg)}
+.edit-cat{background:none;border:1px solid transparent;border-radius:3px;padding:3px 5px;font-family:var(--mono);font-size:.53rem;color:var(--mut);width:100%;outline:none;cursor:text;text-transform:uppercase}
+.edit-cat:focus{border-color:var(--acc);background:var(--bg)}
+.qty-input{width:52px;padding:4px 7px;font-family:var(--mono);font-size:.76rem;border:1.5px solid var(--brd);border-radius:4px;background:var(--bg);text-align:center;outline:none}
+.qty-input:focus{border-color:var(--acc)}
+.rm-btn{padding:4px 8px;font-family:var(--mono);font-size:.56rem;border:1.5px solid var(--brd);border-radius:3px;background:none;cursor:pointer;color:var(--mut);transition:all .15s}
+.rm-btn:hover{border-color:var(--red);color:var(--red);background:var(--red2)}
+
+/* SUMMARY HEAD */
+.shead{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--brd);border:1px solid var(--brd);border-radius:var(--r);overflow:hidden;margin-bottom:22px}
+.sc{background:var(--srf);padding:11px}
+.sc-l{font-family:var(--mono);font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);margin-bottom:4px}
+.sc-v{font-size:.92rem;font-weight:500;line-height:1.2}
+.sc-s{font-size:.66rem;color:var(--mut);margin-top:2px}
+
+/* MODAL */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.48);z-index:100;display:flex;align-items:center;justify-content:center;padding:18px}
+.modal{background:var(--srf);border-radius:var(--r);padding:26px;width:100%;max-width:460px;box-shadow:0 20px 60px rgba(0,0,0,.22)}
+.modal-title{font-size:1.05rem;font-weight:500;margin-bottom:5px}
+.modal-sub{font-size:.77rem;color:var(--mut);margin-bottom:16px;line-height:1.5}
+.field{margin-bottom:13px}
+.field label{display:block;font-family:var(--mono);font-size:.57rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);margin-bottom:5px}
+.field input,.field textarea,.field select{width:100%;padding:8px 11px;font-family:var(--sans);font-size:.83rem;border:1.5px solid var(--brd);border-radius:var(--r);background:var(--bg);color:var(--txt);outline:none;transition:border-color .15s}
+.field input:focus,.field textarea:focus{border-color:var(--acc)}
+.field textarea{resize:vertical;min-height:58px}
+.modal-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:18px;flex-wrap:wrap}
+.btn-cancel{padding:8px 16px;font-family:var(--mono);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;border:1.5px solid var(--brd);border-radius:var(--r);background:none;color:var(--mut);cursor:pointer}
+.btn-save{padding:8px 20px;font-family:var(--mono);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;border:none;border-radius:var(--r);background:var(--acc);color:#fff;cursor:pointer}
+
+/* ADD ROW FORM */
+.add-row{background:var(--gld2);border:1.5px dashed var(--gld);border-radius:var(--r);padding:14px;margin-bottom:14px;display:none}
+.add-row.show{display:block}
+.add-row-title{font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gld);margin-bottom:11px}
+.add-row-grid{display:grid;grid-template-columns:1fr 1fr 2fr auto;gap:8px;align-items:end}
+.add-row-grid input,.add-row-grid select{padding:7px 10px;font-family:var(--mono);font-size:.76rem;border:1.5px solid var(--brd);border-radius:var(--r);background:var(--srf);color:var(--txt);outline:none;width:100%}
+.add-row-grid input:focus{border-color:var(--acc)}
+.btn-add-confirm{padding:8px 14px;font-family:var(--mono);font-size:.6rem;letter-spacing:.07em;text-transform:uppercase;border:none;border-radius:var(--r);background:var(--acc);color:#fff;cursor:pointer;white-space:nowrap}
+
+/* KIT CARDS */
+.kit-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:10px;margin-bottom:22px}
+.kit-card{background:var(--srf);border:1.5px solid var(--brd);border-radius:var(--r);padding:15px;position:relative}
+.kit-card.user-k{border-left:3px solid var(--grn)}
+.kit-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:7px}
+.kit-name{font-size:.92rem;font-weight:600;line-height:1.3}
+.kit-del{width:22px;height:22px;border:none;background:none;color:var(--mut);cursor:pointer;border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:13px;transition:all .15s;flex-shrink:0}
+.kit-del:hover{background:var(--red2);color:var(--red)}
+.kit-desc{font-size:.73rem;color:var(--mut);line-height:1.5;margin-bottom:9px}
+.kit-tags{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px}
+.kit-items{font-family:var(--mono);font-size:.6rem;color:var(--mut);border-top:1px solid var(--brd);padding-top:8px;line-height:1.75}
+.kit-cta{display:flex;gap:6px;margin-top:9px;flex-wrap:wrap}
+.btn-kit{padding:6px 13px;font-family:var(--mono);font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;border:none;border-radius:var(--r);cursor:pointer;transition:all .15s}
+.btn-kit.primary{background:var(--txt);color:#fff}
+.btn-kit.primary:hover{background:var(--acc)}
+.btn-kit.sec{background:none;border:1.5px solid var(--brd);color:var(--mut)}
+.btn-kit.sec:hover{border-color:var(--acc);color:var(--acc)}
+.btn-kit.share{background:var(--grn2);color:var(--grn);border:1.5px solid var(--grn)}
+.btn-kit.share:hover{background:var(--grn);color:#fff}
+
+/* CATALOG */
+.cat-search{margin-bottom:12px}
+.cat-search input{width:100%;padding:9px 12px;font-family:var(--sans);font-size:.84rem;border:1.5px solid var(--brd);border-radius:var(--r);background:var(--srf);color:var(--txt);outline:none}
+.cat-search input:focus{border-color:var(--acc)}
+.cat-filter{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:14px}
+.cf{padding:5px 12px;font-family:var(--mono);font-size:.58rem;letter-spacing:.07em;text-transform:uppercase;border:1.5px solid var(--brd);border-radius:var(--r);background:var(--srf);color:var(--mut);cursor:pointer;transition:all .15s}
+.cf:hover{border-color:var(--acc);color:var(--acc)}
+.cf.on{background:var(--acc);color:#fff;border-color:var(--acc)}
+.add-btn{padding:4px 10px;font-family:var(--mono);font-size:.56rem;letter-spacing:.05em;border:1.5px solid var(--brd);border-radius:3px;background:none;cursor:pointer;color:var(--mut);transition:all .15s;white-space:nowrap}
+.add-btn:hover{border-color:var(--grn);color:var(--grn)}
+.add-btn.added{border-color:var(--grn);color:var(--grn);background:var(--grn2)}
+
+/* CART BAR */
+.cart-bar{position:fixed;bottom:0;left:0;right:0;background:var(--txt);color:#fff;padding:12px 22px;display:flex;align-items:center;justify-content:space-between;gap:12px;z-index:50;transform:translateY(100%);transition:transform .2s}
+.cart-bar.show{transform:translateY(0)}
+.cart-lbl{font-family:var(--mono);font-size:.68rem;letter-spacing:.07em}
+.cart-n{display:inline-block;background:var(--acc);color:#fff;font-family:var(--mono);font-size:.62rem;padding:2px 7px;border-radius:20px;margin-left:7px}
+
+/* IMPORT/SHARE */
+.import-area{border:2px dashed var(--brd);border-radius:var(--r);padding:20px;text-align:center;cursor:pointer;transition:border-color .15s;margin-bottom:14px}
+.import-area:hover{border-color:var(--acc)}
+.import-area input{display:none}
+
+@media(max-width:600px){
+  #home-nav{grid-template-columns:1fr}
+  .cards,.cards.w2,.kit-grid{grid-template-columns:1fr}
+  .shead{grid-template-columns:1fr 1fr}
+  #snav{flex-wrap:wrap}
+  .sn{font-size:.48rem;padding:6px 2px}
+  header{flex-direction:column;gap:7px;align-items:flex-start}
+  .add-row-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto auto auto}
+}
+</style>
 </head>
 <body>
-
 <div id="app">
-
-  <!-- HEADER -->
-  <header>
-    <div class="logo-wrap">
-      <div class="logo-mark">
-        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M4 6h16M4 12h16M4 18h10"/>
-          <circle cx="20" cy="18" r="2" fill="white" stroke="none"/>
-        </svg>
-      </div>
-      <div class="logo-text">
-        GLENDINNING
-        <span>Cablemaster™ Configurator</span>
-      </div>
-    </div>
-    <div class="badge">2025 · Rev 2</div>
-  </header>
-
-  <!-- PROGRESS -->
-  <div id="progressBar"></div>
-
-  <!-- MAIN CONTENT -->
-  <div id="mainContent"></div>
-
+<header>
+  <div class="hb">Configuratore<strong>Cablemaster™</strong></div>
+  <div class="hr">Made with ❤️ by DF · IT · Rev. 6 · 2025</div>
+</header>
+<div id="home-nav"></div>
+<div id="content"></div>
 </div>
 
-<!-- SCRIPTS -->
-<script src="data/config.js"></script>
-<script src="js/app.js"></script>
+<div class="overlay" id="save-modal" style="display:none">
+  <div class="modal">
+    <div class="modal-title">Salva come Kit</div>
+    <div class="modal-sub">Il kit verrà salvato localmente e sarà condivisibile tramite link o CSV.</div>
+    <div class="field"><label>Nome Kit</label><input id="kit-name-in" placeholder="es. CM8 100A USA AZ S7 25m"></div>
+    <div class="field"><label>Note (cliente, progetto, ecc.)</label><textarea id="kit-notes-in" placeholder="Note opzionali…"></textarea></div>
+    <div class="modal-actions">
+      <button class="btn-cancel" onclick="closeModal()">Annulla</button>
+      <button class="btn-save" onclick="doSaveKit()">💾 Salva</button>
+    </div>
+  </div>
+</div>
+
+<div class="cart-bar" id="cart-bar">
+  <div class="cart-lbl">Selezione catalogo <span class="cart-n" id="cart-n">0</span></div>
+  <button class="cbtn" style="color:#fff;border-color:rgba(255,255,255,.35)" onclick="setMode('cart')">Vedi lista →</button>
+</div>
 
 <script>
-  // Register Service Worker
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('./sw.js')
-        .then(reg => console.log('SW registered:', reg.scope))
-        .catch(err => console.warn('SW registration failed:', err));
-    });
-  }
-</script>
+// ═══════════════════════════════════════════════════════════════
+// DATABASE
+// ═══════════════════════════════════════════════════════════════
+const DB = {
+  motori:{
+    CM4:{label:'CM4',desc:'Cablemaster CM-4',sub:'Cavo Ø 13–20mm · 12V o 24V DC',
+      t:{'12V':'05010','24V':'05013'},od:20,
+      cavi:['30A_3c_Y'],hawse:['04049-CRM','04050'],cont:['85424','85420']},
+    CM7:{label:'CM7',desc:'Cablemaster CM-7',sub:'Cavo Ø 20–32mm · 12V o 24V DC',
+      t:{'12V':'04020','24V':'04022','24V s/HP':'4022NOHP'},od:32,
+      cavi:['50A_3c_Y','50A_4c_Y','50A_4c_W','63A_3c_Y','63A_4c_Y'],
+      hawse:['04050','04079-CRM'],cont:['85420','85421']},
+    CM8:{label:'CM8',desc:'Cablemaster CM-8',sub:'Cavo Ø 32–42mm (50mm con kit) · 24V DC',
+      t:{'24V':'04091','24V s/HP':'4091NOHP'},od:42,
+      cavi:['100A_4c_W','100A_5c_W','100A_3c_Y_iso'],
+      hawse:['04093'],cont:['85425','85480'],note:'Kit 04041 necessario per cavi 5 poli.'},
+    CM9:{label:'CM9',desc:'Cablemaster CM-9',sub:'Cavo Ø 38–58mm · 24V DC',
+      t:{'24V c/HP':'4097-25-24','24V s/HP':'4097-21-24'},od:58,
+      cavi:['150A_2awg_4c','177A_1-0awg_4c','200A_1-0awg_4c'],
+      hawse:['04093','04097-6'],cont:['85480']},
+  },
+  cavi:{
+    '30A_3c_Y':{d:'30A · 3×6mm² · Giallo',spec:'#10 AWG · 3 cond. STOW · Ø 16.9mm',od:16.9,amp:30,poli:3,col:'Giallo',mkt:'USA',p:'94006',
+      lun:[{m:15,c:'SC94004-15'},{m:20,c:'SC14179-20',n:'scatola'},{m:25,c:'SC14179-25'},{m:30,c:'SC14179-30'}],
+      conn:'CONN_30A'},
+    '50A_3c_Y':{d:'50A · 3×12mm² · Giallo',spec:'#6 AWG · 3 cond. STOW · Ø 25.4mm',od:25.4,amp:50,poli:3,col:'Giallo',mkt:'USA+EU',p:'94004',
+      lun:[{m:15,c:'SC94004-15'},{m:20,c:'SC94004-20'},{m:25,c:'SC94004-25'},{m:30,c:'SC94004-30'},{m:60,c:'SC94004-60'},{m:120,c:'SC94004-120'}],
+      conn:'CONN_50A_3P'},
+    '50A_4c_Y':{d:'50A · 4×12mm² · Giallo',spec:'#6 AWG · 4 cond. STOW · Ø 28.4mm',od:28.4,amp:50,poli:4,col:'Giallo',mkt:'USA+EU',p:'94005',
+      lun:[{m:15,c:'94005-15'},{m:20,c:'SC94005'},{m:30,c:'SC94005-30'},{m:60,c:'SC94005-60'}],
+      conn:'CONN_50A_4P'},
+    '50A_4c_W':{d:'50A · 4×12mm² · Bianco',spec:'#6 AWG · 4 cond. STOW · Ø 28.4mm',od:28.4,amp:50,poli:4,col:'Bianco',mkt:'USA+EU',p:'94007',
+      lun:[{m:20,c:'SC94007-20'},{m:25,c:'SC94008-25'}],
+      conn:'CONN_50A_4P'},
+    '63A_3c_Y':{d:'63A · 3×16mm² · Giallo (EU)',spec:'#4 AWG · 3 cond. SEOOW RoHS · Ø 22.4mm',od:22.4,amp:63,poli:3,col:'Giallo',mkt:'EU',p:'94031-Y',
+      lun:[{m:20,c:'94031Y-20'},{m:40,c:'94031Y-40'},{m:60,c:'94031Y-60'},{m:80,c:'94031Y-80'}],
+      conn:'CONN_63A'},
+    '63A_4c_Y':{d:'63A · 4×16mm² · Giallo',spec:'#4 AWG · 4 cond. SEOOW · Ø 28mm',od:28,amp:63,poli:4,col:'Giallo',mkt:'EU',p:'69598G',
+      lun:[{m:20,c:'69598G-20'},{m:60,c:'69598G-60'}],
+      conn:'CONN_63A'},
+    '100A_4c_W':{d:'100A · 4×35mm² · Bianco',spec:'#2 AWG · 4 cond. STOW · Ø 35.3mm',od:35.3,amp:100,poli:4,col:'Bianco',mkt:'USA+EU',p:'94014-W',
+      lun:[{m:20,c:'94014-W-20'},{m:25,c:'94014-W-25'},{m:30,c:'94014-W-30'},{m:35,c:'94014-W-35'},{m:45,c:'94014-W-45'}],
+      conn:'CONN_100A_4P'},
+    '100A_5c_W':{d:'100A · 5×35mm² · Bianco (3PH)',spec:'#2 AWG · 5 cond. · Ø 40.5mm',od:40.5,amp:100,poli:5,col:'Bianco',mkt:'USA+EU',p:'SC37110',
+      lun:[{m:20,c:'SC37110'},{m:40,c:'94017-Y-40',n:'giallo'}],
+      conn:'CONN_100A_5P',note:'Kit 04041 obbligatorio per CM8.'},
+    '100A_3c_Y_iso':{d:'100A · 3×35mm² · Giallo (IsoTrans)',spec:'#2 AWG · 3 cond. STOW · Ø 31.8mm',od:31.8,amp:100,poli:3,col:'Giallo',mkt:'USA',p:'94013-Y',
+      lun:[{m:20,c:'94013-20MT'},{m:25,c:'94013-25MT'}],
+      conn:'CONN_100A_4P',note:'Solo per trasformatori di isolamento — NO NEUTRO.'},
+    '150A_2awg_4c':{d:'150A · 2AWG Type W · Nero',spec:'2 AWG · 4 cond. Vu-Tron® · Ø 36.5mm',od:36.5,amp:150,poli:4,col:'Nero',mkt:'USA+EU',p:'81664',
+      lun:[{m:25,c:'81664-25'},{m:30,c:'81664-30'},{m:60,c:'81664-60'}],
+      conn:'CONN_150A'},
+    '177A_1-0awg_4c':{d:'177A · 1/0AWG Type W · Giallo',spec:'1/0 AWG · 4 cond. · Ø 45.2mm',od:45.2,amp:177,poli:4,col:'Giallo',mkt:'USA+EU',p:'SC81374',
+      lun:[{m:30,c:'SC81374-30',n:'Coleman'}],
+      conn:'CONN_150A'},
+    '200A_1-0awg_4c':{d:'200A · 1/0AWG Type W · Nero',spec:'1/0 AWG · 4 cond. · Ø 45.2mm',od:45.2,amp:200,poli:4,col:'Nero',mkt:'USA+EU',p:'81384',
+      lun:[{m:20,c:'81384-20'}],
+      conn:'CONN_250A'},
+  },
 
+  // CONNETTORI: ogni entry = { maschio (spina), femmina_vol (presa mobile), femmina_fixed (inlet) }
+  // Stesso standard su tutta la coppia
+  connettori:{
+    CONN_30A:{
+      nome:'30A Hubbell (USA)',
+      spina:  {cod:'66817A', d:'Spina maschio 30A 125V 2P+T', marca:'Hubbell', cap:'66818C'},
+      presa_v:{cod:'99411',  d:'Presa femmina 30A 2P+T (volante)', marca:'Hubbell'},
+      presa_f:{cod:'99411',  d:'Inlet 30A 2P+T (pannello)', marca:'Hubbell/Glendinning'},
+    },
+    CONN_50A_3P:{
+      nome:'50A 3P+T Hubbell/Glendinning',
+      spina:  {cod:'99408',  d:'Spina maschio 50A 115/230V 3P+T', marca:'Hubbell/Glendinning', cap:'99410'},
+      presa_v:{cod:'99413',  d:'Presa femmina 50A 4P (volante)', marca:'Glendinning'},
+      presa_f:{cod:'99413',  d:'Inlet 50A 4P (pannello)', marca:'Glendinning'},
+      alt_sp: {cod:'66778T', d:'Spina alt. 50A 2P+T (se monofase)', marca:'Hubbell', cap:'66822T'},
+    },
+    CONN_50A_4P:{
+      nome:'50A 4P Hubbell/Glendinning',
+      spina:  {cod:'99408',  d:'Spina maschio 50A 115/230V 3P+T', marca:'Hubbell/Glendinning', cap:'99410'},
+      presa_v:{cod:'99413',  d:'Presa femmina 50A 4P (volante)', marca:'Glendinning'},
+      presa_f:{cod:'99413',  d:'Inlet 50A 4P (pannello)', marca:'Glendinning'},
+      alt_sp2:{cod:'66787U', d:'Spina alt. 63A 2P+T Hubbell (USA)', marca:'Hubbell', cap:'66771C'},
+      alt_sp3:{cod:'66790G', d:'Spina alt. 63A 3P+T Hubbell (USA)', marca:'Hubbell', cap:'66771C'},
+    },
+    CONN_63A:{
+      nome:'63A EU',
+      spina:  {cod:'66787U', d:'Spina maschio 63A 115/230V 1PH 2P+T', marca:'Hubbell', cap:'66771C'},
+      presa_v:{cod:'99439-P',d:'Presa femmina 63A 3P (volante/inlet)', marca:'Glendinning'},
+      presa_f:{cod:'99439-P',d:'Inlet 63A 3P (pannello)', marca:'Glendinning'},
+      alt_sp: {cod:'66790G', d:'Spina alt. 63A 3P+T (1PH/3PH)', marca:'Hubbell', cap:'66771C'},
+    },
+    CONN_100A_4P:{
+      nome:'100A 4P Glendinning (USA)',
+      spina:  {cod:'99423',     d:'Spina maschio 100A 120/240V 3P+T (4P)', marca:'Glendinning'},
+      presa_v:{cod:'99423-C',   d:'Presa femmina 100A 4P (volante)', marca:'Glendinning'},
+      presa_f:{cod:'99423-INL', d:'Inlet 100A 4P (pannello)', marca:'Glendinning'},
+      alt_sp: {cod:'1442A',     d:'Spina alt. 100A 230V 3P+T MKN (EU)', marca:'MKN', presa_v:{cod:'1442A',d:'Presa MKN 100A 230V'},presa_f:{cod:'1442A',d:'Inlet MKN 100A 230V'}},
+    },
+    CONN_100A_5P:{
+      nome:'100A 5P Glendinning/MKN',
+      spina:  {cod:'99424P',    d:'Spina maschio 100A 208/230V 3PH 5P', marca:'Glendinning'},
+      presa_v:{cod:'99432',     d:'Presa femmina 100A 5P (volante)', marca:'Glendinning'},
+      presa_f:{cod:'99424-B9R', d:'Inlet 100A 5P (pannello)', marca:'Glendinning'},
+      alt_sp: {cod:'3374',      d:'Spina alt. 100A 400V 3PH MKN (EU)', marca:'MKN', presa_v:{cod:'99432',d:'Presa Glendinning 5P'},presa_f:{cod:'99424-B9R',d:'Inlet Glendinning 5P'}},
+    },
+    CONN_150A:{
+      nome:'150A Mennekes DS9',
+      spina:  {cod:'MCH3998013', d:'Spina maschio 150A 380V 3PH DS9', marca:'Mennekes', cap:'MCH319A013'},
+      presa_v:{cod:'99432',      d:'Presa femmina 100A 5P Glendinning (adattatore)', marca:'Glendinning'},
+      presa_f:{cod:'99424-B9R',  d:'Inlet 100A 5P pannello (adattatore)', marca:'Glendinning'},
+    },
+    CONN_250A:{
+      nome:'250A Mennekes DS2',
+      spina:  {cod:'MEMR3928013', d:'Spina maschio 250A 400V 3PH DS2', marca:'Mennekes', cap:'MEMR392A913'},
+      presa_v:{cod:'MEMR3928017', d:'Presa femmina 250A 400V 3PH DS2', marca:'Mennekes'},
+      presa_f:{cod:'MEMR3928017', d:'Inlet 250A DS2 (pannello)', marca:'Mennekes'},
+      note:'Sezione frontale + impugnatura posteriore separati.',
+    },
+  },
+
+  hawse:{
+    '04049-CRM':{d:'Hawse Pipe inox 16/30A',c:'04049-CRM',od:20,m:['CM4']},
+    '04050':{d:'Bocchettone CM-4/7 SS',c:'04050',od:29,m:['CM4','CM7']},
+    '04079-CRM':{d:'Hawse Pipe SS + Guide Roller 50/63A',c:'04079-CRM',od:29,m:['CM7']},
+    '04093':{d:'Kit Hawse Pipe CM8/CM9 alluminio',c:'04093',od:50,m:['CM8','CM9'],note:'Std Ø42mm / 50mm con kit 04041.'},
+    '04097-6':{d:'Hawse Pipe CM9 alluminio Ø190mm',c:'04097-6',od:58,m:['CM9'],note:'ID Ø190mm · L 328mm.'},
+  },
+  cont:{
+    '85424':{d:'Contenitore 18"×18"',dim:'Ø 457 × H 457mm',c:'85424',m:['CM4']},
+    '85420':{d:'Contenitore CM-4/7',dim:'Ø 560 × H 380mm',c:'85420',m:['CM4','CM7']},
+    '85421':{d:'Contenitore CM-7 (alt.)',dim:'Ø 560 × H 380mm',c:'85421',m:['CM7']},
+    '85425':{d:'Contenitore CM-8',dim:'Ø 560 × H 560mm',c:'85425',m:['CM8']},
+    '85480':{d:'Contenitore CM-8/9 grande',dim:'Ø 635 × H 877mm',c:'85480',m:['CM8','CM9'],note:'Tagliabile a H 610mm.'},
+  },
+};
+
+// Kit preset
+const PRESETS=[
+  {id:'p1',name:'CM4 · 30A · USA · 12V · 15m',desc:'Kit compatto 30A monofase USA.',tags:['CM4','30A','USA','12V'],
+    bom:[{cat:'Avvolgicavo',cod:'05010',d:'Cablemaster CM-4 · 12V',qty:1},{cat:'Cavo',cod:'SC94004-15',d:'Cavo 30A 3×6mm² Giallo · 15m',qty:1},{cat:'Spina',cod:'66817A',d:'Spina 30A 125V 2P+T · Hubbell',qty:1},{cat:'Cappuccio spina',cod:'66818C',d:'Cappuccio 30A Hubbell',qty:1},{cat:'Inlet bordo',cod:'99411',d:'Inlet 30A 2P+T Glendinning',qty:1},{cat:'Hawse Pipe',cod:'04050',d:'Bocchettone CM-4/7 SS',qty:1},{cat:'Contenitore',cod:'85424',d:'Contenitore 18"×18"',qty:1}]},
+  {id:'p2',name:'CM7 · 50A · USA · 24V · 20m',desc:'Kit CM7 50A trifase USA.',tags:['CM7','50A','USA','24V'],
+    bom:[{cat:'Avvolgicavo',cod:'04022',d:'Cablemaster CM-7 · 24V',qty:1},{cat:'Cavo',cod:'SC94004-20',d:'Cavo 50A 3×12mm² Giallo · 20m',qty:1},{cat:'Spina',cod:'99408',d:'Spina 50A 115/230V 3P+T Hubbell',qty:1},{cat:'Cappuccio spina',cod:'99410',d:'Cappuccio 50A 3P',qty:1},{cat:'Inlet bordo',cod:'99413',d:'Inlet 50A 4P Glendinning',qty:1},{cat:'Hawse Pipe',cod:'04079-CRM',d:'Hawse Pipe SS + Guide Roller',qty:1},{cat:'Contenitore',cod:'85420',d:'Contenitore CM-7 · Ø560×H380mm',qty:1}]},
+  {id:'p3',name:'CM7 · 63A · EU · 24V · 20m',desc:'Kit CM7 63A EU — cavo SEOOW RoHS.',tags:['CM7','63A','EU','24V'],
+    bom:[{cat:'Avvolgicavo',cod:'04022',d:'Cablemaster CM-7 · 24V',qty:1},{cat:'Cavo',cod:'94031Y-20',d:'Cavo 63A 3×16mm² Giallo EU · 20m',qty:1},{cat:'Spina',cod:'66787U',d:'Spina 63A 115/230V 1PH 2P+T · Hubbell',qty:1},{cat:'Cappuccio spina',cod:'66771C',d:'Cappuccio 63A Hubbell',qty:1},{cat:'Inlet bordo',cod:'99439-P',d:'Inlet 63A 3P Glendinning',qty:1},{cat:'Hawse Pipe',cod:'04079-CRM',d:'Hawse Pipe SS + Guide Roller',qty:1},{cat:'Contenitore',cod:'85420',d:'Contenitore CM-7 · Ø560×H380mm',qty:1},{cat:'Radiocomando',cod:'04155',d:'Remote Control 12/24V · 2 trasmettitori',qty:1}]},
+  {id:'p4',name:'CM8 · 100A · USA · 24V · 25m',desc:'Kit CM8 100A monofase USA.',tags:['CM8','100A','USA','24V'],
+    bom:[{cat:'Avvolgicavo',cod:'04091',d:'Cablemaster CM-8 · 24V',qty:1},{cat:'Cavo',cod:'94014-W-25',d:'Cavo 100A 4×35mm² Bianco · 25m',qty:1},{cat:'Spina',cod:'99423',d:'Spina 100A 120/240V 3P+T Glendinning',qty:1},{cat:'Inlet bordo',cod:'99423-C',d:'Presa 100A 4P femmina Glendinning',qty:1},{cat:'Hawse Pipe',cod:'04093',d:'Kit Hawse Pipe CM8/CM9 alluminio',qty:1},{cat:'Contenitore',cod:'85425',d:'Contenitore CM-8 · Ø560×H560mm',qty:1},{cat:'Radiocomando',cod:'04155',d:'Remote Control',qty:1}]},
+  {id:'p5',name:'CM8 · 100A · EU · 24V · 5P · 20m',desc:'Kit CM8 100A trifase EU 400V — 5 poli.',tags:['CM8','100A','EU','24V','3PH'],
+    bom:[{cat:'Avvolgicavo',cod:'04091',d:'Cablemaster CM-8 · 24V',qty:1},{cat:'Cavo',cod:'SC37110',d:'Cavo 100A 5×35mm² Bianco · 20m',qty:1},{cat:'Kit rulli 5P',cod:'04041',d:'Conversione rulli CM-8 per 5 poli',qty:1},{cat:'Spina',cod:'3374',d:'Spina 100A 400V 3PH 3P+T MKN',qty:1},{cat:'Inlet bordo',cod:'99432',d:'Presa 100A 5P femmina Glendinning',qty:1},{cat:'Hawse Pipe',cod:'04093',d:'Kit Hawse Pipe CM8/CM9 alluminio',qty:1},{cat:'Contenitore',cod:'85480',d:'Contenitore CM-8/9 grande',qty:1}]},
+  {id:'p6',name:'CM9 · 177A · 24V · 30m',desc:'Kit CM9 alta corrente — Coleman Type W.',tags:['CM9','177A','24V'],
+    bom:[{cat:'Avvolgicavo',cod:'4097-25-24',d:'Cablemaster CM-9 · 24V con HP',qty:1},{cat:'Cavo',cod:'SC81374-30',d:'Cavo 177A 1/0AWG Type W · 30m',qty:1},{cat:'Spina',cod:'MCH3998013',d:'Spina 150A DS9 380V 3PH Mennekes',qty:1},{cat:'Impugnatura spina',cod:'MCH319A013',d:'Impugnatura neoprenex DS9',qty:1},{cat:'Inlet bordo',cod:'99432',d:'Presa 100A 5P femmina Glendinning',qty:1},{cat:'Hawse Pipe',cod:'04097-6',d:'Hawse Pipe CM9 alluminio Ø190mm',qty:1},{cat:'Contenitore',cod:'85480',d:'Contenitore CM-8/9 grande',qty:1}]},
+];
+
+const CATALOG_ITEMS=[
+  {cat:'Motore',cod:'05010',d:'Cablemaster CM-4 · 12V'},{cat:'Motore',cod:'05013',d:'Cablemaster CM-4 · 24V'},
+  {cat:'Motore',cod:'04020',d:'Cablemaster CM-7 · 12V'},{cat:'Motore',cod:'04022',d:'Cablemaster CM-7 · 24V'},
+  {cat:'Motore',cod:'4022NOHP',d:'Cablemaster CM-7 · 24V (senza HP)'},
+  {cat:'Motore',cod:'04091',d:'Cablemaster CM-8 · 24V'},{cat:'Motore',cod:'4091NOHP',d:'Cablemaster CM-8 · 24V (senza HP)'},
+  {cat:'Motore',cod:'4097-25-24',d:'Cablemaster CM-9 · 24V con HP'},{cat:'Motore',cod:'4097-21-24',d:'Cablemaster CM-9 · 24V senza HP'},
+  {cat:'Cavo',cod:'SC94004-15',d:'Cavo 50A 3×12mm² Giallo · 15m'},{cat:'Cavo',cod:'SC94004-20',d:'Cavo 50A 3×12mm² Giallo · 20m'},
+  {cat:'Cavo',cod:'SC94004-25',d:'Cavo 50A 3×12mm² Giallo · 25m'},{cat:'Cavo',cod:'SC94004-30',d:'Cavo 50A 3×12mm² Giallo · 30m'},
+  {cat:'Cavo',cod:'SC94004-60',d:'Cavo 50A 3×12mm² Giallo · 60m'},{cat:'Cavo',cod:'SC94004-120',d:'Cavo 50A 3×12mm² Giallo · 120m'},
+  {cat:'Cavo',cod:'94005-15',d:'Cavo 50A 4×12mm² Giallo · 15m'},{cat:'Cavo',cod:'SC94005',d:'Cavo 50A 4×12mm² Giallo · 20m'},
+  {cat:'Cavo',cod:'SC94005-30',d:'Cavo 50A 4×12mm² Giallo · 30m'},{cat:'Cavo',cod:'SC94005-60',d:'Cavo 50A 4×12mm² Giallo · 60m'},
+  {cat:'Cavo',cod:'SC94007-20',d:'Cavo 50A 4×12mm² Bianco · 20m'},{cat:'Cavo',cod:'SC94008-25',d:'Cavo 50A 4×12mm² Bianco · 25m'},
+  {cat:'Cavo',cod:'94031Y-20',d:'Cavo 63A 3×16mm² Giallo EU · 20m'},{cat:'Cavo',cod:'94031Y-40',d:'Cavo 63A 3×16mm² Giallo EU · 40m'},
+  {cat:'Cavo',cod:'94031Y-60',d:'Cavo 63A 3×16mm² Giallo EU · 60m'},{cat:'Cavo',cod:'94031Y-80',d:'Cavo 63A 3×16mm² Giallo EU · 80m'},
+  {cat:'Cavo',cod:'69598G-20',d:'Cavo 63A 4×16mm² Giallo · 20m'},
+  {cat:'Cavo',cod:'94013-20MT',d:'Cavo 100A 3×35mm² IsoTrans · 20m'},
+  {cat:'Cavo',cod:'94014-W-20',d:'Cavo 100A 4×35mm² Bianco · 20m'},{cat:'Cavo',cod:'94014-W-25',d:'Cavo 100A 4×35mm² Bianco · 25m'},
+  {cat:'Cavo',cod:'94014-W-30',d:'Cavo 100A 4×35mm² Bianco · 30m'},{cat:'Cavo',cod:'94014-W-35',d:'Cavo 100A 4×35mm² Bianco · 35m'},
+  {cat:'Cavo',cod:'94014-W-45',d:'Cavo 100A 4×35mm² Bianco · 45m'},
+  {cat:'Cavo',cod:'SC37110',d:'Cavo 100A 5×35mm² Bianco 3PH · 20m'},{cat:'Cavo',cod:'94017-Y-40',d:'Cavo 100A 5P Giallo · 40m'},
+  {cat:'Cavo',cod:'81664-25',d:'Cavo 150A 2AWG Type W · 25m'},{cat:'Cavo',cod:'81664-30',d:'Cavo 150A 2AWG Type W · 30m'},
+  {cat:'Cavo',cod:'81664-60',d:'Cavo 150A 2AWG Type W · 60m'},
+  {cat:'Cavo',cod:'SC81374-30',d:'Cavo 177A 1/0AWG Type W · 30m'},{cat:'Cavo',cod:'81384-20',d:'Cavo 200A 1/0AWG Type W · 20m'},
+  {cat:'Spina',cod:'66817A',d:'Spina 30A 125V 2P+T Hubbell'},{cat:'Spina',cod:'66818C',d:'Cappuccio spina 30A Hubbell'},
+  {cat:'Spina',cod:'66778T',d:'Spina 50A 115/230V 2P+T Hubbell'},{cat:'Spina',cod:'66822T',d:'Cappuccio 50A 2P+T'},
+  {cat:'Spina',cod:'99408',d:'Spina 50A 115/230V 3P+T Hubbell/Glendinning'},{cat:'Spina',cod:'99410',d:'Cappuccio 50A 3P+T'},
+  {cat:'Spina',cod:'66787U',d:'Spina 63A 115/230V 1PH 2P+T Hubbell'},{cat:'Spina',cod:'66790G',d:'Spina 63A 115/230V 3P+T Hubbell'},
+  {cat:'Spina',cod:'66771C',d:'Cappuccio 63A Hubbell'},
+  {cat:'Spina',cod:'99437',d:'Spina 32A 2P+T EU'},
+  {cat:'Spina',cod:'99423',d:'Spina 100A 120/240V 3P+T Glendinning (4P)'},
+  {cat:'Spina',cod:'99424P',d:'Spina 100A 208/230V 3PH 5P Glendinning'},
+  {cat:'Spina',cod:'1442A',d:'Spina 100A 230V 3P+T MKN · EU'},
+  {cat:'Spina',cod:'3374',d:'Spina 100A 400V 3PH 3P+T MKN · EU'},
+  {cat:'Spina',cod:'MCH3998013',d:'Spina 150A DS9 380V 3PH Mennekes'},{cat:'Spina',cod:'MCH319A013',d:'Impugnatura DS9 neoprenex'},
+  {cat:'Spina',cod:'MEMR3928013',d:'Spina 250A DS2 400V 3PH Mennekes'},{cat:'Spina',cod:'MEMR392A913',d:'Impugnatura DS2'},
+  {cat:'Inlet/Presa',cod:'99411',d:'Inlet 30A 2P+T Glendinning'},{cat:'Inlet/Presa',cod:'99413',d:'Presa/Inlet 50A 4P Glendinning'},
+  {cat:'Inlet/Presa',cod:'99439-P',d:'Presa 63A 3P EU Glendinning'},
+  {cat:'Inlet/Presa',cod:'99423-C',d:'Presa femmina 100A 4P Glendinning'},{cat:'Inlet/Presa',cod:'99423-INL',d:'Inlet 100A 4P pannello'},
+  {cat:'Inlet/Presa',cod:'99432',d:'Presa femmina 100A 5P Glendinning'},{cat:'Inlet/Presa',cod:'99424-B9R',d:'Inlet 100A 5P pannello'},
+  {cat:'Inlet/Presa',cod:'MEMR3928017',d:'Presa/Inlet 250A DS2 Mennekes 3P+T+N'},
+  {cat:'Hawse',cod:'04049-CRM',d:'Hawse Pipe inox 16/30A'},{cat:'Hawse',cod:'04050',d:'Bocchettone CM-4/7 SS'},
+  {cat:'Hawse',cod:'04079-CRM',d:'Hawse Pipe SS + Guide Roller 50/63A'},
+  {cat:'Hawse',cod:'04093',d:'Hawse Pipe CM8/CM9 alluminio'},{cat:'Hawse',cod:'04097-6',d:'Hawse Pipe CM9 Ø190mm'},
+  {cat:'Contenitore',cod:'85424',d:'Contenitore 18"×18" · Ø457×H457mm'},{cat:'Contenitore',cod:'85420',d:'Contenitore CM-4/7 · Ø560×H380mm'},
+  {cat:'Contenitore',cod:'85421',d:'Contenitore CM-7 alt. · Ø560×H380mm'},{cat:'Contenitore',cod:'85425',d:'Contenitore CM-8 · Ø560×H560mm'},
+  {cat:'Contenitore',cod:'85480',d:'Contenitore CM-8/9 grande · Ø635×H877mm'},
+  {cat:'Accessorio',cod:'04041',d:'Kit conversione rulli CM-8 per cavo 5 poli'},
+  {cat:'Accessorio',cod:'04040',d:'Pipe End Roller Assembly'},{cat:'Accessorio',cod:'04043',d:'Kit prolunga orizzontale CM-7'},
+  {cat:'Accessorio',cod:'04044',d:'Kit prolunga verticale CM-7/CM8'},{cat:'Accessorio',cod:'04054',d:'Guide Roller Assembly (no switch)'},
+  {cat:'Accessorio',cod:'04070',d:'Low Profile Bracket Assembly CM8'},{cat:'Accessorio',cod:'50006',d:'Staffa montaggio superiore'},
+  {cat:'Accessorio',cod:'04052',d:'Pipe Clamp Assembly'},{cat:'Accessorio',cod:'04062',d:'Angling Assembly 30°'},
+  {cat:'Accessorio',cod:'04066',d:'Angling Assembly 90°'},{cat:'Accessorio',cod:'04067',d:'Angling Assembly 150°'},
+  {cat:'Guida rulli',cod:'4075-30-18',d:'Guida rulli 30A 18"'},{cat:'Guida rulli',cod:'4075-50-18',d:'Guida rulli 50A 18"'},
+  {cat:'Guida rulli',cod:'4075-50-36',d:'Guida rulli 50A 36"'},{cat:'Guida rulli',cod:'4075-50-36H',d:'Guida rulli 50A 36" orizzontale'},
+  {cat:'Guida rulli',cod:'4075-50-36V',d:'Guida rulli 50A 36" verticale'},{cat:'Guida rulli',cod:'4075-50-60',d:'Guida rulli 50A 60"'},
+  {cat:'Guida rulli',cod:'4075-50-66',d:'Guida rulli 50A 66"'},
+  {cat:'Controllo',cod:'04155',d:'Kit radiocomando 12/24V — 1 rx + 2 tx'},{cat:'Controllo',cod:'04154-1B',d:'Remote Control (ricambio)'},
+  {cat:'Controllo',cod:'04153',d:'Filtro interferenze'},
+  {cat:'Pipe/Tubo',cod:'42007-100',d:'Tubo PVC 3" · L 1.00m'},{cat:'Pipe/Tubo',cod:'42007-120',d:'Tubo PVC 3" · L 1.20m'},
+];
+
+// ═══════════════════════════════════════════════════════════════
+// STATO
+// ═══════════════════════════════════════════════════════════════
+const STEPS=['Motore','Tensione','Cavo','Lunghezza','Connettore','Hawse','Contenitore','Riepilogo'];
+// step 4 = connettore (spina+presa insieme), step 5 = hawse (opt), step 6 = cont (opt)
+const OPT_STEPS=[4,5,6];
+
+let MODE='home';
+let W={s:0,motore:null,ten:null,cavo:null,lun:null,conn:null,conn_variant:'main',hawse:null,cont:null};
+let BOM=[]; // array di {cat,cod,d,qty}
+let CART={}; // catalogo libero
+let CAT_F='Tutto', CAT_Q='';
+let SHOW_ADD_ROW=false;
+
+const getUserKits=()=>{try{return JSON.parse(localStorage.getItem('cm_kits6')||'[]');}catch{return[];}};
+const saveUserKits=kits=>localStorage.setItem('cm_kits6',JSON.stringify(kits));
+
+// ═══════════════════════════════════════════════════════════════
+// RENDER ROOT
+// ═══════════════════════════════════════════════════════════════
+function render(){
+  renderHNav();
+  if(MODE==='home') rHome();
+  else if(MODE==='wizard') rWizard();
+  else if(MODE==='kits') rKits();
+  else if(MODE==='catalog') rCatalog();
+  else if(MODE==='cart') rCart();
+  else if(MODE==='kit-detail') rKitDetail();
+}
+
+function renderHNav(){
+  const uk=getUserKits(),cc=Object.keys(CART).length;
+  document.getElementById('home-nav').innerHTML=`
+    <div class="hn ${MODE==='wizard'?'active':''}" onclick="setMode('wizard')">
+      <div class="hn-icon">🔧</div><div class="hn-title">Componi configurazione</div>
+      <div class="hn-sub">Wizard guidato. Salva la BOM come kit al termine.</div>
+      <span class="badge bl">Wizard</span>
+    </div>
+    <div class="hn ${MODE==='kits'||MODE==='kit-detail'?'active':''}" onclick="setMode('kits')">
+      <div class="hn-icon">📦</div><div class="hn-title">Kit preconfigurati</div>
+      <div class="hn-sub">Scegli un kit standard o usa i tuoi kit salvati.</div>
+      ${uk.length?`<span class="badge gn">${uk.length} kit salvat${uk.length===1?'o':'i'}</span>`:`<span class="badge bl">${PRESETS.length} preset</span>`}
+    </div>
+    <div class="hn ${MODE==='catalog'||MODE==='cart'?'active':''}" onclick="setMode('catalog')">
+      <div class="hn-icon">🗂</div><div class="hn-title">Catalogo articoli</div>
+      <div class="hn-sub">Ricerca libera su tutto il catalogo in stock.</div>
+      ${cc?`<span class="badge gn">${cc} selezionat${cc===1?'o':'i'}</span>`:`<span class="badge bl">Ricerca libera</span>`}
+    </div>`;
+}
+
+function setMode(m){
+  MODE=m;
+  if(m==='wizard'){W={s:0,motore:null,ten:null,cavo:null,lun:null,conn:null,conn_variant:'main',hawse:null,cont:null};BOM=[];SHOW_ADD_ROW=false;}
+  render();
+}
+
+function rHome(){document.getElementById('content').innerHTML=`<div style="padding:36px 0 0;text-align:center;color:var(--mut);font-size:.8rem;line-height:1.7">Seleziona una modalità per iniziare.</div>`;}
+
+// ═══════════════════════════════════════════════════════════════
+// WIZARD
+// ═══════════════════════════════════════════════════════════════
+function rWizard(){
+  const fns=[wS0,wS1,wS2,wS3,wS4,wS5,wS6,wSummary];
+  document.getElementById('content').innerHTML=`
+    <div id="snav">${STEPS.map((n,i)=>{
+      const isOpt=OPT_STEPS.includes(i);
+      let c='sn'+(isOpt?' opt':'');
+      if(i===W.s)c+=' cur';else if(i<W.s)c+=' past';else c+=' lock';
+      const label=isOpt?`${i+1}. ${n} <span style="font-size:.48rem;opacity:.7">(opt)</span>`:`${i+1}. ${n}`;
+      return`<button class="${c}"${i<W.s?` onclick="wGo(${i})"`:' disabled'}>${label}</button>`;
+    }).join('')}</div>
+    <div id="wb">${fns[W.s]()}</div>`;
+  wBind();window.scrollTo(0,0);
+}
+
+function wGo(n){
+  W.s=n;
+  if(n<=0)W.motore=null;if(n<=1)W.ten=null;if(n<=2)W.cavo=null;
+  if(n<=3)W.lun=null;if(n<=4){W.conn=null;W.conn_variant='main';}
+  if(n<=5)W.hawse=null;if(n<=6)W.cont=null;
+  rWizard();
+}
+const wN=()=>{W.s++;rWizard();};
+const wB=()=>wGo(W.s-1);
+const wNav=(key,opt)=>`
+  <div class="nav">
+    ${W.s>0?`<button class="btn-b" onclick="wB()">← Indietro</button>`:'<span></span>'}
+    <button class="btn-n" onclick="wN()" ${(!W[key]&&!opt)?'disabled':''}>
+      ${opt&&!W[key]?'Salta →':'Avanti →'}
+    </button>
+  </div>`;
+
+const idOf=(t,o)=>Object.keys(t).find(k=>t[k]===o);
+const mktag=m=>(m.includes('USA')?'<span class="tag gr">USA</span>':'')+
+               (m.includes('EU')?'<span class="tag g">EU</span>':'');
+
+function wS0(){return`
+  <div class="stitle">Seleziona il motore</div>
+  <div class="shint">Il modello determina il diametro massimo del cavo e gli accessori compatibili.</div>
+  <div class="cards">${Object.values(DB.motori).map(m=>`
+    <div class="card ${W.motore===m.label?'sel':''}" data-k="motore" data-v="${m.label}">
+      <div class="ck">${W.motore===m.label?'✓':''}</div>
+      <div class="cc">${m.label}</div><div class="cn">${m.desc}</div>
+      <div class="cd">${m.sub}</div>
+      ${m.note?`<span class="tag g">ℹ ${m.note}</span>`:''}
+    </div>`).join('')}</div>
+  <div class="nav"><span></span><button class="btn-n" onclick="wN()" ${!W.motore?'disabled':''}>Avanti →</button></div>`;}
+
+function wS1(){
+  const m=DB.motori[W.motore];return`
+  <div class="stitle">Tensione di alimentazione</div>
+  <div class="shint">Definisce il codice avvolgicavo da ordinare.</div>
+  <div class="cards">${Object.entries(m.t).map(([l,c])=>`
+    <div class="card ${W.ten===l?'sel':''}" data-k="ten" data-v="${l}">
+      <div class="ck">${W.ten===l?'✓':''}</div>
+      <div class="cc">${c}</div><div class="cn">${l}</div><div class="cd">${m.desc}</div>
+    </div>`).join('')}</div>
+  ${wNav('ten')}`;}
+
+function wS2(){
+  const m=DB.motori[W.motore];
+  const cavi=m.cavi.map(id=>({id,c:DB.cavi[id]})).filter(x=>x.c);
+  return`
+  <div class="stitle">Tipo di cavo</div>
+  <div class="shint">Cavi compatibili con <strong>${m.label}</strong> · OD max ${m.od}mm.</div>
+  <div class="cards w2">${cavi.map(({id,c})=>`
+    <div class="card ${W.cavo===id?'sel':''}" data-k="cavo" data-v="${id}">
+      <div class="ck">${W.cavo===id?'✓':''}</div>
+      <div class="cc">${c.p}</div><div class="cn">${c.d}</div>
+      <div class="cd">${c.spec}<br>OD ${c.od}mm · ${c.poli} cond. · ${c.amp}A</div>
+      ${mktag(c.mkt)}
+      ${c.note?`<div style="margin-top:5px"><span class="tag g">⚠ ${c.note}</span></div>`:''}
+    </div>`).join('')}</div>
+  ${wNav('cavo')}`;}
+
+function wS3(){
+  const c=DB.cavi[W.cavo];const sel=W.lun;return`
+  <div class="stitle">Lunghezza cavo</div>
+  <div class="shint">Disponibili dal listino per <strong>${c.d}</strong>.</div>
+  <div class="lbox">
+    <div class="llabel">Seleziona lunghezza</div>
+    <div class="lbtns">${c.lun.map(l=>{
+      const s=sel&&sel.c===l.c&&sel.m===l.m;
+      return`<button class="lb ${s?'sel':''}" data-k="lun" data-v='${JSON.stringify(l)}'>${l.m}m${l.n?` <small style="opacity:.6">(${l.n})</small>`:''}</button>`;
+    }).join('')}</div>
+    ${sel?`<div style="margin-top:10px;font-size:.76rem;color:var(--mut)">Codice: <strong style="color:var(--acc);font-family:var(--mono)">${sel.c}</strong> · ${sel.m}m</div>`:''}
+  </div>
+  ${c.note?`<div class="info g">⚠ ${c.note}</div>`:''}
+  ${wNav('lun')}`;}
+
+function wS4(){
+  const c=DB.cavi[W.cavo];
+  const conn=DB.connettori[c.conn];
+  // Costruisce tutte le varianti (principale + alternative)
+  const varianti=[{key:'main',label:`${conn.nome} (standard)`,sp:conn.spina,pv:conn.presa_v,pf:conn.presa_f}];
+  if(conn.alt_sp){
+    varianti.push({key:'alt',label:`${conn.alt_sp.d}`,sp:conn.alt_sp,pv:conn.presa_v,pf:conn.presa_f});
+  }
+  if(conn.alt_sp2) varianti.push({key:'alt2',label:`${conn.alt_sp2.d}`,sp:conn.alt_sp2,pv:conn.presa_v,pf:conn.presa_f});
+  if(conn.alt_sp3) varianti.push({key:'alt3',label:`${conn.alt_sp3.d}`,sp:conn.alt_sp3,pv:conn.presa_v,pf:conn.presa_f});
+
+  const selectedV=W.conn?varianti.find(v=>v.key===W.conn_variant):null;
+
+  return`
+  <div class="stitle">Connettori <span class="opt-badge">Opzionale</span></div>
+  <div class="shint">Spina (maschio · banchina) e presa (femmina · bordo) devono essere dello stesso standard. Puoi saltare questo step.</div>
+  <div class="cards w2">${varianti.map(v=>{
+    const isSel=W.conn===v.key;
+    return`<div class="card ${isSel?'sel':''}" data-k="conn" data-v="${v.key}">
+      <div class="ck">${isSel?'✓':''}</div>
+      <div class="cn" style="font-size:.82rem">${v.label}</div>
+      <div class="cd" style="margin-top:5px">
+        <span style="color:var(--acc);font-family:var(--mono)">${v.sp.cod}</span> <span style="color:var(--mut)">· ${v.sp.marca}</span><br>
+        <span style="font-size:.7rem;color:var(--mut)">↕ Presa bordo: </span>
+        <span style="color:var(--acc);font-family:var(--mono);font-size:.72rem">${v.pv.cod}</span>
+        ${v.sp.cap?`<br><span style="font-size:.68rem;color:var(--mut)">+ cappuccio: ${v.sp.cap}</span>`:''}
+      </div>
+      ${conn.note?`<span class="tag g">${conn.note}</span>`:''}
+    </div>`;}).join('')}
+    <div class="card-skip" onclick="W.conn=null;W.conn_variant='main';wN()">
+      ↷ Salta — aggiungerò connettori manualmente
+    </div>
+  </div>
+  <div class="nav">
+    <button class="btn-b" onclick="wB()">← Indietro</button>
+    <button class="btn-n" onclick="wN()">
+      ${!W.conn?'Salta →':'Avanti →'}
+    </button>
+  </div>`;}
+
+function wS5(){
+  const c=DB.cavi[W.cavo];
+  const m=DB.motori[W.motore];
+  const list=m.hawse.map(id=>DB.hawse[id]).filter(Boolean);
+  return`
+  <div class="stitle">Hawse Pipe <span class="opt-badge">Opzionale</span></div>
+  <div class="shint">Alloggiamento stagno che protegge la spina a cavo retratto. OD cavo selezionato: <strong>${c.od}mm</strong>.</div>
+  <div class="cards w2">${list.map(h=>{
+    const id=idOf(DB.hawse,h);
+    const fit=c.od<=h.od;
+    return`<div class="card ${!fit?'dim':''} ${W.hawse===id?'sel':''}" data-k="hawse" data-v="${id}">
+      <div class="ck">${W.hawse===id?'✓':''}</div>
+      <div class="cc">${h.c}</div><div class="cn">${h.d}</div>
+      <div class="cd">OD max: <strong>${h.od}mm</strong> · cavo: ${c.od}mm</div>
+      ${!fit?'<span class="tag r">⚠ OD superiore al limite</span>':''}
+      ${h.note?`<span class="tag g">${h.note}</span>`:''}
+    </div>`;}).join('')}
+    <div class="card-skip" onclick="W.hawse=null;wN()">↷ Salta</div>
+  </div>
+  <div class="nav">
+    <button class="btn-b" onclick="wB()">← Indietro</button>
+    <button class="btn-n" onclick="wN()">
+      ${!W.hawse?'Salta →':'Avanti →'}
+    </button>
+  </div>`;}
+
+function wS6(){
+  const m=DB.motori[W.motore];
+  const list=m.cont.map(id=>DB.cont[id]).filter(Boolean);
+  return`
+  <div class="stitle">Contenitore <span class="opt-badge">Opzionale</span></div>
+  <div class="shint">Contenitore di stoccaggio compatibile con <strong>${m.label}</strong>.</div>
+  <div class="cards">${list.map(ct=>{
+    const id=idOf(DB.cont,ct);
+    return`<div class="card ${W.cont===id?'sel':''}" data-k="cont" data-v="${id}">
+      <div class="ck">${W.cont===id?'✓':''}</div>
+      <div class="cc">${ct.c}</div><div class="cn">${ct.d}</div>
+      <div class="cd">${ct.dim}</div>
+      ${ct.note?`<span class="tag g">${ct.note}</span>`:''}
+    </div>`;}).join('')}
+    <div class="card-skip" onclick="W.cont=null;wN()">↷ Salta</div>
+  </div>
+  <div class="nav">
+    <button class="btn-b" onclick="wB()">← Indietro</button>
+    <button class="btn-n" onclick="wN()">
+      ${!W.cont?'Salta →':'Riepilogo →'}
+    </button>
+  </div>`;}
+
+function wSummary(){
+  // Costruisce BOM automatica
+  const m=DB.motori[W.motore],c=DB.cavi[W.cavo];
+  const conn=W.conn?DB.connettori[c.conn]:null;
+  const connV=W.conn&&conn?[{key:'main',sp:conn.spina,pv:conn.presa_v},{key:'alt',sp:conn.alt_sp,pv:conn.presa_v},{key:'alt2',sp:conn.alt_sp2,pv:conn.presa_v},{key:'alt3',sp:conn.alt_sp3,pv:conn.presa_v}].find(v=>v.key===W.conn_variant):null;
+  const h=W.hawse?DB.hawse[W.hawse]:null,ct=W.cont?DB.cont[W.cont]:null;
+
+  BOM=[];
+  BOM.push({cat:'Avvolgicavo',cod:m.t[W.ten],d:`${m.desc} · ${W.ten}`,qty:1});
+  if(W.lun) BOM.push({cat:'Cavo',cod:W.lun.c,d:`${c.d} · ${W.lun.m}m${W.lun.n?' ('+W.lun.n+')':''}`,qty:1});
+  if(connV){
+    BOM.push({cat:'Spina (banchina)',cod:connV.sp.cod,d:`${connV.sp.d}`,qty:1});
+    if(connV.sp.cap) BOM.push({cat:'Cappuccio spina',cod:connV.sp.cap,d:'Cappuccio protezione spina',qty:1});
+    BOM.push({cat:'Presa (bordo)',cod:connV.pv.cod,d:`${connV.pv.d}`,qty:1});
+  }
+  if(h) BOM.push({cat:'Hawse Pipe',cod:h.c,d:h.d,qty:1});
+  if(ct) BOM.push({cat:'Contenitore',cod:ct.c,d:`${ct.d} · ${ct.dim}`,qty:1});
+  if(c.poli===5&&W.motore==='CM8') BOM.push({cat:'Kit obbligatorio',cod:'04041',d:'Conversione rulli CM-8 per cavo 5 poli',qty:1});
+
+  // Suggerimenti
+  const sug=[];
+  sug.push({cat:'Radiocomando',cod:'04155',d:'Kit radiocomando 12/24V — 1 rx + 2 tx',qty:1});
+  if(W.lun&&W.lun.m>20) sug.push({cat:'Guida rulli ★',cod:c.amp<=50?'4075-50-36':'4075-50-60',d:`Coil Spring guide ${c.amp<=50?'50A 36"':'50A 60"'} (suggerito per >20m)`,qty:1});
+  if(W.motore==='CM8') sug.push({cat:'Low Profile',cod:'04070',d:'Low Profile Bracket CM8 — riduce altezza 89mm',qty:1});
+
+  window._SUG=sug;
+  window._WLABEL=`${W.motore} ${W.ten}${W.lun?' · '+W.lun.m+'m':''}`;
+  renderBOM();
+}
+
+// ═══════════════════════════════════════════════════════════════
+// BOM EDITOR (condiviso tra wizard e kit-detail e cart)
+// ═══════════════════════════════════════════════════════════════
+function renderBOM(isKitView){
+  const sug=window._SUG||[];
+  const label=window._WLABEL||'';
+
+  const rows=BOM.map((row,i)=>`
+    <tr>
+      <td><input class="edit-cat" value="${esc(row.cat)}" oninput="BOM[${i}].cat=this.value"></td>
+      <td><input class="edit-cell" value="${esc(row.cod)}" oninput="BOM[${i}].cod=this.value"></td>
+      <td><input class="edit-desc" value="${esc(row.d)}" oninput="BOM[${i}].d=this.value"></td>
+      <td><input class="qty-input" type="number" min="1" value="${row.qty||1}" oninput="BOM[${i}].qty=Math.max(1,parseInt(this.value)||1)"></td>
+      <td><button class="rm-btn" onclick="bomRemove(${i})">✕</button></td>
+    </tr>`).join('');
+
+  const sugRows=sug.map(p=>`
+    <tr style="opacity:.58">
+      <td><span class="pcat" style="color:var(--gld)">${p.cat}</span></td>
+      <td><span class="pcode" style="color:var(--gld)">${p.cod}</span></td>
+      <td>${p.d}</td>
+      <td>—</td>
+      <td><button class="add-btn" onclick="bomAddSug(${JSON.stringify(p).replace(/"/g,'&quot;')})">+ aggiungi</button></td>
+    </tr>`).join('');
+
+  const addForm=`
+    <div class="add-row ${SHOW_ADD_ROW?'show':''}" id="add-row-box">
+      <div class="add-row-title">Aggiungi riga manuale</div>
+      <div class="add-row-grid">
+        <input id="ar-cat" placeholder="Categoria" list="cat-list">
+        <datalist id="cat-list"><option>Avvolgicavo</option><option>Cavo</option><option>Spina (banchina)</option><option>Presa (bordo)</option><option>Hawse Pipe</option><option>Contenitore</option><option>Accessorio</option><option>Guida rulli</option><option>Controllo</option></datalist>
+        <input id="ar-cod" placeholder="Codice" style="font-family:var(--mono)">
+        <input id="ar-d" placeholder="Descrizione">
+        <button class="btn-add-confirm" onclick="bomAddManual()">+ Aggiungi</button>
+      </div>
+      <div style="margin-top:8px;display:flex;gap:8px">
+        <input id="ar-qty" type="number" min="1" value="1" style="width:60px;padding:7px;font-family:var(--mono);font-size:.76rem;border:1.5px solid var(--brd);border-radius:var(--r);background:var(--srf);outline:none">
+        <span style="font-size:.74rem;color:var(--mut);line-height:36px">quantità</span>
+      </div>
+    </div>`;
+
+  document.getElementById('content').innerHTML=`
+    <div class="stitle">BOM — ${esc(label)}</div>
+    <div class="shint">Tutte le righe sono modificabili. Clicca su un campo per editarlo. Aggiungi o rimuovi righe liberamente.</div>
+    ${addForm}
+    <div class="bom-actions">
+      <span class="bom-actions-label">Righe:</span>
+      <button class="bom-add-btn" onclick="toggleAddRow()">+ Aggiungi riga</button>
+      <button class="bom-add-btn" onclick="bomFromCatalog()">+ Dal catalogo</button>
+    </div>
+    <div class="bom-wrap">
+      <table>
+        <thead><tr><th>Cat.</th><th>Codice</th><th>Descrizione</th><th>Qtà</th><th></th></tr></thead>
+        <tbody>${rows}</tbody>
+      </table>
+    </div>
+    ${sug.length?`
+    <div style="margin-top:2px;margin-bottom:5px" class="tlabel" style="font-family:var(--mono);font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mut)">Suggeriti (clicca per aggiungere)</div>
+    <table><thead><tr><th>Cat.</th><th>Codice</th><th>Desc.</th><th>Qtà</th><th></th></tr></thead>
+    <tbody>${sugRows}</tbody></table>`:''}
+    <div class="cbar">
+      <button class="cbtn" id="cb1" onclick="copyTab()">📋 Copia tabella</button>
+      <button class="cbtn" id="cb2" onclick="copyOrdine()">📄 Copia lista</button>
+      <button class="cbtn" id="cb3" onclick="exportCSV()">⬇ Esporta CSV</button>
+      <button class="cbtn acc" onclick="openSaveModal()">💾 Salva come Kit</button>
+    </div>
+    <div class="sep"></div>
+    <div class="nav">
+      ${W.s>0?`<button class="btn-b" onclick="wGo(W.s-1)">← Modifica selezioni</button>`:`<button class="btn-b" onclick="setMode('kits')">← Torna ai Kit</button>`}
+      <button class="btn-r" onclick="setMode('wizard')">↺ Ricomincia</button>
+    </div>`;
+}
+
+function bomRemove(i){BOM.splice(i,1);renderBOM();}
+function bomAddSug(p){BOM.push({cat:p.cat,cod:p.cod,d:p.d,qty:p.qty||1});window._SUG=(window._SUG||[]).filter(s=>s.cod!==p.cod);renderBOM();}
+function toggleAddRow(){SHOW_ADD_ROW=!SHOW_ADD_ROW;renderBOM();}
+function bomAddManual(){
+  const cat=document.getElementById('ar-cat').value.trim();
+  const cod=document.getElementById('ar-cod').value.trim();
+  const d=document.getElementById('ar-d').value.trim();
+  const qty=parseInt(document.getElementById('ar-qty').value)||1;
+  if(!cod&&!d){alert('Inserisci almeno codice o descrizione.');return;}
+  BOM.push({cat:cat||'Articolo',cod,d,qty});
+  SHOW_ADD_ROW=false;renderBOM();
+}
+function bomFromCatalog(){MODE='catalog';render();}
+
+// Quando un articolo del catalogo viene aggiunto mentre si è in BOM-mode, torna
+function addToBOM(item){
+  BOM.push({cat:item.cat,cod:item.cod,d:item.d,qty:1});
+  MODE='wizard';W.s=7;rWizard();
+  renderBOM();
+}
+
+function wBind(){
+  document.querySelectorAll('[data-k]').forEach(el=>{
+    el.addEventListener('click',()=>{
+      const k=el.dataset.k,v=el.dataset.v;
+      if(k==='lun'){W.lun=JSON.parse(v);}
+      else{
+        W[k]=v;
+        if(k==='motore'){W.ten=W.cavo=W.lun=W.conn=W.hawse=W.cont=null;W.conn_variant='main';}
+        if(k==='cavo'){W.lun=W.conn=W.hawse=null;W.conn_variant='main';}
+        if(k==='conn'){W.conn_variant=v;}
+      }
+      rWizard();
+    });
+  });
+}
+
+// ═══════════════════════════════════════════════════════════════
+// KIT
+// ═══════════════════════════════════════════════════════════════
+function rKits(){
+  const uk=getUserKits();
+  const all=[...uk.map(k=>({...k,user:true})),...PRESETS];
+  document.getElementById('content').innerHTML=`
+    <div class="stitle">Kit preconfigurati</div>
+    <div class="shint">Scegli un kit standard o modifica/usa i tuoi kit salvati. Puoi importare kit da file CSV o da un link condiviso.</div>
+    <div style="display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap">
+      <label class="cbtn" style="cursor:pointer">📥 Importa CSV<input type="file" accept=".csv" style="display:none" onchange="importCSVKit(this)"></label>
+      <button class="cbtn" onclick="checkURLKit()">🔗 Importa da link</button>
+    </div>
+    ${uk.length?`<div class="info gn">💚 Hai <strong>${uk.length} kit salvat${uk.length===1?'o':'i'}</strong> personalizzati (in cima, bordo verde).</div>`:''}
+    <div class="kit-grid">${all.map(k=>kitCard(k)).join('')}</div>`;
+}
+
+function kitCard(k){
+  const del=k.user?`<button class="kit-del" onclick="delKit('${k.id}',event)">×</button>`:'';
+  const tags=(k.tags||[]).map(t=>`<span class="tag ${t.includes('EU')?'g':t.includes('USA')?'gr':'n'}">${t}</span>`).join('');
+  const items=(k.bom||[]).slice(0,5).map(i=>`<div>${i.cod} — ${i.d}</div>`).join('');
+  const more=(k.bom||[]).length>5?`<div style="color:var(--acc)">+${k.bom.length-5} altri</div>`:'';
+  const shareUrl=makeShareURL(k);
+  return`
+    <div class="kit-card ${k.user?'user-k':''}">
+      <div class="kit-top"><div class="kit-name">${esc(k.name)}</div>${del}</div>
+      <div class="kit-desc">${esc(k.desc||'')}</div>
+      <div class="kit-tags">${tags}</div>
+      <div class="kit-items">${items}${more}</div>
+      <div class="kit-cta">
+        <button class="btn-kit primary" onclick="useKit('${k.id}')">Apri BOM →</button>
+        <button class="btn-kit share" onclick="copyShareLink('${k.id}')">🔗 Condividi</button>
+        ${k.user?`<button class="btn-kit sec" onclick="editKit('${k.id}')">✎ Modifica</button>`:''}
+      </div>
+    </div>`;}
+
+function findKit(id){return getUserKits().find(k=>k.id===id)||PRESETS.find(k=>k.id===id);}
+
+function useKit(id){
+  const k=findKit(id);if(!k)return;
+  BOM=k.bom.map(r=>({...r,qty:r.qty||1}));
+  window._WLABEL=k.name;window._SUG=[];
+  W.s=7;MODE='kit-detail';
+  renderHNav();
+  renderBOM(true);
+}
+
+function editKit(id){
+  const k=getUserKits().find(k=>k.id===id);
+  if(!k)return;
+  BOM=k.bom.map(r=>({...r,qty:r.qty||1}));
+  window._WLABEL=k.name;window._SUG=[];
+  // Save back button to kits
+  W.s=-1; // sentinel: back goes to kits
+  MODE='kit-detail';
+  renderHNav();
+  renderBOM(true);
+}
+
+function rKitDetail(){renderBOM(true);}
+
+function delKit(id,e){
+  e.stopPropagation();
+  if(!confirm('Eliminare questo kit?'))return;
+  saveUserKits(getUserKits().filter(k=>k.id!==id));
+  renderHNav();rKits();
+}
+
+// ── URL SHARING ─────────────────────────────────────────────
+function makeShareURL(kit){
+  const data=JSON.stringify({name:kit.name,desc:kit.desc,tags:kit.tags,bom:kit.bom});
+  return location.href.split('?')[0]+'?kit='+btoa(unescape(encodeURIComponent(data)));
+}
+
+function copyShareLink(id){
+  const k=findKit(id);if(!k)return;
+  const url=makeShareURL(k);
+  navigator.clipboard.writeText(url).then(()=>alert('Link copiato!\n\nChiunque apra questo link potrà importare il kit.'));
+}
+
+function checkURLKit(){
+  const params=new URLSearchParams(location.search);
+  const raw=params.get('kit');
+  if(!raw){alert('Nessun kit trovato nell\'URL corrente.\nCondividi un link generato con "🔗 Condividi".');return;}
+  importKitFromBase64(raw);
+}
+
+function importKitFromBase64(raw){
+  try{
+    const data=JSON.parse(decodeURIComponent(escape(atob(raw))));
+    if(!data.name||!data.bom)throw new Error('Formato non valido');
+    const kit={id:'u_'+Date.now(),user:true,name:data.name,desc:data.desc||'',tags:data.tags||[],bom:data.bom,savedAt:new Date().toLocaleDateString('it-IT')};
+    if(confirm(`Importare kit "${data.name}" con ${data.bom.length} articoli?`)){
+      const kits=getUserKits();kits.unshift(kit);saveUserKits(kits);
+      renderHNav();rKits();
+    }
+  }catch(err){alert('Errore nel decodificare il kit: '+err.message);}
+}
+
+// Controlla URL all'avvio
+window.addEventListener('load',()=>{
+  const params=new URLSearchParams(location.search);
+  const raw=params.get('kit');
+  if(raw) setTimeout(()=>importKitFromBase64(raw),500);
+});
+
+// ── CSV ──────────────────────────────────────────────────────
+function exportCSV(){
+  const rows=[['Categoria','Codice','Descrizione','Quantita'],...BOM.map(r=>[r.cat,r.cod,r.d,r.qty||1])];
+  const csv=rows.map(r=>r.map(v=>`"${String(v).replace(/"/g,'""')}"`).join(',')).join('\n');
+  const blob=new Blob(['\uFEFF'+csv],{type:'text/csv;charset=utf-8'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);
+  a.download=`cablemaster-${(window._WLABEL||'bom').replace(/[^a-z0-9]/gi,'_').toLowerCase()}.csv`;
+  a.click();
+}
+
+function importCSVKit(input){
+  const file=input.files[0];if(!file)return;
+  const reader=new FileReader();
+  reader.onload=e=>{
+    const lines=e.target.result.split('\n').filter(l=>l.trim());
+    const header=lines[0].split(',').map(h=>h.replace(/"/g,'').trim().toLowerCase());
+    const getCol=(row,name)=>{const i=header.findIndex(h=>h.includes(name));return i>=0?row[i].replace(/"/g,'').trim():''};
+    const bom=lines.slice(1).map(line=>{
+      const cols=line.split(',');
+      return{cat:getCol(cols,'cat'),cod:getCol(cols,'cod'),d:getCol(cols,'desc'),qty:parseInt(getCol(cols,'quant'))||1};
+    }).filter(r=>r.cod||r.d);
+    if(!bom.length){alert('Nessun articolo trovato nel CSV.');return;}
+    const name=file.name.replace('.csv','').replace(/_/g,' ');
+    const kit={id:'u_'+Date.now(),user:true,name,desc:`Importato da ${file.name}`,tags:[],bom,savedAt:new Date().toLocaleDateString('it-IT')};
+    if(confirm(`Importare kit "${name}" con ${bom.length} articoli?`)){
+      const kits=getUserKits();kits.unshift(kit);saveUserKits(kits);
+      renderHNav();rKits();
+    }
+  };
+  reader.readAsText(file,'UTF-8');
+  input.value='';
+}
+
+// ═══════════════════════════════════════════════════════════════
+// CATALOGO LIBERO
+// ═══════════════════════════════════════════════════════════════
+function rCatalog(){
+  const cats=['Tutto','Motore','Cavo','Spina','Inlet/Presa','Hawse','Contenitore','Accessorio','Guida rulli','Controllo','Pipe/Tubo'];
+  const filt=CATALOG_ITEMS.filter(it=>{
+    const mc=CAT_F==='Tutto'||it.cat===CAT_F;
+    const q=CAT_Q.toLowerCase();
+    return mc&&(!q||it.cod.toLowerCase().includes(q)||it.d.toLowerCase().includes(q));
+  });
+  const cc=Object.keys(CART).length;
+  document.getElementById('content').innerHTML=`
+    <div class="stitle">Catalogo articoli</div>
+    <div class="shint">Filtra, cerca e aggiungi articoli alla lista ordine. ${cc?`<strong style="color:var(--grn)">${cc} art. selezionati.</strong> <a href="#" onclick="setMode('cart');return false" style="color:var(--acc)">→ Lista ordine</a>`:''}</div>
+    <div class="cat-search"><input placeholder="Cerca codice o descrizione…" value="${esc(CAT_Q)}" oninput="CAT_Q=this.value;rCatalog()" id="cq" autofocus></div>
+    <div class="cat-filter">${cats.map(c=>`<button class="cf ${CAT_F===c?'on':''}" onclick="CAT_F='${c}';rCatalog()">${c}</button>`).join('')}</div>
+    <table>
+      <thead><tr><th>Cat.</th><th>Codice</th><th>Descrizione</th><th></th></tr></thead>
+      <tbody>${filt.map(it=>{
+        const ic=!!CART[it.cod];
+        return`<tr>
+          <td><span class="pcat">${it.cat}</span></td>
+          <td><span class="pcode">${it.cod}</span></td>
+          <td>${esc(it.d)}</td>
+          <td><button class="add-btn ${ic?'added':''}" onclick='toggleCart(${JSON.stringify(it)})'>${ic?'✓ aggiunto':'+ aggiungi'}</button></td>
+        </tr>`}).join('')}
+        ${!filt.length?`<tr><td colspan="4" style="text-align:center;padding:18px;color:var(--mut)">Nessun risultato</td></tr>`:''}
+      </tbody>
+    </table>`;
+  setTimeout(()=>{const q=document.getElementById('cq');if(q&&CAT_Q){q.focus();q.setSelectionRange(q.value.length,q.value.length);}},10);
+  updateCartBar();
+}
+
+function toggleCart(it){
+  if(CART[it.cod])delete CART[it.cod];else CART[it.cod]={...it,qty:1};
+  rCatalog();renderHNav();
+}
+function updateCartBar(){
+  const n=Object.keys(CART).length;
+  document.getElementById('cart-n').textContent=n;
+  document.getElementById('cart-bar').classList.toggle('show',n>0);
+}
+
+function rCart(){
+  const items=Object.values(CART);
+  if(!items.length){document.getElementById('content').innerHTML=`<div class="stitle">Lista ordine</div><div class="shint">Nessun articolo selezionato.</div><button class="btn-acc" onclick="setMode('catalog')">→ Vai al catalogo</button>`;return;}
+  BOM=items.map(it=>({cat:it.cat,cod:it.cod,d:it.d,qty:it.qty||1}));
+  window._WLABEL='Lista libera';window._SUG=[];W.s=-1;
+  MODE='cart';
+  renderHNav();renderBOM();
+}
+
+// ═══════════════════════════════════════════════════════════════
+// SALVA KIT
+// ═══════════════════════════════════════════════════════════════
+function openSaveModal(){
+  document.getElementById('kit-name-in').value=window._WLABEL||'';
+  document.getElementById('kit-notes-in').value='';
+  document.getElementById('save-modal').style.display='flex';
+}
+function closeModal(){document.getElementById('save-modal').style.display='none';}
+function doSaveKit(){
+  const name=document.getElementById('kit-name-in').value.trim();
+  if(!name){alert('Inserisci un nome per il kit.');return;}
+  const notes=document.getElementById('kit-notes-in').value.trim();
+  if(!BOM.length){alert('BOM vuota.');return;}
+  const tags=extractTags(name,BOM);
+  const kit={id:'u_'+Date.now(),user:true,name,desc:notes||'Kit personalizzato.',notes,tags,bom:JSON.parse(JSON.stringify(BOM)),savedAt:new Date().toLocaleDateString('it-IT')};
+  const kits=getUserKits();kits.unshift(kit);saveUserKits(kits);
+  closeModal();renderHNav();
+  if(confirm(`Kit "${name}" salvato!\n\nVuoi vedere i kit?`))setMode('kits');
+}
+function extractTags(name,bom){
+  const t=[];
+  ['CM4','CM7','CM8','CM9'].forEach(m=>{if(name.includes(m)||bom.some(r=>r.d.includes(m)))t.push(m);});
+  ['30A','50A','63A','100A','150A','177A','200A'].forEach(a=>{if(name.includes(a))t.push(a);});
+  if(name.toLowerCase().includes('eu')||name.includes('400V'))t.push('EU');
+  if(name.toLowerCase().includes('usa'))t.push('USA');
+  if(name.includes('12V'))t.push('12V');if(name.includes('24V'))t.push('24V');
+  return[...new Set(t)];
+}
+
+// ═══════════════════════════════════════════════════════════════
+// COPIA / EXPORT
+// ═══════════════════════════════════════════════════════════════
+function copyTab(){
+  const txt='Categoria\tCodice\tDescrizione\tQty\n'+BOM.map(r=>`${r.cat}\t${r.cod}\t${r.d}\t${r.qty||1}`).join('\n');
+  navigator.clipboard.writeText(txt).then(()=>flash('cb1','✓ Copiato','📋 Copia tabella'));
+}
+function copyOrdine(){
+  const lines=[`ORDINE — ${window._WLABEL||''}`,'',...BOM.map(r=>`${r.qty||1}\t${r.cod}\t${r.d}`)];
+  navigator.clipboard.writeText(lines.join('\n')).then(()=>flash('cb2','✓ Copiato','📄 Lista'));
+}
+function flash(id,ok,orig){
+  const b=document.getElementById(id);if(!b)return;
+  b.textContent=ok;b.classList.add('ok');
+  setTimeout(()=>{b.textContent=orig;b.classList.remove('ok');},2000);
+}
+const esc=s=>String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+
+// ─── AVVIO ────────────────────────────────────────────────────
+render();
+</script>
 </body>
 </html>
