@@ -15,3 +15,7 @@ Configuratore Cablemaster in versione **single-file**: tutta la logica UI e i da
 python3 -m http.server 8000
 ```
 Poi apri: `http://localhost:8000/`
+
+## Avvio online
+
+https://cthv9.github.io/CM-Configurator/
