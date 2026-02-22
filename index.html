@@ -234,6 +234,24 @@ tbody tr:hover td{background:#F4F2EE}
   header{flex-direction:column;gap:7px;align-items:flex-start}
   .add-row-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto auto auto}
 }
+
+/* CATALOG OVERLAY DRAWER */
+.cat-drawer-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:300;display:flex;justify-content:flex-end}
+.cat-drawer{background:var(--srf);width:100%;max-width:540px;height:100%;display:flex;flex-direction:column;box-shadow:-6px 0 28px rgba(0,0,0,.16);animation:slideIn .2s ease}
+@keyframes slideIn{from{transform:translateX(100%)}to{transform:translateX(0)}}
+.cat-drawer-head{padding:14px 18px 11px;border-bottom:1px solid var(--brd);display:flex;align-items:center;justify-content:space-between;flex-shrink:0;gap:12px}
+.cat-drawer-title{font-size:.95rem;font-weight:500;letter-spacing:-.015em}
+.cat-drawer-close{width:28px;height:28px;border:none;background:none;color:var(--mut);cursor:pointer;font-size:17px;border-radius:4px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.cat-drawer-close:hover{background:var(--red2);color:var(--red)}
+.cat-drawer-body{padding:13px 16px;overflow-y:auto;flex:1;-webkit-overflow-scrolling:touch}
+.cat-drawer-body .cat-search input{background:var(--bg);font-size:.82rem;padding:8px 10px}
+.cat-drawer-body .cat-filter{gap:4px;margin-bottom:10px}
+.cat-drawer-body .cf{padding:4px 9px;font-size:.55rem}
+.cat-drawer-body table{font-size:.78rem}
+.cat-drawer-body thead th{font-size:.51rem;padding:7px 9px}
+.cat-drawer-body tbody td{padding:7px 9px}
+.cat-drawer-body .add-btn{padding:4px 9px;font-size:.54rem}
+.cat-drawer-footer{padding:10px 16px;border-top:1px solid var(--brd);flex-shrink:0;font-family:var(--mono);font-size:.6rem;color:var(--grn);min-height:38px;display:flex;align-items:center}
 </style>
 </head>
 <body>
@@ -261,7 +279,7 @@ tbody tr:hover td{background:#F4F2EE}
 
 <div class="cart-bar" id="cart-bar">
   <div class="cart-lbl">Selezione catalogo <span class="cart-n" id="cart-n">0</span></div>
-  <button class="cbtn" style="color:#fff;border-color:rgba(255,255,255,.35)" onclick="setMode('cart')">Vedi lista →</button>
+  <button class="cbtn" style="color:#fff;border-color:rgba(255,255,255,.35);background:transparent" onclick="setMode('cart')">Vedi lista →</button>
 </div>
 
 <script>
@@ -834,12 +852,102 @@ function bomAddManual(){
   BOM.push({cat:cat||'Articolo',cod,d,qty});
   SHOW_ADD_ROW=false;renderBOM();
 }
-function bomFromCatalog(){MODE='catalog';render();}
+// Variabili drawer catalogo
+let _DQ='', _DF='Tutto', _DADD=0;
 
-// Quando un articolo del catalogo viene aggiunto mentre si è in BOM-mode, torna
+function bomFromCatalog(){
+  _DQ=''; _DF='Tutto'; _DADD=0;
+  renderCatalogDrawer();
+}
+
+function closeCatalogDrawer(){
+  const el=document.getElementById('cat-drawer-root');
+  if(el) el.remove();
+  // Aggiorna la BOM a schermo dopo eventuali aggiunte
+  renderBOM();
+}
+
+function renderCatalogDrawer(){
+  // Rimuovi eventuale drawer esistente
+  const prev=document.getElementById('cat-drawer-root');
+  if(prev) prev.remove();
+
+  const cats=['Tutto','Motore','Cavo','Spina','Inlet/Presa','Hawse','Contenitore','Accessorio','Guida rulli','Controllo','Pipe/Tubo'];
+  const filt=CATALOG_ITEMS.filter(it=>{
+    const mc=_DF==='Tutto'||it.cat===_DF;
+    const q=_DQ.toLowerCase();
+    return mc&&(!q||it.cod.toLowerCase().includes(q)||it.d.toLowerCase().includes(q));
+  });
+
+  const bomCods=new Set(BOM.map(r=>r.cod));
+
+  const rows=filt.map(it=>{
+    const inBom=bomCods.has(it.cod);
+    return`<tr>
+      <td><span class="pcat">${it.cat}</span></td>
+      <td style="font-family:var(--mono);font-size:.72rem;color:var(--acc)">${esc(it.cod)}</span></td>
+      <td>${esc(it.d)}</td>
+      <td><button class="add-btn${inBom?' added':''}"
+        onclick="drawerAdd(${JSON.stringify(it).replace(/"/g,'&quot;')})">
+        ${inBom?'✓ in BOM':'+ aggiungi'}
+      </button></td>
+    </tr>`;
+  }).join('');
+
+  const backdrop=document.createElement('div');
+  backdrop.id='cat-drawer-root';
+  backdrop.className='cat-drawer-backdrop';
+  // click sul backdrop chiude
+  backdrop.addEventListener('click', e=>{ if(e.target===backdrop) closeCatalogDrawer(); });
+
+  backdrop.innerHTML=`
+    <div class="cat-drawer">
+      <div class="cat-drawer-head">
+        <div class="cat-drawer-title">+ Dal catalogo</div>
+        <button class="cat-drawer-close" onclick="closeCatalogDrawer()">×</button>
+      </div>
+      <div class="cat-drawer-body">
+        <div class="cat-search">
+          <input id="dq" placeholder="Cerca codice o descrizione…" value="${esc(_DQ)}"
+            oninput="_DQ=this.value;renderCatalogDrawer()">
+        </div>
+        <div class="cat-filter">${cats.map(c=>`
+          <button class="cf${_DF===c?' on':''}" onclick="_DF='${c}';renderCatalogDrawer()">${c}</button>`).join('')}
+        </div>
+        <table>
+          <thead><tr><th>Cat.</th><th>Codice</th><th>Descrizione</th><th></th></tr></thead>
+          <tbody>${rows||`<tr><td colspan="4" style="text-align:center;padding:16px;color:var(--mut)">Nessun risultato</td></tr>`}</tbody>
+        </table>
+      </div>
+      <div class="cat-drawer-footer" id="drawer-footer">
+        ${_DADD>0?`✓ ${_DADD} articol${_DADD===1?'o':'i'} aggiunt${_DADD===1?'o':'i'} alla BOM`:'Seleziona gli articoli da aggiungere.'}
+      </div>
+    </div>`;
+
+  document.body.appendChild(backdrop);
+
+  // Mantieni focus e cursore nella ricerca
+  setTimeout(()=>{
+    const q=document.getElementById('dq');
+    if(q){ q.focus(); if(_DQ) q.setSelectionRange(_DQ.length,_DQ.length); }
+  }, 20);
+}
+
+function drawerAdd(item){
+  const idx=BOM.findIndex(r=>r.cod===item.cod);
+  if(idx>=0){
+    BOM[idx].qty=(BOM[idx].qty||1)+1;
+  } else {
+    BOM.push({cat:item.cat, cod:item.cod, d:item.d, qty:1});
+    _DADD++;
+  }
+  // Ri-renderizza solo il drawer (la BOM in background si aggiorna alla chiusura)
+  renderCatalogDrawer();
+}
+
+// addToBOM: kept for compatibility, not used in drawer flow
 function addToBOM(item){
   BOM.push({cat:item.cat,cod:item.cod,d:item.d,qty:1});
-  MODE='wizard';W.s=7;rWizard();
   renderBOM();
 }
 
