@@ -1,5 +1,5 @@
 // Basic offline-first service worker for Cablemaster
-const CACHE_NAME = 'cablemaster-pwa-v1';
+const CACHE_NAME = 'cablemaster-pwa-v2';
 const CORE_ASSETS = [
   './',
   './index.html',
