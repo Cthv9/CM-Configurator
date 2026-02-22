@@ -1,0 +1,41 @@
+{
+  "_meta": {
+    "version": "2026.1",
+    "note": "Regole di compatibilità wizard. Referenziano id di catalog.json. Non contengono dati articolo."
+  },
+
+  "suggerimenti": [
+    {
+      "condizione": "cavo.lun_m > 20",
+      "messaggio": "Cavo > 20m: consigliata guida rulli per scorrimento ottimale.",
+      "articoli": [
+        { "se": "cavo.amp <= 50", "cod": "4075-50-36", "cat": "Guida rulli ★" },
+        { "se": "cavo.amp > 50",  "cod": "4075-50-60", "cat": "Guida rulli ★" }
+      ]
+    },
+    {
+      "condizione": "motore == 'CM8'",
+      "messaggio": "CM8: disponibile kit low-profile per ridurre altezza di 89mm.",
+      "articoli": [
+        { "cod": "04070", "cat": "Low Profile" }
+      ]
+    },
+    {
+      "condizione": "sempre",
+      "messaggio": "Radiocomando opzionale 12/24V.",
+      "articoli": [
+        { "cod": "04155", "cat": "Radiocomando" }
+      ]
+    }
+  ],
+
+  "vincoli": [
+    {
+      "id": "CM8_5poli_kit",
+      "descrizione": "CM8 con cavo 5 poli richiede kit conversione rulli.",
+      "condizione": "motore == 'CM8' && cavo.poli == 5",
+      "obbligatorio": { "cod": "04041", "cat": "Kit obbligatorio",
+                        "d": "Conversione rulli CM-8 per cavo 5 poli" }
+    }
+  ]
+}
