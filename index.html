@@ -252,6 +252,72 @@ tbody tr:hover td{background:#F4F2EE}
 .cat-drawer-body tbody td{padding:7px 9px}
 .cat-drawer-body .add-btn{padding:4px 9px;font-size:.54rem}
 .cat-drawer-footer{padding:10px 16px;border-top:1px solid var(--brd);flex-shrink:0;font-family:var(--mono);font-size:.6rem;color:var(--grn);min-height:38px;display:flex;align-items:center}
+
+/* ═══════════════════ ADMIN PANEL ═══════════════════ */
+#admin-panel{position:fixed;inset:0;background:var(--bg);z-index:500;display:none;flex-direction:column;overflow:hidden}
+#admin-panel.show{display:flex}
+.adm-head{background:var(--txt);color:#fff;padding:12px 20px;display:flex;align-items:center;gap:14px;flex-shrink:0}
+.adm-head-title{font-family:var(--mono);font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;flex:1}
+.adm-head-ver{font-family:var(--mono);font-size:.55rem;opacity:.55}
+.adm-close{width:28px;height:28px;border:none;background:rgba(255,255,255,.12);color:#fff;cursor:pointer;border-radius:4px;font-size:16px;display:flex;align-items:center;justify-content:center}
+.adm-close:hover{background:rgba(255,255,255,.22)}
+.adm-tabs{display:flex;border-bottom:2px solid var(--brd);background:var(--srf);flex-shrink:0}
+.adm-tab{padding:10px 18px;font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;border:none;background:none;color:var(--mut);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;transition:all .15s}
+.adm-tab:hover{color:var(--txt)}
+.adm-tab.on{color:var(--acc);border-bottom-color:var(--acc);font-weight:500}
+.adm-body{flex:1;overflow-y:auto;padding:20px}
+/* editor */
+.adm-toolbar{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap;align-items:center}
+.adm-search{flex:1;min-width:180px;padding:7px 11px;font-family:var(--sans);font-size:.82rem;border:1.5px solid var(--brd);border-radius:var(--r);background:var(--srf);color:var(--txt);outline:none}
+.adm-search:focus{border-color:var(--acc)}
+.adm-filter{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:12px}
+.adm-cf{padding:4px 10px;font-family:var(--mono);font-size:.55rem;letter-spacing:.06em;text-transform:uppercase;border:1.5px solid var(--brd);border-radius:var(--r);background:var(--srf);color:var(--mut);cursor:pointer;transition:all .15s}
+.adm-cf:hover{border-color:var(--acc);color:var(--acc)}
+.adm-cf.on{background:var(--acc);color:#fff;border-color:var(--acc)}
+.adm-table{width:100%;border-collapse:collapse;background:var(--srf);border:1px solid var(--brd);border-radius:var(--r);overflow:hidden;font-size:.79rem;margin-bottom:16px}
+.adm-table thead th{padding:8px 10px;font-family:var(--mono);font-size:.51rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);background:var(--bg);border-bottom:1px solid var(--brd);text-align:left;white-space:nowrap}
+.adm-table tbody td{padding:7px 10px;border-bottom:1px solid var(--brd);vertical-align:middle}
+.adm-table tbody tr:last-child td{border-bottom:none}
+.adm-table tbody tr.inactive td{opacity:.45}
+.adm-table tbody tr:hover td{background:#F4F2EE}
+.adm-edit{background:none;border:1px solid transparent;border-radius:3px;padding:3px 6px;font-family:inherit;font-size:inherit;color:inherit;width:100%;outline:none;cursor:text}
+.adm-edit:hover{border-color:var(--brd)}
+.adm-edit:focus{border-color:var(--acc);background:var(--bg)}
+.adm-cod{font-family:var(--mono);font-size:.72rem;color:var(--acc)}
+.adm-toggle{width:34px;height:18px;border-radius:9px;border:none;cursor:pointer;position:relative;transition:background .2s;flex-shrink:0}
+.adm-toggle.on{background:var(--grn)}
+.adm-toggle.off{background:var(--brd)}
+.adm-toggle::after{content:'';position:absolute;top:3px;width:12px;height:12px;border-radius:50%;background:#fff;transition:left .2s}
+.adm-toggle.on::after{left:19px}
+.adm-toggle.off::after{left:3px}
+.adm-sub-inp{background:none;border:1px solid transparent;border-radius:3px;padding:3px 6px;font-family:var(--mono);font-size:.65rem;color:var(--mut);width:100%;outline:none;cursor:text}
+.adm-sub-inp:hover{border-color:var(--brd)}
+.adm-sub-inp:focus{border-color:var(--acc);background:var(--bg)}
+/* diff */
+.diff-wrap{display:flex;flex-direction:column;gap:12px;margin-bottom:16px}
+.diff-section{border:1.5px solid var(--brd);border-radius:var(--r);overflow:hidden}
+.diff-head{padding:10px 14px;font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;display:flex;align-items:center;gap:8px}
+.diff-head.new{background:var(--grn2);color:var(--grn);border-bottom:1px solid #A8D8BB}
+.diff-head.changed{background:#FFF8E6;color:#8A6000;border-bottom:1px solid #E5C97A}
+.diff-head.removed{background:var(--red2);color:var(--red);border-bottom:1px solid #F0B8AE}
+.diff-head.ok{background:var(--acc2);color:var(--acc);border-bottom:1px solid #B0C4EE}
+.diff-count{font-size:.75rem;font-weight:600}
+.diff-rows{}
+.diff-row{display:grid;grid-template-columns:140px 1fr 1fr;padding:8px 14px;border-bottom:1px solid var(--brd);font-size:.76rem;gap:10px;align-items:center}
+.diff-row:last-child{border-bottom:none}
+.diff-cod{font-family:var(--mono);font-size:.68rem;color:var(--acc)}
+.diff-old{color:var(--red);text-decoration:line-through;font-size:.73rem}
+.diff-new{color:var(--grn);font-size:.73rem}
+/* audit */
+.audit-kit{background:var(--srf);border:1.5px solid var(--brd);border-radius:var(--r);padding:14px;margin-bottom:10px}
+.audit-kit.warn{border-color:var(--gld);background:var(--gld2)}
+.audit-kit.err{border-color:var(--red);background:var(--red2)}
+.audit-kit.ok{border-color:var(--grn);background:var(--grn2)}
+.audit-kit-name{font-weight:600;font-size:.88rem;margin-bottom:6px}
+.audit-issue{display:flex;align-items:flex-start;gap:8px;font-size:.74rem;margin-top:6px;padding:5px 8px;border-radius:4px;background:rgba(255,255,255,.5)}
+.audit-issue-cod{font-family:var(--mono);font-size:.65rem;color:var(--acc);flex-shrink:0;min-width:110px}
+/* export bar */
+.adm-export-bar{display:flex;gap:8px;flex-wrap:wrap;padding:14px 20px;border-top:1px solid var(--brd);background:var(--srf);flex-shrink:0}
 </style>
 </head>
 <body>
@@ -274,6 +340,27 @@ tbody tr:hover td{background:#F4F2EE}
       <button class="btn-cancel" onclick="closeModal()">Annulla</button>
       <button class="btn-save" onclick="doSaveKit()">💾 Salva</button>
     </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════ ADMIN PANEL ═══════════════ -->
+<div id="admin-panel">
+  <div class="adm-head">
+    <div class="adm-head-title">⚙️ &nbsp;Admin — Gestione Catalogo</div>
+    <span class="adm-head-ver" id="adm-ver"></span>
+    <button class="adm-close" onclick="closeAdmin()">×</button>
+  </div>
+  <div class="adm-tabs">
+    <button class="adm-tab on" onclick="admTab('editor',this)">📋 Editor articoli</button>
+    <button class="adm-tab" onclick="admTab('import',this)">⬆ Import CSV</button>
+    <button class="adm-tab" onclick="admTab('audit',this)">🔍 Audit kit</button>
+  </div>
+  <div class="adm-body" id="adm-body"></div>
+  <div class="adm-export-bar" id="adm-export-bar">
+    <button class="cbtn acc" onclick="admExportJSON()">⬇ Esporta catalog.json</button>
+    <button class="cbtn" onclick="admExportCSV()">⬇ Esporta CSV</button>
+    <span style="font-family:var(--mono);font-size:.58rem;color:var(--mut);align-self:center" id="adm-save-status"></span>
   </div>
 </div>
 
@@ -1111,6 +1198,382 @@ function flash(id,ok,orig){
 }
 const esc=s=>String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 
+
+// ═══════════════════════════════════════════════════════════════
+// ADMIN PANEL
+// ═══════════════════════════════════════════════════════════════
+let _admCat  = null;   // copia locale del catalogo in editing
+let _admTab  = 'editor';
+let _admQ    = '';
+let _admF    = 'Tutto';
+let _admDiff = null;   // risultato ultimo import
+
+// Accesso: triplo click sul logo header
+let _admClicks=0,_admTimer=0;
+document.querySelector('.hb').addEventListener('click',()=>{
+  _admClicks++;
+  clearTimeout(_admTimer);
+  _admTimer=setTimeout(()=>{_admClicks=0;},600);
+  if(_admClicks>=3){_admClicks=0;openAdmin();}
+});
+
+function openAdmin(){
+  // deep-copy del catalogo in memoria per editing locale
+  _admCat=JSON.parse(JSON.stringify({
+    _meta:      window._catRaw?._meta||{version:'?'},
+    motori:     DB.motori,
+    cavi:       DB.cavi,
+    connettori: DB.connettori,
+    hawse:      DB.hawse,
+    contenitori:DB.cont,
+    catalogo:   [...CATALOG_ITEMS],
+    kit_preset: PRESETS,
+  }));
+  document.getElementById('adm-ver').textContent='v'+(_admCat._meta.version||'?')+' · '+(_admCat._meta.updated||'');
+  document.getElementById('admin-panel').classList.add('show');
+  admTab('editor', document.querySelector('.adm-tab'));
+}
+
+function closeAdmin(){
+  document.getElementById('admin-panel').classList.remove('show');
+}
+
+function admTab(tab, btn){
+  _admTab=tab;
+  document.querySelectorAll('.adm-tab').forEach(b=>b.classList.remove('on'));
+  if(btn) btn.classList.add('on');
+  document.getElementById('adm-export-bar').style.display=
+    (tab==='editor')?'flex':'none';
+  if(tab==='editor')  admRenderEditor();
+  else if(tab==='import') admRenderImport();
+  else if(tab==='audit')  admRenderAudit();
+}
+
+// ── EDITOR ────────────────────────────────────────────────────
+function admRenderEditor(){
+  if(!_admCat){openAdmin();return;}
+  const cats=['Tutto','Motore','Cavo','Spina','Inlet/Presa','Hawse','Contenitore','Accessorio','Guida rulli','Controllo','Pipe/Tubo'];
+  const q=_admQ.toLowerCase();
+  const all=_admCat.catalogo; // include anche attivo:false
+  const filt=all.filter(a=>{
+    const mc=_admF==='Tutto'||a.cat===_admF;
+    return mc&&(!q||a.cod.toLowerCase().includes(q)||a.d.toLowerCase().includes(q));
+  });
+
+  const rows=filt.map((a,fi)=>{
+    const ri=all.indexOf(a);
+    const subbg=a.sostituito_da?'var(--gld2)':'';
+    return`<tr class="${a.attivo===false?'inactive':''}">
+      <td><span class="adm-cod">${esc(a.cod)}</span></td>
+      <td><input class="adm-edit" value="${esc(a.d)}"
+        oninput="_admCat.catalogo[${ri}].d=this.value;admMarkSaved(false)"></td>
+      <td><span class="pcat">${esc(a.cat)}</span></td>
+      <td style="text-align:center">
+        <button class="adm-toggle ${a.attivo!==false?'on':'off'}"
+          onclick="admToggleAttivo(${ri})"></button>
+      </td>
+      <td style="background:${subbg}">
+        <input class="adm-sub-inp" placeholder="cod. sostituto"
+          value="${esc(a.sostituito_da||'')}"
+          oninput="_admCat.catalogo[${ri}].sostituito_da=this.value||null;admMarkSaved(false)">
+      </td>
+    </tr>`;
+  }).join('');
+
+  document.getElementById('adm-body').innerHTML=`
+    <div class="adm-toolbar">
+      <input class="adm-search" placeholder="Cerca codice o descrizione…"
+        value="${esc(_admQ)}" oninput="_admQ=this.value;admRenderEditor()">
+      <button class="cbtn" onclick="admAddArticolo()">+ Nuovo articolo</button>
+    </div>
+    <div class="adm-filter">${cats.map(c=>
+      `<button class="adm-cf${_admF===c?' on':''}" onclick="_admF='${c}';admRenderEditor()">${c}</button>`
+    ).join('')}</div>
+    <div style="font-family:var(--mono);font-size:.56rem;color:var(--mut);margin-bottom:8px">
+      ${filt.length} articoli · <span style="color:var(--grn)">${all.filter(a=>a.attivo!==false).length} attivi</span> · 
+      <span style="color:var(--mut)">${all.filter(a=>a.attivo===false).length} inattivi</span>
+    </div>
+    <table class="adm-table">
+      <thead><tr>
+        <th>Codice</th><th>Descrizione</th><th>Cat.</th>
+        <th style="text-align:center">Attivo</th><th>Sostituito da</th>
+      </tr></thead>
+      <tbody>${rows}</tbody>
+    </table>`;
+  setTimeout(()=>{const s=document.querySelector('.adm-search');if(s&&_admQ){s.focus();s.setSelectionRange(_admQ.length,_admQ.length);}},10);
+}
+
+function admToggleAttivo(ri){
+  const a=_admCat.catalogo[ri];
+  a.attivo=(a.attivo===false)?true:false;
+  admMarkSaved(false);
+  admRenderEditor();
+}
+
+function admAddArticolo(){
+  const cod=prompt('Codice nuovo articolo:');
+  if(!cod||!cod.trim()) return;
+  if(_admCat.catalogo.find(a=>a.cod===cod.trim())){alert('Codice già presente.');return;}
+  _admCat.catalogo.push({cat:'Accessorio',cod:cod.trim(),d:'',attivo:true,sostituito_da:null});
+  admMarkSaved(false);
+  _admQ=cod.trim();
+  admRenderEditor();
+}
+
+function admMarkSaved(saved){
+  const el=document.getElementById('adm-save-status');
+  if(!el) return;
+  el.textContent=saved?'✓ Salvato':'● Modifiche non esportate';
+  el.style.color=saved?'var(--grn)':'var(--gld)';
+}
+
+// ── IMPORT CSV ────────────────────────────────────────────────
+function admRenderImport(){
+  document.getElementById('adm-body').innerHTML=`
+    <div class="stitle" style="font-size:1.1rem;margin-bottom:6px">Import da CSV / Excel</div>
+    <div class="shint">Carica un file CSV con colonne: <strong>Codice, Descrizione, Categoria</strong>.
+    L'app confronta con il catalogo attuale e mostra le differenze prima di applicare.</div>
+    <div style="border:2px dashed var(--brd);border-radius:var(--r);padding:28px;text-align:center;margin-bottom:16px">
+      <div style="font-size:1.3rem;margin-bottom:8px">📂</div>
+      <div style="font-size:.8rem;color:var(--mut);margin-bottom:12px">CSV con header: Codice, Descrizione, Categoria</div>
+      <label class="cbtn acc" style="cursor:pointer">
+        Scegli file CSV
+        <input type="file" accept=".csv" style="display:none" onchange="admParseCSV(this)">
+      </label>
+    </div>
+    <div id="adm-diff-result"></div>`;
+}
+
+function admParseCSV(input){
+  const file=input.files[0]; if(!file) return;
+  const reader=new FileReader();
+  reader.onload=e=>{
+    const lines=e.target.result.split(/\r?\n/).filter(l=>l.trim());
+    if(!lines.length){alert('File vuoto.');return;}
+    const header=lines[0].split(',').map(h=>h.replace(/"/g,'').trim().toLowerCase());
+    const iCod =header.findIndex(h=>h.includes('cod'));
+    const iDesc=header.findIndex(h=>h.includes('desc'));
+    const iCat =header.findIndex(h=>h.includes('cat'));
+    if(iCod<0){alert('Colonna Codice non trovata.');return;}
+
+    const parseCell=(row,i)=>i>=0?(row[i]||'').replace(/^"|"$/g,'').trim():'';
+    const incoming=lines.slice(1).map(line=>{
+      const row=line.match(/(".*?"|[^,]+|(?<=,)(?=,)|(?<=,)$)/g)||line.split(',');
+      return{cod:parseCell(row,iCod),d:parseCell(row,iDesc),cat:parseCell(row,iCat)||'Accessorio'};
+    }).filter(r=>r.cod);
+
+    const currentMap=Object.fromEntries((_admCat.catalogo||CATALOG_ITEMS).map(a=>[a.cod,a]));
+    const incomingMap=Object.fromEntries(incoming.map(a=>[a.cod,a]));
+
+    const nuovi      =incoming.filter(a=>!currentMap[a.cod]);
+    const cambiati   =incoming.filter(a=>currentMap[a.cod]&&currentMap[a.cod].d!==a.d);
+    const invariati  =incoming.filter(a=>currentMap[a.cod]&&currentMap[a.cod].d===a.d);
+    const discontinuati=(_admCat.catalogo||CATALOG_ITEMS)
+      .filter(a=>a.attivo!==false&&!incomingMap[a.cod]);
+
+    _admDiff={nuovi,cambiati,invariati,discontinuati,incomingMap,currentMap,incoming};
+    admRenderDiff();
+  };
+  reader.readAsText(file,'UTF-8');
+  input.value='';
+}
+
+function admRenderDiff(){
+  const d=_admDiff; if(!d) return;
+  const el=document.getElementById('adm-diff-result');
+
+  const secNew=d.nuovi.length?`
+    <div class="diff-section">
+      <div class="diff-head new">🟢 <span class="diff-count">${d.nuovi.length}</span> articoli nuovi</div>
+      <div class="diff-rows">${d.nuovi.map(a=>`
+        <div class="diff-row">
+          <span class="diff-cod">${esc(a.cod)}</span>
+          <span class="diff-new">${esc(a.d)}</span>
+          <span style="font-family:var(--mono);font-size:.6rem;color:var(--mut)">${esc(a.cat)}</span>
+        </div>`).join('')}</div>
+    </div>`:'';
+
+  const secChg=d.cambiati.length?`
+    <div class="diff-section">
+      <div class="diff-head changed">🟡 <span class="diff-count">${d.cambiati.length}</span> descrizioni cambiate</div>
+      <div class="diff-rows">${d.cambiati.map(a=>`
+        <div class="diff-row">
+          <span class="diff-cod">${esc(a.cod)}</span>
+          <span class="diff-old">${esc(d.currentMap[a.cod]?.d||'')}</span>
+          <span class="diff-new">→ ${esc(a.d)}</span>
+        </div>`).join('')}</div>
+    </div>`:'';
+
+  const secDis=d.discontinuati.length?`
+    <div class="diff-section">
+      <div class="diff-head removed">🔴 <span class="diff-count">${d.discontinuati.length}</span> non presenti nel CSV (saranno marcati inattivi)</div>
+      <div class="diff-rows">${d.discontinuati.map(a=>`
+        <div class="diff-row">
+          <span class="diff-cod">${esc(a.cod)}</span>
+          <span style="color:var(--mut)">${esc(a.d)}</span>
+          <span></span>
+        </div>`).join('')}</div>
+    </div>`:'';
+
+  const secOk=`
+    <div class="diff-section">
+      <div class="diff-head ok">✓ <span class="diff-count">${d.invariati.length}</span> articoli invariati</div>
+    </div>`;
+
+  const hasChanges=d.nuovi.length||d.cambiati.length||d.discontinuati.length;
+
+  el.innerHTML=`
+    <div style="font-family:var(--mono);font-size:.6rem;color:var(--mut);margin-bottom:12px">
+      CSV analizzato: ${d.incoming.length} righe
+    </div>
+    <div class="diff-wrap">${secNew}${secChg}${secDis}${secOk}</div>
+    ${hasChanges?`
+    <div style="display:flex;gap:8px;margin-top:4px">
+      <button class="cbtn acc" onclick="admApplyDiff()">✓ Applica modifiche</button>
+      <button class="cbtn" onclick="document.getElementById('adm-diff-result').innerHTML=''">Annulla</button>
+    </div>`:`<div class="info gn" style="margin-top:4px">✓ Catalogo già aggiornato — nessuna modifica necessaria.</div>`}`;
+}
+
+function admApplyDiff(){
+  if(!_admDiff) return;
+  const d=_admDiff;
+  const cat=_admCat.catalogo||[];
+
+  // Aggiungi nuovi
+  d.nuovi.forEach(a=>cat.push({cod:a.cod,d:a.d,cat:a.cat,attivo:true,sostituito_da:null}));
+
+  // Aggiorna cambiati
+  d.cambiati.forEach(a=>{
+    const ex=cat.find(x=>x.cod===a.cod);
+    if(ex) ex.d=a.d;
+  });
+
+  // Marca discontinuati come inattivi
+  d.discontinuati.forEach(a=>{
+    const ex=cat.find(x=>x.cod===a.cod);
+    if(ex) ex.attivo=false;
+  });
+
+  _admDiff=null;
+  admMarkSaved(false);
+  alert(`Applicate: ${d.nuovi.length} nuovi, ${d.cambiati.length} aggiornati, ${d.discontinuati.length} marcati inattivi.\nEsporta il JSON e sostituisci catalog.json nel repo per rendere permanenti le modifiche.`);
+  admTab('editor', document.querySelectorAll('.adm-tab')[0]);
+}
+
+// ── AUDIT KIT ─────────────────────────────────────────────────
+function admRenderAudit(){
+  const allKits=[...getUserKits(), ...PRESETS];
+  const catMap=Object.fromEntries((_admCat?.catalogo||CATALOG_ITEMS).map(a=>[a.cod,a]));
+
+  const results=allKits.map(kit=>{
+    const issues=[];
+    (kit.bom||[]).forEach(row=>{
+      const art=catMap[row.cod];
+      if(!art){
+        // Codice non in catalogo: potrebbe essere articolo esterno, non è un errore
+        issues.push({tipo:'external',cod:row.cod,d:row.d,msg:'Non in catalogo (articolo esterno o codice libero)'});
+      } else if(art.attivo===false){
+        const sub=art.sostituito_da;
+        issues.push({tipo:'discontinued',cod:row.cod,d:row.d,
+          msg:sub?`Discontinuato → sostituito da ${sub}`:'Discontinuato — nessun sostituto indicato',
+          sub});
+      } else if(art.sostituito_da){
+        issues.push({tipo:'renamed',cod:row.cod,d:row.d,
+          msg:`Rinominato → nuovo codice: ${art.sostituito_da}`,sub:art.sostituito_da});
+      }
+    });
+    return{kit,issues};
+  });
+
+  const errCount=results.filter(r=>r.issues.some(i=>i.tipo==='discontinued')).length;
+  const warnCount=results.filter(r=>r.issues.some(i=>i.tipo==='renamed')).length;
+  const okCount=results.filter(r=>r.issues.length===0).length;
+
+  const cards=results.map(({kit,issues})=>{
+    const hasErr=issues.some(i=>i.tipo==='discontinued');
+    const hasWarn=issues.some(i=>i.tipo==='renamed'||i.tipo==='external');
+    const cls=hasErr?'err':hasWarn?'warn':'ok';
+    const icon=hasErr?'🔴':hasWarn?'🟡':'✓';
+    const issueHtml=issues.map(i=>`
+      <div class="audit-issue">
+        <span class="audit-issue-cod">${esc(i.cod)}</span>
+        <span style="color:var(--mut)">${esc(i.msg)}</span>
+        ${i.sub?`<button class="cbtn" style="padding:3px 8px;font-size:.54rem;margin-left:auto" 
+          onclick="admAutoFix('${esc(kit.id)}','${esc(i.cod)}','${esc(i.sub)}')">Auto-fix</button>`:''}
+      </div>`).join('');
+    return`<div class="audit-kit ${cls}">
+      <div class="audit-kit-name">${icon} ${esc(kit.name)} ${kit.user?'<span style="font-size:.65rem;opacity:.6">(tuo kit)</span>':'<span style="font-size:.65rem;opacity:.6">(preset)</span>'}</div>
+      ${issues.length?issueHtml:`<div style="font-size:.74rem;color:var(--grn)">✓ Tutti gli articoli sono validi nel catalogo attuale.</div>`}
+    </div>`;
+  }).join('');
+
+  document.getElementById('adm-body').innerHTML=`
+    <div style="display:flex;gap:14px;margin-bottom:18px;flex-wrap:wrap">
+      <div class="sc" style="border:1px solid var(--brd);border-radius:var(--r);padding:10px 16px;min-width:100px">
+        <div class="sc-l">Kit totali</div><div class="sc-v">${allKits.length}</div>
+      </div>
+      <div class="sc" style="border:1px solid var(--red);border-radius:var(--r);padding:10px 16px;background:var(--red2);min-width:100px">
+        <div class="sc-l" style="color:var(--red)">Con errori</div><div class="sc-v">${errCount}</div>
+      </div>
+      <div class="sc" style="border:1px solid var(--gld);border-radius:var(--r);padding:10px 16px;background:var(--gld2);min-width:100px">
+        <div class="sc-l" style="color:var(--gld)">Con avvisi</div><div class="sc-v">${warnCount}</div>
+      </div>
+      <div class="sc" style="border:1px solid var(--grn);border-radius:var(--r);padding:10px 16px;background:var(--grn2);min-width:100px">
+        <div class="sc-l" style="color:var(--grn)">OK</div><div class="sc-v">${okCount}</div>
+      </div>
+    </div>
+    <div>${cards}</div>`;
+}
+
+function admAutoFix(kitId, oldCod, newCod){
+  // Aggiorna il codice nel kit localStorage
+  const kits=getUserKits();
+  const kit=kits.find(k=>k.id===kitId);
+  if(!kit){alert('Kit solo preset: non modificabile da qui.');return;}
+  const row=kit.bom.find(r=>r.cod===oldCod);
+  if(!row) return;
+  const newArt=(_admCat?.catalogo||CATALOG_ITEMS).find(a=>a.cod===newCod);
+  if(newArt&&newArt.d) row.d=newArt.d;
+  row.cod=newCod;
+  saveUserKits(kits);
+  alert('Kit aggiornato. Riapri il kit per verificare.');
+  admRenderAudit();
+}
+
+// ── EXPORT ─────────────────────────────────────────────────────
+function admExportJSON(){
+  if(!_admCat){alert('Nessun catalogo in editing.');return;}
+  // Bump versione
+  const now=new Date();
+  const dateStr=`${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`;
+  const oldVer=String(_admCat._meta?.version||'2026.1');
+  const parts=oldVer.split('.');
+  parts[parts.length-1]=String((parseInt(parts[parts.length-1]||0)+1));
+  _admCat._meta={..._admCat._meta,version:parts.join('.'),updated:dateStr};
+
+  const json=JSON.stringify(_admCat,null,2);
+  const blob=new Blob([json],{type:'application/json;charset=utf-8'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='catalog.json';
+  a.click();
+  admMarkSaved(true);
+  document.getElementById('adm-ver').textContent='v'+_admCat._meta.version+' · '+dateStr;
+  alert('catalog.json esportato.\nSostituisci il file nel repo e incrementa CACHE_NAME in sw.js per aggiornare tutti i dispositivi.');
+}
+
+function admExportCSV(){
+  const all=_admCat?.catalogo||CATALOG_ITEMS;
+  const rows=[['Codice','Descrizione','Categoria','Attivo','Sostituito_da'],
+    ...all.map(a=>[a.cod,a.d,a.cat,a.attivo!==false?'SI':'NO',a.sostituito_da||''])];
+  const csv=rows.map(r=>r.map(v=>`"${String(v).replace(/"/g,'""')}"`).join(',')).join('\n');
+  const blob=new Blob(['\uFEFF'+csv],{type:'text/csv;charset=utf-8'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='catalogo-cablemaster.csv';
+  a.click();
+}
+
 // ─── AVVIO ────────────────────────────────────────────────────
 
 function showLoader(msg){
@@ -1157,6 +1620,7 @@ function hydrate(cat, rules){
   PRESETS       = cat.kit_preset;
   CATALOG_ITEMS = cat.catalogo.filter(a => a.attivo !== false);
   RULES         = rules;
+  window._catRaw = cat; // tenuto per l'admin panel
 }
 
 async function initApp(){

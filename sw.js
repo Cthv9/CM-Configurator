@@ -1,6 +1,6 @@
 // Cablemaster PWA — Service Worker
 // ⚠ Incrementa CACHE_NAME ad ogni deploy che modifica catalog.json o rules.json
-const CACHE_NAME = 'cablemaster-pwa-v4';
+const CACHE_NAME = 'cablemaster-pwa-v5';
 
 const CORE_ASSETS = [
   './',
