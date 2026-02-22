@@ -286,215 +286,14 @@ tbody tr:hover td{background:#F4F2EE}
 // ═══════════════════════════════════════════════════════════════
 // DATABASE
 // ═══════════════════════════════════════════════════════════════
-const DB = {
-  motori:{
-    CM4:{label:'CM4',desc:'Cablemaster CM-4',sub:'Cavo Ø 13–20mm · 12V o 24V DC',
-      t:{'12V':'05010','24V':'05013'},od:20,
-      cavi:['30A_3c_Y'],hawse:['04049-CRM','04050'],cont:['85424','85420']},
-    CM7:{label:'CM7',desc:'Cablemaster CM-7',sub:'Cavo Ø 20–32mm · 12V o 24V DC',
-      t:{'12V':'04020','24V':'04022','24V s/HP':'4022NOHP'},od:32,
-      cavi:['50A_3c_Y','50A_4c_Y','50A_4c_W','63A_3c_Y','63A_4c_Y'],
-      hawse:['04050','04079-CRM'],cont:['85420','85421']},
-    CM8:{label:'CM8',desc:'Cablemaster CM-8',sub:'Cavo Ø 32–42mm (50mm con kit) · 24V DC',
-      t:{'24V':'04091','24V s/HP':'4091NOHP'},od:42,
-      cavi:['100A_4c_W','100A_5c_W','100A_3c_Y_iso'],
-      hawse:['04093'],cont:['85425','85480'],note:'Kit 04041 necessario per cavi 5 poli.'},
-    CM9:{label:'CM9',desc:'Cablemaster CM-9',sub:'Cavo Ø 38–58mm · 24V DC',
-      t:{'24V c/HP':'4097-25-24','24V s/HP':'4097-21-24'},od:58,
-      cavi:['150A_2awg_4c','177A_1-0awg_4c','200A_1-0awg_4c'],
-      hawse:['04093','04097-6'],cont:['85480']},
-  },
-  cavi:{
-    '30A_3c_Y':{d:'30A · 3×6mm² · Giallo',spec:'#10 AWG · 3 cond. STOW · Ø 16.9mm',od:16.9,amp:30,poli:3,col:'Giallo',mkt:'USA',p:'94006',
-      lun:[{m:15,c:'SC94004-15'},{m:20,c:'SC14179-20',n:'scatola'},{m:25,c:'SC14179-25'},{m:30,c:'SC14179-30'}],
-      conn:'CONN_30A'},
-    '50A_3c_Y':{d:'50A · 3×12mm² · Giallo',spec:'#6 AWG · 3 cond. STOW · Ø 25.4mm',od:25.4,amp:50,poli:3,col:'Giallo',mkt:'USA+EU',p:'94004',
-      lun:[{m:15,c:'SC94004-15'},{m:20,c:'SC94004-20'},{m:25,c:'SC94004-25'},{m:30,c:'SC94004-30'},{m:60,c:'SC94004-60'},{m:120,c:'SC94004-120'}],
-      conn:'CONN_50A_3P'},
-    '50A_4c_Y':{d:'50A · 4×12mm² · Giallo',spec:'#6 AWG · 4 cond. STOW · Ø 28.4mm',od:28.4,amp:50,poli:4,col:'Giallo',mkt:'USA+EU',p:'94005',
-      lun:[{m:15,c:'94005-15'},{m:20,c:'SC94005'},{m:30,c:'SC94005-30'},{m:60,c:'SC94005-60'}],
-      conn:'CONN_50A_4P'},
-    '50A_4c_W':{d:'50A · 4×12mm² · Bianco',spec:'#6 AWG · 4 cond. STOW · Ø 28.4mm',od:28.4,amp:50,poli:4,col:'Bianco',mkt:'USA+EU',p:'94007',
-      lun:[{m:20,c:'SC94007-20'},{m:25,c:'SC94008-25'}],
-      conn:'CONN_50A_4P'},
-    '63A_3c_Y':{d:'63A · 3×16mm² · Giallo (EU)',spec:'#4 AWG · 3 cond. SEOOW RoHS · Ø 22.4mm',od:22.4,amp:63,poli:3,col:'Giallo',mkt:'EU',p:'94031-Y',
-      lun:[{m:20,c:'94031Y-20'},{m:40,c:'94031Y-40'},{m:60,c:'94031Y-60'},{m:80,c:'94031Y-80'}],
-      conn:'CONN_63A'},
-    '63A_4c_Y':{d:'63A · 4×16mm² · Giallo',spec:'#4 AWG · 4 cond. SEOOW · Ø 28mm',od:28,amp:63,poli:4,col:'Giallo',mkt:'EU',p:'69598G',
-      lun:[{m:20,c:'69598G-20'},{m:60,c:'69598G-60'}],
-      conn:'CONN_63A'},
-    '100A_4c_W':{d:'100A · 4×35mm² · Bianco',spec:'#2 AWG · 4 cond. STOW · Ø 35.3mm',od:35.3,amp:100,poli:4,col:'Bianco',mkt:'USA+EU',p:'94014-W',
-      lun:[{m:20,c:'94014-W-20'},{m:25,c:'94014-W-25'},{m:30,c:'94014-W-30'},{m:35,c:'94014-W-35'},{m:45,c:'94014-W-45'}],
-      conn:'CONN_100A_4P'},
-    '100A_5c_W':{d:'100A · 5×35mm² · Bianco (3PH)',spec:'#2 AWG · 5 cond. · Ø 40.5mm',od:40.5,amp:100,poli:5,col:'Bianco',mkt:'USA+EU',p:'SC37110',
-      lun:[{m:20,c:'SC37110'},{m:40,c:'94017-Y-40',n:'giallo'}],
-      conn:'CONN_100A_5P',note:'Kit 04041 obbligatorio per CM8.'},
-    '100A_3c_Y_iso':{d:'100A · 3×35mm² · Giallo (IsoTrans)',spec:'#2 AWG · 3 cond. STOW · Ø 31.8mm',od:31.8,amp:100,poli:3,col:'Giallo',mkt:'USA',p:'94013-Y',
-      lun:[{m:20,c:'94013-20MT'},{m:25,c:'94013-25MT'}],
-      conn:'CONN_100A_4P',note:'Solo per trasformatori di isolamento — NO NEUTRO.'},
-    '150A_2awg_4c':{d:'150A · 2AWG Type W · Nero',spec:'2 AWG · 4 cond. Vu-Tron® · Ø 36.5mm',od:36.5,amp:150,poli:4,col:'Nero',mkt:'USA+EU',p:'81664',
-      lun:[{m:25,c:'81664-25'},{m:30,c:'81664-30'},{m:60,c:'81664-60'}],
-      conn:'CONN_150A'},
-    '177A_1-0awg_4c':{d:'177A · 1/0AWG Type W · Giallo',spec:'1/0 AWG · 4 cond. · Ø 45.2mm',od:45.2,amp:177,poli:4,col:'Giallo',mkt:'USA+EU',p:'SC81374',
-      lun:[{m:30,c:'SC81374-30',n:'Coleman'}],
-      conn:'CONN_150A'},
-    '200A_1-0awg_4c':{d:'200A · 1/0AWG Type W · Nero',spec:'1/0 AWG · 4 cond. · Ø 45.2mm',od:45.2,amp:200,poli:4,col:'Nero',mkt:'USA+EU',p:'81384',
-      lun:[{m:20,c:'81384-20'}],
-      conn:'CONN_250A'},
-  },
+// ═══════════════════════════════════════════════════════════════
+// DATI — caricati da catalog.json + rules.json
+// ═══════════════════════════════════════════════════════════════
+let DB = {};
+let PRESETS = [];
+let CATALOG_ITEMS = [];
+let RULES = {};
 
-  // CONNETTORI: ogni entry = { maschio (spina), femmina_vol (presa mobile), femmina_fixed (inlet) }
-  // Stesso standard su tutta la coppia
-  connettori:{
-    CONN_30A:{
-      nome:'30A Hubbell (USA)',
-      spina:  {cod:'66817A', d:'Spina maschio 30A 125V 2P+T', marca:'Hubbell', cap:'66818C'},
-      presa_v:{cod:'99411',  d:'Presa femmina 30A 2P+T (volante)', marca:'Hubbell'},
-      presa_f:{cod:'99411',  d:'Inlet 30A 2P+T (pannello)', marca:'Hubbell/Glendinning'},
-    },
-    CONN_50A_3P:{
-      nome:'50A 3P+T Hubbell/Glendinning',
-      spina:  {cod:'99408',  d:'Spina maschio 50A 115/230V 3P+T', marca:'Hubbell/Glendinning', cap:'99410'},
-      presa_v:{cod:'99413',  d:'Presa femmina 50A 4P (volante)', marca:'Glendinning'},
-      presa_f:{cod:'99413',  d:'Inlet 50A 4P (pannello)', marca:'Glendinning'},
-      alt_sp: {cod:'66778T', d:'Spina alt. 50A 2P+T (se monofase)', marca:'Hubbell', cap:'66822T'},
-    },
-    CONN_50A_4P:{
-      nome:'50A 4P Hubbell/Glendinning',
-      spina:  {cod:'99408',  d:'Spina maschio 50A 115/230V 3P+T', marca:'Hubbell/Glendinning', cap:'99410'},
-      presa_v:{cod:'99413',  d:'Presa femmina 50A 4P (volante)', marca:'Glendinning'},
-      presa_f:{cod:'99413',  d:'Inlet 50A 4P (pannello)', marca:'Glendinning'},
-      alt_sp2:{cod:'66787U', d:'Spina alt. 63A 2P+T Hubbell (USA)', marca:'Hubbell', cap:'66771C'},
-      alt_sp3:{cod:'66790G', d:'Spina alt. 63A 3P+T Hubbell (USA)', marca:'Hubbell', cap:'66771C'},
-    },
-    CONN_63A:{
-      nome:'63A EU',
-      spina:  {cod:'66787U', d:'Spina maschio 63A 115/230V 1PH 2P+T', marca:'Hubbell', cap:'66771C'},
-      presa_v:{cod:'99439-P',d:'Presa femmina 63A 3P (volante/inlet)', marca:'Glendinning'},
-      presa_f:{cod:'99439-P',d:'Inlet 63A 3P (pannello)', marca:'Glendinning'},
-      alt_sp: {cod:'66790G', d:'Spina alt. 63A 3P+T (1PH/3PH)', marca:'Hubbell', cap:'66771C'},
-    },
-    CONN_100A_4P:{
-      nome:'100A 4P Glendinning (USA)',
-      spina:  {cod:'99423',     d:'Spina maschio 100A 120/240V 3P+T (4P)', marca:'Glendinning'},
-      presa_v:{cod:'99423-C',   d:'Presa femmina 100A 4P (volante)', marca:'Glendinning'},
-      presa_f:{cod:'99423-INL', d:'Inlet 100A 4P (pannello)', marca:'Glendinning'},
-      alt_sp: {cod:'1442A',     d:'Spina alt. 100A 230V 3P+T MKN (EU)', marca:'MKN', presa_v:{cod:'1442A',d:'Presa MKN 100A 230V'},presa_f:{cod:'1442A',d:'Inlet MKN 100A 230V'}},
-    },
-    CONN_100A_5P:{
-      nome:'100A 5P Glendinning/MKN',
-      spina:  {cod:'99424P',    d:'Spina maschio 100A 208/230V 3PH 5P', marca:'Glendinning'},
-      presa_v:{cod:'99432',     d:'Presa femmina 100A 5P (volante)', marca:'Glendinning'},
-      presa_f:{cod:'99424-B9R', d:'Inlet 100A 5P (pannello)', marca:'Glendinning'},
-      alt_sp: {cod:'3374',      d:'Spina alt. 100A 400V 3PH MKN (EU)', marca:'MKN', presa_v:{cod:'99432',d:'Presa Glendinning 5P'},presa_f:{cod:'99424-B9R',d:'Inlet Glendinning 5P'}},
-    },
-    CONN_150A:{
-      nome:'150A Mennekes DS9',
-      spina:  {cod:'MCH3998013', d:'Spina maschio 150A 380V 3PH DS9', marca:'Mennekes', cap:'MCH319A013'},
-      presa_v:{cod:'99432',      d:'Presa femmina 100A 5P Glendinning (adattatore)', marca:'Glendinning'},
-      presa_f:{cod:'99424-B9R',  d:'Inlet 100A 5P pannello (adattatore)', marca:'Glendinning'},
-    },
-    CONN_250A:{
-      nome:'250A Mennekes DS2',
-      spina:  {cod:'MEMR3928013', d:'Spina maschio 250A 400V 3PH DS2', marca:'Mennekes', cap:'MEMR392A913'},
-      presa_v:{cod:'MEMR3928017', d:'Presa femmina 250A 400V 3PH DS2', marca:'Mennekes'},
-      presa_f:{cod:'MEMR3928017', d:'Inlet 250A DS2 (pannello)', marca:'Mennekes'},
-      note:'Sezione frontale + impugnatura posteriore separati.',
-    },
-  },
-
-  hawse:{
-    '04049-CRM':{d:'Hawse Pipe inox 16/30A',c:'04049-CRM',od:20,m:['CM4']},
-    '04050':{d:'Bocchettone CM-4/7 SS',c:'04050',od:29,m:['CM4','CM7']},
-    '04079-CRM':{d:'Hawse Pipe SS + Guide Roller 50/63A',c:'04079-CRM',od:29,m:['CM7']},
-    '04093':{d:'Kit Hawse Pipe CM8/CM9 alluminio',c:'04093',od:50,m:['CM8','CM9'],note:'Std Ø42mm / 50mm con kit 04041.'},
-    '04097-6':{d:'Hawse Pipe CM9 alluminio Ø190mm',c:'04097-6',od:58,m:['CM9'],note:'ID Ø190mm · L 328mm.'},
-  },
-  cont:{
-    '85424':{d:'Contenitore 18"×18"',dim:'Ø 457 × H 457mm',c:'85424',m:['CM4']},
-    '85420':{d:'Contenitore CM-4/7',dim:'Ø 560 × H 380mm',c:'85420',m:['CM4','CM7']},
-    '85421':{d:'Contenitore CM-7 (alt.)',dim:'Ø 560 × H 380mm',c:'85421',m:['CM7']},
-    '85425':{d:'Contenitore CM-8',dim:'Ø 560 × H 560mm',c:'85425',m:['CM8']},
-    '85480':{d:'Contenitore CM-8/9 grande',dim:'Ø 635 × H 877mm',c:'85480',m:['CM8','CM9'],note:'Tagliabile a H 610mm.'},
-  },
-};
-
-// Kit preset
-const PRESETS=[
-  {id:'p1',name:'CM4 · 30A · USA · 12V · 15m',desc:'Kit compatto 30A monofase USA.',tags:['CM4','30A','USA','12V'],
-    bom:[{cat:'Avvolgicavo',cod:'05010',d:'Cablemaster CM-4 · 12V',qty:1},{cat:'Cavo',cod:'SC94004-15',d:'Cavo 30A 3×6mm² Giallo · 15m',qty:1},{cat:'Spina',cod:'66817A',d:'Spina 30A 125V 2P+T · Hubbell',qty:1},{cat:'Cappuccio spina',cod:'66818C',d:'Cappuccio 30A Hubbell',qty:1},{cat:'Inlet bordo',cod:'99411',d:'Inlet 30A 2P+T Glendinning',qty:1},{cat:'Hawse Pipe',cod:'04050',d:'Bocchettone CM-4/7 SS',qty:1},{cat:'Contenitore',cod:'85424',d:'Contenitore 18"×18"',qty:1}]},
-  {id:'p2',name:'CM7 · 50A · USA · 24V · 20m',desc:'Kit CM7 50A trifase USA.',tags:['CM7','50A','USA','24V'],
-    bom:[{cat:'Avvolgicavo',cod:'04022',d:'Cablemaster CM-7 · 24V',qty:1},{cat:'Cavo',cod:'SC94004-20',d:'Cavo 50A 3×12mm² Giallo · 20m',qty:1},{cat:'Spina',cod:'99408',d:'Spina 50A 115/230V 3P+T Hubbell',qty:1},{cat:'Cappuccio spina',cod:'99410',d:'Cappuccio 50A 3P',qty:1},{cat:'Inlet bordo',cod:'99413',d:'Inlet 50A 4P Glendinning',qty:1},{cat:'Hawse Pipe',cod:'04079-CRM',d:'Hawse Pipe SS + Guide Roller',qty:1},{cat:'Contenitore',cod:'85420',d:'Contenitore CM-7 · Ø560×H380mm',qty:1}]},
-  {id:'p3',name:'CM7 · 63A · EU · 24V · 20m',desc:'Kit CM7 63A EU — cavo SEOOW RoHS.',tags:['CM7','63A','EU','24V'],
-    bom:[{cat:'Avvolgicavo',cod:'04022',d:'Cablemaster CM-7 · 24V',qty:1},{cat:'Cavo',cod:'94031Y-20',d:'Cavo 63A 3×16mm² Giallo EU · 20m',qty:1},{cat:'Spina',cod:'66787U',d:'Spina 63A 115/230V 1PH 2P+T · Hubbell',qty:1},{cat:'Cappuccio spina',cod:'66771C',d:'Cappuccio 63A Hubbell',qty:1},{cat:'Inlet bordo',cod:'99439-P',d:'Inlet 63A 3P Glendinning',qty:1},{cat:'Hawse Pipe',cod:'04079-CRM',d:'Hawse Pipe SS + Guide Roller',qty:1},{cat:'Contenitore',cod:'85420',d:'Contenitore CM-7 · Ø560×H380mm',qty:1},{cat:'Radiocomando',cod:'04155',d:'Remote Control 12/24V · 2 trasmettitori',qty:1}]},
-  {id:'p4',name:'CM8 · 100A · USA · 24V · 25m',desc:'Kit CM8 100A monofase USA.',tags:['CM8','100A','USA','24V'],
-    bom:[{cat:'Avvolgicavo',cod:'04091',d:'Cablemaster CM-8 · 24V',qty:1},{cat:'Cavo',cod:'94014-W-25',d:'Cavo 100A 4×35mm² Bianco · 25m',qty:1},{cat:'Spina',cod:'99423',d:'Spina 100A 120/240V 3P+T Glendinning',qty:1},{cat:'Inlet bordo',cod:'99423-C',d:'Presa 100A 4P femmina Glendinning',qty:1},{cat:'Hawse Pipe',cod:'04093',d:'Kit Hawse Pipe CM8/CM9 alluminio',qty:1},{cat:'Contenitore',cod:'85425',d:'Contenitore CM-8 · Ø560×H560mm',qty:1},{cat:'Radiocomando',cod:'04155',d:'Remote Control',qty:1}]},
-  {id:'p5',name:'CM8 · 100A · EU · 24V · 5P · 20m',desc:'Kit CM8 100A trifase EU 400V — 5 poli.',tags:['CM8','100A','EU','24V','3PH'],
-    bom:[{cat:'Avvolgicavo',cod:'04091',d:'Cablemaster CM-8 · 24V',qty:1},{cat:'Cavo',cod:'SC37110',d:'Cavo 100A 5×35mm² Bianco · 20m',qty:1},{cat:'Kit rulli 5P',cod:'04041',d:'Conversione rulli CM-8 per 5 poli',qty:1},{cat:'Spina',cod:'3374',d:'Spina 100A 400V 3PH 3P+T MKN',qty:1},{cat:'Inlet bordo',cod:'99432',d:'Presa 100A 5P femmina Glendinning',qty:1},{cat:'Hawse Pipe',cod:'04093',d:'Kit Hawse Pipe CM8/CM9 alluminio',qty:1},{cat:'Contenitore',cod:'85480',d:'Contenitore CM-8/9 grande',qty:1}]},
-  {id:'p6',name:'CM9 · 177A · 24V · 30m',desc:'Kit CM9 alta corrente — Coleman Type W.',tags:['CM9','177A','24V'],
-    bom:[{cat:'Avvolgicavo',cod:'4097-25-24',d:'Cablemaster CM-9 · 24V con HP',qty:1},{cat:'Cavo',cod:'SC81374-30',d:'Cavo 177A 1/0AWG Type W · 30m',qty:1},{cat:'Spina',cod:'MCH3998013',d:'Spina 150A DS9 380V 3PH Mennekes',qty:1},{cat:'Impugnatura spina',cod:'MCH319A013',d:'Impugnatura neoprenex DS9',qty:1},{cat:'Inlet bordo',cod:'99432',d:'Presa 100A 5P femmina Glendinning',qty:1},{cat:'Hawse Pipe',cod:'04097-6',d:'Hawse Pipe CM9 alluminio Ø190mm',qty:1},{cat:'Contenitore',cod:'85480',d:'Contenitore CM-8/9 grande',qty:1}]},
-];
-
-const CATALOG_ITEMS=[
-  {cat:'Motore',cod:'05010',d:'Cablemaster CM-4 · 12V'},{cat:'Motore',cod:'05013',d:'Cablemaster CM-4 · 24V'},
-  {cat:'Motore',cod:'04020',d:'Cablemaster CM-7 · 12V'},{cat:'Motore',cod:'04022',d:'Cablemaster CM-7 · 24V'},
-  {cat:'Motore',cod:'4022NOHP',d:'Cablemaster CM-7 · 24V (senza HP)'},
-  {cat:'Motore',cod:'04091',d:'Cablemaster CM-8 · 24V'},{cat:'Motore',cod:'4091NOHP',d:'Cablemaster CM-8 · 24V (senza HP)'},
-  {cat:'Motore',cod:'4097-25-24',d:'Cablemaster CM-9 · 24V con HP'},{cat:'Motore',cod:'4097-21-24',d:'Cablemaster CM-9 · 24V senza HP'},
-  {cat:'Cavo',cod:'SC94004-15',d:'Cavo 50A 3×12mm² Giallo · 15m'},{cat:'Cavo',cod:'SC94004-20',d:'Cavo 50A 3×12mm² Giallo · 20m'},
-  {cat:'Cavo',cod:'SC94004-25',d:'Cavo 50A 3×12mm² Giallo · 25m'},{cat:'Cavo',cod:'SC94004-30',d:'Cavo 50A 3×12mm² Giallo · 30m'},
-  {cat:'Cavo',cod:'SC94004-60',d:'Cavo 50A 3×12mm² Giallo · 60m'},{cat:'Cavo',cod:'SC94004-120',d:'Cavo 50A 3×12mm² Giallo · 120m'},
-  {cat:'Cavo',cod:'94005-15',d:'Cavo 50A 4×12mm² Giallo · 15m'},{cat:'Cavo',cod:'SC94005',d:'Cavo 50A 4×12mm² Giallo · 20m'},
-  {cat:'Cavo',cod:'SC94005-30',d:'Cavo 50A 4×12mm² Giallo · 30m'},{cat:'Cavo',cod:'SC94005-60',d:'Cavo 50A 4×12mm² Giallo · 60m'},
-  {cat:'Cavo',cod:'SC94007-20',d:'Cavo 50A 4×12mm² Bianco · 20m'},{cat:'Cavo',cod:'SC94008-25',d:'Cavo 50A 4×12mm² Bianco · 25m'},
-  {cat:'Cavo',cod:'94031Y-20',d:'Cavo 63A 3×16mm² Giallo EU · 20m'},{cat:'Cavo',cod:'94031Y-40',d:'Cavo 63A 3×16mm² Giallo EU · 40m'},
-  {cat:'Cavo',cod:'94031Y-60',d:'Cavo 63A 3×16mm² Giallo EU · 60m'},{cat:'Cavo',cod:'94031Y-80',d:'Cavo 63A 3×16mm² Giallo EU · 80m'},
-  {cat:'Cavo',cod:'69598G-20',d:'Cavo 63A 4×16mm² Giallo · 20m'},
-  {cat:'Cavo',cod:'94013-20MT',d:'Cavo 100A 3×35mm² IsoTrans · 20m'},
-  {cat:'Cavo',cod:'94014-W-20',d:'Cavo 100A 4×35mm² Bianco · 20m'},{cat:'Cavo',cod:'94014-W-25',d:'Cavo 100A 4×35mm² Bianco · 25m'},
-  {cat:'Cavo',cod:'94014-W-30',d:'Cavo 100A 4×35mm² Bianco · 30m'},{cat:'Cavo',cod:'94014-W-35',d:'Cavo 100A 4×35mm² Bianco · 35m'},
-  {cat:'Cavo',cod:'94014-W-45',d:'Cavo 100A 4×35mm² Bianco · 45m'},
-  {cat:'Cavo',cod:'SC37110',d:'Cavo 100A 5×35mm² Bianco 3PH · 20m'},{cat:'Cavo',cod:'94017-Y-40',d:'Cavo 100A 5P Giallo · 40m'},
-  {cat:'Cavo',cod:'81664-25',d:'Cavo 150A 2AWG Type W · 25m'},{cat:'Cavo',cod:'81664-30',d:'Cavo 150A 2AWG Type W · 30m'},
-  {cat:'Cavo',cod:'81664-60',d:'Cavo 150A 2AWG Type W · 60m'},
-  {cat:'Cavo',cod:'SC81374-30',d:'Cavo 177A 1/0AWG Type W · 30m'},{cat:'Cavo',cod:'81384-20',d:'Cavo 200A 1/0AWG Type W · 20m'},
-  {cat:'Spina',cod:'66817A',d:'Spina 30A 125V 2P+T Hubbell'},{cat:'Spina',cod:'66818C',d:'Cappuccio spina 30A Hubbell'},
-  {cat:'Spina',cod:'66778T',d:'Spina 50A 115/230V 2P+T Hubbell'},{cat:'Spina',cod:'66822T',d:'Cappuccio 50A 2P+T'},
-  {cat:'Spina',cod:'99408',d:'Spina 50A 115/230V 3P+T Hubbell/Glendinning'},{cat:'Spina',cod:'99410',d:'Cappuccio 50A 3P+T'},
-  {cat:'Spina',cod:'66787U',d:'Spina 63A 115/230V 1PH 2P+T Hubbell'},{cat:'Spina',cod:'66790G',d:'Spina 63A 115/230V 3P+T Hubbell'},
-  {cat:'Spina',cod:'66771C',d:'Cappuccio 63A Hubbell'},
-  {cat:'Spina',cod:'99437',d:'Spina 32A 2P+T EU'},
-  {cat:'Spina',cod:'99423',d:'Spina 100A 120/240V 3P+T Glendinning (4P)'},
-  {cat:'Spina',cod:'99424P',d:'Spina 100A 208/230V 3PH 5P Glendinning'},
-  {cat:'Spina',cod:'1442A',d:'Spina 100A 230V 3P+T MKN · EU'},
-  {cat:'Spina',cod:'3374',d:'Spina 100A 400V 3PH 3P+T MKN · EU'},
-  {cat:'Spina',cod:'MCH3998013',d:'Spina 150A DS9 380V 3PH Mennekes'},{cat:'Spina',cod:'MCH319A013',d:'Impugnatura DS9 neoprenex'},
-  {cat:'Spina',cod:'MEMR3928013',d:'Spina 250A DS2 400V 3PH Mennekes'},{cat:'Spina',cod:'MEMR392A913',d:'Impugnatura DS2'},
-  {cat:'Inlet/Presa',cod:'99411',d:'Inlet 30A 2P+T Glendinning'},{cat:'Inlet/Presa',cod:'99413',d:'Presa/Inlet 50A 4P Glendinning'},
-  {cat:'Inlet/Presa',cod:'99439-P',d:'Presa 63A 3P EU Glendinning'},
-  {cat:'Inlet/Presa',cod:'99423-C',d:'Presa femmina 100A 4P Glendinning'},{cat:'Inlet/Presa',cod:'99423-INL',d:'Inlet 100A 4P pannello'},
-  {cat:'Inlet/Presa',cod:'99432',d:'Presa femmina 100A 5P Glendinning'},{cat:'Inlet/Presa',cod:'99424-B9R',d:'Inlet 100A 5P pannello'},
-  {cat:'Inlet/Presa',cod:'MEMR3928017',d:'Presa/Inlet 250A DS2 Mennekes 3P+T+N'},
-  {cat:'Hawse',cod:'04049-CRM',d:'Hawse Pipe inox 16/30A'},{cat:'Hawse',cod:'04050',d:'Bocchettone CM-4/7 SS'},
-  {cat:'Hawse',cod:'04079-CRM',d:'Hawse Pipe SS + Guide Roller 50/63A'},
-  {cat:'Hawse',cod:'04093',d:'Hawse Pipe CM8/CM9 alluminio'},{cat:'Hawse',cod:'04097-6',d:'Hawse Pipe CM9 Ø190mm'},
-  {cat:'Contenitore',cod:'85424',d:'Contenitore 18"×18" · Ø457×H457mm'},{cat:'Contenitore',cod:'85420',d:'Contenitore CM-4/7 · Ø560×H380mm'},
-  {cat:'Contenitore',cod:'85421',d:'Contenitore CM-7 alt. · Ø560×H380mm'},{cat:'Contenitore',cod:'85425',d:'Contenitore CM-8 · Ø560×H560mm'},
-  {cat:'Contenitore',cod:'85480',d:'Contenitore CM-8/9 grande · Ø635×H877mm'},
-  {cat:'Accessorio',cod:'04041',d:'Kit conversione rulli CM-8 per cavo 5 poli'},
-  {cat:'Accessorio',cod:'04040',d:'Pipe End Roller Assembly'},{cat:'Accessorio',cod:'04043',d:'Kit prolunga orizzontale CM-7'},
-  {cat:'Accessorio',cod:'04044',d:'Kit prolunga verticale CM-7/CM8'},{cat:'Accessorio',cod:'04054',d:'Guide Roller Assembly (no switch)'},
-  {cat:'Accessorio',cod:'04070',d:'Low Profile Bracket Assembly CM8'},{cat:'Accessorio',cod:'50006',d:'Staffa montaggio superiore'},
-  {cat:'Accessorio',cod:'04052',d:'Pipe Clamp Assembly'},{cat:'Accessorio',cod:'04062',d:'Angling Assembly 30°'},
-  {cat:'Accessorio',cod:'04066',d:'Angling Assembly 90°'},{cat:'Accessorio',cod:'04067',d:'Angling Assembly 150°'},
-  {cat:'Guida rulli',cod:'4075-30-18',d:'Guida rulli 30A 18"'},{cat:'Guida rulli',cod:'4075-50-18',d:'Guida rulli 50A 18"'},
-  {cat:'Guida rulli',cod:'4075-50-36',d:'Guida rulli 50A 36"'},{cat:'Guida rulli',cod:'4075-50-36H',d:'Guida rulli 50A 36" orizzontale'},
-  {cat:'Guida rulli',cod:'4075-50-36V',d:'Guida rulli 50A 36" verticale'},{cat:'Guida rulli',cod:'4075-50-60',d:'Guida rulli 50A 60"'},
-  {cat:'Guida rulli',cod:'4075-50-66',d:'Guida rulli 50A 66"'},
-  {cat:'Controllo',cod:'04155',d:'Kit radiocomando 12/24V — 1 rx + 2 tx'},{cat:'Controllo',cod:'04154-1B',d:'Remote Control (ricambio)'},
-  {cat:'Controllo',cod:'04153',d:'Filtro interferenze'},
-  {cat:'Pipe/Tubo',cod:'42007-100',d:'Tubo PVC 3" · L 1.00m'},{cat:'Pipe/Tubo',cod:'42007-120',d:'Tubo PVC 3" · L 1.20m'},
-];
 
 // ═══════════════════════════════════════════════════════════════
 // STATO
@@ -591,8 +390,94 @@ const wNav=(key,opt)=>`
   </div>`;
 
 const idOf=(t,o)=>Object.keys(t).find(k=>t[k]===o);
-const mktag=m=>(m.includes('USA')?'<span class="tag gr">USA</span>':'')+
-               (m.includes('EU')?'<span class="tag g">EU</span>':'');
+
+// ── QUERY ENGINE ─────────────────────────────────────────────────
+// Restituisce tag HTML mercato da stringa "USA+EU" o array ["USA","EU"]
+function mktag(m){
+  const list=Array.isArray(m)?m:String(m).split('+');
+  return (list.includes('USA')?'<span class="tag gr">USA</span>':'')+
+         (list.includes('EU')?'<span class="tag g">EU</span>':'');
+}
+
+// Cavi compatibili con un motore: OD cavo <= OD max motore, articolo attivo
+function queryCavi(motoreId){
+  const m=DB.motori[motoreId];
+  if(!m) return [];
+  return Object.entries(DB.cavi)
+    .filter(([id,c])=>{
+      const od=c.attrs?c.attrs.od:c.od;
+      return od<=m.od_max;
+    })
+    .map(([id,c])=>({id,c}));
+}
+
+// Gruppo connettore per un cavo: legge attrs.gruppo_conn oppure c.conn
+function getGruppoConn(cavoId){
+  const c=DB.cavi[cavoId];
+  if(!c) return null;
+  const gid=(c.attrs&&c.attrs.gruppo_conn)||c.conn;
+  return gid?{id:gid, conn:DB.connettori[gid]}:null;
+}
+
+// Hawse compatibili: motore giusto + OD max >= OD cavo
+function queryHawse(motoreId, cavoId){
+  const cavo=DB.cavi[cavoId];
+  const od=cavo?(cavo.attrs?cavo.attrs.od:cavo.od):0;
+  return Object.entries(DB.hawse)
+    .filter(([id,h])=>{
+      const motori=h.attrs?h.attrs.motori:(h.motori||h.m||[]);
+      const odmax=h.attrs?h.attrs.od_max:(h.od||999);
+      return motori.includes(motoreId)&&odmax>=0; // mostra tutti, dim se OD incompatibile
+    })
+    .map(([id,h])=>({id,h}));
+}
+
+// Contenitori compatibili con motore
+function queryContenitori(motoreId){
+  return Object.entries(DB.cont)
+    .filter(([id,ct])=>{
+      const motori=ct.attrs?ct.attrs.motori:(ct.motori||ct.m||[]);
+      return motori.includes(motoreId);
+    })
+    .map(([id,ct])=>({id,ct}));
+}
+
+// Valuta vincoli da rules.json e aggiunge righe BOM obbligatorie
+function valutaVincoli(motoreId, cavoId){
+  const extra=[];
+  if(!RULES.vincoli) return extra;
+  const cavo=DB.cavi[cavoId]||{};
+  const poli=cavo.attrs?cavo.attrs.poli:cavo.poli;
+  for(const v of RULES.vincoli){
+    let ok=false;
+    if(v.id==='CM8_5poli_kit') ok=(motoreId==='CM8'&&poli===5);
+    // pattern generico future-proof
+    if(ok) extra.push({cat:v.obbligatorio.cat,cod:v.obbligatorio.cod,d:v.obbligatorio.d,qty:1});
+  }
+  return extra;
+}
+
+// Valuta suggerimenti da rules.json
+function valutaSuggerimenti(motoreId, cavoId, lunM){
+  const sug=[];
+  if(!RULES.suggerimenti) return sug;
+  const cavo=DB.cavi[cavoId]||{};
+  const amp=cavo.attrs?cavo.attrs.amp:cavo.amp;
+  for(const r of RULES.suggerimenti){
+    let match=false;
+    if(r.condizione==='sempre') match=true;
+    else if(r.condizione==='cavo.lun_m > 20') match=(lunM>20);
+    else if(r.condizione==="motore == 'CM8'") match=(motoreId==='CM8');
+    if(!match) continue;
+    for(const a of (r.articoli||[])){
+      let take=true;
+      if(a.se==='cavo.amp <= 50') take=(amp<=50);
+      else if(a.se==='cavo.amp > 50') take=(amp>50);
+      if(take) sug.push({cat:a.cat,cod:a.cod,d:CATALOG_ITEMS.find(x=>x.cod===a.cod)?.d||a.cod,qty:1});
+    }
+  }
+  return sug;
+}
 
 function wS0(){return`
   <div class="stitle">Seleziona il motore</div>
@@ -619,18 +504,23 @@ function wS1(){
 
 function wS2(){
   const m=DB.motori[W.motore];
-  const cavi=m.cavi.map(id=>({id,c:DB.cavi[id]})).filter(x=>x.c);
+  // Query dinamica: tutti i cavi con OD <= od_max del motore
+  const cavi=queryCavi(W.motore);
   return`
   <div class="stitle">Tipo di cavo</div>
-  <div class="shint">Cavi compatibili con <strong>${m.label}</strong> · OD max ${m.od}mm.</div>
-  <div class="cards w2">${cavi.map(({id,c})=>`
+  <div class="shint">Cavi compatibili con <strong>${m.label}</strong> · OD max ${m.od_max}mm.</div>
+  <div class="cards w2">${cavi.map(({id,c})=>{
+    const at=c.attrs||{};
+    const od=at.od||c.od, amp=at.amp||c.amp, poli=at.poli||c.poli;
+    const mkt=at.mercato||c.mkt||[];
+    return`
     <div class="card ${W.cavo===id?'sel':''}" data-k="cavo" data-v="${id}">
       <div class="ck">${W.cavo===id?'✓':''}</div>
-      <div class="cc">${c.p}</div><div class="cn">${c.d}</div>
-      <div class="cd">${c.spec}<br>OD ${c.od}mm · ${c.poli} cond. · ${c.amp}A</div>
-      ${mktag(c.mkt)}
+      <div class="cc">${c.p||id}</div><div class="cn">${c.d}</div>
+      <div class="cd">${c.spec||''}<br>OD ${od}mm · ${poli} cond. · ${amp}A</div>
+      ${mktag(mkt)}
       ${c.note?`<div style="margin-top:5px"><span class="tag g">⚠ ${c.note}</span></div>`:''}
-    </div>`).join('')}</div>
+    </div>`}).join('')}</div>
   ${wNav('cavo')}`;}
 
 function wS3(){
@@ -649,30 +539,39 @@ function wS3(){
   ${wNav('lun')}`;}
 
 function wS4(){
-  const c=DB.cavi[W.cavo];
-  const conn=DB.connettori[c.conn];
-  // Costruisce tutte le varianti (principale + alternative)
-  const varianti=[{key:'main',label:`${conn.nome} (standard)`,sp:conn.spina,pv:conn.presa_v,pf:conn.presa_f}];
-  if(conn.alt_sp){
-    varianti.push({key:'alt',label:`${conn.alt_sp.d}`,sp:conn.alt_sp,pv:conn.presa_v,pf:conn.presa_f});
+  // Query dinamica: gruppo connettore dal campo attrs.gruppo_conn del cavo
+  const gc=getGruppoConn(W.cavo);
+  if(!gc||!gc.conn){
+    return`<div class="stitle">Connettori <span class="opt-badge">Opzionale</span></div>
+    <div class="shint">Nessun connettore standard trovato per questo cavo. Aggiungilo manualmente nel riepilogo.</div>
+    <div class="nav"><button class="btn-b" onclick="wB()">← Indietro</button><button class="btn-n" onclick="wN()">Salta →</button></div>`;
   }
-  if(conn.alt_sp2) varianti.push({key:'alt2',label:`${conn.alt_sp2.d}`,sp:conn.alt_sp2,pv:conn.presa_v,pf:conn.presa_f});
-  if(conn.alt_sp3) varianti.push({key:'alt3',label:`${conn.alt_sp3.d}`,sp:conn.alt_sp3,pv:conn.presa_v,pf:conn.presa_f});
-
-  const selectedV=W.conn?varianti.find(v=>v.key===W.conn_variant):null;
+  const conn=gc.conn;
+  // Costruisce varianti dinamicamente da tutti i campi alt_sp* presenti nel connettore
+  const varianti=[{key:'main',label:conn.nome+' (standard)',sp:conn.spina,pv:conn.presa_v,pf:conn.presa_f}];
+  ['alt_sp','alt_sp2','alt_sp3'].forEach((k,i)=>{
+    if(conn[k]) varianti.push({
+      key:'alt'+(i===0?'':i+1),
+      label:conn[k].d,
+      sp:conn[k],
+      pv:conn[k].presa_v||conn.presa_v,
+      pf:conn[k].presa_f||conn.presa_f
+    });
+  });
 
   return`
   <div class="stitle">Connettori <span class="opt-badge">Opzionale</span></div>
-  <div class="shint">Spina (maschio · banchina) e presa (femmina · bordo) devono essere dello stesso standard. Puoi saltare questo step.</div>
+  <div class="shint">Spina (maschio · banchina) e presa (femmina · bordo) dello stesso standard. Puoi saltare.</div>
   <div class="cards w2">${varianti.map(v=>{
     const isSel=W.conn===v.key;
     return`<div class="card ${isSel?'sel':''}" data-k="conn" data-v="${v.key}">
       <div class="ck">${isSel?'✓':''}</div>
       <div class="cn" style="font-size:.82rem">${v.label}</div>
       <div class="cd" style="margin-top:5px">
-        <span style="color:var(--acc);font-family:var(--mono)">${v.sp.cod}</span> <span style="color:var(--mut)">· ${v.sp.marca}</span><br>
+        <span style="color:var(--acc);font-family:var(--mono)">${v.sp.cod}</span>
+        <span style="color:var(--mut)"> · ${v.sp.marca||''}</span><br>
         <span style="font-size:.7rem;color:var(--mut)">↕ Presa bordo: </span>
-        <span style="color:var(--acc);font-family:var(--mono);font-size:.72rem">${v.pv.cod}</span>
+        <span style="color:var(--acc);font-family:var(--mono);font-size:.72rem">${v.pv?v.pv.cod:'—'}</span>
         ${v.sp.cap?`<br><span style="font-size:.68rem;color:var(--mut)">+ cappuccio: ${v.sp.cap}</span>`:''}
       </div>
       ${conn.note?`<span class="tag g">${conn.note}</span>`:''}
@@ -683,25 +582,24 @@ function wS4(){
   </div>
   <div class="nav">
     <button class="btn-b" onclick="wB()">← Indietro</button>
-    <button class="btn-n" onclick="wN()">
-      ${!W.conn?'Salta →':'Avanti →'}
-    </button>
+    <button class="btn-n" onclick="wN()">${!W.conn?'Salta →':'Avanti →'}</button>
   </div>`;}
 
 function wS5(){
   const c=DB.cavi[W.cavo];
-  const m=DB.motori[W.motore];
-  const list=m.hawse.map(id=>DB.hawse[id]).filter(Boolean);
+  const cavoOd=c.attrs?c.attrs.od:c.od;
+  // Query dinamica: hawse compatibili con il motore selezionato
+  const list=queryHawse(W.motore, W.cavo);
   return`
   <div class="stitle">Hawse Pipe <span class="opt-badge">Opzionale</span></div>
-  <div class="shint">Alloggiamento stagno che protegge la spina a cavo retratto. OD cavo selezionato: <strong>${c.od}mm</strong>.</div>
-  <div class="cards w2">${list.map(h=>{
-    const id=idOf(DB.hawse,h);
-    const fit=c.od<=h.od;
+  <div class="shint">Alloggiamento stagno che protegge la spina a cavo retratto. OD cavo: <strong>${cavoOd}mm</strong>.</div>
+  <div class="cards w2">${list.map(({id,h})=>{
+    const odmax=h.attrs?h.attrs.od_max:h.od;
+    const fit=cavoOd<=odmax;
     return`<div class="card ${!fit?'dim':''} ${W.hawse===id?'sel':''}" data-k="hawse" data-v="${id}">
       <div class="ck">${W.hawse===id?'✓':''}</div>
       <div class="cc">${h.c}</div><div class="cn">${h.d}</div>
-      <div class="cd">OD max: <strong>${h.od}mm</strong> · cavo: ${c.od}mm</div>
+      <div class="cd">OD max: <strong>${odmax}mm</strong> · cavo: ${cavoOd}mm</div>
       ${!fit?'<span class="tag r">⚠ OD superiore al limite</span>':''}
       ${h.note?`<span class="tag g">${h.note}</span>`:''}
     </div>`;}).join('')}
@@ -709,58 +607,70 @@ function wS5(){
   </div>
   <div class="nav">
     <button class="btn-b" onclick="wB()">← Indietro</button>
-    <button class="btn-n" onclick="wN()">
-      ${!W.hawse?'Salta →':'Avanti →'}
-    </button>
+    <button class="btn-n" onclick="wN()">${!W.hawse?'Salta →':'Avanti →'}</button>
   </div>`;}
 
 function wS6(){
   const m=DB.motori[W.motore];
-  const list=m.cont.map(id=>DB.cont[id]).filter(Boolean);
+  // Query dinamica: contenitori compatibili col motore
+  const list=queryContenitori(W.motore);
   return`
   <div class="stitle">Contenitore <span class="opt-badge">Opzionale</span></div>
   <div class="shint">Contenitore di stoccaggio compatibile con <strong>${m.label}</strong>.</div>
-  <div class="cards">${list.map(ct=>{
-    const id=idOf(DB.cont,ct);
-    return`<div class="card ${W.cont===id?'sel':''}" data-k="cont" data-v="${id}">
+  <div class="cards">${list.map(({id,ct})=>`
+    <div class="card ${W.cont===id?'sel':''}" data-k="cont" data-v="${id}">
       <div class="ck">${W.cont===id?'✓':''}</div>
       <div class="cc">${ct.c}</div><div class="cn">${ct.d}</div>
       <div class="cd">${ct.dim}</div>
       ${ct.note?`<span class="tag g">${ct.note}</span>`:''}
-    </div>`;}).join('')}
+    </div>`).join('')}
     <div class="card-skip" onclick="W.cont=null;wN()">↷ Salta</div>
   </div>
   <div class="nav">
     <button class="btn-b" onclick="wB()">← Indietro</button>
-    <button class="btn-n" onclick="wN()">
-      ${!W.cont?'Salta →':'Riepilogo →'}
-    </button>
+    <button class="btn-n" onclick="wN()">${!W.cont?'Salta →':'Riepilogo →'}</button>
   </div>`;}
 
 function wSummary(embed){
-  // Costruisce BOM automatica
-  const m=DB.motori[W.motore],c=DB.cavi[W.cavo];
-  const conn=W.conn?DB.connettori[c.conn]:null;
-  const connV=W.conn&&conn?[{key:'main',sp:conn.spina,pv:conn.presa_v},{key:'alt',sp:conn.alt_sp,pv:conn.presa_v},{key:'alt2',sp:conn.alt_sp2,pv:conn.presa_v},{key:'alt3',sp:conn.alt_sp3,pv:conn.presa_v}].find(v=>v.key===W.conn_variant):null;
-  const h=W.hawse?DB.hawse[W.hawse]:null,ct=W.cont?DB.cont[W.cont]:null;
+  const m=DB.motori[W.motore], c=DB.cavi[W.cavo];
+  const lunM=W.lun?W.lun.m:0;
+
+  // Risolve variante connettore dinamicamente
+  let connV=null;
+  if(W.conn){
+    const gc=getGruppoConn(W.cavo);
+    if(gc&&gc.conn){
+      const conn=gc.conn;
+      const varianti=[
+        {key:'main',sp:conn.spina,pv:conn.presa_v},
+        {key:'alt', sp:conn.alt_sp,  pv:(conn.alt_sp&&conn.alt_sp.presa_v)||conn.presa_v},
+        {key:'alt2',sp:conn.alt_sp2, pv:(conn.alt_sp2&&conn.alt_sp2.presa_v)||conn.presa_v},
+        {key:'alt3',sp:conn.alt_sp3, pv:(conn.alt_sp3&&conn.alt_sp3.presa_v)||conn.presa_v},
+      ];
+      connV=varianti.find(v=>v.key===W.conn_variant&&v.sp)||null;
+    }
+  }
+
+  const h=W.hawse?DB.hawse[W.hawse]:null;
+  const ct=W.cont?DB.cont[W.cont]:null;
+  const ten=m.tensioni||m.t||{};
 
   BOM=[];
-  BOM.push({cat:'Avvolgicavo',cod:m.t[W.ten],d:`${m.desc} · ${W.ten}`,qty:1});
+  BOM.push({cat:'Avvolgicavo',cod:ten[W.ten],d:`${m.desc} · ${W.ten}`,qty:1});
   if(W.lun) BOM.push({cat:'Cavo',cod:W.lun.c,d:`${c.d} · ${W.lun.m}m${W.lun.n?' ('+W.lun.n+')':''}`,qty:1});
-  if(connV){
-    BOM.push({cat:'Spina (banchina)',cod:connV.sp.cod,d:`${connV.sp.d}`,qty:1});
+  if(connV&&connV.sp){
+    BOM.push({cat:'Spina (banchina)',cod:connV.sp.cod,d:connV.sp.d,qty:1});
     if(connV.sp.cap) BOM.push({cat:'Cappuccio spina',cod:connV.sp.cap,d:'Cappuccio protezione spina',qty:1});
-    BOM.push({cat:'Presa (bordo)',cod:connV.pv.cod,d:`${connV.pv.d}`,qty:1});
+    if(connV.pv) BOM.push({cat:'Presa (bordo)',cod:connV.pv.cod,d:connV.pv.d,qty:1});
   }
   if(h) BOM.push({cat:'Hawse Pipe',cod:h.c,d:h.d,qty:1});
   if(ct) BOM.push({cat:'Contenitore',cod:ct.c,d:`${ct.d} · ${ct.dim}`,qty:1});
-  if(c.poli===5&&W.motore==='CM8') BOM.push({cat:'Kit obbligatorio',cod:'04041',d:'Conversione rulli CM-8 per cavo 5 poli',qty:1});
 
-  // Suggerimenti
-  const sug=[];
-  sug.push({cat:'Radiocomando',cod:'04155',d:'Kit radiocomando 12/24V — 1 rx + 2 tx',qty:1});
-  if(W.lun&&W.lun.m>20) sug.push({cat:'Guida rulli ★',cod:c.amp<=50?'4075-50-36':'4075-50-60',d:`Coil Spring guide ${c.amp<=50?'50A 36"':'50A 60"'} (suggerito per >20m)`,qty:1});
-  if(W.motore==='CM8') sug.push({cat:'Low Profile',cod:'04070',d:'Low Profile Bracket CM8 — riduce altezza 89mm',qty:1});
+  // Vincoli da rules.json (es. kit 04041 per CM8 + 5 poli)
+  valutaVincoli(W.motore, W.cavo).forEach(r=>BOM.push(r));
+
+  // Suggerimenti da rules.json
+  const sug=valutaSuggerimenti(W.motore, W.cavo, lunM);
 
   window._SUG=sug;
   window._WLABEL=`${W.motore} ${W.ten}${W.lun?' · '+W.lun.m+'m':''}`;
@@ -1066,12 +976,7 @@ function importKitFromBase64(raw){
   }catch(err){alert('Errore nel decodificare il kit: '+err.message);}
 }
 
-// Controlla URL all'avvio
-window.addEventListener('load',()=>{
-  const params=new URLSearchParams(location.search);
-  const raw=params.get('kit');
-  if(raw) setTimeout(()=>importKitFromBase64(raw),500);
-});
+// Gestione URL kit integrata in initApp() — dopo il fetch dei dati
 
 // ── CSV ──────────────────────────────────────────────────────
 function exportCSV(){
@@ -1207,7 +1112,75 @@ function flash(id,ok,orig){
 const esc=s=>String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 
 // ─── AVVIO ────────────────────────────────────────────────────
-render();
+
+function showLoader(msg){
+  document.getElementById('content').innerHTML=
+    '<div style="padding:48px 0;text-align:center;color:var(--mut)">' +
+    '<div style="font-size:1.6rem;margin-bottom:12px">⚙️</div>' +
+    '<div style="font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase">'+(msg||'Caricamento…')+'</div></div>';
+}
+
+function showError(msg){
+  document.getElementById('content').innerHTML=
+    '<div style="padding:48px 0;text-align:center">' +
+    '<div style="font-size:1.6rem;margin-bottom:12px">⚠️</div>' +
+    '<div style="color:var(--red);font-family:var(--mono);font-size:.75rem;margin-bottom:8px">'+msg+'</div>' +
+    '<div style="font-size:.75rem;color:var(--mut)">Controlla che catalog.json e rules.json siano presenti.</div>' +
+    '<button class="btn-n" style="margin-top:18px" onclick="initApp()">↺ Riprova</button></div>';
+}
+
+function hydrate(cat, rules){
+  // Normalizza motori: supporta sia vecchio schema (t/od) sia nuovo (tensioni/od_max)
+  const motori={};
+  for(const [id,m] of Object.entries(cat.motori)){
+    motori[id]={
+      ...m,
+      t:       m.tensioni||m.t||{},       // alias retrocompatibile
+      tensioni:m.tensioni||m.t||{},
+      od:      m.od_max||m.od||999,       // alias retrocompatibile
+      od_max:  m.od_max||m.od||999,
+      hawse:   m.hawse_ids||m.hawse||[],  // alias retrocompatibile
+      hawse_ids:m.hawse_ids||m.hawse||[],
+      cont:    m.cont_ids||m.cont||[],    // alias retrocompatibile
+      cont_ids:m.cont_ids||m.cont||[],
+      cavi:    m.cavi_ids||m.cavi||[],
+      cavi_ids:m.cavi_ids||m.cavi||[],
+    };
+  }
+  DB = {
+    motori,
+    cavi:       cat.cavi,
+    connettori: cat.connettori,
+    hawse:      cat.hawse,
+    cont:       cat.contenitori,
+  };
+  PRESETS       = cat.kit_preset;
+  CATALOG_ITEMS = cat.catalogo.filter(a => a.attivo !== false);
+  RULES         = rules;
+}
+
+async function initApp(){
+  showLoader('Caricamento catalogo…');
+  try {
+    const [catResp, rulesResp] = await Promise.all([
+      fetch('./catalog.json'),
+      fetch('./rules.json'),
+    ]);
+    if(!catResp.ok)   throw new Error('catalog.json: ' + catResp.status + ' ' + catResp.statusText);
+    if(!rulesResp.ok) throw new Error('rules.json: '   + rulesResp.status + ' ' + rulesResp.statusText);
+    const [cat, rules] = await Promise.all([catResp.json(), rulesResp.json()]);
+    hydrate(cat, rules);
+    const raw = new URLSearchParams(location.search).get('kit');
+    if(raw) setTimeout(()=>importKitFromBase64(raw), 400);
+    render();
+  } catch(err){
+    console.error('initApp:', err);
+    showError(err.message);
+  }
+}
+
+initApp();
+
 </script>
 <script>
   if ('serviceWorker' in navigator) {
