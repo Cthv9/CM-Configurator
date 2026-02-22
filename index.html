@@ -4,6 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cablemaster Configuratore</title>
+<link rel="manifest" href="./manifest.webmanifest">
+<meta name="theme-color" content="#0b2a66">
+
+<link rel="icon" href="./favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="./favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="./favicon-16x16.png" sizes="16x16">
+<link rel="apple-touch-icon" href="./apple-touch-icon.png">
+
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -526,7 +534,7 @@ function setMode(m){
   render();
 }
 
-function rHome(){(isKitView?document.getElementById('wb'):document.getElementById('content')).innerHTML=`<div style="padding:36px 0 0;text-align:center;color:var(--mut);font-size:.8rem;line-height:1.7">Seleziona una modalità per iniziare.</div>`;}
+function rHome(){document.getElementById('content').innerHTML=`<div style="padding:36px 0 0;text-align:center;color:var(--mut);font-size:.8rem;line-height:1.7">Seleziona una modalità per iniziare.</div>`;}
 
 // ═══════════════════════════════════════════════════════════════
 // WIZARD
@@ -1093,5 +1101,13 @@ const esc=s=>String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>
 // ─── AVVIO ────────────────────────────────────────────────────
 render();
 </script>
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./sw.js');
+    });
+  }
+</script>
+
 </body>
 </html>

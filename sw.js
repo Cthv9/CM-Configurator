@@ -1,59 +1,53 @@
-// Service Worker — CM Configurator v2 (single-file)
-
-const CACHE_NAME = 'cm-configurator-v2';
-
-const ASSETS = [
+// Basic offline-first service worker for Cablemaster
+const CACHE_NAME = 'cablemaster-pwa-v1';
+const CORE_ASSETS = [
   './',
   './index.html',
-  './manifest.json',
-  './sw.js',
-  'https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap'
+  './manifest.webmanifest',
+  './icons/icon-192x192.png',
+  './icons/icon-512x512.png'
 ];
 
-self.addEventListener('install', event => {
+self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(cache => cache.addAll(ASSETS))
-      .then(() => self.skipWaiting())
+    caches.open(CACHE_NAME).then((cache) => cache.addAll(CORE_ASSETS))
+  );
+  self.skipWaiting();
+});
+
+self.addEventListener('activate', (event) => {
+  event.waitUntil(
+    (async () => {
+      const keys = await caches.keys();
+      await Promise.all(keys.map(k => (k === CACHE_NAME ? null : caches.delete(k))));
+      await self.clients.claim();
+    })()
   );
 });
 
-self.addEventListener('activate', event => {
-  event.waitUntil(
-    caches.keys()
-      .then(keys => Promise.all(keys.filter(k => k !== CACHE_NAME).map(k => caches.delete(k))))
-      .then(() => self.clients.claim())
-  );
-});
-
-self.addEventListener('fetch', event => {
+self.addEventListener('fetch', (event) => {
   const req = event.request;
-  const url = new URL(req.url);
-
-  if (req.method !== 'GET') {
-    return;
-  }
-
-  const isLocal = url.origin === self.location.origin;
-  const isGoogleFonts = url.hostname === 'fonts.googleapis.com' || url.hostname === 'fonts.gstatic.com';
-
-  if (!isLocal && !isGoogleFonts) {
-    return;
-  }
+  // only cache GET
+  if (req.method !== 'GET') return;
 
   event.respondWith(
-    caches.match(req).then(cached => {
+    (async () => {
+      const cache = await caches.open(CACHE_NAME);
+      const cached = await cache.match(req, { ignoreSearch: true });
       if (cached) return cached;
 
-      return fetch(req)
-        .then(response => {
-          if (response && response.status === 200) {
-            const clone = response.clone();
-            caches.open(CACHE_NAME).then(cache => cache.put(req, clone));
-          }
-          return response;
-        })
-        .catch(() => new Response('Offline', { status: 503 }));
-    })
+      try {
+        const fresh = await fetch(req);
+        // cache same-origin assets
+        const url = new URL(req.url);
+        if (url.origin === self.location.origin) {
+          cache.put(req, fresh.clone());
+        }
+        return fresh;
+      } catch (e) {
+        // fallback to shell
+        return (await cache.match('./')) || cached;
+      }
+    })()
   );
 });
