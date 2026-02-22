@@ -4,8 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cablemaster Configuratore</title>
-<meta name="theme-color" content="#0A1628">
-<link rel="manifest" href="./manifest.json">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -528,7 +526,7 @@ function setMode(m){
   render();
 }
 
-function rHome(){document.getElementById('content').innerHTML=`<div style="padding:36px 0 0;text-align:center;color:var(--mut);font-size:.8rem;line-height:1.7">Seleziona una modalità per iniziare.</div>`;}
+function rHome(){(isKitView?document.getElementById('wb'):document.getElementById('content')).innerHTML=`<div style="padding:36px 0 0;text-align:center;color:var(--mut);font-size:.8rem;line-height:1.7">Seleziona una modalità per iniziare.</div>`;}
 
 // ═══════════════════════════════════════════════════════════════
 // WIZARD
@@ -543,8 +541,10 @@ function rWizard(){
       const label=isOpt?`${i+1}. ${n} <span style="font-size:.48rem;opacity:.7">(opt)</span>`:`${i+1}. ${n}`;
       return`<button class="${c}"${i<W.s?` onclick="wGo(${i})"`:' disabled'}>${label}</button>`;
     }).join('')}</div>
-    <div id="wb">${fns[W.s]()}</div>`;
-  wBind();window.scrollTo(0,0);
+    <div id="wb">${(W.s===7)?"":fns[W.s]()}</div>`;
+  wBind();
+  if(W.s===7){ wSummary(true); }
+  window.scrollTo(0,0);
 }
 
 function wGo(n){
@@ -711,7 +711,7 @@ function wS6(){
     </button>
   </div>`;}
 
-function wSummary(){
+function wSummary(embed){
   // Costruisce BOM automatica
   const m=DB.motori[W.motore],c=DB.cavi[W.cavo];
   const conn=W.conn?DB.connettori[c.conn]:null;
@@ -738,7 +738,7 @@ function wSummary(){
 
   window._SUG=sug;
   window._WLABEL=`${W.motore} ${W.ten}${W.lun?' · '+W.lun.m+'m':''}`;
-  renderBOM();
+  renderBOM(!!embed);
 }
 
 // ═══════════════════════════════════════════════════════════════
@@ -1092,14 +1092,6 @@ const esc=s=>String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>
 
 // ─── AVVIO ────────────────────────────────────────────────────
 render();
-
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js').catch(err => {
-      console.warn('Service Worker non registrato:', err);
-    });
-  });
-}
 </script>
 </body>
 </html>
