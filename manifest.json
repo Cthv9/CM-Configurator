@@ -1,7 +1,7 @@
 {
   "name": "Cablemaster Configuratore",
   "short_name": "Cablemaster",
-  "description": "Configuratore Cablemaster v6 (single-file)",
+  "description": "Configuratore Cablemaster v2 (single-file)",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",

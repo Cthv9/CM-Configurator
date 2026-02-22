@@ -1,6 +1,6 @@
-// Service Worker — CM Configurator v6 (single-file)
+// Service Worker — CM Configurator v2 (single-file)
 
-const CACHE_NAME = 'cm-configurator-v6';
+const CACHE_NAME = 'cm-configurator-v2';
 
 const ASSETS = [
   './',
