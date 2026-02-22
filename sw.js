@@ -1,12 +1,19 @@
-// Basic offline-first service worker for Cablemaster
-const CACHE_NAME = 'cablemaster-pwa-v2';
+// Cablemaster PWA — Service Worker
+// ⚠ Incrementa CACHE_NAME ad ogni deploy che modifica catalog.json o rules.json
+const CACHE_NAME = 'cablemaster-pwa-v5';
+
 const CORE_ASSETS = [
   './',
   './index.html',
+  './catalog.json',
+  './rules.json',
   './manifest.webmanifest',
   './icons/icon-192x192.png',
   './icons/icon-512x512.png'
 ];
+
+// File dati: network-first (aggiornati sempre se online)
+const DATA_FILES = ['catalog.json', 'rules.json'];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
@@ -27,27 +34,40 @@ self.addEventListener('activate', (event) => {
 
 self.addEventListener('fetch', (event) => {
   const req = event.request;
-  // only cache GET
   if (req.method !== 'GET') return;
 
-  event.respondWith(
-    (async () => {
-      const cache = await caches.open(CACHE_NAME);
-      const cached = await cache.match(req, { ignoreSearch: true });
-      if (cached) return cached;
+  const url = new URL(req.url);
+  const isData = DATA_FILES.some(f => url.pathname.endsWith(f));
 
-      try {
-        const fresh = await fetch(req);
-        // cache same-origin assets
-        const url = new URL(req.url);
-        if (url.origin === self.location.origin) {
+  if (isData) {
+    // Network-first: prende sempre la versione fresca, fallback cache se offline
+    event.respondWith(
+      (async () => {
+        const cache = await caches.open(CACHE_NAME);
+        try {
+          const fresh = await fetch(req);
           cache.put(req, fresh.clone());
+          return fresh;
+        } catch {
+          return cache.match(req);
         }
-        return fresh;
-      } catch (e) {
-        // fallback to shell
-        return (await cache.match('./')) || cached;
-      }
-    })()
-  );
+      })()
+    );
+  } else {
+    // Cache-first per HTML, icone, font, manifest
+    event.respondWith(
+      (async () => {
+        const cache = await caches.open(CACHE_NAME);
+        const cached = await cache.match(req, { ignoreSearch: true });
+        if (cached) return cached;
+        try {
+          const fresh = await fetch(req);
+          if (url.origin === self.location.origin) cache.put(req, fresh.clone());
+          return fresh;
+        } catch {
+          return (await cache.match('./')) || cached;
+        }
+      })()
+    );
+  }
 });
