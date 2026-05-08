@@ -355,6 +355,7 @@ tbody tr:hover td{background:#F4F2EE}
     <button class="adm-tab on" onclick="admTab('editor',this)">📋 Editor articoli</button>
     <button class="adm-tab" onclick="admTab('import',this)">⬆ Import CSV</button>
     <button class="adm-tab" onclick="admTab('audit',this)">🔍 Audit kit</button>
+    <button class="adm-tab" onclick="admTab('regole',this)">📐 Regole</button>
   </div>
   <div class="adm-body" id="adm-body"></div>
   <div class="adm-export-bar" id="adm-export-bar">
@@ -519,6 +520,14 @@ function queryHawse(motoreId, cavoId){
     .map(([id,h])=>({id,h}));
 }
 
+// Restituisce l'ID hawse già incluso nell'avvolgicavo selezionato, o null
+function getHawseIncluso(motoreId, tenLabel){
+  const m=DB.motori[motoreId];
+  if(!m) return null;
+  const avvCode=(m.tensioni||m.t||{})[tenLabel];
+  return avvCode?(m.hawse_incluso||{})[avvCode]||null:null;
+}
+
 // Contenitori compatibili con motore
 function queryContenitori(motoreId){
   return Object.entries(DB.cont)
@@ -675,7 +684,28 @@ function wS4(){
 function wS5(){
   const c=DB.cavi[W.cavo];
   const cavoOd=c.attrs?c.attrs.od:c.od;
-  // Query dinamica: hawse compatibili con il motore selezionato
+  // Controlla se il hawse pipe è già incluso nell'avvolgicavo scelto
+  const hawseInclusoId=getHawseIncluso(W.motore, W.ten);
+  if(hawseInclusoId){
+    const hi=DB.hawse[hawseInclusoId];
+    W.hawse=null; // non aggiungere riga BOM separata
+    return`
+    <div class="stitle">Hawse Pipe</div>
+    <div class="shint">L'hawse pipe è già incluso nell'avvolgicavo selezionato — nessuna riga separata in distinta.</div>
+    <div class="cards w2">
+      <div class="card sel" style="pointer-events:none;opacity:.9">
+        <div class="ck">✓</div>
+        <div class="cc">${hi?hi.c:hawseInclusoId}</div>
+        <div class="cn">${hi?hi.d:'Hawse Pipe'}</div>
+        ${hi&&hi.note?`<span class="tag g">${hi.note}</span>`:''}
+        <span class="tag g">✓ Incluso nell'avvolgicavo</span>
+      </div>
+    </div>
+    <div class="nav">
+      <button class="btn-b" onclick="wB()">← Indietro</button>
+      <button class="btn-n" onclick="wN()">Avanti →</button>
+    </div>`;}
+  // Selezione normale (avvolgicavo senza HP incluso)
   const list=queryHawse(W.motore, W.cavo);
   return`
   <div class="stitle">Hawse Pipe <span class="opt-badge">Opzionale</span></div>
@@ -741,16 +771,20 @@ function wSummary(embed){
   const h=W.hawse?DB.hawse[W.hawse]:null;
   const ct=W.cont?DB.cont[W.cont]:null;
   const ten=m.tensioni||m.t||{};
+  const hawseInclusoId=getHawseIncluso(W.motore, W.ten);
 
   BOM=[];
-  BOM.push({cat:'Avvolgicavo',cod:ten[W.ten],d:`${m.desc} · ${W.ten}`,qty:1});
+  // Avvolgicavo: aggiunge nota se HP è già incluso nell'unità
+  const avvNote=hawseInclusoId?' (c/HP incluso)':'';
+  BOM.push({cat:'Avvolgicavo',cod:ten[W.ten],d:`${m.desc} · ${W.ten}${avvNote}`,qty:1});
   if(W.lun) BOM.push({cat:'Cavo',cod:W.lun.c,d:`${c.d} · ${W.lun.m}m${W.lun.n?' ('+W.lun.n+')':''}`,qty:1});
   if(connV&&connV.sp){
     BOM.push({cat:'Spina (banchina)',cod:connV.sp.cod,d:connV.sp.d,qty:1});
     if(connV.sp.cap) BOM.push({cat:'Cappuccio spina',cod:connV.sp.cap,d:'Cappuccio protezione spina',qty:1});
     if(connV.pv) BOM.push({cat:'Presa (bordo)',cod:connV.pv.cod,d:connV.pv.d,qty:1});
   }
-  if(h) BOM.push({cat:'Hawse Pipe',cod:h.c,d:h.d,qty:1});
+  // Hawse Pipe come riga separata solo se non già incluso nell'avvolgicavo
+  if(h&&!hawseInclusoId) BOM.push({cat:'Hawse Pipe',cod:h.c,d:h.d,qty:1});
   if(ct) BOM.push({cat:'Contenitore',cod:ct.c,d:`${ct.d} · ${ct.dim}`,qty:1});
 
   // Vincoli da rules.json (es. kit 04041 per CM8 + 5 poli)
@@ -1202,11 +1236,12 @@ const esc=s=>String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>
 // ═══════════════════════════════════════════════════════════════
 // ADMIN PANEL
 // ═══════════════════════════════════════════════════════════════
-let _admCat  = null;   // copia locale del catalogo in editing
-let _admTab  = 'editor';
-let _admQ    = '';
-let _admF    = 'Tutto';
-let _admDiff = null;   // risultato ultimo import
+let _admCat   = null;   // copia locale del catalogo in editing
+let _admRules = null;   // copia locale di rules.json in editing
+let _admTab   = 'editor';
+let _admQ     = '';
+let _admF     = 'Tutto';
+let _admDiff  = null;   // risultato ultimo import
 
 // Accesso: triplo click sul logo header
 let _admClicks=0,_admTimer=0;
@@ -1229,6 +1264,7 @@ function openAdmin(){
     catalogo:   [...CATALOG_ITEMS],
     kit_preset: PRESETS,
   }));
+  _admRules=JSON.parse(JSON.stringify(RULES));
   document.getElementById('adm-ver').textContent='v'+(_admCat._meta.version||'?')+' · '+(_admCat._meta.updated||'');
   document.getElementById('admin-panel').classList.add('show');
   admTab('editor', document.querySelector('.adm-tab'));
@@ -1244,9 +1280,10 @@ function admTab(tab, btn){
   if(btn) btn.classList.add('on');
   document.getElementById('adm-export-bar').style.display=
     (tab==='editor')?'flex':'none';
-  if(tab==='editor')  admRenderEditor();
-  else if(tab==='import') admRenderImport();
-  else if(tab==='audit')  admRenderAudit();
+  if(tab==='editor')       admRenderEditor();
+  else if(tab==='import')  admRenderImport();
+  else if(tab==='audit')   admRenderAudit();
+  else if(tab==='regole')  admRenderRegole();
 }
 
 // ── EDITOR ────────────────────────────────────────────────────
@@ -1538,6 +1575,137 @@ function admAutoFix(kitId, oldCod, newCod){
   saveUserKits(kits);
   alert('Kit aggiornato. Riapri il kit per verificare.');
   admRenderAudit();
+}
+
+// ── REGOLE ────────────────────────────────────────────────────
+function admRenderRegole(){
+  if(!_admRules){openAdmin();return;}
+  const vincoli=_admRules.vincoli||[];
+  const sug=_admRules.suggerimenti||[];
+
+  const rowsVincoli=vincoli.map((v,i)=>`
+    <div class="adm-rule-card" style="border:1px solid var(--brd);border-radius:var(--r);padding:12px;margin-bottom:10px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+        <span class="pcat">Vincolo</span>
+        <button class="adm-toggle off" onclick="admRemoveRule('vincoli',${i})" title="Rimuovi vincolo">🗑</button>
+      </div>
+      <div style="display:grid;gap:4px">
+        <label style="font-size:.62rem;color:var(--mut)">ID</label>
+        <input class="adm-edit" value="${esc(v.id||'')}" oninput="_admRules.vincoli[${i}].id=this.value">
+        <label style="font-size:.62rem;color:var(--mut)">Descrizione</label>
+        <input class="adm-edit" value="${esc(v.descrizione||'')}" oninput="_admRules.vincoli[${i}].descrizione=this.value">
+        <label style="font-size:.62rem;color:var(--mut)">Condizione</label>
+        <input class="adm-edit" style="font-family:var(--mono)" value="${esc(v.condizione||'')}" oninput="_admRules.vincoli[${i}].condizione=this.value">
+        <label style="font-size:.62rem;color:var(--mut)">Codice obbligatorio</label>
+        <input class="adm-edit" style="font-family:var(--mono)" value="${esc(v.obbligatorio?.cod||'')}" oninput="_admRules.vincoli[${i}].obbligatorio=Object.assign({},_admRules.vincoli[${i}].obbligatorio,{cod:this.value})">
+        <label style="font-size:.62rem;color:var(--mut)">Categoria BOM</label>
+        <input class="adm-edit" value="${esc(v.obbligatorio?.cat||'')}" oninput="_admRules.vincoli[${i}].obbligatorio=Object.assign({},_admRules.vincoli[${i}].obbligatorio,{cat:this.value})">
+        <label style="font-size:.62rem;color:var(--mut)">Descrizione articolo</label>
+        <input class="adm-edit" value="${esc(v.obbligatorio?.d||'')}" oninput="_admRules.vincoli[${i}].obbligatorio=Object.assign({},_admRules.vincoli[${i}].obbligatorio,{d:this.value})">
+      </div>
+    </div>`).join('');
+
+  const rowsSug=sug.map((r,i)=>{
+    const arts=(r.articoli||[]).map((a,j)=>`
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:4px;align-items:end;margin-top:4px">
+        <div>
+          <label style="font-size:.58rem;color:var(--mut)">Codice</label>
+          <input class="adm-edit" style="font-family:var(--mono)" value="${esc(a.cod||'')}" oninput="_admRules.suggerimenti[${i}].articoli[${j}].cod=this.value">
+        </div>
+        <div>
+          <label style="font-size:.58rem;color:var(--mut)">Cat. BOM</label>
+          <input class="adm-edit" value="${esc(a.cat||'')}" oninput="_admRules.suggerimenti[${i}].articoli[${j}].cat=this.value">
+        </div>
+        <div>
+          <label style="font-size:.58rem;color:var(--mut)">Condizione (se)</label>
+          <input class="adm-edit" style="font-family:var(--mono)" value="${esc(a.se||'')}" oninput="_admRules.suggerimenti[${i}].articoli[${j}].se=this.value||undefined">
+        </div>
+        <button class="adm-toggle off" style="margin-bottom:2px" onclick="admRemoveSugArticolo(${i},${j})" title="Rimuovi articolo">✕</button>
+      </div>`).join('');
+    return`
+    <div class="adm-rule-card" style="border:1px solid var(--brd);border-radius:var(--r);padding:12px;margin-bottom:10px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+        <span class="pcat" style="color:var(--gld)">Suggerimento</span>
+        <button class="adm-toggle off" onclick="admRemoveRule('suggerimenti',${i})" title="Rimuovi suggerimento">🗑</button>
+      </div>
+      <div style="display:grid;gap:4px">
+        <label style="font-size:.62rem;color:var(--mut)">Condizione</label>
+        <input class="adm-edit" style="font-family:var(--mono)" value="${esc(r.condizione||'')}" oninput="_admRules.suggerimenti[${i}].condizione=this.value">
+        <label style="font-size:.62rem;color:var(--mut)">Messaggio</label>
+        <input class="adm-edit" value="${esc(r.messaggio||'')}" oninput="_admRules.suggerimenti[${i}].messaggio=this.value">
+      </div>
+      <div style="margin-top:8px">
+        <label style="font-size:.62rem;color:var(--mut)">Articoli suggeriti</label>
+        ${arts}
+        <button class="cbtn" style="margin-top:6px;font-size:.65rem" onclick="admAddSugArticolo(${i})">+ Articolo</button>
+      </div>
+    </div>`}).join('');
+
+  document.getElementById('adm-body').innerHTML=`
+    <div class="stitle" style="font-size:1.1rem;margin-bottom:4px">Vincoli (kit obbligatori)</div>
+    <div class="shint" style="margin-bottom:10px">Regole che aggiungono automaticamente un articolo alla distinta in base alla configurazione scelta.</div>
+    ${rowsVincoli||'<div style="color:var(--mut);font-size:.75rem;margin-bottom:8px">Nessun vincolo definito.</div>'}
+    <button class="cbtn" onclick="admAddVincolo()">+ Aggiungi vincolo</button>
+    <hr style="border:none;border-top:1px solid var(--brd);margin:18px 0">
+    <div class="stitle" style="font-size:1.1rem;margin-bottom:4px">Suggerimenti</div>
+    <div class="shint" style="margin-bottom:10px">Articoli proposti nella sezione suggerimenti del riepilogo BOM.</div>
+    ${rowsSug||'<div style="color:var(--mut);font-size:.75rem;margin-bottom:8px">Nessun suggerimento definito.</div>'}
+    <button class="cbtn" onclick="admAddSuggerimento()">+ Aggiungi suggerimento</button>
+    <hr style="border:none;border-top:1px solid var(--brd);margin:18px 0">
+    <div class="shint" style="margin-bottom:12px">⚠ Le condizioni per i <strong>vincoli</strong> con ID personalizzato richiedono anche l'aggiornamento della funzione <code>valutaVincoli()</code> nel codice sorgente. Le condizioni dei <strong>suggerimenti</strong> (<code>sempre</code>, <code>cavo.lun_m > 20</code>, <code>motore == 'CM8'</code>) vengono valutate dinamicamente.</div>
+    <button class="cbtn acc" onclick="admExportRules()">⬇ Esporta rules.json</button>`;
+}
+
+function admRemoveRule(type, idx){
+  if(!confirm('Rimuovere questa regola?')) return;
+  _admRules[type].splice(idx,1);
+  admRenderRegole();
+}
+
+function admRemoveSugArticolo(sugIdx, artIdx){
+  _admRules.suggerimenti[sugIdx].articoli.splice(artIdx,1);
+  admRenderRegole();
+}
+
+function admAddVincolo(){
+  _admRules.vincoli=_admRules.vincoli||[];
+  _admRules.vincoli.push({
+    id:'nuovo_vincolo',
+    descrizione:'',
+    condizione:'motore == \'CM8\'',
+    obbligatorio:{cod:'',cat:'Kit obbligatorio',d:''}
+  });
+  admRenderRegole();
+}
+
+function admAddSuggerimento(){
+  _admRules.suggerimenti=_admRules.suggerimenti||[];
+  _admRules.suggerimenti.push({condizione:'sempre',messaggio:'',articoli:[]});
+  admRenderRegole();
+}
+
+function admAddSugArticolo(sugIdx){
+  _admRules.suggerimenti[sugIdx].articoli=_admRules.suggerimenti[sugIdx].articoli||[];
+  _admRules.suggerimenti[sugIdx].articoli.push({cod:'',cat:'Accessorio'});
+  admRenderRegole();
+}
+
+// ── EXPORT ─────────────────────────────────────────────────────
+function admExportRules(){
+  if(!_admRules){alert('Nessuna regola in editing.');return;}
+  const out=JSON.parse(JSON.stringify(_admRules));
+  const now=new Date();
+  const dateStr=`${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`;
+  const oldVer=String(out._meta?.version||'2026.0');
+  const parts=oldVer.split('.');
+  parts[parts.length-1]=String((parseInt(parts[parts.length-1]||0)+1));
+  out._meta={...out._meta,version:parts.join('.'),updated:dateStr};
+  const blob=new Blob([JSON.stringify(out,null,2)],{type:'application/json;charset=utf-8'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='rules.json';
+  a.click();
+  RULES=JSON.parse(JSON.stringify(_admRules)); // applica in memoria
 }
 
 // ── EXPORT ─────────────────────────────────────────────────────
